@@ -1,0 +1,87 @@
+{
+  "nom": "PARTENAIRE ENTREPRISE TRAVAUX SUARL",
+  "sigle": "PET",
+  "baseline_logo": ["Bâtiment", "Hydraulique", "Assainissement", "Génie civil", "VRD"],
+  "slogan_propose": "Votre partenaire pour bâtir et raccorder le Sénégal",
+  "fondation": 2016,
+  "experience_cumulee_equipe_ans": "40+",
+  "contact": {
+    "telephones": ["33 827 61 85", "77 597 01 98", "78 305 04 44"],
+    "email": "partenaire.direction@outlook.com",
+    "adresse": "Rond-point Liberté 6, Dakar, Sénégal"
+  },
+  "presentation": "Fondée en 2016, Partenaire Entreprise Travaux SUARL est une entreprise de bâtiment et de travaux publics, génie civil, hydraulique et assainissement, tous corps d'état. Forte d'une équipe cumulant plus de 40 ans d'expérience, PET place la qualité et la sécurité au centre de ses préoccupations, grâce à un personnel qualifié et à des équipements régulièrement mis à niveau. PET participe à la conception, la construction, la réhabilitation et l'entretien des réseaux d'eau, des bâtiments et des infrastructures (génie civil, travaux souterrains) pour tous clients publics, industriels et privés.",
+  "valeurs": [
+    "Qualité",
+    "Sécurité",
+    "Service et conseil",
+    "Respect des lieux",
+    "Choix des matériaux",
+    "Tenue des délais",
+    "Satisfaction du client"
+  ],
+  "clients": ["Publics", "Industriels", "Privés"],
+  "domaines": [
+    {
+      "id": "batiment",
+      "titre": "Bâtiment",
+      "resume": "Construction de bâtiments à usage d'habitation et industriel.",
+      "prestations": ["Logements", "Écoles et universités", "Ateliers et usines", "Murs de clôture", "Électricité et peinture"],
+      "photos": ["09-immeuble-grue-coffrage.png", "07-cloture-grillage.png"]
+    },
+    {
+      "id": "travaux-publics-vrd",
+      "titre": "Travaux publics et VRD",
+      "resume": "Routes, ponts, voiries, terrassements et ouvrages d'art.",
+      "prestations": ["Routes et pistes", "Ponts et ouvrages d'art", "Voiries et réseaux divers", "Terrassement"],
+      "photos": ["01-terrassement-engins-cat.png", "02-piste-laterite.png", "10-grader-voirie.png"]
+    },
+    {
+      "id": "hydraulique",
+      "titre": "Hydraulique",
+      "resume": "Pose de conduites et ouvrages hydrauliques.",
+      "prestations": [
+        "Pose de conduites de différents diamètres (dont fonte)",
+        "Stations de pompage",
+        "Bâches à eau",
+        "Dalots",
+        "Irrigation"
+      ],
+      "photos": ["03-conduite-ouvrage-hydraulique.png", "08-pose-conduite-topographie.png", "06-irrigation-agricole.png"]
+    },
+    {
+      "id": "assainissement",
+      "titre": "Assainissement",
+      "resume": "Réseaux d'eaux usées, ouvrages et réhabilitation.",
+      "prestations": [
+        "Stations de traitement des eaux usées",
+        "Installation et réhabilitation de réseaux d'eaux usées",
+        "Regards de visite",
+        "Boîtes de branchement",
+        "Réhabilitation de dalots"
+      ],
+      "photos": ["04-dalot-regard-chantier.png", "11-pose-conduite-lotissement.png"]
+    },
+    {
+      "id": "genie-civil",
+      "titre": "Génie civil",
+      "resume": "Ouvrages de génie civil et travaux souterrains.",
+      "prestations": ["Ouvrages hydrauliques en béton armé", "Travaux souterrains", "Ouvrages d'art"],
+      "photos": ["05-ferraillage-ouvrage-hydraulique.png"]
+    }
+  ],
+  "references_visibles_sur_photos": [
+    "Réhabilitation de dalot et construction de regards",
+    "Fourniture et pose de conduite fonte",
+    "Construction de mur de clôture, bâtiment et voirie"
+  ],
+  "a_fournir_par_le_client": [
+    "Photos haute définition (originaux)",
+    "Logo vectoriel (SVG/AI) ou PNG fond transparent",
+    "Vrais projets : client, lieu, année, description",
+    "Liens réseaux sociaux (LinkedIn, Facebook, Instagram, WhatsApp)",
+    "Certifications éventuelles (ISO, agréments)",
+    "Offres d'emploi réelles",
+    "Nom du dirigeant et citation éventuelle"
+  ]
+}
