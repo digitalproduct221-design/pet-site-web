@@ -15,7 +15,7 @@ export default function PageRealisations() {
     <>
       <EnTetePage
         titre="Réalisations"
-        intro="Nos chantiers en images, classés par domaine. Chaque fiche présente le contexte et les travaux réalisés."
+        intro="Nos chantiers en images, classés par domaine. Ouvrez une réalisation pour parcourir sa galerie en plein écran."
         ariane={[{ titre: "Réalisations" }]}
         photo="trancheeLotissement"
       />
