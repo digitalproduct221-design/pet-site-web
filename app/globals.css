@@ -1409,3 +1409,18 @@ main > :nth-child(n + 3):not(.ruban-zone) {
   from { scale: 1 0; }
   to { scale: 1 1; }
 }
+
+/* Fondu organique immersif pour les en-têtes de pages intérieures :
+   - Sur mobile : transition progressive verticale du haut vers le bas
+   - Sur bureau (>= 1024px) : transition progressive horizontale de gauche à droite
+   Aucun trait dur, aucun débordement. */
+.masque-fondu-hero {
+  mask-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.25) 8%, rgba(0, 0, 0, 0.9) 24%, black 45%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.25) 8%, rgba(0, 0, 0, 0.9) 24%, black 45%);
+}
+@media (min-width: 1024px) {
+  .masque-fondu-hero {
+    mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.15) 5%, rgba(0, 0, 0, 0.85) 20%, black 36%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.15) 5%, rgba(0, 0, 0, 0.85) 20%, black 36%);
+  }
+}
