@@ -52,3 +52,15 @@ scripts/        prepare-images.mjs (photos et logo depuis assets/)
 assets/         sources du client (logo, photos de la bâche)
 docs/           brief, direction, décisions, documents d'origine
 ```
+
+## Espace admin (`/admin`)
+
+Un espace volontairement simple pour ajouter ou retirer les photos des réalisations, publier des nouvelles du quotidien, des partenaires et des témoignages. Le site se met à jour tout seul après chaque modification.
+
+Mise en service (une fois) :
+1. Créer un projet Supabase et appliquer `supabase/migrations/20261009150000_espace_admin.sql`, puis `supabase/seed.sql` (les 7 réalisations actuelles).
+2. Dans Vercel, définir `NEXT_PUBLIC_SUPABASE_URL` et `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` (Supabase, *Project Settings > API*), puis redéployer.
+3. Créer le compte de l'administrateur (Supabase, *Authentication > Users > Add user*, avec e-mail et mot de passe), puis l'autoriser :
+   `insert into public.admins (user_id, email) select id, email from auth.users where email = 'adresse@exemple.sn';`
+
+Sans ces variables, le site garde le contenu livré avec lui (`content/`) et `/admin` l'indique.
