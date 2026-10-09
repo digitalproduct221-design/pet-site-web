@@ -17,9 +17,9 @@ interface ItemMenu {
 const items: ItemMenu[] = [
   { id: "accueil", titre: "Accueil", href: "/", icone: "accueil" },
   { id: "savoir-faire", titre: "Métiers", href: "/savoir-faire", icone: "engins" },
-  { id: "devis", titre: "Devis", href: "/contact#devis", icone: "devis", estCentral: true },
+  { id: "contact", titre: "Contact", href: "/contact", icone: "telephone", estCentral: true },
   { id: "realisations", titre: "Chantiers", href: "/realisations", icone: "photos" },
-  { id: "contact", titre: "Contact", href: "/contact", icone: "telephone" },
+  { id: "devis", titre: "Devis", href: "/contact#devis", icone: "devis" },
 ];
 
 const domainesRapides = [
@@ -33,7 +33,7 @@ const domainesRapides = [
 /**
  * Navbar mobile flottante Liquid Glass (Dock Apple avec bouton central surélevé) :
  * - 5 menus avec icône en bulle arrondie en haut et libellé en bas
- * - Bouton central « Devis » (#3) proéminent qui déborde vers le haut (action clé de conversion)
+ * - Bouton central « Contact » (#3) proéminent qui déborde vers le haut (action clé)
  * - Morphisme verre liquide dépoli avec biseau supérieur lumineux
  */
 export function BarreActionsMobile() {
@@ -138,7 +138,7 @@ export function BarreActionsMobile() {
         </div>
       )}
 
-      {/* Barre de navigation principale : Dock Liquid Glass avec bouton central débordant */}
+      {/* Barre de navigation principale : Dock Liquid Glass avec bouton central Contact débordant */}
       <nav
         aria-label="Navigation mobile principale"
         className="relative flex h-[3.875rem] items-center justify-around rounded-full liquid-glass-sombre px-2 shadow-[0_16px_40px_-10px_rgba(7,18,43,0.85),0_2px_8px_rgba(0,0,0,0.4)]"
@@ -146,14 +146,14 @@ export function BarreActionsMobile() {
         {items.map((item) => {
           const isActif = actif === item.id;
 
-          // Bouton central proéminent : DEVIS (Action de conversion reine)
+          // Bouton central proéminent : CONTACT (#3 surélevé)
           if (item.estCentral) {
             return (
               <div key={item.id} className="relative -top-3.5 flex flex-col items-center">
                 <Link
                   href={item.href}
                   onClick={() => handleItemClick(item.id)}
-                  aria-label="Demander un devis immédiat"
+                  aria-label="Prendre contact avec PET"
                   className="group/central relative grid size-13.5 place-items-center rounded-full liquid-glass-or text-nuit border-2 border-white/95 shadow-[0_12px_24px_-4px_rgba(247,198,28,0.7),0_4px_12px_rgba(7,18,43,0.35)] transition-transform duration-300 hover:scale-105 active:scale-95"
                 >
                   <Icone nom={item.icone} size={24} weight="bold" className="transition-transform group-hover/central:scale-110" />
@@ -165,7 +165,7 @@ export function BarreActionsMobile() {
             );
           }
 
-          // Éléments standards (Accueil, Métiers, Chantiers, Contact) :
+          // Éléments standards (Accueil, Métiers, Chantiers, Devis) :
           // Icône en bulle arrondie au-dessus, nom de la page en dessous
           return (
             <Link
