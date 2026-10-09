@@ -58,7 +58,8 @@ export function Hero() {
     >
       <Diaporama diapos={diapos} />
 
-      <div className="conteneur pb-[calc(clamp(2.25rem,5vw,5.5rem)+13rem)] pt-12 sm:pt-14 lg:pt-20">
+      {/* Mobile : texte en bas, la photo reste dégagée en haut ; écrans bas : moins de marge */}
+      <div className="conteneur pb-[calc(clamp(2.25rem,5vw,5.5rem)+13rem)] pt-12 max-md:mt-auto max-md:pb-[calc(clamp(2.25rem,5vw,5.5rem)+8rem)] sm:pt-14 lg:pt-20 [@media(min-width:64rem)_and_(max-height:820px)]:pt-10">
         <div className="entree max-w-[44rem]">
           <p className="hidden cote text-[0.9375rem] uppercase tracking-[0.16em] text-blanc ombre-texte sm:block">
             Bâtiment · Travaux publics · Hydraulique · Assainissement · Génie civil
@@ -68,14 +69,15 @@ export function Hero() {
             className="-ml-3 inline-block px-3 pb-4 pt-3 sm:mt-6"
             style={{ ["--equerre-taille" as string]: "clamp(2.5rem, 1.5rem + 3vw, 4.25rem)", ["--equerre-epaisseur" as string]: "5px" }}
           >
-            <h1 className="titre text-[clamp(2.5rem,1.2rem+5.6vw,5.5rem)] leading-[0.94] text-blanc ombre-texte">
+            <h1 className="titre text-[clamp(2.5rem,min(1.2rem+5.6vw,9svh),5.5rem)] leading-[0.94] text-blanc ombre-texte">
               <span className="block">Nous bâtissons.</span>
               <span className="block">Nous raccordons.</span>
               <span className="block text-jaune">Nous durons.</span>
             </h1>
           </Equerres>
-          <p className="mt-7 max-w-[30rem] text-[1.1875rem] leading-relaxed text-blanc ombre-texte">{SLOGAN}, depuis 2016.</p>
-          <div className="mt-9 flex flex-wrap gap-4">
+          {/* Sous 640 px, le slogan cède la place à la photo (il est repris plus bas et dans le pied de page) */}
+          <p className="mt-7 max-w-[30rem] text-[1.1875rem] leading-relaxed text-blanc ombre-texte max-sm:hidden">{SLOGAN}, depuis 2016.</p>
+          <div className="mt-7 flex flex-wrap gap-4 sm:mt-9">
             {/* Sur mobile, la barre d'actions fixe porte déjà « Devis » : un seul appel principal à l'écran */}
             <span className="hidden sm:contents">
               <BoutonLien href="/contact#devis">Demander un devis</BoutonLien>

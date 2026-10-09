@@ -845,11 +845,13 @@ html.intro-vue .rideau[data-etat="intro"] {
      Mesuré sur les pixels des 5 diapos : texte ≥ 4,5:1, « Nous durons » en jaune compris. */
   background: linear-gradient(100deg, rgb(7 18 43 / 0.82) 0%, rgb(7 18 43 / 0.76) 40%, rgb(7 18 43 / 0.42) 56%, rgb(7 18 43 / 0.08) 70%, transparent 80%);
   @media (width < 48rem) {
-    background: linear-gradient(180deg, rgb(7 18 43 / 0.74) 0%, rgb(7 18 43 / 0.68) 60%, rgb(7 18 43 / 0.55) 100%);
+    /* Mobile : le texte est en bas ; le haut de la photo reste dégagé */
+    background: linear-gradient(180deg, transparent 0%, rgb(7 18 43 / 0.15) 22%, rgb(7 18 43 / 0.76) 38%, rgb(7 18 43 / 0.82) 100%);
   }
 }
 @utility voile-bas-clair {
-  background: linear-gradient(0deg, rgb(7 18 43 / 0.72) 0%, rgb(7 18 43 / 0.32) 45%, transparent 100%);
+  /* Bandeau des onglets : dense sur le dernier quart, puis s'efface vers la photo */
+  background: linear-gradient(0deg, rgb(7 18 43 / 0.9) 0%, rgb(7 18 43 / 0.86) 26%, rgb(7 18 43 / 0.45) 50%, transparent 78%);
 }
 /* Grain fixe très léger : masque l'agrandissement des photos basse définition */
 @utility grain {

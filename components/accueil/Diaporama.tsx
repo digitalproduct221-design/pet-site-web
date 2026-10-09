@@ -105,8 +105,8 @@ export function Diaporama({ diapos }: { diapos: Diapo[] }) {
                   fill
                   preload={i === 0}
                   fetchPriority={i === 0 ? "high" : "low"}
-                  sizes="(max-width: 768px) 130vw, 100vw"
-                  quality={60}
+                  sizes="100vw"
+                  quality={75}
                   className="object-cover"
                   style={{ objectPosition: p.focale }}
                 />
@@ -137,7 +137,7 @@ export function Diaporama({ diapos }: { diapos: Diapo[] }) {
             <p
               key={index}
               aria-live={enPause ? "polite" : "off"}
-              className="max-w-[34rem] text-[1.0625rem] leading-snug text-blanc ombre-texte animate-[apparition_600ms_var(--ease-chantier)_both]"
+              className="max-w-[34rem] text-[1.0625rem] leading-snug text-blanc ombre-texte animate-[apparition_600ms_var(--ease-chantier)_both] max-md:sr-only [@media(min-width:48rem)_and_(max-height:820px)]:hidden"
               style={{ animationDelay: aBouge ? `${VOLET * 0.45}ms` : "0ms" }}
             >
               {diapo.legende}{" "}
@@ -153,7 +153,7 @@ export function Diaporama({ diapos }: { diapos: Diapo[] }) {
               type="button"
               onClick={() => setLecture(!enLecture)}
               aria-label={enLecture ? "Mettre le diaporama en pause" : "Lancer le diaporama"}
-              className="bouton-verre grid size-11 shrink-0 place-items-center rounded-full text-blanc transition-colors"
+              className="bouton-verre ml-auto grid size-11 shrink-0 place-items-center rounded-full text-blanc transition-colors"
             >
               <Icone nom={enLecture ? "pause" : "lecture"} size={18} weight="fill" />
             </button>
@@ -182,12 +182,12 @@ export function Diaporama({ diapos }: { diapos: Diapo[] }) {
                     </span>
                     <span className="mt-3 flex items-baseline gap-3">
                       <span
-                        className={`titre text-[1.75rem] leading-none chiffres-tabulaires transition-colors sm:text-[2.25rem] ${actif ? "text-blanc" : "text-blanc/60 group-hover/onglet:text-blanc/85"}`}
+                        className={`titre text-[1.75rem] leading-none chiffres-tabulaires transition-colors sm:text-[2.25rem] ${actif ? "text-blanc" : "text-blanc/75 group-hover/onglet:text-blanc"}`}
                       >
                         {String(i + 1).padStart(2, "0")}
                       </span>
                       <span
-                        className={`sr-only cote text-[1rem] leading-tight transition-colors md:not-sr-only ${actif ? "text-blanc" : "text-blanc/75 group-hover/onglet:text-blanc"}`}
+                        className={`sr-only cote text-[1rem] leading-tight transition-colors lg:not-sr-only ${actif ? "text-blanc" : "text-blanc/80 group-hover/onglet:text-blanc"}`}
                       >
                         {" "}
                         {d.onglet}

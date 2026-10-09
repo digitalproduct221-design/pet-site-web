@@ -57,6 +57,8 @@ const nextConfig: NextConfig = {
     formats: ["image/avif", "image/webp"],
     // 50 à 60 : photos d'arrière-plan et première photo du hero sur mobile.
     qualities: [50, 60, 75],
+    // Pas de variante 3840 : les photos sources font au plus 2500 px.
+    deviceSizes: [640, 750, 828, 1080, 1200, 1600, 1920, 2560],
     minimumCacheTTL: 2592000,
   },
   experimental: {
