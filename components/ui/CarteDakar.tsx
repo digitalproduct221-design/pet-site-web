@@ -17,7 +17,7 @@ export function CarteDakar({ hauteur = "h-72" }: { hauteur?: string }) {
     return (
       <div className={`relative overflow-hidden rounded-[6px] ${hauteur}`}>
         <iframe
-          title={`Carte : ${adresse}`}
+          title={`Carte : ${adresse}`}
           src={carteIntegree}
           className="absolute inset-0 size-full border-0"
           loading="lazy"

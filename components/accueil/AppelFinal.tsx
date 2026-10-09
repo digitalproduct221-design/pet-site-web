@@ -8,11 +8,11 @@ export function AppelFinal() {
       <div className="conteneur relative grid gap-12 py-20 lg:grid-cols-12 lg:items-end lg:gap-8 lg:py-28">
         <div className="lg:col-span-7">
           <h2 id="titre-appel" className="titre text-[clamp(3.25rem,1.6rem+7vw,6rem)] leading-[0.9] text-nuit">
-            Un projet ?<br />
+            Un projet ?<br />
             Parlons-en.
           </h2>
           <p className="mt-6 max-w-[32rem] text-[1.1875rem] leading-relaxed text-nuit/85">
-            Décrivez-nous votre chantier : nous vous rappelons pour en parler et préparer votre devis.
+            Décrivez-nous votre chantier : nous vous rappelons pour en parler et préparer votre devis.
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
             <BoutonLien href="/contact#devis" variante="sombre">
@@ -23,7 +23,7 @@ export function AppelFinal() {
             </BoutonExterne>
           </div>
         </div>
-        <div className="lg:col-span-4 lg:col-start-9">
+        <div className="lg:col-span-5 lg:col-start-8 xl:col-span-4 xl:col-start-9">
           <p className="cote text-[1rem] uppercase tracking-[0.08em] text-nuit/80">Appelez-nous</p>
           <ul className="mt-3 grid gap-3">
             {telephones.map((t) => (
@@ -32,7 +32,7 @@ export function AppelFinal() {
                   href={t.lien}
                   className="group/tel flex items-baseline justify-between gap-4 rounded-[6px] bg-nuit/[0.06] px-4 py-3 transition-colors hover:bg-nuit hover:text-jaune"
                 >
-                  <span className="titre text-[clamp(2rem,1.4rem+2vw,2.75rem)] chiffres-tabulaires">{t.affichage}</span>
+                  <span className="whitespace-nowrap titre text-[clamp(1.875rem,1.2rem+1.6vw,2.625rem)] chiffres-tabulaires">{t.affichage}</span>
                   <span className="cote text-[0.9375rem] opacity-80">{t.mobile ? "Mobile" : "Standard"}</span>
                 </a>
               </li>

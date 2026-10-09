@@ -634,3 +634,11 @@
   from { scale: 0 1; }
   to { scale: 1 1; }
 }
+
+/* Cartes qui apparaissent après un changement de filtre */
+@keyframes apparition {
+  from { opacity: 0; translate: 0 18px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  [class*="animate-[apparition"] { animation: none !important; }
+}

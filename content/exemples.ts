@@ -4,7 +4,7 @@
  * ============================================================================
  * Tout ce fichier contient des données d'exemple : projets, actualités, offres.
  * - Les projets reprennent les chantiers visibles sur les photos fournies, mais
- *   client, lieu et année restent « À renseigner » : ce ne sont PAS des références
+ *   client, lieu et année restent « À renseigner » : ce ne sont PAS des références
  *   client vérifiées.
  * - Les actualités et offres d'emploi sont fictives et signalées à l'écran.
  * Pour publier de vrais contenus : remplacer les entrées ci-dessous et passer
@@ -43,8 +43,8 @@ export const projets: Projet[] = [
     annee: A_RENSEIGNER,
     resume: "Remise en état d'un dalot et création de regards en béton coulé en place, en milieu urbain.",
     description: [
-      "Chantier mené au cœur d'un quartier habité : terrassement, coffrage et coulage de regards en béton, puis raccordement aux conduites existantes.",
-      "Fiche d'exemple construite à partir d'une photo de chantier : le contexte précis est à compléter par PET.",
+      "Chantier mené au cœur d'un quartier habité : terrassement, coffrage et coulage de regards en béton, puis raccordement aux conduites existantes.",
+      "Fiche d'exemple construite à partir d'une photo de chantier : le contexte précis est à compléter par PET.",
     ],
     travaux: ["Terrassement en fouille", "Coffrage et coulage de regards", "Raccordement de conduite fonte", "Remblaiement"],
     photos: ["dalotRegard", "trancheeLotissement"],
@@ -60,7 +60,7 @@ export const projets: Projet[] = [
     resume: "Pose d'une conduite en fonte de gros diamètre et de ses vannes, avec ouvrage de protection en béton armé.",
     description: [
       "Conduite en fonte posée en fouille profonde, équipée de vannes et protégée par une cage d'armatures avant bétonnage.",
-      "Fiche d'exemple construite à partir d'une photo de chantier : le contexte précis est à compléter par PET.",
+      "Fiche d'exemple construite à partir d'une photo de chantier : le contexte précis est à compléter par PET.",
     ],
     travaux: ["Fourniture de la conduite", "Pose et assemblage des tuyaux", "Ferraillage de l'ouvrage", "Essais de pression"],
     photos: ["conduiteOuvrage", "poseConduiteTopographie"],
@@ -73,10 +73,10 @@ export const projets: Projet[] = [
     client: A_RENSEIGNER,
     lieu: A_RENSEIGNER,
     annee: A_RENSEIGNER,
-    resume: "Ensemble de travaux sur une même emprise : clôture, bâtiment et voirie d'accès.",
+    resume: "Ensemble de travaux sur une même emprise : clôture, bâtiment et voirie d'accès.",
     description: [
-      "Projet regroupant plusieurs corps d'état : clôture périphérique, construction d'un bâtiment et réalisation de la voirie.",
-      "Fiche d'exemple construite à partir de la bâche de présentation : le contexte précis est à compléter par PET.",
+      "Projet regroupant plusieurs corps d'état : clôture périphérique, construction d'un bâtiment et réalisation de la voirie.",
+      "Fiche d'exemple construite à partir de la bâche de présentation : le contexte précis est à compléter par PET.",
     ],
     travaux: ["Mur et clôture grillagée", "Gros œuvre du bâtiment", "Voirie d'accès"],
     photos: ["clotureGrillage", "immeubleGrue"],
@@ -91,8 +91,8 @@ export const projets: Projet[] = [
     annee: A_RENSEIGNER,
     resume: "Déblais, remblais et mise en forme d'une plateforme avec pelle hydraulique et chargeuse.",
     description: [
-      "Mouvements de terre sur un site sableux : extraction à la pelle, chargement et mise en remblai jusqu'aux cotes du projet.",
-      "Fiche d'exemple construite à partir d'une photo de chantier : le contexte précis est à compléter par PET.",
+      "Mouvements de terre sur un site sableux : extraction à la pelle, chargement et mise en remblai jusqu'aux cotes du projet.",
+      "Fiche d'exemple construite à partir d'une photo de chantier : le contexte précis est à compléter par PET.",
     ],
     travaux: ["Déblais à la pelle hydraulique", "Chargement et transport", "Mise en remblai et compactage"],
     photos: ["terrassementEngins", "niveleuseVoirie"],
@@ -108,7 +108,7 @@ export const projets: Projet[] = [
     resume: "Ouverture de tranchées et pose de canalisations au pied de villas en cours de construction.",
     description: [
       "Tranchées ouvertes dans la latérite pour poser les canalisations qui desserviront les villas du lotissement.",
-      "Fiche d'exemple construite à partir d'une photo de chantier : le contexte précis est à compléter par PET.",
+      "Fiche d'exemple construite à partir d'une photo de chantier : le contexte précis est à compléter par PET.",
     ],
     travaux: ["Ouverture de tranchées", "Pose de canalisations", "Remblaiement et réfection"],
     photos: ["trancheeLotissement", "dalotRegard"],
@@ -124,7 +124,7 @@ export const projets: Projet[] = [
     resume: "Ferraillage du radier et des voiles d'un ouvrage hydraulique au bord d'un plan d'eau.",
     description: [
       "Mise en place des nappes d'armatures sur le radier et des attentes pour les voiles, avant coulage du béton.",
-      "Fiche d'exemple construite à partir d'une photo de chantier : le contexte précis est à compléter par PET.",
+      "Fiche d'exemple construite à partir d'une photo de chantier : le contexte précis est à compléter par PET.",
     ],
     travaux: ["Ferraillage du radier", "Armatures des voiles", "Coulage du béton"],
     photos: ["ferraillageOuvrage", "conduiteOuvrage"],
@@ -140,7 +140,7 @@ export const projets: Projet[] = [
     resume: "Pose d'une conduite en tranchée, implantée et contrôlée au GPS par notre topographe.",
     description: [
       "Pose d'une conduite dans une tranchée en terrain sableux, avec contrôle continu des cotes et des pentes.",
-      "Fiche d'exemple construite à partir d'une photo de chantier : le contexte précis est à compléter par PET.",
+      "Fiche d'exemple construite à partir d'une photo de chantier : le contexte précis est à compléter par PET.",
     ],
     travaux: ["Implantation topographique", "Ouverture de tranchée", "Pose de la conduite", "Contrôle des pentes"],
     photos: ["poseConduiteTopographie", "irrigation"],
@@ -156,7 +156,7 @@ export const projets: Projet[] = [
     resume: "Réglage d'une voirie en terre à la niveleuse, sous la conduite du chef de chantier.",
     description: [
       "Mise en forme et réglage de la chaussée à la niveleuse avant compactage et revêtement.",
-      "Fiche d'exemple construite à partir d'une photo de chantier : le contexte précis est à compléter par PET.",
+      "Fiche d'exemple construite à partir d'une photo de chantier : le contexte précis est à compléter par PET.",
     ],
     travaux: ["Réglage à la niveleuse", "Mise en forme des pentes", "Compactage"],
     photos: ["niveleuseVoirie", "terrassementEngins"],
@@ -183,9 +183,9 @@ export const articles: Article[] = [
     slug: "exemple-nos-equipes-sur-une-pose-de-conduite",
     titre: "Nos équipes sur une pose de conduite",
     date: "2026-09-15",
-    chapo: "Article d'exemple : il montre comment une actualité de chantier s'affichera sur le site.",
+    chapo: "Article d'exemple : il montre comment une actualité de chantier s'affichera sur le site.",
     corps: [
-      "Ce texte est un exemple. Une actualité type présente un chantier en cours ou terminé : le besoin du client, les travaux réalisés, les équipes mobilisées et les photos du chantier.",
+      "Ce texte est un exemple. Une actualité type présente un chantier en cours ou terminé : le besoin du client, les travaux réalisés, les équipes mobilisées et les photos du chantier.",
       "Pour publier une vraie actualité, il suffit de remplacer cette entrée dans le fichier de contenus par le texte et les photos fournis par PET.",
     ],
     photo: "poseConduiteTopographie",
@@ -195,7 +195,7 @@ export const articles: Article[] = [
     slug: "exemple-securite-sur-nos-chantiers",
     titre: "La sécurité au quotidien sur nos chantiers",
     date: "2026-08-28",
-    chapo: "Article d'exemple : une actualité peut aussi parler de nos méthodes et de nos équipes.",
+    chapo: "Article d'exemple : une actualité peut aussi parler de nos méthodes et de nos équipes.",
     corps: [
       "Ce texte est un exemple. Il pourra être remplacé par un retour sur une formation, un rappel des consignes de sécurité ou la présentation d'un nouvel équipement.",
       "Les articles sont classés du plus récent au plus ancien et s'affichent automatiquement sur la page Actualités.",
@@ -207,7 +207,7 @@ export const articles: Article[] = [
     slug: "exemple-reseaux-lotissement",
     titre: "Des réseaux posés avant les villas",
     date: "2026-07-10",
-    chapo: "Article d'exemple : un format court pour montrer l'avancement d'un chantier.",
+    chapo: "Article d'exemple : un format court pour montrer l'avancement d'un chantier.",
     corps: [
       "Ce texte est un exemple. Une actualité courte peut accompagner une ou deux photos d'avancement et un lien vers la réalisation correspondante.",
     ],

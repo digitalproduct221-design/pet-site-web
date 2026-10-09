@@ -131,8 +131,8 @@ export function MegaMenu() {
       <div
         aria-hidden
         onClick={() => setOuvert("")}
-        className={`fixed inset-0 top-[var(--hauteur-header-actuelle,var(--header-h))] -z-10 hidden bg-nuit/35 transition-opacity duration-300 nav:block ${
-          ouvert ? "opacity-100" : "pointer-events-none opacity-0"
+        className={`absolute inset-x-0 top-full -z-10 hidden h-dvh bg-nuit/35 transition-opacity duration-300 nav:block ${
+          ouvert ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
       />
     </>

@@ -13,7 +13,8 @@ Choix faits en autonomie quand le brief laissait un doute. Chaque ligne dit ce q
 7. **WhatsApp** : le numéro mobile `77 597 01 98` est utilisé par défaut (`+221775970198`). À confirmer par le client.
 8. **Carte** : intégration Google Maps sans clé, centrée sur l'adresse « Rond-point Liberté 6, Dakar ». Elle ne se charge qu'au clic (performance et vie privée), avec un lien direct vers l'itinéraire.
 9. **Slogan provisoire** isolé dans la constante `SLOGAN` de `content/site.ts`.
-10. **Mentions légales** : page créée avec les informations connues et les champs manquants signalés (NINEA, RCCM, directeur de la publication, hébergeur), pour éviter un lien mort dans le footer.
+10. **Notre histoire** : seule la date de création (2016) est connue. La section s'en tient à ce fait et aux chiffres autorisés ; les dates clés et premiers chantiers sont à fournir par le client.
+10 bis. **Mentions légales** : page créée avec les informations connues et les champs manquants signalés (NINEA, RCCM, directeur de la publication, hébergeur), pour éviter un lien mort dans le footer.
 
 ## Identité visuelle
 

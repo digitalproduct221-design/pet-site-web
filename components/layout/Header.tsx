@@ -29,13 +29,12 @@ export function Header() {
       <div ref={sentinelle} aria-hidden className="pointer-events-none absolute left-0 top-0 h-24 w-px" />
       <header
         data-compact={compact}
-        style={{ ["--hauteur-header-actuelle" as string]: compact ? "var(--header-h-compact)" : "var(--header-h)" }}
         className={`sticky top-0 z-50 transition-[background-color,box-shadow] duration-500 ease-chantier ${
           compact ? "verre" : "bg-blanc shadow-[inset_0_-1px_0_var(--color-ligne)]"
         }`}
       >
         <div
-          className={`conteneur relative flex items-center justify-between gap-6 transition-[height] duration-500 ease-chantier ${
+          className={`conteneur flex items-center justify-between gap-6 transition-[height] duration-500 ease-chantier ${
             compact ? "h-[var(--header-h-compact)] [--header-h:var(--header-h-compact)]" : "h-[var(--header-h)]"
           }`}
         >

@@ -21,7 +21,7 @@ export type Photo = {
   alt: string;
   /** Point d'intérêt pour le recadrage (object-position). */
   focale?: string;
-  /** À vérifier : photo d'aspect « banque d'images » (voir docs/decisions.md). */
+  /** À vérifier : photo d'aspect « banque d'images » (voir docs/decisions.md). */
   droitsAVerifier?: boolean;
 };
 

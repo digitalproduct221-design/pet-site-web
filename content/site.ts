@@ -84,7 +84,7 @@ const textesDomaines: Record<string, Pick<Domaine, "icone" | "accroche" | "prese
     icone: "batiment",
     accroche: "Logements, écoles, ateliers et usines, du gros œuvre aux finitions.",
     presentation: [
-      "Nous construisons des bâtiments à usage d'habitation et industriel : logements, écoles et universités, ateliers et usines.",
+      "Nous construisons des bâtiments à usage d'habitation et industriel : logements, écoles et universités, ateliers et usines.",
       "Nos équipes prennent aussi en charge les murs de clôture et les corps d'état de finition, dont l'électricité et la peinture, pour livrer un ouvrage complet.",
     ],
   },
@@ -93,14 +93,14 @@ const textesDomaines: Record<string, Pick<Domaine, "icone" | "accroche" | "prese
     accroche: "Routes, pistes, voiries, terrassements et ouvrages d'art.",
     presentation: [
       "Nous réalisons les routes et pistes, les ponts et ouvrages d'art, les voiries et réseaux divers (VRD) et les terrassements.",
-      "Pelles, chargeuses et niveleuses : nos engins préparent les plateformes et mettent en forme les chaussées avant revêtement.",
+      "Pelles, chargeuses et niveleuses : nos engins préparent les plateformes et mettent en forme les chaussées avant revêtement.",
     ],
   },
   hydraulique: {
     icone: "eau",
     accroche: "Conduites de tous diamètres, dont la fonte, pompage et irrigation.",
     presentation: [
-      "Nous posons des conduites de différents diamètres, y compris en fonte, et construisons les ouvrages qui les accompagnent : stations de pompage, bâches à eau et dalots.",
+      "Nous posons des conduites de différents diamètres, y compris en fonte, et construisons les ouvrages qui les accompagnent : stations de pompage, bâches à eau et dalots.",
       "Nous intervenons aussi sur les réseaux d'irrigation, de la pose des canalisations à la mise en service.",
     ],
   },
@@ -109,14 +109,14 @@ const textesDomaines: Record<string, Pick<Domaine, "icone" | "accroche" | "prese
     accroche: "Réseaux d'eaux usées, regards, branchements et réhabilitation.",
     presentation: [
       "Nous construisons des stations de traitement des eaux usées et installons ou réhabilitons les réseaux qui y mènent.",
-      "Regards de visite, boîtes de branchement et réhabilitation de dalots : nous traitons chaque ouvrage du réseau, en milieu urbain comme en périphérie.",
+      "Regards de visite, boîtes de branchement et réhabilitation de dalots : nous traitons chaque ouvrage du réseau, en milieu urbain comme en périphérie.",
     ],
   },
   "genie-civil": {
     icone: "genie-civil",
     accroche: "Ouvrages en béton armé, travaux souterrains et ouvrages d'art.",
     presentation: [
-      "Nous réalisons les ouvrages de génie civil qui portent les réseaux et les infrastructures : ouvrages hydrauliques en béton armé, travaux souterrains et ouvrages d'art.",
+      "Nous réalisons les ouvrages de génie civil qui portent les réseaux et les infrastructures : ouvrages hydrauliques en béton armé, travaux souterrains et ouvrages d'art.",
       "Du ferraillage au coulage, nos équipes travaillent au plus près des plans pour des ouvrages durables.",
     ],
   },
@@ -137,15 +137,15 @@ export const domaineParSlug = (slug: string) => domaines.find((d) => d.slug === 
 
 export const valeurs: { titre: string; texte: string }[] = [
   { titre: "Qualité", texte: "Des ouvrages conformes aux plans et aux règles de l'art, contrôlés à chaque étape." },
-  { titre: "Sécurité", texte: "Au centre de nos préoccupations : équipements de protection, chantiers balisés, consignes partagées." },
+  { titre: "Sécurité", texte: "Au centre de nos préoccupations : équipements de protection, chantiers balisés, consignes partagées." },
   { titre: "Service et conseil", texte: "Nous éclairons vos choix techniques dès l'étude, pour un projet juste et maîtrisé." },
-  { titre: "Respect des lieux", texte: "Riverains, voiries, environnement : nous laissons le site propre et en ordre." },
+  { titre: "Respect des lieux", texte: "Riverains, voiries, environnement : nous laissons le site propre et en ordre." },
   { titre: "Choix des matériaux", texte: "Des matériaux adaptés à l'usage et au climat, pour des ouvrages qui durent." },
   { titre: "Tenue des délais", texte: "Un planning clair, suivi et tenu, avec des points d'avancement réguliers." },
   { titre: "Satisfaction du client", texte: "À votre écoute de la première visite jusqu'à la réception des travaux." },
 ];
 
-/** Les quatre engagements mis en avant sur l'accueil (« Pourquoi PET ? »). */
+/** Les quatre engagements mis en avant sur l'accueil (« Pourquoi PET ? »). */
 export const engagementsCles: { titre: string; texte: string; icone: "qualite" | "securite" | "delais" | "client" }[] = [
   {
     titre: "Qualité",
@@ -159,7 +159,7 @@ export const engagementsCles: { titre: string; texte: string; icone: "qualite" |
   },
   {
     titre: "Délais",
-    texte: "La tenue des délais fait partie de nos valeurs : un planning réaliste dès l'étude, suivi jusqu'à la livraison.",
+    texte: "La tenue des délais fait partie de nos valeurs : un planning réaliste dès l'étude, suivi jusqu'à la livraison.",
     icone: "delais",
   },
   {

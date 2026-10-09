@@ -12,8 +12,8 @@ export function Pourquoi() {
           <div className="lg:sticky lg:top-[calc(var(--header-h-compact)+3rem)]">
             <TitreSection
               id="titre-pourquoi"
-              titre="Pourquoi choisir PET ?"
-              intro="Parce qu'un chantier se gagne sur le terrain : des équipes qualifiées, des engins entretenus et une parole tenue."
+              titre="Pourquoi choisir PET ?"
+              intro="Parce qu'un chantier se gagne sur le terrain : des équipes qualifiées, des engins entretenus et une parole tenue."
             />
             <PhotoCadre
               photo="niveleuseVoirie"

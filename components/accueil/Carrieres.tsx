@@ -4,7 +4,7 @@ import { BoutonLien } from "@/components/ui/Bouton";
 import { TitreSection } from "@/components/ui/TitreSection";
 import { ListeOffres } from "./CarrieresBloc";
 
-/** Bloc « Rejoignez-nous » de l'accueil : offres en verre liquide sur photo d'équipe. */
+/** Bloc « Rejoignez-nous » de l'accueil : offres en verre liquide sur photo d'équipe. */
 export function Carrieres() {
   return (
     <section aria-labelledby="titre-carrieres" className="sur-sombre relative isolate overflow-hidden bg-nuit py-20 text-blanc lg:py-28">
@@ -19,7 +19,7 @@ export function Carrieres() {
             id="titre-carrieres"
             ton="sombre"
             titre="Rejoignez nos équipes"
-            intro="Conducteurs d'engins, chefs d'équipe, techniciens : nous cherchons des femmes et des hommes de terrain, fiers de leur métier."
+            intro="Conducteurs d'engins, chefs d'équipe, techniciens : nous cherchons des femmes et des hommes de terrain, fiers de leur métier."
           />
           <div className="mt-10 flex flex-wrap gap-4">
             <BoutonLien href="/carrieres#offres">Voir les offres</BoutonLien>

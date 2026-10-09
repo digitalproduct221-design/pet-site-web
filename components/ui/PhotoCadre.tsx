@@ -12,7 +12,7 @@ const voiles: Record<Voile, string> = {
 
 type Props = {
   photo: PhotoId;
-  /** Classe de proportion, ex. « aspect-[4/3] ». Ignorée si `remplir`. */
+  /** Classe de proportion, ex. « aspect-[4/3] ». Ignorée si `remplir`. */
   ratio?: string;
   /** L'image remplit son parent (qui doit être positionné). */
   remplir?: boolean;

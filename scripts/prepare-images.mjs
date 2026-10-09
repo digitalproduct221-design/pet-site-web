@@ -87,7 +87,19 @@ async function main() {
   await raw(logo).extract(emblem).resize(512, 512, { fit: "contain", background: { r: 255, g: 255, b: 255, alpha: 1 } }).flatten({ background: "#ffffff" }).png().toFile("app/icon.png");
   await raw(logo).extract(emblem).resize(180, 180, { fit: "contain", background: { r: 255, g: 255, b: 255, alpha: 1 } }).flatten({ background: "#ffffff" }).png().toFile("app/apple-icon.png");
 
-  console.log(`${photos.length} photos et 4 variantes du logo générées.`);
+  // Image de partage (Open Graph) : photo des engins voilée de bleu nuit et logo inversé.
+  const largeur = 1200, hauteur = 630;
+  const fond = await sharp(`${PHOTOS_OUT}/terrassement-engins.jpg`).resize(largeur, hauteur, { fit: "cover", position: "centre" }).toBuffer();
+  const voile = Buffer.from(
+    `<svg width="${largeur}" height="${hauteur}"><defs><linearGradient id="v" x1="0" x2="1"><stop offset="0" stop-color="#07122b" stop-opacity="0.96"/><stop offset="0.55" stop-color="#0b1b3f" stop-opacity="0.82"/><stop offset="1" stop-color="#0b1b3f" stop-opacity="0.35"/></linearGradient></defs><rect width="100%" height="100%" fill="url(#v)"/></svg>`,
+  );
+  const logoOg = await sharp(`${BRAND_OUT}/logo-pet-inverse.png`).resize({ width: 560 }).toBuffer();
+  await sharp(fond)
+    .composite([{ input: voile }, { input: logoOg, left: 70, top: 150 }])
+    .jpeg({ quality: 86, mozjpeg: true })
+    .toFile("public/og-image.jpg");
+
+  console.log(`${photos.length} photos, 4 variantes du logo et l'image de partage générées.`);
 }
 
 main();

@@ -8,7 +8,7 @@ const base =
   "group/bouton relative inline-flex min-h-[var(--bouton-h)] items-center justify-center gap-3 whitespace-nowrap rounded-chantier px-6 cote text-[1.0625rem] uppercase tracking-[0.04em] transition-[background-color,color,box-shadow,translate] duration-300 ease-chantier active:translate-y-px disabled:cursor-not-allowed disabled:opacity-50";
 
 const variantes: Record<Variante, string> = {
-  // Jaune : l'action principale, partout la même (« Demander un devis »)
+  // Jaune : l'action principale, partout la même (« Demander un devis »)
   primaire:
     "bg-[var(--bouton-primaire-bg)] text-[var(--bouton-primaire-texte)] shadow-[inset_0_-3px_0_rgb(7_18_43/0.18)] hover:bg-[var(--bouton-primaire-bg-survol)]",
   contour:

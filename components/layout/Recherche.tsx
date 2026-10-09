@@ -53,12 +53,12 @@ export function Recherche({ classeDeclencheur = "" }: { classeDeclencheur?: stri
               </Dialog.Close>
             </div>
             <Dialog.Description className="sr-only">
-              Saisissez un mot : un domaine, un type de travaux, une page.
+              Saisissez un mot : un domaine, un type de travaux, une page.
             </Dialog.Description>
 
             <div className="mx-auto mt-12 w-full max-w-3xl lg:mt-20">
               <label htmlFor="champ-recherche" className="cote text-[1.0625rem] text-brume">
-                Que cherchez-vous ?
+                Que cherchez-vous ?
               </label>
               <div className="relative mt-3">
                 <Icone nom="recherche" size={30} className="pointer-events-none absolute left-0 top-1/2 -translate-y-1/2 text-ciel" />
@@ -93,7 +93,7 @@ export function Recherche({ classeDeclencheur = "" }: { classeDeclencheur?: stri
                   </div>
                 ) : resultats.length === 0 ? (
                   <div className="border-l-[3px] border-jaune pl-5">
-                    <p className="text-lg text-blanc">Aucun résultat pour « {requete} ».</p>
+                    <p className="text-lg text-blanc">Aucun résultat pour « {requete} ».</p>
                     <p className="mt-2 text-brume">
                       Essayez un autre mot, ou{" "}
                       <Link href="/contact" onClick={() => setOuvert(false)} className="text-jaune underline underline-offset-4">

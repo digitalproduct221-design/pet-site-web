@@ -31,12 +31,12 @@ const manrope = Manrope({
 });
 
 const description =
-  "PARTENAIRE ENTREPRISE TRAVAUX SUARL (PET), entreprise de BTP à Dakar depuis 2016 : bâtiment, travaux publics et VRD, hydraulique, assainissement et génie civil.";
+  "PARTENAIRE ENTREPRISE TRAVAUX SUARL (PET), entreprise de BTP à Dakar depuis 2016 : bâtiment, travaux publics et VRD, hydraulique, assainissement et génie civil.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: `${SIGLE} | BTP à Dakar : bâtiment, hydraulique, assainissement, VRD`,
+    default: `${SIGLE} | BTP à Dakar : bâtiment, hydraulique, assainissement, VRD`,
     template: `%s | ${SIGLE}, Partenaire Entreprise Travaux`,
   },
   description,

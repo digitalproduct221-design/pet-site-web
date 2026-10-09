@@ -13,7 +13,7 @@ const chiffres: Chiffre[] = [
   { valeur: entreprise.fondation, depart: 2000, libelle: "Année de création de l'entreprise" },
   { valeur: 40, depart: 0, suffixe: "+", libelle: "Années d'expérience cumulée dans l'équipe" },
   { valeur: entreprise.domaines.length, depart: 0, libelle: "Domaines d'expertise, du bâtiment aux réseaux" },
-  { valeur: entreprise.clients.length, depart: 0, libelle: "Types de clients : publics, industriels et privés" },
+  { valeur: entreprise.clients.length, depart: 0, libelle: "Types de clients : publics, industriels et privés" },
 ];
 
 function Compteur({ valeur, depart, suffixe }: Pick<Chiffre, "valeur" | "depart" | "suffixe">) {
@@ -26,7 +26,7 @@ function Compteur({ valeur, depart, suffixe }: Pick<Chiffre, "valeur" | "depart"
     const el = ref.current;
     if (!el || reduit || !vu) return;
     const controle = animate(depart, valeur, {
-      duration: valeur > 100 ? 1.4 : 1.1,
+      duration: valeur > 100 ? 1.4 : 1.1,
       ease: [0.16, 1, 0.3, 1],
       onUpdate: (v) => {
         el.textContent = String(Math.round(v));

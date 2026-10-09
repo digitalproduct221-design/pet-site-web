@@ -26,7 +26,7 @@ export function ListeOffres({ ton = "sombre" }: { ton?: "clair" | "sombre" }) {
               aria-pressed={actif}
               onClick={() => setFiltre(f)}
               className={`min-h-11 rounded-full px-5 cote text-[1rem] transition-colors ${
-                actif ? "bg-jaune text-nuit" : sombre ? "bg-blanc/10 text-blanc hover:bg-blanc/20" : "bg-sable text-nuit hover:bg-sable-soutenu"
+                actif ? "bg-jaune text-nuit" : sombre ? "bg-blanc/10 text-blanc hover:bg-blanc/20" : "bg-sable text-nuit hover:bg-sable-soutenu"
               }`}
             >
               {f}
