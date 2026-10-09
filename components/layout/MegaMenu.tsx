@@ -40,6 +40,10 @@ export function MegaMenu() {
             return (
               <NavigationMenu.Item key={rubrique.id} value={rubrique.id}>
                 <NavigationMenu.Trigger
+                  // Flèches ←/→ avec un panneau ouvert : le panneau suit le focus
+                  onFocus={() => {
+                    if (ouvert && ouvert !== rubrique.id) setOuvert(rubrique.id);
+                  }}
                   className={`group/declencheur relative flex h-[var(--header-h)] items-center gap-1 whitespace-nowrap px-2.5 cote text-[1.0625rem] text-nuit outline-offset-[-6px] transition-colors hover:text-royal data-[state=open]:text-royal xl:px-4 ${actif ? "text-royal" : ""}`}
                 >
                   {rubrique.titre}

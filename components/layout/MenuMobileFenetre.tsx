@@ -24,6 +24,7 @@ export default function MenuMobileFenetre({
       <Dialog.Portal>
         <Dialog.Overlay className="voile-fenetre fixed inset-0 z-[70] bg-nuit/70" />
         <Dialog.Content
+          aria-modal="true"
           onCloseAutoFocus={(e) => {
             e.preventDefault();
             declencheur.current?.focus();

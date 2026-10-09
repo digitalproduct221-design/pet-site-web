@@ -15,6 +15,21 @@ export function Reveleur() {
   useEffect(() => {
     document.documentElement.classList.add("js");
 
+    // Ancre à l'arrivée (chargement direct ou rechargement) : si le navigateur n'a
+    // pas placé la cible en haut de l'écran (restauration de défilement, contenu
+    // diffusé après coup), on s'y place une fois la page prête.
+    const ancre = decodeURIComponent(location.hash.slice(1));
+    if (ancre) {
+      const placer = () => {
+        const cible = document.getElementById(ancre);
+        if (!cible) return;
+        const haut = cible.getBoundingClientRect().top;
+        if (haut < 0 || haut > window.innerHeight * 0.4) cible.scrollIntoView({ block: "start" });
+      };
+      requestAnimationFrame(placer);
+      window.addEventListener("load", placer, { once: true });
+    }
+
     const intersection = new IntersectionObserver(
       (entrees) => {
         for (const e of entrees) {
