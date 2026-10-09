@@ -80,3 +80,17 @@ Choix faits en autonomie quand le brief laissait un doute. Chaque ligne dit ce q
     - **Méga-menu** : les flèches ouvrent le panneau voisin.
 48. **Mentions légales à fournir par le client avant la mise en ligne définitive** : NINEA, RCCM, directeur de la publication. Elles se renseignent dans `mentionsLegales`, dans `content/site.ts`. Tant qu'elles sont vides, leur ligne est masquée. `AFFICHER_MENTIONS_MANQUANTES = true` affiche « À renseigner » pour une relecture. Hébergeur renseigné : Vercel Inc., 440 N Barranca Ave #4133, Covina, CA 91723, États-Unis.
 49. **Non retenu** : intégrer le CSS au HTML (`experimental.inlineCss`). Le HTML compressé passait de 41 à 96 Ko, le CSS étant aussi recopié dans la charge RSC. Ce serait plus lent en 4G.
+50. **Troisième série de retours du client** :
+    - **Transition entre pages raccourcie** à environ 0,6 s : un liseré jaune devant le volet bleu nuit, le logo en un éclair, aucune pause si la page est prête.
+    - **Hero et en-têtes refaits en clair** : texte bleu nuit sur fond blanc ou sable, photo nette sans aucun voile, dans un cadre coupé en biais (le geste du volet). Sur mobile, la photo passe au-dessus du texte. Le diaporama porte une barre de verre clair avec l'intitulé de la diapo, sa légende, les onglets et la pause. « Nous durons. » est surligné en jaune.
+    - **La carte du Sénégal quitte l'accueil** pour la page Contact (section « Nous trouver », à côté de la carte interactive du quartier).
+    - **Chiffres de l'accueil** en cartes compactes, avec des pictogrammes au trait qui se dessinent (grue, casque, réseau, bâtiments).
+51. **Audit n°3 (finitions)** :
+    - sélecteur EN retiré tant que la version anglaise n'existe pas ;
+    - étiquettes Kaolack et Thiès masquées sous 400 px ;
+    - équerres sans écart initial sur mobile (débordement de 10 px) ;
+    - saut d'ancre instantané même avec un défilement doux ;
+    - repli de la carte interactive (sans WebGL ou sans tuiles après 8 s : fond de plan et itinéraire).
+
+    **Non traité** : les avertissements « Expected value to be of type number », qui viennent du style positron d'OpenFreeMap et non du site.
+52. **Page Bâtiment** : son en-tête montre une photo de tranchée de lotissement, faute de photo de bâtiment sûre (la photo 09 a des droits à vérifier). À remplacer dès réception des photos HD.
