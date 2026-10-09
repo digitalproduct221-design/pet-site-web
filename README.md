@@ -19,7 +19,10 @@ Variable à définir au déploiement : `NEXT_PUBLIC_SITE_URL` (domaine public, e
 |---|---|
 | Faits de l'entreprise (contacts, domaines, valeurs) | `content/entreprise.json` |
 | Navigation, slogan (`SLOGAN`), textes des domaines, réseaux sociaux | `content/site.ts` |
-| Projets, actualités, offres d'emploi (données **EXEMPLE**) | `content/exemples.ts` |
+| Réalisations (galeries de photos) | `content/realisations.ts` |
+| « Votre projet » (besoins, prestations, documents à préparer) | `content/besoins.ts` |
+| Métiers (page Carrières), coordonnées GPS de la carte | `content/site.ts` |
+| Motifs BTP (courbes de niveau, ferraillage, béton) | `public/motifs/` |
 | Photos (texte alternatif, cadrage) | `content/photos.ts` |
 | Couleurs, polices, voiles, ombres (jetons de design) | `app/globals.css` |
 | Envoi des formulaires | `app/api/contact/route.ts` |
@@ -41,10 +44,10 @@ Variable à définir au déploiement : `NEXT_PUBLIC_SITE_URL` (domaine public, e
 ## Arborescence
 
 ```
-app/            pages (accueil, entreprise, savoir-faire, réalisations, engagements,
-                actualités, carrières, contact, mentions légales) et API
+app/            pages (accueil, entreprise, savoir-faire, réalisations, votre projet,
+                engagements, carrières, contact, mentions légales) et API
 components/     accueil/, layout/ (header, méga-menu, footer…), ui/, formulaires/
-content/        données du site (faits, exemples, photos, formulaires)
+content/        données du site (faits, réalisations, besoins, photos, formulaires)
 scripts/        prepare-images.mjs (photos et logo depuis assets/)
 assets/         sources du client (logo, photos de la bâche)
 docs/           brief, direction, décisions, documents d'origine

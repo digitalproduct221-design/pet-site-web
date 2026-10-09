@@ -325,3 +325,18 @@ Courbe maison `cubic-bezier(0.16, 1, 0.3, 1)` pour les entrées, `cubic-bezier(0
 - **Don't** aligner des cartes identiques en série ni une bande de chiffres en tuiles égales.
 - **Don't** arrondir en pilule les boutons, filtres ou étiquettes.
 - **Don't** utiliser le verre liquide sur une planche claire.
+
+## Ajouts de la refonte du 9 octobre 2026 (2ᵉ série)
+
+| Élément | Où | Règle |
+|---|---|---|
+| Profil de terrain | `components/ui/Profil.tsx` | En bas d'une section `relative`, à la couleur du bloc suivant. Trois formes (`terrain`, `talus`, `deblai`), `miroir` pour varier. `arriere` donne une couleur propre à la strate arrière quand le mélange translucide ternirait (jaune ↔ nuit : `text-royal`). |
+| Motifs BTP | `components/ui/Motif.tsx`, `public/motifs/` | `courbes`, `ferraillage`, `beton`, `plan`, appliqués en masque CSS. Couleur = `text-*`, opacité entre 0,05 et 0,22. Section parente `relative isolate`. |
+| Rideau de transition | `components/layout/TransitionPage.tsx` | Volet jaune puis bleu nuit (parallélogramme en `clip-path`, `translate` animé par WAAPI), logo au centre, barre de chargement si la page tarde. Écran d'accueil seulement si la page met plus de 600 ms à devenir interactive. |
+| Hero | `components/accueil/Hero.tsx` (serveur) et `Diaporama.tsx` (client) | Voiles `voile-hero-clair` et `voile-bas-clair` au-dessus des photos (`z-[2]`), `grain` masqué sur mobile. Contrastes mesurés au moins à 5:1. |
+| Ruban de valeurs | `components/accueil/RubanValeurs.tsx` | Jaune, -1,6°, défilement continu de 38 s, pause au survol, figé sous mouvement réduit. |
+| Galerie | `components/realisations/Galerie.tsx` | Mosaïque et visionneuse Radix Dialog (flèches, ←/→, glisser au doigt). Photo jamais agrandie au-delà de sa largeur d'origine. |
+| Carte | `components/ui/CarteDakar.tsx` | MapLibre et OpenFreeMap (style positron), repère PET en goutte nuit cerclée de jaune, gestes coopératifs, chargée à l'approche. |
+| Globe | `components/ui/Globe.tsx` | cobe, sable et repère jaune, se pose sur Dakar, rendu suspendu hors de l'écran. |
+| Pelleteuse | `components/ui/Pelleteuse.tsx` | SVG au trait (`currentColor`), cycle de creusement de 5,6 s, en pause hors de l'écran. |
+| Bord des champs | jeton `--color-contour` (#7d725e) | 4,6:1 sur blanc. |

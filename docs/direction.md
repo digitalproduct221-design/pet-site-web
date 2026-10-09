@@ -93,3 +93,12 @@ Ces retours priment sur ce qui précède.
 3. **Luxe et verre liquide.** Les fonds sombres deviennent des aplats profonds (dégradé nuit vers nuit profond, halo royal discret). Le verre liquide (flou, saturation, liseré lumineux, reflet) habille les surfaces posées sur des photos : panneau du diaporama, chiffres clés, offres d'emploi, en-têtes de page, header au défilement, barre mobile. Repli opaque sous `prefers-reduced-transparency`.
 4. **Transitions.** Apparitions échelonnées des blocs, photos révélées par un rideau (clip-path), fondu entre les pages (View Transitions de React), sans jamais masquer le contenu par défaut.
 5. Le méga-menu est validé tel quel.
+
+## Révision du 9 octobre 2026, deuxième série (référence : eiffage.sn)
+
+- **Hero lumineux** : photos au naturel, voile limité au bloc de texte (mesuré au moins à 5:1), onglets numérotés en bas, volet diagonal entre les photos.
+- **Rythme entre les blocs** : profils de terrain irréguliers en deux strates à chaque changement de couleur, ruban de chantier jaune incliné pour les valeurs. Plus aucune rupture franche entre deux aplats.
+- **Matière BTP** : motifs au trait en masque, très discrets (courbes de niveau, ferraillage, coupe de béton, trame de plan), jamais derrière un texte long.
+- **Mouvement de marque** : transition entre pages en volet jaune puis bleu nuit avec le logo, pelleteuse au trait qui creuse, globe qui se pose sur Dakar. Tout se fige sous mouvement réduit.
+- **Contenu honnête** : réalisations = galeries de photos réelles ; « Votre projet » remplace les actualités ; métiers à la place des offres fictives.
+- **Inchangé** : le méga-menu, que le client trouve excellent.

@@ -3,7 +3,7 @@
 Site vitrine premium d'une entreprise BTP de Dakar (Sénégal). Lis ce fichier avant toute tâche, puis `content/entreprise.json` et `docs/design-brief.md`.
 
 ## Source de vérité
-- Contenu et faits : `content/entreprise.json`. N'invente jamais de chiffre, de client ni de projet. Toute donnée d'exemple doit être signalée `// EXEMPLE` et regroupée dans un seul fichier de données.
+- Contenu et faits : `content/entreprise.json`. N'invente jamais de chiffre, de client ni de projet. Le site ne contient plus de données d'exemple : réalisations = galeries de photos réelles (`content/realisations.ts`), « Votre projet » = besoins tirés des prestations (`content/besoins.ts`), Carrières = métiers, sans offre fictive. Si une donnée d'exemple redevient nécessaire, la signaler `// EXEMPLE` et la regrouper dans un seul fichier.
 - Identité visuelle : `docs/design-brief.md`.
 - Brief complet initial : `prompts/prompt-ai-studio-PET.md`.
 - Logo : `assets/logo/logo-PET.png`. Photos de chantier : `assets/photos/01…11-*.png` (ignorer `_planche-complete.png`).
