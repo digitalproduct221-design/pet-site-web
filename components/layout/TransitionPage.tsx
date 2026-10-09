@@ -134,7 +134,7 @@ export function TransitionPage() {
       <div data-volet className="rideau-volet bg-jaune" />
       <div data-volet className="rideau-volet profondeur" />
       <div data-logo className="rideau-logo">
-        <Image src={embleme} alt="" loading="eager" sizes="160px" className="h-auto w-28 sm:w-36" />
+        <Image src={embleme} alt="" loading="eager" fetchPriority="low" sizes="160px" className="h-auto w-28 sm:w-36" />
         <span className="rideau-nom titre">Partenaire Entreprise Travaux</span>
         <span className="rideau-barre" />
       </div>

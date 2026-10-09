@@ -8,7 +8,7 @@ import { valeurs } from "@/content/site";
 export function RubanValeurs() {
   const suite = valeurs.map((v) => v.titre);
   return (
-    <div aria-hidden className="relative z-10 -my-7 overflow-hidden py-4">
+    <div aria-hidden className="ruban-zone relative z-10 -my-7 overflow-hidden py-4">
       <div className="ruban -mx-6 -rotate-[1.6deg] bg-jaune py-3.5 ombre-flottante">
         <div className="ruban-piste flex w-max">
           {[0, 1].map((copie) => (

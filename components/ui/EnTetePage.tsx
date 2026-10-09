@@ -29,7 +29,7 @@ export function EnTetePage({ titre, intro, ariane, photo, children, aside, suite
       {p ? (
         <div aria-hidden className="absolute inset-0 -z-10">
           <div className="parallaxe absolute -inset-y-[6%] inset-x-0">
-            <Image src={p.src} alt="" fill preload fetchPriority="high" sizes="(max-width: 768px) 80vw, 100vw" quality={75} className="object-cover" style={{ objectPosition: p.focale }} />
+            <Image src={p.src} alt="" fill preload fetchPriority="high" sizes="(max-width: 768px) 80vw, 100vw" quality={60} className="object-cover" style={{ objectPosition: p.focale }} />
           </div>
           <div className="absolute inset-0 voile-hero-clair" />
           <div className="absolute inset-x-0 bottom-0 h-2/3 voile-bas-clair" />

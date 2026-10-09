@@ -1035,3 +1035,12 @@ html.intro-vue .rideau[data-etat="intro"] {
   font-size: 11px;
   line-height: 1.4;
 }
+
+/* Performance : les blocs sous le premier écran ne sont mis en page et peints
+   qu'à l'approche (masques SVG, animations continues). La hauteur réservée
+   évite les sauts de la barre de défilement. */
+main > :nth-child(n + 3):not(.ruban-zone),
+body > footer {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 900px;
+}
