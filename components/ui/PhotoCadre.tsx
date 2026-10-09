@@ -7,7 +7,7 @@ type Voile = "aucun" | "leger" | "fort";
 const voiles: Record<Voile, string> = {
   aucun: "",
   leger: "bg-[var(--voile-photo)]",
-  fort: "bg-[linear-gradient(180deg,rgb(11_27_63/0.35)_0%,rgb(11_27_63/0.8)_100%)]",
+  fort: "voile-carte",
 };
 
 type Props = {
@@ -60,8 +60,9 @@ export function PhotoCadre({
         alt={alt ?? p.alt}
         fill
         sizes={sizes}
-        priority={priority}
-        placeholder="blur"
+        preload={priority}
+        fetchPriority={priority ? "high" : undefined}
+       
         className={`object-cover ${imageClassName}`}
         style={{ objectPosition: p.focale ?? "50% 50%" }}
       />

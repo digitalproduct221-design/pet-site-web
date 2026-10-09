@@ -30,8 +30,8 @@ export function CarteDakar({ hauteur = "h-72" }: { hauteur?: string }) {
   return (
     <div className={`relative isolate flex flex-col justify-end overflow-hidden rounded-[6px] p-4 text-blanc ${hauteur}`}>
       {/* Une rue de Dakar, très voilée, en attendant la carte */}
-      <Image src={photos.dalotRegard.src} alt="" fill sizes="(min-width: 1024px) 24vw, 100vw" placeholder="blur" className="-z-10 object-cover" />
-      <div aria-hidden className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgb(11_27_63/0.55)_0%,rgb(7_18_43/0.92)_100%)]" />
+      <Image src={photos.dalotRegard.src} alt="" fill sizes="(min-width: 1024px) 24vw, 100vw" className="-z-10 object-cover" />
+      <div aria-hidden className="absolute inset-0 -z-10 voile-carte" />
       <div className="verre-liquide rounded-[6px] p-4">
         <p className="flex items-start gap-2 text-[0.9375rem] leading-snug text-blanc">
           <Icone nom="adresse" size={18} className="mt-0.5 shrink-0 text-jaune" />

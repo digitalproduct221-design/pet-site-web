@@ -1,6 +1,5 @@
 "use client";
 
-import { animate, useInView, useReducedMotion } from "motion/react";
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 import { photos } from "@/content/photos";
@@ -16,24 +15,39 @@ const chiffres: Chiffre[] = [
   { valeur: entreprise.clients.length, depart: 0, libelle: "Types de clients : publics, industriels et privés" },
 ];
 
+/** Courbe de décélération exponentielle, comme le reste du site. */
+const ralentir = (t: number) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t));
+
 function Compteur({ valeur, depart, suffixe }: Pick<Chiffre, "valeur" | "depart" | "suffixe">) {
   const ref = useRef<HTMLSpanElement>(null);
-  const vu = useInView(ref, { once: true, margin: "0px 0px -15% 0px" });
-  const reduit = useReducedMotion();
 
-  // La valeur finale est rendue côté serveur ; l'animation ne fait que la rejouer.
+  // La valeur finale est rendue côté serveur ; l'animation ne fait que la rejouer
+  // à l'entrée dans l'écran, et jamais sous mouvement réduit.
   useEffect(() => {
     const el = ref.current;
-    if (!el || reduit || !vu) return;
-    const controle = animate(depart, valeur, {
-      duration: valeur > 100 ? 1.4 : 1.1,
-      ease: [0.16, 1, 0.3, 1],
-      onUpdate: (v) => {
-        el.textContent = String(Math.round(v));
+    if (!el || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    let image = 0;
+    const duree = valeur > 100 ? 1400 : 1100;
+    const obs = new IntersectionObserver(
+      ([e]) => {
+        if (!e.isIntersecting) return;
+        obs.disconnect();
+        const debut = performance.now();
+        const pas = (maintenant: number) => {
+          const t = Math.min(1, (maintenant - debut) / duree);
+          el.textContent = String(Math.round(depart + (valeur - depart) * ralentir(t)));
+          if (t < 1) image = requestAnimationFrame(pas);
+        };
+        image = requestAnimationFrame(pas);
       },
-    });
-    return () => controle.stop();
-  }, [vu, reduit, depart, valeur]);
+      { rootMargin: "0px 0px -15% 0px" },
+    );
+    obs.observe(el);
+    return () => {
+      obs.disconnect();
+      cancelAnimationFrame(image);
+    };
+  }, [depart, valeur]);
 
   return (
     <span className="chiffres-tabulaires">
@@ -55,13 +69,13 @@ export function Chiffres() {
         PET en chiffres
       </h2>
       <div aria-hidden className="absolute inset-0 -z-10">
-        <Image src={fond.src} alt="" fill sizes="100vw" placeholder="blur" className="object-cover opacity-60 blur-[2px]" style={{ objectPosition: "50% 40%" }} />
-        <div className="absolute inset-0 bg-[linear-gradient(120deg,rgb(33_64_154/0.94)_0%,rgb(33_64_154/0.82)_55%,rgb(11_27_63/0.9)_100%)]" />
+        <Image src={fond.src} alt="" fill sizes="100vw" className="object-cover opacity-60" style={{ objectPosition: "50% 40%" }} />
+        <div className="absolute inset-0 voile-royal" />
       </div>
       <div className="conteneur py-16 lg:py-24">
-        <dl className="revele-groupe grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4 lg:gap-5">
-          {chiffres.map((c) => (
-            <div key={c.libelle} className="verre-liquide flex flex-col rounded-[6px] p-5 sm:p-7 lg:p-8">
+        <dl className="revele-groupe grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-5 lg:gap-5">
+          {chiffres.map((c, i) => (
+            <div key={c.libelle} className={`verre-liquide flex flex-col rounded-[6px] p-5 sm:p-7 lg:p-8 ${i === 0 ? "col-span-2 lg:justify-end" : i === chiffres.length - 1 ? "col-span-2 lg:col-span-1" : ""}`}>
               <dt className="order-2 mt-3 max-w-[16rem] cote text-[1rem] leading-snug text-brume sm:text-[1.0625rem]">{c.libelle}</dt>
               <dd className="order-1 titre text-chiffre text-blanc">
                 <Compteur valeur={c.valeur} depart={c.depart} suffixe={c.suffixe} />

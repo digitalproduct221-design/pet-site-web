@@ -143,7 +143,7 @@ export const projets: Projet[] = [
       "Fiche d'exemple construite à partir d'une photo de chantier : le contexte précis est à compléter par PET.",
     ],
     travaux: ["Implantation topographique", "Ouverture de tranchée", "Pose de la conduite", "Contrôle des pentes"],
-    photos: ["poseConduiteTopographie", "irrigation"],
+    photos: ["poseConduiteTopographie", "conduiteOuvrage"],
     exemple: true,
   },
   {

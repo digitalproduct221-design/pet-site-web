@@ -101,7 +101,7 @@ export function MegaMenu() {
                                 alt={photos[rubrique.carte.photo].alt}
                                 fill
                                 sizes="22vw"
-                                placeholder="blur"
+                               
                                 className="object-cover transition-transform duration-700 ease-chantier group-hover/carte:scale-[1.04]"
                               />
                               <span aria-hidden className="absolute inset-0 bg-[var(--voile-photo)]" />
@@ -123,14 +123,13 @@ export function MegaMenu() {
         </NavigationMenu.List>
 
         <div className="absolute inset-x-0 top-full">
-          <NavigationMenu.Viewport className="viewport-menu relative w-full overflow-hidden border-t border-ligne bg-blanc shadow-[0_30px_60px_-30px_rgb(7_18_43/0.45)]" />
+          <NavigationMenu.Viewport className="viewport-menu relative w-full overflow-hidden border-t border-ligne bg-blanc ombre-flottante" />
         </div>
       </NavigationMenu.Root>
 
-      {/* Voile sous le menu ouvert : recentre l'attention, se ferme au clic */}
+      {/* Voile sous le menu ouvert : recentre l'attention (Radix ferme au clic extérieur) */}
       <div
         aria-hidden
-        onClick={() => setOuvert("")}
         className={`absolute inset-x-0 top-full -z-10 hidden h-dvh bg-nuit/35 transition-opacity duration-300 nav:block ${
           ouvert ? "opacity-100" : "pointer-events-none opacity-0"
         }`}

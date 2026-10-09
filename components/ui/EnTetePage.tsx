@@ -25,10 +25,10 @@ export function EnTetePage({ titre, intro, ariane, photo, children, aside }: Pro
       {p ? (
         <div aria-hidden className="absolute inset-0 -z-10">
           <div className="parallaxe absolute -inset-y-[6%] inset-x-0">
-            <Image src={p.src} alt="" fill priority sizes="100vw" placeholder="blur" className="object-cover" style={{ objectPosition: p.focale }} />
+            <Image src={p.src} alt="" fill preload fetchPriority="high" sizes="100vw" className="object-cover" style={{ objectPosition: p.focale }} />
           </div>
-          <div className="absolute inset-0 bg-[linear-gradient(100deg,rgb(7_18_43/0.94)_0%,rgb(11_27_63/0.8)_45%,rgb(11_27_63/0.45)_100%)]" />
-          <div className="absolute inset-x-0 bottom-0 h-1/3 bg-[linear-gradient(0deg,rgb(7_18_43/0.7),transparent)]" />
+          <div className="absolute inset-0 voile-lateral" />
+          <div className="absolute inset-x-0 bottom-0 h-1/3 voile-bas" />
         </div>
       ) : null}
       <div className="conteneur grid min-h-[min(34rem,70svh)] content-between gap-10 pb-14 pt-8 lg:grid-cols-12 lg:items-end lg:gap-8 lg:pb-20 lg:pt-10">
@@ -37,7 +37,7 @@ export function EnTetePage({ titre, intro, ariane, photo, children, aside }: Pro
         </div>
         <div className={`entree ${aside ? "lg:col-span-7" : "lg:col-span-9"}`}>
           <Equerres as="div" seule decalage={20} className="inline-block pl-1 pt-1">
-            <h1 className="titre text-titre-xl text-blanc [text-shadow:0_2px_24px_rgb(7_18_43/0.45)]">{titre}</h1>
+            <h1 className="titre text-titre-xl text-blanc ombre-texte">{titre}</h1>
           </Equerres>
           {intro ? <p className="mt-7 max-w-[38rem] text-lg leading-relaxed text-blanc/85">{intro}</p> : null}
           {children ? <div className="mt-9 flex flex-wrap gap-4">{children}</div> : null}

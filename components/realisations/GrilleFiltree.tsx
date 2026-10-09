@@ -20,7 +20,7 @@ export function Grille({ filtre }: { filtre: string }) {
   return (
     <div>
       <nav aria-label="Filtrer par domaine">
-        <ul className="flex flex-wrap gap-2">
+        <ul className="-mx-4 flex gap-2 overflow-x-auto px-4 pb-2 [scrollbar-width:none] sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0 sm:pb-0">
           {options.map((o) => {
             const choisi = o.slug === filtre;
             const nombre = o.slug === "tous" ? projets.length : projets.filter((p) => p.domaine === o.slug).length;
@@ -31,8 +31,8 @@ export function Grille({ filtre }: { filtre: string }) {
                   scroll={false}
                   replace
                   aria-current={choisi ? "page" : undefined}
-                  className={`inline-flex min-h-11 items-center gap-2 rounded-full px-5 cote text-[1rem] transition-colors ${
-                    choisi ? "bg-nuit text-blanc" : "bg-blanc text-nuit shadow-[0_8px_24px_-18px_rgb(11_27_63/0.6)] hover:text-royal"
+                  className={`inline-flex min-h-11 shrink-0 items-center gap-2 whitespace-nowrap rounded-full px-5 cote text-[1rem] transition-colors ${
+                    choisi ? "bg-nuit text-blanc" : "bg-blanc text-nuit ombre-carte hover:text-royal"
                   }`}
                 >
                   {o.titre}

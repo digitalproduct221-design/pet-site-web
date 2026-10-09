@@ -30,7 +30,7 @@ export function MenuMobile() {
       </Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className="voile-fenetre fixed inset-0 z-[70] bg-nuit/70" />
-        <Dialog.Content className="fenetre sur-sombre fixed inset-0 z-[80] flex flex-col overflow-y-auto profondeur text-blanc">
+        <Dialog.Content className="fenetre sur-sombre fixed inset-0 z-[80] flex flex-col overflow-y-auto overscroll-contain profondeur text-blanc">
           <div className="conteneur flex h-[var(--header-h)] shrink-0 items-center justify-between">
             <Logo ton="sombre" />
             <Dialog.Close
@@ -98,7 +98,7 @@ export function MenuMobile() {
               href={whatsapp.lien}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex min-h-14 items-center justify-center gap-3 rounded-chantier px-6 cote text-[1.125rem] uppercase tracking-[0.04em] text-blanc shadow-[inset_0_0_0_2px_rgb(251_250_247/0.6)]"
+              className="flex min-h-14 items-center justify-center gap-3 rounded-chantier px-6 cote text-[1.125rem] uppercase tracking-[0.04em] text-blanc contour-clair"
             >
               <Icone nom="whatsapp" size={22} weight="bold" />
               WhatsApp

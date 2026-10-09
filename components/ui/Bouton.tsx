@@ -10,11 +10,11 @@ const base =
 const variantes: Record<Variante, string> = {
   // Jaune : l'action principale, partout la même (« Demander un devis »)
   primaire:
-    "bg-[var(--bouton-primaire-bg)] text-[var(--bouton-primaire-texte)] shadow-[inset_0_-3px_0_rgb(7_18_43/0.18)] hover:bg-[var(--bouton-primaire-bg-survol)]",
+    "bg-[var(--bouton-primaire-bg)] text-[var(--bouton-primaire-texte)] ombre-bouton hover:bg-[var(--bouton-primaire-bg-survol)]",
   contour:
     "text-royal shadow-[inset_0_0_0_2px_var(--color-royal)] hover:bg-royal hover:text-blanc",
   "contour-clair":
-    "text-blanc shadow-[inset_0_0_0_2px_rgb(251_250_247/0.7)] hover:bg-blanc hover:text-nuit hover:shadow-[inset_0_0_0_2px_var(--color-blanc)]",
+    "text-blanc contour-clair hover:bg-blanc hover:text-nuit hover:shadow-[inset_0_0_0_2px_var(--color-blanc)]",
   sombre: "bg-nuit text-blanc hover:bg-royal",
   texte: "min-h-0 px-0 text-royal underline-offset-[0.3em] hover:underline",
 };

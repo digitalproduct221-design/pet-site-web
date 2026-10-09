@@ -30,9 +30,7 @@ export function Pourquoi() {
         <ul className="revele-groupe grid gap-12 lg:col-span-6 lg:col-start-7 lg:gap-16 lg:pt-4">
           {engagementsCles.map((e) => (
             <li key={e.titre} className="grid grid-cols-[auto_1fr] gap-x-6">
-              <span className="grid size-14 place-items-center rounded-[6px] bg-royal text-jaune shadow-[0_14px_30px_-14px_rgb(33_64_154/0.7)]">
-                <Icone nom={e.icone} size={30} />
-              </span>
+              <Icone nom={e.icone} size={40} weight="light" className="mt-1 text-royal" />
               <div>
                 <h3 className="titre text-titre-m text-royal">{e.titre}</h3>
                 <p className="mt-3 max-w-[32rem] text-[1.0625rem] leading-relaxed text-texte-doux">{e.texte}</p>

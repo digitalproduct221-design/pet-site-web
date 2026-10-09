@@ -1,9 +1,14 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { telephones, whatsapp } from "@/content/site";
 import { Icone } from "@/components/ui/Icone";
 
 /** Barre d'actions fixe sur mobile et tablette : appeler, WhatsApp, devis. */
 export function BarreActionsMobile() {
+  // Sur la page Contact, le formulaire est déjà là : pas de bouton devis en double.
+  const surContact = usePathname() === "/contact";
   const action = "flex min-h-12 flex-1 flex-col items-center justify-center gap-0.5 rounded-chantier cote text-[0.875rem]";
   return (
     <nav
@@ -20,9 +25,11 @@ export function BarreActionsMobile() {
           WhatsApp
           <span className="sr-only">(nouvel onglet)</span>
         </a>
+        {surContact ? null : (
         <Link href="/contact#devis" className={`${action} flex-[2.2] flex-row gap-2 whitespace-nowrap bg-jaune px-2 text-[0.9375rem] uppercase tracking-[0.03em] text-nuit`}>
           Demander un devis
         </Link>
+        )}
       </div>
     </nav>
   );

@@ -52,9 +52,7 @@ export default function PageCarrieres() {
           <ul className="revele-groupe grid gap-10 sm:grid-cols-3 lg:col-span-7 lg:gap-8">
             {atouts.map((a) => (
               <li key={a.titre}>
-                <span className="grid size-14 place-items-center rounded-[6px] bg-royal text-jaune shadow-[0_14px_30px_-14px_rgb(33_64_154/0.7)]">
-                  <Icone nom={a.icone} size={28} />
-                </span>
+                <Icone nom={a.icone} size={40} weight="light" className="text-royal" />
                 <h3 className="mt-5 titre text-[1.625rem] leading-[1] text-nuit">{a.titre}</h3>
                 <p className="mt-3 text-[1.0625rem] leading-relaxed text-encre-douce">{a.texte}</p>
               </li>

@@ -47,10 +47,7 @@ export default async function PageDomaine({ params }: PageProps<"/savoir-faire/[
       <section aria-labelledby="titre-prestations" className="bg-blanc py-20 lg:py-28">
         <div className="conteneur grid gap-14 lg:grid-cols-12 lg:gap-8">
           <div className="revele lg:col-span-5">
-            <span className="grid size-14 place-items-center rounded-[6px] bg-royal text-jaune shadow-[0_14px_30px_-14px_rgb(33_64_154/0.7)]">
-              <Icone nom={d.icone} size={28} />
-            </span>
-            <div className="mt-8 space-y-5 text-[1.125rem] leading-relaxed text-encre">
+            <div className="space-y-5 text-[1.125rem] leading-relaxed text-encre">
               {d.presentation.map((t) => (
                 <p key={t}>{t}</p>
               ))}

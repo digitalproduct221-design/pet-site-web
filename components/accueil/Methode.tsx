@@ -18,10 +18,10 @@ export function Methode() {
           {methode.map((etape, i) => (
             <li key={etape.titre} className="relative">
               {/* Le numéro porte l'ordre des étapes : il compte vraiment ici */}
-              <span aria-hidden className="titre block text-[5.5rem] leading-[0.8] text-royal/15 chiffres-tabulaires">
+              <span aria-hidden className="block titre text-[2.75rem] leading-none text-royal chiffres-tabulaires">
                 {String(i + 1).padStart(2, "0")}
               </span>
-              <h3 className="-mt-7 titre text-[1.875rem] leading-[0.95] text-nuit lg:text-[2.125rem]">
+              <h3 className="mt-4 titre text-[1.875rem] leading-[0.95] text-nuit lg:text-[2.125rem]">
                 <span className="sr-only">Étape {i + 1} : </span>
                 {etape.titre}
               </h3>

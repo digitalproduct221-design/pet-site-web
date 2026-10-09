@@ -9,6 +9,9 @@ import { TitreSection } from "@/components/ui/TitreSection";
  * Les cinq domaines en panneaux verticaux : sur grand écran, le panneau survolé
  * ou ciblé au clavier s'ouvre et les autres se resserrent (CSS seul).
  */
+// Le panneau ouvert par défaut montre les engins CAT : la photo la plus forte du chantier.
+const ordrePanneaux = [...domaines].sort((a, b) => Number(b.slug === "travaux-publics-vrd") - Number(a.slug === "travaux-publics-vrd"));
+
 export function SavoirFaire() {
   return (
     <section aria-labelledby="titre-savoir-faire" className="bg-sable py-20 lg:py-28">
@@ -29,7 +32,7 @@ export function SavoirFaire() {
         </div>
 
         <ul className="panneaux revele-groupe mt-12 grid gap-4 sm:grid-cols-2 lg:mt-16">
-          {domaines.map((d, i) => {
+          {ordrePanneaux.map((d, i) => {
             const photo = photos[d.photos[0]];
             return (
               <li key={d.slug} className={`panneau ${i === 0 ? "sm:col-span-2 lg:col-span-1" : ""}`}>
@@ -42,11 +45,11 @@ export function SavoirFaire() {
                     alt=""
                     fill
                     sizes="(min-width: 1024px) 45vw, (min-width: 640px) 50vw, 100vw"
-                    placeholder="blur"
+                   
                     className="object-cover transition-transform duration-[900ms] ease-chantier group-hover/panneau:scale-[1.04]"
                     style={{ objectPosition: photo.focale }}
                   />
-                  <span aria-hidden className="absolute inset-0 bg-[linear-gradient(180deg,rgb(11_27_63/0.2)_0%,rgb(11_27_63/0.55)_45%,rgb(11_27_63/0.94)_100%)]" />
+                  <span aria-hidden className="absolute inset-0 voile-carte" />
                   {/* Panneau fermé (grand écran) : titre vertical */}
                   <span aria-hidden className="panneau-vertical titre text-[1.75rem] leading-none text-blanc">
                     {d.titre}

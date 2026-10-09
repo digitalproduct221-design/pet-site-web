@@ -53,7 +53,7 @@ export function ListeOffres({ ton = "sombre" }: { ton?: "clair" | "sombre" }) {
             <li
               key={o.id}
               className={`group/offre relative grid gap-4 rounded-[6px] p-6 transition-colors sm:grid-cols-[1fr_auto] sm:items-center lg:p-7 ${
-                sombre ? "verre-liquide" : "bg-blanc shadow-[0_18px_40px_-28px_rgb(11_27_63/0.45)] hover:shadow-[0_24px_48px_-26px_rgb(11_27_63/0.55)]"
+                sombre ? "verre-liquide" : "bg-blanc ombre-carte hover:ombre-carte-survol"
               }`}
             >
               <div>

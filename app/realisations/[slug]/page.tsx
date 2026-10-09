@@ -51,10 +51,12 @@ export default async function PageProjet({ params }: PageProps<"/realisations/[s
               </div>
             ))}
             {projet.exemple ? (
-              <p className="col-span-2 flex items-start gap-2 text-[0.9375rem] leading-snug text-brume">
-                <MentionExemple ton="sombre" />
-                <span>Fiche construite à partir d&apos;une photo de chantier, à compléter par PET.</span>
-              </p>
+              <div className="col-span-2 flex items-start gap-2 text-[0.9375rem] leading-snug text-brume">
+                <dt className="shrink-0">
+                  <MentionExemple ton="sombre" />
+                </dt>
+                <dd>Fiche construite à partir d&apos;une photo de chantier, à compléter par PET.</dd>
+              </div>
             ) : null}
           </dl>
         }

@@ -42,11 +42,11 @@ export default function PageSavoirFaire() {
                     alt=""
                     fill
                     sizes={vedette ? "100vw" : "(min-width: 768px) 50vw, 100vw"}
-                    placeholder="blur"
+                   
                     className="-z-10 object-cover transition-transform duration-[1100ms] ease-chantier group-hover/domaine:scale-[1.04]"
                     style={{ objectPosition: p.focale }}
                   />
-                  <span aria-hidden className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgb(11_27_63/0.1)_0%,rgb(11_27_63/0.35)_50%,rgb(7_18_43/0.85)_100%)]" />
+                  <span aria-hidden className="absolute inset-0 -z-10 voile-carte" />
                   <span className={`verre-liquide block w-full rounded-[6px] p-6 ${vedette ? "max-w-[38rem] lg:p-8" : ""}`}>
                     <span className="flex items-center gap-3">
                       <Icone nom={d.icone} size={28} className="text-jaune" />

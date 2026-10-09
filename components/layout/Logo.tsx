@@ -13,12 +13,13 @@ export function Logo({ ton = "clair", compact = false, nom = true }: { ton?: "cl
     <Link
       href="/"
       className="group/logo flex items-center gap-3 rounded-chantier"
+      translate="no"
       aria-label="PET, Partenaire Entreprise Travaux, retour à l'accueil"
     >
       <Image
         src={ton === "sombre" ? embleminverse : embleme}
         alt=""
-        priority
+        loading="eager"
         className={`w-auto transition-[height] duration-500 ease-chantier ${compact ? "h-11" : "h-12 nav:h-14"}`}
         sizes="96px"
       />

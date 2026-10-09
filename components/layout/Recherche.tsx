@@ -41,7 +41,7 @@ export function Recherche({ classeDeclencheur = "" }: { classeDeclencheur?: stri
       </Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className="voile-fenetre fixed inset-0 z-[70] bg-nuit/70" />
-        <Dialog.Content className="fenetre sur-sombre fixed inset-0 z-[80] overflow-y-auto profondeur text-blanc">
+        <Dialog.Content className="fenetre sur-sombre fixed inset-0 z-[80] overflow-y-auto overscroll-contain profondeur text-blanc">
           <div className="conteneur flex min-h-full flex-col pb-16 pt-6">
             <div className="flex items-center justify-between">
               <Dialog.Title className="titre text-titre-s text-blanc">Rechercher</Dialog.Title>
@@ -68,7 +68,7 @@ export function Recherche({ classeDeclencheur = "" }: { classeDeclencheur?: stri
                   autoComplete="off"
                   value={requete}
                   onChange={(e) => setRequete(e.target.value)}
-                  placeholder="Ex. assainissement, conduite fonte, devis"
+                  placeholder="Ex. assainissement, conduite fonte, devis…"
                   className="w-full border-b-2 border-brume/40 bg-transparent py-4 pl-12 titre text-[clamp(1.75rem,1.2rem+2vw,2.75rem)] normal-case text-blanc caret-jaune placeholder:text-brume/60 focus:border-jaune focus:outline-none"
                 />
               </div>
@@ -83,7 +83,7 @@ export function Recherche({ classeDeclencheur = "" }: { classeDeclencheur?: stri
                           <button
                             type="button"
                             onClick={() => setRequete(s)}
-                            className="rounded-chantier px-4 py-2 cote text-[1rem] text-blanc shadow-[inset_0_0_0_1px_rgb(185_199_230/0.35)] transition-colors hover:bg-blanc hover:text-nuit"
+                            className="rounded-chantier px-4 py-2 cote text-[1rem] bg-blanc/10 text-blanc transition-colors hover:bg-blanc hover:text-nuit"
                           >
                             {s}
                           </button>

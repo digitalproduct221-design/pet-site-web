@@ -56,7 +56,13 @@ export default function PageEntreprise() {
             <h2 id="titre-qui" className="titre text-titre-l text-nuit">
               Qui sommes-nous
             </h2>
-            <p className="mt-6 max-w-[38rem] text-[1.125rem] leading-relaxed text-encre">{entreprise.presentation}</p>
+            {entreprise.presentation
+              .split(/(?<=\.) (?=Forte|PET participe)/)
+              .map((phrase, i) => (
+                <p key={i} className={`max-w-[38rem] text-[1.125rem] leading-relaxed ${i === 0 ? "mt-6 text-encre" : "mt-4 text-encre-douce"}`}>
+                  {phrase}
+                </p>
+              ))}
           </div>
           <div className="lg:col-span-5 lg:col-start-8">
             <p className="cote text-[1.0625rem] text-encre-douce">Nous travaillons pour trois types de clients</p>
@@ -80,8 +86,8 @@ export default function PageEntreprise() {
       {/* Notre histoire */}
       <section id="histoire" aria-labelledby="titre-histoire" className="sur-sombre relative isolate overflow-hidden bg-royal py-20 text-blanc lg:py-28">
         <div aria-hidden className="absolute inset-0 -z-10">
-          <Image src={photos.terrassementEngins.src} alt="" fill sizes="100vw" placeholder="blur" className="object-cover opacity-50" />
-          <div className="absolute inset-0 bg-[linear-gradient(110deg,rgb(33_64_154/0.96)_0%,rgb(33_64_154/0.85)_55%,rgb(11_27_63/0.9)_100%)]" />
+          <Image src={photos.terrassementEngins.src} alt="" fill sizes="100vw" className="object-cover opacity-50" />
+          <div className="absolute inset-0 voile-royal" />
         </div>
         <div className="conteneur grid gap-12 lg:grid-cols-12 lg:items-end lg:gap-8">
           <div className="revele lg:col-span-5">
@@ -99,7 +105,7 @@ export default function PageEntreprise() {
               <p className="mt-3 cote text-[1.125rem] text-blanc">Création de l&apos;entreprise à Dakar</p>
             </li>
             <li className="verre-liquide rounded-[6px] p-7">
-              <p className="titre text-[clamp(2.5rem,1.6rem+2.6vw,3.75rem)] leading-[0.9] text-blanc">Aujourd&apos;hui</p>
+              <p className="titre text-titre-m text-blanc">Aujourd&apos;hui</p>
               <p className="mt-3 cote text-[1.125rem] text-blanc">
                 {entreprise.domaines.length} domaines d&apos;expertise, {entreprise.clients.length} types de clients, plus de 40 ans
                 d&apos;expérience cumulée
@@ -122,8 +128,8 @@ export default function PageEntreprise() {
             {valeurs.map((v, i) =>
               i === 0 ? (
                 <li key={v.titre} className={`sur-sombre relative isolate flex min-h-[22rem] flex-col justify-end overflow-hidden rounded-[6px] p-8 text-blanc sm:col-span-2 lg:p-10 ${cellules[i]}`}>
-                  <Image src={photos.conduiteOuvrage.src} alt="" fill sizes="(min-width: 1024px) 50vw, 100vw" placeholder="blur" className="-z-10 object-cover" />
-                  <span aria-hidden className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgb(11_27_63/0.2)_0%,rgb(7_18_43/0.92)_100%)]" />
+                  <Image src={photos.conduiteOuvrage.src} alt="" fill sizes="(min-width: 1024px) 50vw, 100vw" className="-z-10 object-cover" />
+                  <span aria-hidden className="absolute inset-0 -z-10 voile-carte" />
                   <h3 className="titre text-titre-l text-blanc">{v.titre}</h3>
                   <p className="mt-4 max-w-[30rem] text-[1.125rem] leading-relaxed text-blanc/90">{v.texte}</p>
                 </li>

@@ -34,11 +34,11 @@ export default function PageActualites() {
                   alt=""
                   fill
                   sizes="100vw"
-                  placeholder="blur"
+                 
                   className="-z-10 object-cover transition-transform duration-[1100ms] ease-chantier group-hover/une:scale-[1.03]"
                   style={{ objectPosition: photos[une.photo].focale }}
                 />
-                <span aria-hidden className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgb(11_27_63/0.05)_0%,rgb(7_18_43/0.85)_100%)]" />
+                <span aria-hidden className="absolute inset-0 -z-10 voile-carte" />
                 <span className="verre-liquide block max-w-[40rem] rounded-[6px] p-6 lg:p-8">
                   <span className="flex flex-wrap items-center gap-3">
                     <time dateTime={une.date} className="cote text-[0.9375rem] text-brume">

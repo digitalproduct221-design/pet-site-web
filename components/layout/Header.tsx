@@ -44,7 +44,7 @@ export function Header() {
             <Recherche />
             <Link
               href="/contact#devis"
-              className="group/devis relative hidden min-h-12 items-center gap-2.5 whitespace-nowrap rounded-chantier bg-jaune px-5 cote text-[1rem] uppercase tracking-[0.04em] text-nuit shadow-[inset_0_-3px_0_rgb(7_18_43/0.18)] transition-colors duration-300 hover:bg-jaune-profond sm:inline-flex"
+              className="group/devis relative hidden min-h-12 items-center gap-2.5 whitespace-nowrap rounded-chantier bg-jaune px-5 cote text-[1rem] uppercase tracking-[0.04em] text-nuit ombre-bouton transition-colors duration-300 hover:bg-jaune-profond sm:inline-flex"
             >
               <span
                 aria-hidden

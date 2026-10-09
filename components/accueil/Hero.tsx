@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useReducedMotion } from "motion/react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { photos, type PhotoId } from "@/content/photos";
 import { SLOGAN } from "@/content/site";
@@ -56,14 +55,24 @@ const DUREE = 7000;
  * sous mouvement réduit.
  */
 export function Hero() {
-  const reduit = useReducedMotion();
   const [index, setIndex] = useState(0);
-  const [pauseUtilisateur, setPauseUtilisateur] = useState(false);
+  // null : comportement par défaut (défilement, sauf mouvement réduit) ; sinon, choix explicite du visiteur.
+  const [lecture, setLecture] = useState<boolean | null>(null);
+  const [reduit, setReduit] = useState(false);
   const [suspendu, setSuspendu] = useState(false); // survol ou focus
   const [horsEcran, setHorsEcran] = useState(false);
   const section = useRef<HTMLElement>(null);
 
-  const enPause = pauseUtilisateur || suspendu || horsEcran || !!reduit;
+  const enLecture = lecture ?? !reduit;
+  const enPause = !enLecture || suspendu || horsEcran;
+
+  useEffect(() => {
+    const requete = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const maj = () => setReduit(requete.matches);
+    maj();
+    requete.addEventListener("change", maj);
+    return () => requete.removeEventListener("change", maj);
+  }, []);
   const total = diapos.length;
   const aller = useCallback((i: number) => setIndex(((i % total) + total) % total), [total]);
 
@@ -116,9 +125,10 @@ export function Hero() {
                 src={p.src}
                 alt={p.alt}
                 fill
-                priority={i === 0}
+                preload={i === 0}
+                fetchPriority={i === 0 ? "high" : "low"}
                 sizes="100vw"
-                placeholder="blur"
+               
                 className="object-cover"
                 style={{ objectPosition: p.focale }}
               />
@@ -126,14 +136,14 @@ export function Hero() {
           );
         })}
         {/* Voile : dense à gauche pour le texte, en bas pour le panneau */}
-        <div aria-hidden className="absolute inset-0 bg-[linear-gradient(95deg,rgb(7_18_43/0.92)_0%,rgb(11_27_63/0.78)_38%,rgb(11_27_63/0.35)_70%,rgb(11_27_63/0.25)_100%)]" />
-        <div aria-hidden className="absolute inset-x-0 bottom-0 h-1/2 bg-[linear-gradient(0deg,rgb(7_18_43/0.85)_0%,transparent_100%)]" />
+        <div aria-hidden className="absolute inset-0 voile-hero" />
+        <div aria-hidden className="absolute inset-x-0 bottom-0 h-1/2 voile-bas" />
       </div>
 
       <div className="conteneur flex flex-1 flex-col justify-between gap-12 pb-8 pt-16 lg:pb-12 lg:pt-24">
         <div className="entree max-w-[46rem]">
           <Equerres seule decalage={22} className="inline-block pl-1 pt-2">
-            <h1 className="titre text-titre-xl text-blanc [text-shadow:0_2px_24px_rgb(7_18_43/0.45)]">
+            <h1 className="titre text-titre-xl text-blanc ombre-texte">
               <span className="block">Nous bâtissons.</span>
               <span className="block">Nous raccordons.</span>
               <span className="block text-jaune">Nous durons.</span>
@@ -178,12 +188,11 @@ export function Hero() {
               </button>
               <button
                 type="button"
-                onClick={() => setPauseUtilisateur((p) => !p)}
-                aria-label={pauseUtilisateur || reduit ? "Lancer le diaporama" : "Mettre le diaporama en pause"}
-                aria-pressed={pauseUtilisateur}
+                onClick={() => setLecture(!enLecture)}
+                aria-label={enLecture ? "Mettre le diaporama en pause" : "Lancer le diaporama"}
                 className="grid size-11 place-items-center rounded-full text-blanc transition-colors hover:bg-blanc/15"
               >
-                <Icone nom={pauseUtilisateur || reduit ? "lecture" : "pause"} size={20} weight="fill" />
+                <Icone nom={enLecture ? "pause" : "lecture"} size={20} weight="fill" />
               </button>
               <button
                 type="button"

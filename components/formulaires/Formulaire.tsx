@@ -20,7 +20,7 @@ const libelles: Record<string, string> = {
 };
 
 const champBase =
-  "mt-2 block w-full rounded-chantier bg-blanc-pur px-4 py-3.5 text-[1.0625rem] text-encre shadow-[inset_0_0_0_1.5px_var(--color-sable-fonce)] transition-shadow placeholder:text-encre-douce/70 hover:shadow-[inset_0_0_0_1.5px_var(--color-encre-douce)] focus:outline-none focus:shadow-[inset_0_0_0_2px_var(--color-royal),0_0_0_4px_rgb(33_64_154/0.12)] aria-[invalid=true]:shadow-[inset_0_0_0_2px_var(--color-erreur)]";
+  "mt-2 block w-full rounded-chantier bg-blanc-pur px-4 py-3.5 text-[1.0625rem] text-encre shadow-[inset_0_0_0_1.5px_var(--color-sable-fonce)] transition-shadow placeholder:text-encre-douce/70 hover:shadow-[inset_0_0_0_1.5px_var(--color-encre-douce)] focus:outline-none focus:anneau-champ aria-[invalid=true]:shadow-[inset_0_0_0_2px_var(--color-erreur)]";
 
 function Champ({
   nom,
@@ -123,7 +123,7 @@ export function Formulaire({ type, posteInitial = "" }: { type: TypeFormulaire; 
 
   if (etat.statut === "succes") {
     return (
-      <div ref={succes} tabIndex={-1} role="status" className="rounded-[6px] bg-blanc-pur p-8 shadow-[0_24px_60px_-36px_rgb(11_27_63/0.5)] outline-none lg:p-10">
+      <div ref={succes} tabIndex={-1} role="status" className="rounded-[6px] bg-blanc-pur p-8 ombre-carte outline-none lg:p-10">
         <Icone nom="succes" size={44} className="text-succes" />
         <h3 className="mt-5 titre text-titre-m text-nuit">
           {type === "devis" ? "Merci, votre demande est prête" : "Merci pour votre candidature"}
@@ -207,7 +207,7 @@ export function Formulaire({ type, posteInitial = "" }: { type: TypeFormulaire; 
               id="champ-poste"
               name="poste"
               defaultValue={posteInitial}
-              placeholder="Ex. conducteur d'engins"
+              placeholder="Ex. conducteur d'engins…"
               className={champBase}
               aria-invalid={!!erreurs.poste}
               aria-describedby={decrit("poste")}
@@ -216,10 +216,10 @@ export function Formulaire({ type, posteInitial = "" }: { type: TypeFormulaire; 
           </Champ>
         )}
         <Champ nom="email" libelle="E-mail" requis erreur={erreurs.email}>
-          <input id="champ-email" name="email" type="email" autoComplete="email" inputMode="email" className={champBase} aria-invalid={!!erreurs.email} aria-describedby={decrit("email")} onBlur={() => revalider("email")} />
+          <input id="champ-email" name="email" type="email" autoComplete="email" inputMode="email" spellCheck={false} className={champBase} aria-invalid={!!erreurs.email} aria-describedby={decrit("email")} onBlur={() => revalider("email")} />
         </Champ>
         <Champ nom="telephone" libelle="Téléphone" requis erreur={erreurs.telephone}>
-          <input id="champ-telephone" name="telephone" type="tel" autoComplete="tel" inputMode="tel" placeholder="77 000 00 00" className={champBase} aria-invalid={!!erreurs.telephone} aria-describedby={decrit("telephone")} onBlur={() => revalider("telephone")} />
+          <input id="champ-telephone" name="telephone" type="tel" autoComplete="tel" inputMode="tel" placeholder="77 000 00 00…" className={champBase} aria-invalid={!!erreurs.telephone} aria-describedby={decrit("telephone")} onBlur={() => revalider("telephone")} />
         </Champ>
       </div>
 
@@ -352,12 +352,12 @@ export function Formulaire({ type, posteInitial = "" }: { type: TypeFormulaire; 
         <button
           type="submit"
           disabled={etat.statut === "envoi"}
-          className="group/envoi inline-flex min-h-[var(--bouton-h)] items-center gap-3 rounded-chantier bg-jaune px-7 cote text-[1.0625rem] uppercase tracking-[0.04em] text-nuit shadow-[inset_0_-3px_0_rgb(7_18_43/0.18)] transition-colors hover:bg-jaune-profond active:translate-y-px disabled:cursor-wait disabled:opacity-70"
+          className="group/envoi inline-flex min-h-[var(--bouton-h)] items-center gap-3 rounded-chantier bg-jaune px-7 cote text-[1.0625rem] uppercase tracking-[0.04em] text-nuit ombre-bouton transition-colors hover:bg-jaune-profond active:translate-y-px disabled:cursor-wait disabled:opacity-70"
         >
           {etat.statut === "envoi" ? (
             <>
               <span aria-hidden className="size-4 animate-spin rounded-full border-2 border-nuit/30 border-t-nuit" />
-              Envoi en cours
+              Envoi en cours…
             </>
           ) : (
             <>

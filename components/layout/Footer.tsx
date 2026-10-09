@@ -25,13 +25,6 @@ export function Footer() {
           <div className="sm:col-span-2 lg:col-span-4">
             <Image src={logoInverse} alt={`Logo ${SIGLE}, ${NOM}`} className="h-auto w-60" sizes="240px" />
             <p className="mt-8 max-w-[22rem] titre text-[1.625rem] leading-[1] text-blanc">{SLOGAN}.</p>
-            <Link
-              href="/contact#devis"
-              className="mt-8 inline-flex min-h-12 items-center gap-2.5 rounded-chantier bg-jaune px-5 cote text-[1rem] uppercase tracking-[0.04em] text-nuit transition-colors hover:bg-jaune-profond"
-            >
-              Demander un devis
-              <Icone nom="fleche" size={18} weight="bold" />
-            </Link>
           </div>
 
           {/* Coordonnées */}

@@ -7,8 +7,8 @@ export default function PageIntrouvable() {
   return (
     <section className="sur-sombre relative isolate flex min-h-[70svh] items-center overflow-hidden bg-nuit py-24 text-blanc">
       <div aria-hidden className="absolute inset-0 -z-10">
-        <Image src={photos.terrassementEngins.src} alt="" fill sizes="100vw" placeholder="blur" className="object-cover" />
-        <div className="absolute inset-0 bg-[linear-gradient(100deg,rgb(7_18_43/0.95)_0%,rgb(11_27_63/0.8)_60%,rgb(11_27_63/0.6)_100%)]" />
+        <Image src={photos.terrassementEngins.src} alt="" fill sizes="100vw" className="object-cover" />
+        <div className="absolute inset-0 voile-lateral" />
       </div>
       <div className="conteneur">
         <Equerres seule decalage={20} className="inline-block pl-1 pt-1">
