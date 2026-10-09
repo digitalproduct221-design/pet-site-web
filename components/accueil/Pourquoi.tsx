@@ -1,44 +1,65 @@
+import Image from "next/image";
 import { engagementsCles } from "@/content/site";
+import { photos, type PhotoId } from "@/content/photos";
 import { Icone } from "@/components/ui/Icone";
-import { PhotoCadre } from "@/components/ui/PhotoCadre";
 import { Profil } from "@/components/ui/Profil";
 import { TitreSection } from "@/components/ui/TitreSection";
 
-/** Quatre engagements, en liste éditoriale (pas en cartes identiques). */
+// Une photo par engagement : elle change quand on ouvre l'engagement.
+const illustrations: PhotoId[] = ["niveleuseVoirie", "poseConduiteTopographie", "terrassementEngins", "trancheeLotissement"];
+
+/**
+ * « Pourquoi PET ? » en accordéon : quatre engagements, un seul ouvert à la fois
+ * (<details name> natif, sans JavaScript), et une grande photo qui suit
+ * l'engagement ouvert (sélecteur :has en CSS).
+ */
 export function Pourquoi() {
   return (
-    <section aria-labelledby="titre-pourquoi" className="relative bg-blanc pb-28 pt-20 lg:pb-40 lg:pt-28">
-      <div className="conteneur grid gap-14 lg:grid-cols-12 lg:gap-8">
-        <div className="lg:col-span-5">
-          <div className="lg:sticky lg:top-[calc(var(--header-h-compact)+3rem)]">
+    <section aria-labelledby="titre-pourquoi" className="pourquoi relative bg-blanc pb-28 pt-20 lg:pb-40 lg:pt-28">
+      <div className="conteneur grid items-center gap-12 lg:grid-cols-12 lg:gap-10">
+        <div className="lg:col-span-6">
+          <div className="revele">
             <TitreSection
               id="titre-pourquoi"
-              titre="Pourquoi choisir PET ?"
-              intro="Parce qu'un chantier se gagne sur le terrain : des équipes qualifiées, des engins entretenus et une parole tenue."
+              titre="Pourquoi choisir PET ?"
+              intro="Parce qu'un chantier se gagne sur le terrain : des équipes qualifiées, des engins entretenus et une parole tenue."
             />
-            <PhotoCadre
-              photo="niveleuseVoirie"
-              ratio="aspect-[4/3]"
-              sizes="(min-width: 1024px) 34vw, 100vw"
-              voile="leger"
-              equerres
-              decalage={12}
-              className="mt-12 hidden lg:block lg:max-w-[28rem]"
-            />
+          </div>
+          <div className="mt-10 grid gap-3">
+            {engagementsCles.map((e, i) => (
+              <details key={e.titre} name="pourquoi" open={i === 0} className="accordeon group/acc rounded-panneau bg-sable px-5 transition-colors open:bg-nuit open:text-blanc sm:px-6">
+                <summary className="flex min-h-16 cursor-pointer list-none items-center gap-4 py-4 [&::-webkit-details-marker]:hidden">
+                  <Icone nom={e.icone} size={30} weight="light" className="shrink-0 text-royal group-open/acc:text-jaune" />
+                  <span className="flex-1 titre text-[1.625rem] leading-none text-nuit group-open/acc:text-blanc sm:text-[1.875rem]">{e.titre}</span>
+                  {/* La croix tournée de 45° fait un « + » ; ouverte, elle redevient une croix */}
+                  <span aria-hidden className="grid size-9 shrink-0 place-items-center rounded-full bg-blanc text-nuit transition-colors group-open/acc:bg-jaune">
+                    <Icone nom="fermer" size={18} weight="bold" className="rotate-45 transition-transform duration-300 group-open/acc:rotate-90" />
+                  </span>
+                </summary>
+                <p className="max-w-[34rem] pb-6 pl-[2.875rem] text-[1.0625rem] leading-relaxed text-brume">{e.texte}</p>
+              </details>
+            ))}
           </div>
         </div>
 
-        <ul className="revele-groupe grid gap-12 lg:col-span-6 lg:col-start-7 lg:gap-16 lg:pt-4">
-          {engagementsCles.map((e) => (
-            <li key={e.titre} className="grid grid-cols-[auto_1fr] gap-x-6">
-              <Icone nom={e.icone} size={40} weight="light" className="mt-1 text-royal" />
-              <div>
-                <h3 className="titre text-titre-m text-royal">{e.titre}</h3>
-                <p className="mt-3 max-w-[32rem] text-[1.0625rem] leading-relaxed text-texte-doux">{e.texte}</p>
-              </div>
-            </li>
-          ))}
-        </ul>
+        {/* Photo qui suit l'engagement ouvert */}
+        <div className="relative hidden aspect-[4/5] overflow-hidden rounded-chantier bg-sable-soutenu lg:col-span-5 lg:col-start-8 lg:block">
+          {illustrations.map((id, i) => {
+            const p = photos[id];
+            return (
+              <Image
+                key={id}
+                src={p.src}
+                alt=""
+                fill
+                sizes="(min-width: 1024px) 40vw, 1px"
+                className={`pourquoi-photo pourquoi-photo-${i + 1} object-cover`}
+                style={{ objectPosition: p.focale }}
+              />
+            );
+          })}
+          <span aria-hidden className="absolute inset-0 bg-(image:--voile-photo)" />
+        </div>
       </div>
       <Profil couleur="text-sable" forme="terrain" miroir />
     </section>

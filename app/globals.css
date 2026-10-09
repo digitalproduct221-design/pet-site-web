@@ -1326,3 +1326,43 @@ main > :nth-child(n + 3):not(.ruban-zone) {
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
   .verre-immersif { background: rgb(11 27 63 / 0.9); }
 }
+
+/* « Pourquoi PET ? » : accordéon natif et photo qui suit l'engagement ouvert */
+:root { interpolate-size: allow-keywords; }
+.accordeon::details-content {
+  height: 0;
+  overflow: clip;
+  transition: height 450ms var(--ease-chantier), content-visibility 450ms allow-discrete;
+}
+.accordeon[open]::details-content { height: auto; }
+.pourquoi-photo {
+  opacity: 0;
+  scale: 1.06;
+  transition: opacity 700ms var(--ease-chantier), scale 1200ms var(--ease-chantier);
+}
+.pourquoi:has(details:nth-of-type(1)[open]) .pourquoi-photo-1,
+.pourquoi:has(details:nth-of-type(2)[open]) .pourquoi-photo-2,
+.pourquoi:has(details:nth-of-type(3)[open]) .pourquoi-photo-3,
+.pourquoi:has(details:nth-of-type(4)[open]) .pourquoi-photo-4,
+.pourquoi:not(:has(details[open])) .pourquoi-photo-1 {
+  opacity: 1;
+  scale: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .accordeon::details-content, .pourquoi-photo { transition: none; }
+}
+
+/* Frise de la méthode : la ligne se remplit au fil du défilement */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .frise-remplissage {
+      animation: frise linear both;
+      animation-timeline: view();
+      animation-range: entry 30% cover 65%;
+    }
+  }
+}
+@keyframes frise {
+  from { scale: 1 0; }
+  to { scale: 1 1; }
+}
