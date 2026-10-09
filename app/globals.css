@@ -1229,11 +1229,7 @@ main > :nth-child(n + 3):not(.ruban-zone) {
    Hero clair (refonte d'octobre 2026, 3ᵉ série) : texte sur fond blanc,
    photo nette dans un cadre coupé en biais, barre de verre clair.
    ========================================================================== */
-@media (width >= 64rem) {
-  .cadre-hero {
-    clip-path: polygon(11% 0, 100% 0, 100% 100%, 0 100%);
-  }
-}
+/* Hero clair : transition fondue avec motifs irréguliers */
 /* « Nous durons. » : surligné jaune sous la moitié basse des lettres */
 .surligne {
   background: linear-gradient(transparent 56%, var(--pet-jaune-400) 56%, var(--pet-jaune-400) 90%, transparent 90%);
