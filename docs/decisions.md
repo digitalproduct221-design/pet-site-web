@@ -65,3 +65,6 @@ Choix faits en autonomie quand le brief laissait un doute. Chaque ligne dit ce q
 
     Reste ouvert : les photos de 1 250 px en plein écran sur un écran Retina. C'est le prix du hero immersif demandé, et les photos HD le régleront.
 42. **Commits inattendus** : deux commits (03:57 et 05:32), suivis d'une mise en ligne sur Vercel, ont été faits sur ce dépôt par un autre processus que cette session. Probablement l'IDE ou une intégration Git. À vérifier par l'utilisateur.
+43. **Mise en ligne** : production sur **https://pet-site-web.vercel.app**. Vercel est relié au dépôt GitHub privé `digitalproduct221-design/pet-site-web` : chaque push sur `main` redéploie. Pour un domaine définitif, définir `NEXT_PUBLIC_SITE_URL` dans Vercel.
+44. **Interrupteur des photos à droits incertains** : `MASQUER_PHOTOS_A_VERIFIER` dans `content/photos.ts` (désactivé, décision du client). Activé, il retire les photos 06, 07 et 09 partout.
+45. **Lighthouse mobile en production** (mesuré depuis une machine chargée, d'où la variance) : accueil 87 à 94, `/realisations` 81 à 96. Accessibilité, bonnes pratiques et SEO à 100.

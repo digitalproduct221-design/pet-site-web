@@ -82,3 +82,12 @@ export const photos = {
 } satisfies Record<string, Photo>;
 
 export type PhotoId = keyof typeof photos;
+
+/**
+ * Photos dont les droits restent à vérifier (06 irrigation, 07 clôture, 09 immeuble) :
+ * elles ressemblent à des photos de banque d'images. Passer à `true` pour les retirer
+ * partout d'un coup (elles ne servent plus que sur la page Bâtiment).
+ */
+export const MASQUER_PHOTOS_A_VERIFIER = false;
+export const photosAVerifier: PhotoId[] = ["irrigation", "clotureGrillage", "immeubleGrue"];
+export const photoAutorisee = (p: PhotoId) => !(MASQUER_PHOTOS_A_VERIFIER && photosAVerifier.includes(p));

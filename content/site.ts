@@ -4,7 +4,7 @@
  * Aucun chiffre ni nom de client ne doit être ajouté ici sans source.
  */
 import entreprise from "./entreprise.json";
-import type { PhotoId } from "./photos";
+import { photoAutorisee, type PhotoId } from "./photos";
 import { besoins } from "./besoins";
 
 export { entreprise };
@@ -135,7 +135,7 @@ export const domaines: Domaine[] = entreprise.domaines.map((d) => ({
   titre: d.titre,
   resume: d.resume,
   prestations: d.prestations,
-  photos: photosParDomaine[d.id],
+  photos: photosParDomaine[d.id].filter(photoAutorisee),
   ...textesDomaines[d.id],
 }));
 
