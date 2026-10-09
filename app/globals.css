@@ -420,13 +420,6 @@
     opacity: 0.001;
     translate: 0 28px;
   }
-  .trace {
-    transform-origin: left center;
-    transition: scale 1400ms var(--ease-chantier) 150ms;
-  }
-  html.js .trace:not([data-vu]) {
-    scale: 0 1;
-  }
   @supports (animation-timeline: scroll()) {
     .parallaxe {
       animation: parallaxe linear both;
@@ -699,4 +692,11 @@
 }
 @utility anneau-champ {
   box-shadow: inset 0 0 0 2px var(--pet-royal-600), 0 0 0 4px rgb(33 64 154 / 0.12);
+}
+@utility voile-royal-lateral {
+  /* Chiffres clés : aplat royal à gauche, photo lisible à droite (en haut, puis en bas sur mobile) */
+  background: linear-gradient(180deg, rgb(33 64 154 / 1) 0%, rgb(33 64 154 / 0.88) 55%, rgb(33 64 154 / 0.55) 100%);
+  @media (width >= 64rem) {
+    background: linear-gradient(90deg, rgb(33 64 154 / 1) 0%, rgb(33 64 154 / 0.92) 42%, rgb(33 64 154 / 0.5) 78%, rgb(33 64 154 / 0.3) 100%);
+  }
 }

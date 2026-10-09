@@ -51,12 +51,12 @@ export function RealisationsVedette() {
                     className={i === 0 ? "lg:flex-1 [&>div]:h-full [&>div>div]:h-full" : ""}
                     imageClassName="transition-transform duration-[900ms] ease-chantier group-hover/projet:scale-[1.03]"
                   />
-                  <span className="mt-5 flex flex-wrap items-center gap-3">
-                    <span className="cote text-[0.9375rem] uppercase tracking-[0.06em] text-ciel">{domaine?.titre}</span>
-                    <MentionExemple visible={projet.exemple} ton="sombre" />
-                  </span>
-                  <span className="mt-2 block titre text-[1.625rem] leading-[1] text-blanc transition-colors group-hover/projet:text-jaune lg:text-[1.875rem]">
+                  <span className="mt-5 block titre text-[1.625rem] leading-[1] text-blanc transition-colors group-hover/projet:text-jaune lg:text-[1.875rem]">
                     {projet.titre}
+                  </span>
+                  <span className="mt-2 flex flex-wrap items-center gap-3">
+                    <span className="cote text-[0.9375rem] text-ciel">{domaine?.titre}</span>
+                    <MentionExemple visible={projet.exemple} ton="sombre" />
                   </span>
                 </Link>
               </li>

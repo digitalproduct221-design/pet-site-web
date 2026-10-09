@@ -66,11 +66,11 @@ export default async function PageArticle({ params }: PageProps<"/actualites/[sl
               {autres.map((a) => (
                 <li key={a.slug}>
                   <Link href={`/actualites/${a.slug}`} className="group/autre block">
-                    <PhotoCadre photo={a.photo} ratio="aspect-[16/10]" sizes="(min-width: 1024px) 28vw, 100vw" voile="aucun" />
-                    <time dateTime={a.date} className="mt-4 block cote text-[0.9375rem] text-encre-douce">
+                    <PhotoCadre photo={a.photo} ratio="aspect-[16/10]" sizes="(min-width: 1024px) 28vw, 100vw" voile="leger" />
+                    <span className="mt-4 block titre text-[1.5rem] leading-[1] text-nuit group-hover/autre:text-royal">{a.titre}</span>
+                    <time dateTime={a.date} className="mt-1.5 block cote text-[0.9375rem] text-encre-douce">
                       {dateLongue(a.date)}
                     </time>
-                    <span className="mt-1 block titre text-[1.5rem] leading-[1] text-nuit group-hover/autre:text-royal">{a.titre}</span>
                   </Link>
                 </li>
               ))}

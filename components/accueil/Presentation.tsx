@@ -40,7 +40,7 @@ export function Presentation() {
             photo="poseConduiteTopographie"
             ratio="aspect-[5/4]"
             sizes="(min-width: 1024px) 36vw, 100vw"
-            voile="aucun"
+            voile="leger"
             equerres
             decalage={14}
           />
@@ -48,7 +48,7 @@ export function Presentation() {
             photo="dalotRegard"
             ratio="aspect-[4/3]"
             sizes="(min-width: 1024px) 20vw, 60vw"
-            voile="aucun"
+            voile="leger"
             equerres={false}
             className="-mt-24 ml-auto w-3/5 shadow-[var(--ombre-planche)] lg:absolute lg:-bottom-14 lg:-left-20 lg:mt-0 lg:ml-0 lg:w-[52%]"
           />

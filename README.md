@@ -1,22 +1,51 @@
 # PET – Site web
 
-Dossier de départ du site de **Partenaire Entreprise Travaux SUARL** (Dakar).
+Site vitrine de **PARTENAIRE ENTREPRISE TRAVAUX SUARL** (PET), entreprise de BTP à Dakar.
+Next.js 16 (App Router) + TypeScript + Tailwind CSS 4.
 
-```
-PET-site-web/
-├── AGENTS.md                  Consignes pour l'agent (à lire en premier)
-├── content/entreprise.json    Faits et textes de l'entreprise
-├── docs/
-│   ├── design-brief.md        Identité visuelle et menus
-│   └── originaux/             Documents du client (logo, bâche, présentation)
-├── prompts/
-│   └── prompt-ai-studio-PET.md  Prompt complet pour la première génération
-└── assets/
-    ├── logo/logo-PET.png
-    └── photos/01…11-*.png     Photos de chantier découpées
+## Lancer le site
+
+```bash
+npm install
+npm run dev            # développement : http://localhost:3000
+npm run build && npm start   # version de production
 ```
 
-## Démarrage
-1. Ouvrir ce dossier dans Antigravity.
-2. Coller dans l'agent : « Lis AGENTS.md, puis construis le site selon prompts/prompt-ai-studio-PET.md. »
-3. Si une première version vient de Google AI Studio, la placer dans un sous-dossier `site/` et demander à l'agent de la reprendre et de l'améliorer.
+Variable à définir au déploiement : `NEXT_PUBLIC_SITE_URL` (domaine public, ex. `https://www.exemple.sn`), utilisée pour le sitemap, les liens canoniques et le partage sur les réseaux.
+
+## Où modifier quoi
+
+| Besoin | Fichier |
+|---|---|
+| Faits de l'entreprise (contacts, domaines, valeurs) | `content/entreprise.json` |
+| Navigation, slogan (`SLOGAN`), textes des domaines, réseaux sociaux | `content/site.ts` |
+| Projets, actualités, offres d'emploi (données **EXEMPLE**) | `content/exemples.ts` |
+| Photos (texte alternatif, cadrage) | `content/photos.ts` |
+| Couleurs, polices, voiles, ombres (jetons de design) | `app/globals.css` |
+| Envoi des formulaires | `app/api/contact/route.ts` |
+
+### Remplacer les photos par les originaux HD
+1. Déposer les nouveaux fichiers dans `assets/photos/` (mêmes noms) et le logo dans `assets/logo/`.
+2. Lancer `npm run images` : les versions du site sont régénérées dans `public/`.
+
+### Brancher l'envoi des formulaires
+`/api/contact` valide les demandes mais **n'envoie rien** pour l'instant (le visiteur en est averti et peut écrire par e-mail ou WhatsApp). Ajouter l'envoi (Resend, SMTP…) à l'endroit marqué « À BRANCHER ».
+
+## Documentation
+- `AGENTS.md` : consignes du projet.
+- `PRODUCT.md` : produit, publics, contraintes.
+- `docs/direction.md` : direction artistique (et révisions du client).
+- `docs/decisions.md` : décisions prises et points à confirmer.
+- `DESIGN.md` : système de design tel que livré.
+
+## Arborescence
+
+```
+app/            pages (accueil, entreprise, savoir-faire, réalisations, engagements,
+                actualités, carrières, contact, mentions légales) et API
+components/     accueil/, layout/ (header, méga-menu, footer…), ui/, formulaires/
+content/        données du site (faits, exemples, photos, formulaires)
+scripts/        prepare-images.mjs (photos et logo depuis assets/)
+assets/         sources du client (logo, photos de la bâche)
+docs/           brief, direction, décisions, documents d'origine
+```

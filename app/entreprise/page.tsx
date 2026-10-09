@@ -3,6 +3,7 @@ import Image from "next/image";
 import { photos } from "@/content/photos";
 import { entreprise, valeurs } from "@/content/site";
 import { EnTetePage } from "@/components/ui/EnTetePage";
+import { Equerres } from "@/components/ui/Equerres";
 import { BoutonLien } from "@/components/ui/Bouton";
 import { Icone } from "@/components/ui/Icone";
 import { PhotoCadre } from "@/components/ui/PhotoCadre";
@@ -65,7 +66,7 @@ export default function PageEntreprise() {
               ))}
           </div>
           <div className="lg:col-span-5 lg:col-start-8">
-            <p className="cote text-[1.0625rem] text-encre-douce">Nous travaillons pour trois types de clients</p>
+            <h3 className="titre text-titre-s text-nuit">Trois types de clients</h3>
             <ul className="revele-groupe mt-6 grid gap-4">
               {clients.map((c) => (
                 <li key={c.titre} className="flex items-start gap-5 rounded-[6px] bg-sable p-6">
@@ -86,32 +87,29 @@ export default function PageEntreprise() {
       {/* Notre histoire */}
       <section id="histoire" aria-labelledby="titre-histoire" className="sur-sombre relative isolate overflow-hidden bg-royal py-20 text-blanc lg:py-28">
         <div aria-hidden className="absolute inset-0 -z-10">
-          <Image src={photos.terrassementEngins.src} alt="" fill sizes="100vw" className="object-cover opacity-50" />
-          <div className="absolute inset-0 voile-royal" />
+          <Image src={photos.terrassementEngins.src} alt="" fill sizes="(max-width: 768px) 70vw, 100vw" quality={50} className="object-cover" />
+          <div className="absolute inset-0 voile-royal-lateral" />
         </div>
-        <div className="conteneur grid gap-12 lg:grid-cols-12 lg:items-end lg:gap-8">
-          <div className="revele lg:col-span-5">
+        <div className="conteneur grid gap-12 lg:grid-cols-12 lg:items-center lg:gap-8">
+          <div className="revele lg:col-span-6">
             <h2 id="titre-histoire" className="titre text-titre-l text-blanc">
               Notre histoire
             </h2>
             <p className="mt-6 max-w-[34rem] text-lg leading-relaxed text-brume">
               Créée à Dakar en {entreprise.fondation}, PET réunit au sein d&apos;une même entreprise le bâtiment, les travaux publics et
-              VRD, l&apos;hydraulique, l&apos;assainissement et le génie civil : un seul partenaire, de l&apos;étude à la livraison.
+              VRD, l&apos;hydraulique, l&apos;assainissement et le génie civil&nbsp;: un seul partenaire, de l&apos;étude à la livraison.
+            </p>
+            <p className="mt-6 max-w-[34rem] cote text-[1.125rem] leading-relaxed text-blanc">
+              Aujourd&apos;hui&nbsp;: {entreprise.domaines.length} domaines d&apos;expertise, {entreprise.clients.length} types de clients et
+              plus de 40 ans d&apos;expérience cumulée dans l&apos;équipe.
             </p>
           </div>
-          <ol className="revele-groupe grid gap-4 sm:grid-cols-2 lg:col-span-6 lg:col-start-7">
-            <li className="verre-liquide rounded-[6px] p-7">
-              <p className="titre text-chiffre text-jaune">{entreprise.fondation}</p>
-              <p className="mt-3 cote text-[1.125rem] text-blanc">Création de l&apos;entreprise à Dakar</p>
-            </li>
-            <li className="verre-liquide rounded-[6px] p-7">
-              <p className="titre text-titre-m text-blanc">Aujourd&apos;hui</p>
-              <p className="mt-3 cote text-[1.125rem] text-blanc">
-                {entreprise.domaines.length} domaines d&apos;expertise, {entreprise.clients.length} types de clients, plus de 40 ans
-                d&apos;expérience cumulée
-              </p>
-            </li>
-          </ol>
+          <div className="revele lg:col-span-5 lg:col-start-8">
+            <Equerres decalage={18} className="inline-block px-6 py-5">
+              <p className="titre text-[clamp(5rem,3rem+7vw,7rem)] leading-[0.85] text-jaune chiffres-tabulaires">{entreprise.fondation}</p>
+            </Equerres>
+            <p className="mt-6 cote text-[1.125rem] text-blanc">Création de l&apos;entreprise à Dakar</p>
+          </div>
         </div>
       </section>
 
@@ -151,7 +149,7 @@ export default function PageEntreprise() {
       <section id="qualite-securite" aria-labelledby="titre-qualite" className="bg-blanc py-20 lg:py-28">
         <div className="conteneur grid gap-14 lg:grid-cols-12 lg:items-center lg:gap-8">
           <div className="lg:col-span-6">
-            <PhotoCadre photo="niveleuseVoirie" ratio="aspect-[4/3]" sizes="(min-width: 1024px) 45vw, 100vw" voile="aucun" equerres decalage={14} />
+            <PhotoCadre photo="niveleuseVoirie" ratio="aspect-[4/3]" sizes="(min-width: 1024px) 45vw, 100vw" voile="leger" equerres decalage={14} />
           </div>
           <div className="revele lg:col-span-5 lg:col-start-8">
             <h2 id="titre-qualite" className="titre text-titre-l text-nuit">

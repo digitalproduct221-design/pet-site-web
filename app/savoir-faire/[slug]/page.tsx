@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { projets } from "@/content/exemples";
 import { domaineParSlug, domaines } from "@/content/site";
+import { listeFrancaise } from "@/content/texte";
 import { EnTetePage } from "@/components/ui/EnTetePage";
 import { BoutonLien } from "@/components/ui/Bouton";
 import { CarteProjet } from "@/components/ui/CarteProjet";
@@ -20,7 +21,7 @@ export async function generateMetadata({ params }: PageProps<"/savoir-faire/[slu
   if (!d) return {};
   return {
     title: d.titre,
-    description: `${d.titre} à Dakar avec PET : ${d.prestations.join(", ").toLowerCase()}.`,
+    description: `${d.titre} à Dakar avec PET : ${listeFrancaise(d.prestations).toLowerCase()}.`,
     alternates: { canonical: `/savoir-faire/${d.slug}` },
   };
 }
@@ -72,9 +73,9 @@ export default async function PageDomaine({ params }: PageProps<"/savoir-faire/[
       {/* Galerie */}
       <section aria-label="Galerie" className="bg-sable pb-20 pt-4 lg:pb-28">
         <div className="conteneur grid gap-4 sm:grid-cols-2 lg:grid-cols-12 lg:gap-5">
-          <PhotoCadre photo={photoB} ratio="aspect-[4/3]" sizes="(min-width: 1024px) 55vw, 100vw" voile="aucun" equerres decalage={12} className="sm:col-span-2 lg:col-span-7" />
+          <PhotoCadre photo={photoB} ratio="aspect-[4/3]" sizes="(min-width: 1024px) 55vw, 100vw" voile="leger" equerres decalage={12} className="sm:col-span-2 lg:col-span-7" />
           <div className="grid gap-4 lg:col-span-5 lg:gap-5">
-            <PhotoCadre photo={photoC} ratio="aspect-[4/3] lg:aspect-auto lg:h-full" sizes="(min-width: 1024px) 38vw, 50vw" voile="aucun" className="lg:h-full [&>div]:h-full" />
+            <PhotoCadre photo={photoC} ratio="aspect-[4/3] lg:aspect-auto lg:h-full" sizes="(min-width: 1024px) 38vw, 50vw" voile="leger" className="lg:h-full [&>div]:h-full" />
           </div>
         </div>
       </section>

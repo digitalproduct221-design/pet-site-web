@@ -98,9 +98,9 @@ export default async function PageProjet({ params }: PageProps<"/realisations/[s
 
       <section aria-label="Galerie du chantier" className="bg-sable py-16 lg:py-24">
         <div className="conteneur grid gap-5 md:grid-cols-12">
-          <PhotoCadre photo={projet.photos[0]} ratio="aspect-[4/3]" sizes="(min-width: 768px) 58vw, 100vw" voile="aucun" equerres decalage={12} className="md:col-span-7" />
+          <PhotoCadre photo={projet.photos[0]} ratio="aspect-[4/3]" sizes="(min-width: 768px) 58vw, 100vw" voile="leger" equerres decalage={12} className="md:col-span-7" />
           {projet.photos[1] ? (
-            <PhotoCadre photo={projet.photos[1]} ratio="aspect-[4/3] md:aspect-auto md:h-full" sizes="(min-width: 768px) 40vw, 100vw" voile="aucun" className="md:col-span-5 md:h-full [&>div]:h-full" />
+            <PhotoCadre photo={projet.photos[1]} ratio="aspect-[4/3] md:aspect-auto md:h-full" sizes="(min-width: 768px) 40vw, 100vw" voile="leger" className="md:col-span-5 md:h-full [&>div]:h-full" />
           ) : null}
         </div>
       </section>

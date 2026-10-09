@@ -1,6 +1,7 @@
 /** Index statique pour la recherche plein écran (filtré dans le navigateur). */
 import { domaines, navigation } from "./site";
 import { articles, offres, projets } from "./exemples";
+import { listeFrancaise } from "./texte";
 
 export type Resultat = { titre: string; description: string; href: string; rubrique: string };
 
@@ -20,7 +21,7 @@ export const indexRecherche: Resultat[] = [
   ),
   ...domaines.map((d) => ({
     titre: d.titre,
-    description: `${d.resume} ${d.prestations.join(", ")}.`,
+    description: `${d.resume} ${listeFrancaise(d.prestations)}.`,
     href: `/savoir-faire/${d.slug}`,
     rubrique: "Savoir-faire",
   })),

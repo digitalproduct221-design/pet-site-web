@@ -159,7 +159,11 @@ export function Hero() {
 
       <div className="conteneur flex flex-1 flex-col justify-between gap-12 pb-8 pt-16 lg:pb-12 lg:pt-24">
         <div className="entree max-w-[46rem]">
-          <Equerres seule decalage={22} className="inline-block pl-1 pt-2">
+          <Equerres
+            decalage={22}
+            className="inline-block px-3 pb-4 pt-3"
+            style={{ ["--equerre-taille" as string]: "clamp(2.75rem, 1.6rem + 3.4vw, 4.75rem)", ["--equerre-epaisseur" as string]: "5px" }}
+          >
             <h1 className="titre text-titre-xl text-blanc ombre-texte">
               <span className="block">Nous bâtissons.</span>
               <span className="block">Nous raccordons.</span>
@@ -180,13 +184,13 @@ export function Hero() {
         {/* Panneau de verre liquide : légende et commandes du diaporama */}
         <div className="verre-liquide w-full max-w-[30rem] self-end rounded-[6px] p-5 sm:p-6">
           <div aria-live={enPause ? "polite" : "off"} aria-atomic="true">
-            <div className="flex items-center justify-between gap-4">
-              <p className="cote text-[0.875rem] uppercase tracking-[0.1em] text-jaune">{diapo.domaine}</p>
+            <p className="min-h-[3.2em] text-[1.0625rem] leading-snug text-blanc">{diapo.legende}</p>
+            <div className="mt-2 flex items-center justify-between gap-4">
+              <p className="cote text-[0.9375rem] text-jaune">{diapo.domaine}</p>
               <p className="cote text-[0.9375rem] text-brume chiffres-tabulaires">
                 <span className="text-blanc">{String(index + 1).padStart(2, "0")}</span> / {String(total).padStart(2, "0")}
               </p>
             </div>
-            <p className="mt-2 min-h-[3.2em] text-[1.0625rem] leading-snug text-blanc">{diapo.legende}</p>
           </div>
 
           <div className="mt-4 flex items-center justify-between gap-4">

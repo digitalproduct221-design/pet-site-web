@@ -17,12 +17,12 @@ export function CarteProjet({ projet, ton = "clair", ratio = "aspect-[4/3]" }: {
         voile="leger"
         imageClassName="transition-transform duration-[900ms] ease-chantier group-hover/projet:scale-[1.04]"
       />
-      <span className="mt-5 flex flex-wrap items-center gap-3">
-        <span className={`cote text-[0.9375rem] uppercase tracking-[0.06em] ${sombre ? "text-ciel" : "text-royal"}`}>{domaine?.titre}</span>
-        <MentionExemple visible={projet.exemple} ton={ton} />
-      </span>
-      <span className={`mt-2 block titre text-[1.625rem] leading-[1] transition-colors ${sombre ? "text-blanc group-hover/projet:text-jaune" : "text-nuit group-hover/projet:text-royal"}`}>
+      <span className={`mt-5 block titre text-[1.625rem] leading-[1] transition-colors ${sombre ? "text-blanc group-hover/projet:text-jaune" : "text-nuit group-hover/projet:text-royal"}`}>
         {projet.titre}
+      </span>
+      <span className="mt-2 flex flex-wrap items-center gap-3">
+        <span className={`cote text-[0.9375rem] ${sombre ? "text-ciel" : "text-royal"}`}>{domaine?.titre}</span>
+        <MentionExemple visible={projet.exemple} ton={ton} />
       </span>
       <span className={`mt-2 block text-[1rem] leading-relaxed ${sombre ? "text-brume" : "text-encre-douce"}`}>{projet.resume}</span>
     </Link>

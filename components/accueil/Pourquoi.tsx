@@ -19,7 +19,7 @@ export function Pourquoi() {
               photo="niveleuseVoirie"
               ratio="aspect-[4/3]"
               sizes="(min-width: 1024px) 34vw, 100vw"
-              voile="aucun"
+              voile="leger"
               equerres
               decalage={12}
               className="mt-12 hidden lg:block lg:max-w-[28rem]"

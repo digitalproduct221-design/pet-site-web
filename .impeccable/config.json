@@ -1,0 +1,17 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "app/globals.css"
+        ],
+        "createdAt": "2026-10-09T04:12:58.765Z",
+        "reason": "Claude, après vérification : L684 est l'utilitaire ombre-bouton (box-shadow inset 0 -3px, relief en bas des boutons), pas une bordure d'accent latérale sur une carte"
+      }
+    ]
+  }
+}

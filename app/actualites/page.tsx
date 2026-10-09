@@ -40,13 +40,13 @@ export default function PageActualites() {
                 />
                 <span aria-hidden className="absolute inset-0 -z-10 voile-carte" />
                 <span className="verre-liquide block max-w-[40rem] rounded-[6px] p-6 lg:p-8">
-                  <span className="flex flex-wrap items-center gap-3">
+                  <h2 className="titre text-titre-m text-blanc">{une.titre}</h2>
+                  <span className="mt-3 flex flex-wrap items-center gap-3">
                     <time dateTime={une.date} className="cote text-[0.9375rem] text-brume">
                       {dateLongue(une.date)}
                     </time>
                     <MentionExemple visible={une.exemple} ton="sombre" />
                   </span>
-                  <h2 className="mt-3 titre text-titre-m text-blanc">{une.titre}</h2>
                   <p className="mt-3 text-[1.0625rem] leading-relaxed text-blanc/90">{une.chapo}</p>
                   <span className="mt-5 inline-flex items-center gap-2 cote text-[1.0625rem] text-jaune">
                     Lire l&apos;article
@@ -69,16 +69,16 @@ export default function PageActualites() {
                         photo={a.photo}
                         ratio="aspect-[16/10]"
                         sizes="(min-width: 768px) 45vw, 100vw"
-                        voile="aucun"
+                        voile="leger"
                         imageClassName="transition-transform duration-[900ms] ease-chantier group-hover/article:scale-[1.04]"
                       />
-                      <span className="mt-5 flex flex-wrap items-center gap-3">
+                      <h2 className="mt-5 titre text-[1.875rem] leading-[1] text-nuit group-hover/article:text-royal">{a.titre}</h2>
+                      <span className="mt-2 flex flex-wrap items-center gap-3">
                         <time dateTime={a.date} className="cote text-[0.9375rem] text-encre-douce">
                           {dateLongue(a.date)}
                         </time>
                         <MentionExemple visible={a.exemple} />
                       </span>
-                      <h2 className="mt-2 titre text-[1.875rem] leading-[1] text-nuit group-hover/article:text-royal">{a.titre}</h2>
                       <p className="mt-3 text-[1.0625rem] leading-relaxed text-encre-douce">{a.chapo}</p>
                     </Link>
                   </article>

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import { valeurs } from "@/content/site";
+import { listeFrancaise } from "@/content/texte";
 import { EnTetePage } from "@/components/ui/EnTetePage";
 import { BoutonLien } from "@/components/ui/Bouton";
 import { Icone } from "@/components/ui/Icone";
@@ -38,23 +39,26 @@ export default function PageCarrieres() {
 
       <section aria-labelledby="pourquoi-nous-rejoindre" className="bg-blanc py-20 lg:py-28">
         <div className="conteneur grid gap-14 lg:grid-cols-12 lg:gap-8">
-          <div className="revele lg:col-span-5">
-            <h2 id="pourquoi-nous-rejoindre" className="titre text-titre-l text-nuit">
-              Pourquoi nous rejoindre
-            </h2>
-            <p className="mt-5 max-w-[34rem] text-lg leading-relaxed text-encre-douce">
-              Chez PET, chacun compte sur le chantier. Nos valeurs guident la façon dont nous travaillons ensemble :
-            </p>
-            <p className="mt-4 max-w-[34rem] cote text-[1.0625rem] leading-relaxed text-royal">
-              {valeurs.map((v) => v.titre).join(", ")}.
-            </p>
+          <div className="lg:col-span-5">
+            <div className="revele">
+              <h2 id="pourquoi-nous-rejoindre" className="titre text-titre-l text-nuit">
+                Pourquoi nous rejoindre
+              </h2>
+              <p className="mt-5 max-w-[34rem] text-lg leading-relaxed text-encre-douce">
+                Chez PET, chacun compte sur le chantier. Nos valeurs guident la façon dont nous travaillons ensemble&nbsp;:{" "}
+                {listeFrancaise(valeurs.map((v) => v.titre)).toLowerCase()}.
+              </p>
+            </div>
+            <PhotoCadre photo="conduiteOuvrage" ratio="aspect-[4/3]" sizes="(min-width: 1024px) 36vw, 100vw" equerres decalage={12} className="mt-10" />
           </div>
-          <ul className="revele-groupe grid gap-10 sm:grid-cols-3 lg:col-span-7 lg:gap-8">
+          <ul className="revele-groupe grid content-center gap-12 lg:col-span-6 lg:col-start-7 lg:gap-16">
             {atouts.map((a) => (
-              <li key={a.titre}>
-                <Icone nom={a.icone} size={40} weight="light" className="text-royal" />
-                <h3 className="mt-5 titre text-[1.625rem] leading-[1] text-nuit">{a.titre}</h3>
-                <p className="mt-3 text-[1.0625rem] leading-relaxed text-encre-douce">{a.texte}</p>
+              <li key={a.titre} className="grid grid-cols-[auto_1fr] gap-x-6">
+                <Icone nom={a.icone} size={40} weight="light" className="mt-1 text-royal" />
+                <div>
+                  <h3 className="titre text-titre-m text-royal">{a.titre}</h3>
+                  <p className="mt-3 max-w-[32rem] text-[1.0625rem] leading-relaxed text-encre-douce">{a.texte}</p>
+                </div>
               </li>
             ))}
           </ul>

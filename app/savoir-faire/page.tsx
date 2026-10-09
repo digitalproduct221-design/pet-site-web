@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { photos } from "@/content/photos";
 import { domaines } from "@/content/site";
+import { listeFrancaise } from "@/content/texte";
 import { EnTetePage } from "@/components/ui/EnTetePage";
 import { Icone } from "@/components/ui/Icone";
 import { AppelFinal } from "@/components/accueil/AppelFinal";
@@ -53,7 +54,7 @@ export default function PageSavoirFaire() {
                       <span className={`titre leading-[0.95] text-blanc ${vedette ? "text-titre-l" : "text-[2rem]"}`}>{d.titre}</span>
                     </span>
                     <span className="mt-4 block text-[1.0625rem] leading-relaxed text-blanc/90">{d.accroche}</span>
-                    <span className="mt-4 block cote text-[0.9375rem] leading-relaxed text-brume">{d.prestations.join(", ")}</span>
+                    <span className="mt-4 block cote text-[0.9375rem] leading-relaxed text-brume">{listeFrancaise(d.prestations)}</span>
                     <span className="mt-5 inline-flex items-center gap-2 cote text-[1.0625rem] text-jaune">
                       Découvrir le domaine
                       <Icone nom="fleche" size={18} weight="bold" className="transition-transform group-hover/domaine:translate-x-1" />

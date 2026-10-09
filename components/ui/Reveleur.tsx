@@ -2,11 +2,11 @@
 
 import { useEffect } from "react";
 
-const SELECTEUR = ".revele:not([data-vu]), .revele-groupe:not([data-vu]), .revele-image:not([data-vu]), .trace:not([data-vu])";
+const SELECTEUR = ".revele:not([data-vu]), .revele-groupe:not([data-vu]), .revele-image:not([data-vu])";
 
 /**
  * Apparitions au défilement, une seule fois par élément
- * (.revele, .revele-groupe, .revele-image, .trace).
+ * (.revele, .revele-groupe, .revele-image).
  * Le contenu est visible par défaut : il n'est masqué qu'une fois ce script
  * actif (classe `js` sur <html>), et jamais sous mouvement réduit (voir CSS).
  * Les éléments ajoutés plus tard (changement de page, filtres) sont pris en compte.

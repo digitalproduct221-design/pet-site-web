@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 import { photos } from "@/content/photos";
+import { Equerres } from "@/components/ui/Equerres";
 import { entreprise } from "@/content/site";
 
 type Chiffre = { valeur: number; depart: number; suffixe?: string; libelle: string };
@@ -58,31 +59,41 @@ function Compteur({ valeur, depart, suffixe }: Pick<Chiffre, "valeur" | "depart"
 }
 
 /**
- * Les chiffres clés sur fond bleu royal : une photo de chantier très voilée
- * donne de la matière au verre liquide des quatre tuiles.
+ * Les chiffres clés sur fond bleu royal : l'année de création composée en grand
+ * entre les deux équerres du logo, les trois autres chiffres en lignes dans un
+ * panneau de verre posé sur une vraie photo de chantier.
  */
 export function Chiffres() {
   const fond = photos.ferraillageOuvrage;
+  const [annee, ...autres] = chiffres;
   return (
     <section aria-labelledby="titre-chiffres" className="sur-sombre relative isolate overflow-hidden bg-royal text-blanc">
       <h2 id="titre-chiffres" className="sr-only">
         PET en chiffres
       </h2>
       <div aria-hidden className="absolute inset-0 -z-10">
-        <Image src={fond.src} alt="" fill sizes="(max-width: 768px) 70vw, 100vw" quality={50} className="object-cover opacity-60" style={{ objectPosition: "50% 40%" }} />
-        <div className="absolute inset-0 voile-royal" />
+        <Image src={fond.src} alt="" fill sizes="(max-width: 768px) 70vw, 100vw" quality={50} className="object-cover" style={{ objectPosition: "50% 40%" }} />
+        <div className="absolute inset-0 voile-royal-lateral" />
       </div>
-      <div className="conteneur py-16 lg:py-24">
-        <dl className="revele-groupe grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-5 lg:gap-5">
-          {chiffres.map((c, i) => (
-            <div key={c.libelle} className={`verre-liquide flex flex-col rounded-[6px] p-5 sm:p-7 lg:p-8 ${i === 0 ? "col-span-2 lg:justify-end" : i === chiffres.length - 1 ? "col-span-2 lg:col-span-1" : ""}`}>
-              <dt className="order-2 mt-3 max-w-[16rem] cote text-[1rem] leading-snug text-brume sm:text-[1.0625rem]">{c.libelle}</dt>
-              <dd className="order-1 titre text-chiffre text-blanc">
+      <div className="conteneur grid gap-10 py-16 lg:grid-cols-12 lg:items-center lg:gap-8 lg:py-24">
+        <div className="revele flex flex-col lg:col-span-5">
+          <Equerres decalage={18} className="self-start px-5 py-4">
+            <p className="titre text-chiffre text-blanc">
+              <Compteur valeur={annee.valeur} depart={annee.depart} />
+            </p>
+          </Equerres>
+          <p className="mt-6 max-w-[18rem] cote text-[1.125rem] leading-snug text-brume">{annee.libelle}</p>
+        </div>
+        <div className="verre-liquide revele-groupe grid gap-6 rounded-[6px] p-6 sm:p-8 lg:col-span-6 lg:col-start-7">
+          {autres.map((c) => (
+            <div key={c.libelle} className="grid grid-cols-[5.5rem_1fr] items-center gap-5 sm:grid-cols-[7rem_1fr]">
+              <p className="titre text-[clamp(3rem,2.2rem+2.4vw,4.25rem)] leading-none text-blanc">
                 <Compteur valeur={c.valeur} depart={c.depart} suffixe={c.suffixe} />
-              </dd>
+              </p>
+              <p className="cote text-[1.0625rem] leading-snug text-blanc/90">{c.libelle}</p>
             </div>
           ))}
-        </dl>
+        </div>
       </div>
     </section>
   );

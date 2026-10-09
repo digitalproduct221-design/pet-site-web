@@ -103,7 +103,7 @@ export default function PageEngagements() {
                     <p className="mt-5 text-[1.125rem] leading-relaxed text-encre">{e.intro}</p>
                     {liste}
                   </div>
-                  <PhotoCadre photo={e.photo} ratio="aspect-[4/5]" sizes="(min-width: 1024px) 34vw, (min-width: 768px) 45vw, 100vw" voile="aucun" equerres={i === 0} decalage={12} />
+                  <PhotoCadre photo={e.photo} ratio="aspect-[4/5]" sizes="(min-width: 1024px) 34vw, (min-width: 768px) 45vw, 100vw" voile="leger" equerres={i === 0} decalage={12} />
                 </section>
               ) : (
                 <section

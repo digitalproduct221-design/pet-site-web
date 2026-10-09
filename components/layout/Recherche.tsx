@@ -107,20 +107,20 @@ export function Recherche({ classeDeclencheur = "" }: { classeDeclencheur?: stri
                     <p className="cote text-[1.0625rem] text-brume">
                       {resultats.length} résultat{resultats.length > 1 ? "s" : ""}
                     </p>
-                    <ul className="mt-4 divide-y divide-[var(--color-ligne-sombre)]">
+                    <ul className="mt-4 grid gap-2">
                       {resultats.map((r) => (
                         <li key={`${r.href}-${r.titre}`}>
                           <Link
                             href={r.href}
                             onClick={() => setOuvert(false)}
-                            className="group/resultat flex items-start justify-between gap-6 py-5"
+                            className="group/resultat flex items-start justify-between gap-6 rounded-[6px] px-4 py-4 transition-colors hover:bg-blanc/[0.06]"
                           >
                             <span>
-                              <span className="block cote text-[0.875rem] uppercase tracking-[0.06em] text-ciel">{r.rubrique}</span>
-                              <span className="mt-1 block titre text-[1.625rem] text-blanc group-hover/resultat:text-jaune">{r.titre}</span>
+                              <span className="block titre text-[1.625rem] text-blanc group-hover/resultat:text-jaune">{r.titre}</span>
                               <span className="mt-1 block text-brume">{r.description}</span>
+                              <span className="mt-1.5 block cote text-[0.9375rem] text-ciel">{r.rubrique}</span>
                             </span>
-                            <Icone nom="fleche" size={24} className="mt-6 shrink-0 text-jaune transition-transform group-hover/resultat:translate-x-1" />
+                            <Icone nom="fleche" size={24} className="mt-1 shrink-0 text-jaune transition-transform group-hover/resultat:translate-x-1" />
                           </Link>
                         </li>
                       ))}

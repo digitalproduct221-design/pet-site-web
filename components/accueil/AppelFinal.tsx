@@ -24,8 +24,7 @@ export function AppelFinal() {
           </div>
         </div>
         <div className="lg:col-span-5 lg:col-start-8 xl:col-span-4 xl:col-start-9">
-          <p className="cote text-[1rem] uppercase tracking-[0.08em] text-nuit/80">Appelez-nous</p>
-          <ul className="mt-3 grid gap-3">
+          <ul aria-label="Nos numéros de téléphone" className="grid gap-3">
             {telephones.map((t) => (
               <li key={t.affichage}>
                 <a
