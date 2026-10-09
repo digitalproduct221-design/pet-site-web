@@ -3,7 +3,7 @@
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import { useCallback, useRef, useState } from "react";
-import { photos as registre, type PhotoId } from "@/content/photos";
+import type { ImageSite } from "@/content/images";
 import { Icone } from "@/components/ui/Icone";
 
 // La visionneuse (Radix Dialog) ne se charge qu'au premier clic sur une photo.
@@ -13,7 +13,7 @@ const Visionneuse = dynamic(() => import("./Visionneuse"), { ssr: false });
  * Galerie d'une réalisation : une mosaïque de photos, chacune ouvre la
  * visionneuse plein écran (Visionneuse.tsx, chargée au premier clic).
  */
-export function Galerie({ photos, titre }: { photos: PhotoId[]; titre: string }) {
+export function Galerie({ photos, titre }: { photos: ImageSite[]; titre: string }) {
   const [ouverte, setOuverte] = useState(false);
   const [index, setIndex] = useState(0);
   const total = photos.length;
@@ -32,12 +32,12 @@ export function Galerie({ photos, titre }: { photos: PhotoId[]; titre: string })
     <>
       <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-12 lg:gap-5">
         {photos.map((id, i) => {
-          const photo = registre[id];
+          const photo = id;
           // Une grande photo et deux petites ; à deux photos, deux moitiés égales.
           const grande = i === 0 && total > 2;
           const cellule = grande ? "sm:col-span-2 lg:col-span-8 lg:row-span-2" : total > 2 ? "lg:col-span-4" : "lg:col-span-6";
           return (
-            <li key={id} className={cellule}>
+            <li key={i} className={cellule}>
               <button
                 type="button"
                 onClick={(e) => ouvrir(i, e.currentTarget)}

@@ -50,12 +50,12 @@ const diapos: Diapo[] = [
  */
 export function Hero() {
   return (
-    <section aria-roledescription="carrousel" aria-label="Nos chantiers en images" className="bg-sable lg:px-4 lg:pt-4">
-      <div className="cadre-immersif equerres relative isolate flex min-h-[max(34rem,calc(100svh-var(--header-h)-var(--barre-mobile-h)))] flex-col justify-between text-blanc lg:min-h-[max(40rem,calc(100svh-var(--header-h)-var(--topbar-h)-1rem))]" data-vu="">
+    <section aria-roledescription="carrousel" aria-label="Nos chantiers en images" className="relative isolate min-h-screen w-full overflow-hidden">
+      <div className="relative isolate flex min-h-screen flex-col justify-between text-blanc pt-24 sm:pt-28 lg:pt-32" data-vu="">
         {/* Domaines, en haut à droite */}
         <ul
           aria-label="Nos domaines"
-          className="verre-immersif mr-4 mt-4 hidden self-end rounded-panneau px-5 py-4 cote text-[0.875rem] uppercase leading-[1.9] tracking-[0.16em] md:block lg:mr-8 lg:mt-8"
+          className="liquid-glass-sombre mr-4 hidden self-end rounded-2xl px-5 py-3.5 cote text-[0.875rem] uppercase leading-[1.8] tracking-[0.16em] md:block lg:mr-8"
         >
           {["Bâtiment", "Travaux publics et VRD", "Hydraulique", "Assainissement", "Génie civil"].map((d) => (
             <li key={d} className="flex items-center gap-2.5">
@@ -66,7 +66,7 @@ export function Hero() {
         </ul>
 
         {/* Titre en bas à gauche, panneau du diaporama en bas à droite */}
-        <div className="conteneur mt-auto grid items-end gap-6 pb-6 pt-24 sm:pb-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-10 lg:pb-12">
+        <div className="conteneur mt-auto grid items-end gap-6 pb-20 sm:pb-12 lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-10 lg:pb-16">
           <div className="entree max-w-[46rem]">
             <p className="cote text-[0.9375rem] uppercase tracking-[0.16em] text-blanc ombre-texte max-sm:hidden">Entreprise de BTP à Dakar, depuis 2016</p>
             <h1 className="titre sm:mt-4 text-[clamp(2.75rem,1.2rem+5.4vw,6rem)] leading-[0.92] text-blanc ombre-texte">
@@ -76,7 +76,6 @@ export function Hero() {
             </h1>
             <p className="mt-5 max-w-[32rem] text-[1.1875rem] leading-relaxed text-blanc ombre-texte max-sm:hidden">{SLOGAN}.</p>
             <div className="mt-7 flex flex-wrap gap-4">
-              {/* Sur mobile, la barre d'actions fixe porte déjà « Devis » : un seul appel principal à l'écran */}
               <span className="hidden sm:contents">
                 <BoutonLien href="/contact#devis">Demander un devis</BoutonLien>
               </span>

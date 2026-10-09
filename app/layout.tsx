@@ -108,7 +108,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         >
           Aller au contenu
         </a>
-        <BarreHaut />
         <Header />
         <main id="contenu" tabIndex={-1} className="outline-none">
           {children}

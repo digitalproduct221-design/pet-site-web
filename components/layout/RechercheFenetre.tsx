@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import { Dialog } from "radix-ui";
-import { useDeferredValue, useMemo, useState, type RefObject } from "react";
-import { indexRecherche, normaliser } from "@/content/recherche";
+import { useDeferredValue, useEffect, useMemo, useState, type RefObject } from "react";
+import { indexRecherche, normaliser, type Resultat } from "@/content/recherche";
 import { Icone } from "@/components/ui/Icone";
 
 const suggestions = ["Hydraulique", "Assainissement", "Conduite fonte", "Devis", "Carrières"];
@@ -22,18 +22,32 @@ export default function RechercheFenetre({
   declencheur: RefObject<HTMLButtonElement | null>;
 }) {
   const [requete, setRequete] = useState("");
+  // Index de départ tout de suite, complété par la base (réalisations, nouvelles) dès qu'il arrive.
+  const [index, setIndex] = useState<Resultat[]>(indexRecherche);
+  useEffect(() => {
+    let actif = true;
+    fetch("/api/recherche")
+      .then((r) => (r.ok ? r.json() : null))
+      .then((donnees: Resultat[] | null) => {
+        if (actif && Array.isArray(donnees)) setIndex(donnees);
+      })
+      .catch(() => {});
+    return () => {
+      actif = false;
+    };
+  }, []);
   const requeteDifferee = useDeferredValue(requete);
 
   const resultats = useMemo(() => {
     const termes = normaliser(requeteDifferee).split(/\s+/).filter(Boolean);
     if (termes.length === 0) return [];
-    return indexRecherche
+    return index
       .filter((r) => {
         const texte = normaliser(`${r.titre} ${r.description} ${r.rubrique}`);
         return termes.every((t) => texte.includes(t));
       })
       .slice(0, 12);
-  }, [requeteDifferee]);
+  }, [requeteDifferee, index]);
 
   return (
     <Dialog.Root

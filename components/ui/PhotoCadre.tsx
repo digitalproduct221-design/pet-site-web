@@ -1,5 +1,6 @@
 import Image from "next/image";
-import { photos, type PhotoId } from "@/content/photos";
+import { resoudreImage, type ImageSite } from "@/content/images";
+import type { PhotoId } from "@/content/photos";
 import { Equerres } from "./Equerres";
 
 type Voile = "aucun" | "leger" | "fort";
@@ -11,7 +12,8 @@ const voiles: Record<Voile, string> = {
 };
 
 type Props = {
-  photo: PhotoId;
+  /** Photo du registre (content/photos.ts) ou image déjà résolue (admin). */
+  photo: PhotoId | ImageSite;
   /** Classe de proportion, ex. « aspect-[4/3] ». Ignorée si `remplir`. */
   ratio?: string;
   /** L'image remplit son parent (qui doit être positionné). */
@@ -52,7 +54,7 @@ export function PhotoCadre({
   alt,
   rideau = !priority,
 }: Props) {
-  const p = photos[photo];
+  const p = resoudreImage(photo);
   const cadre = (
     <div className={`relative overflow-hidden rounded-chantier bg-nuit ${rideau ? "revele-image" : ""} ${remplir ? "absolute inset-0" : ratio}`}>
       <Image

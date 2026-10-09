@@ -6,6 +6,7 @@ import {
   Bridge,
   Buildings,
   Bulldozer,
+  Calculator,
   CaretDown,
   ChatCircleDots,
   CheckCircle,
@@ -49,6 +50,7 @@ import type { IconProps } from "@phosphor-icons/react";
 /** Une seule famille d'icônes (Phosphor), un seul trait. Les noms sont métier. */
 const icones = {
   accueil: House,
+  devis: Calculator,
   projet: Compass,
   chat: ChatCircleDots,
   batiment: Buildings,

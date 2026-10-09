@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { projets } from "@/content/realisations";
+import { lireRealisations } from "@/lib/contenu";
 import { domaineParSlug, domaines } from "@/content/site";
 import { listeFrancaise } from "@/content/texte";
 import { EnTetePage } from "@/components/ui/EnTetePage";
@@ -34,7 +34,7 @@ export default async function PageDomaine({ params }: PageProps<"/savoir-faire/[
   const d = domaineParSlug(slug);
   if (!d) notFound();
 
-  const lies = projets.filter((p) => p.domaine === d.slug);
+  const lies = (await lireRealisations()).filter((p) => p.domaine === d.slug);
   const autres = domaines.filter((x) => x.slug !== d.slug);
   const [photoA, photoB, photoC] = d.photos;
 

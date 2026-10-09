@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { Dialog } from "radix-ui";
 import { useRef, type RefObject } from "react";
-import { photos as registre, type PhotoId } from "@/content/photos";
+import type { ImageSite } from "@/content/images";
 import { Icone } from "@/components/ui/Icone";
 
 const SEUIL_GLISSE = 50; // px avant de changer de photo au doigt
@@ -22,7 +22,7 @@ export default function Visionneuse({
   setOuverte,
   retour,
 }: {
-  photos: PhotoId[];
+  photos: ImageSite[];
   titre: string;
   index: number;
   aller: (i: number) => void;
@@ -32,7 +32,7 @@ export default function Visionneuse({
 }) {
   const total = photos.length;
   const depart = useRef<number | null>(null);
-  const p = registre[photos[index]];
+  const p = photos[index];
 
   return (
     <Dialog.Root open={ouverte} onOpenChange={setOuverte}>
@@ -73,11 +73,11 @@ export default function Visionneuse({
               if (Math.abs(ecart) > SEUIL_GLISSE) aller(index + (ecart < 0 ? 1 : -1));
             }}
           >
-            <figure key={photos[index]} className="animate-[apparition_420ms_var(--ease-chantier)_both]" style={{ width: `min(100%, ${p.src.width}px)` }}>
+            <figure key={index} className="animate-[apparition_420ms_var(--ease-chantier)_both]" style={{ width: `min(100%, ${p.largeur}px)` }}>
               <Image
                 src={p.src}
                 alt={p.alt}
-                sizes={`min(100vw, ${p.src.width}px)`}
+                sizes={`min(100vw, ${p.largeur}px)`}
                 className="mx-auto h-auto max-h-[calc(100svh-12rem)] w-auto rounded-chantier object-contain"
                 draggable={false}
               />

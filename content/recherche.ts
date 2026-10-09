@@ -1,11 +1,17 @@
 /** Index statique pour la recherche plein écran (filtré dans le navigateur). */
 import { domaines, metiers, navigation } from "./site";
 import { besoins } from "./besoins";
-import { projets } from "./realisations";
+import { projetsStatiques, type Projet } from "./realisations";
 import { listeFrancaise } from "./texte";
 
 export type Resultat = { titre: string; description: string; href: string; rubrique: string };
 
+/** Entrées de recherche des réalisations (statiques ou issues de la base). */
+export function entreesRealisations(projets: Projet[]): Resultat[] {
+  return projets.map((p) => ({ titre: p.titre, description: p.resume, href: `/realisations/${p.slug}`, rubrique: "Réalisations" }));
+}
+
+/** Index de départ, livré avec la fenêtre ; /api/recherche le complète avec la base. */
 export const indexRecherche: Resultat[] = [
   { titre: "Accueil", description: "Bâtiment, travaux publics, hydraulique, assainissement et génie civil à Dakar.", href: "/", rubrique: "Pages" },
   { titre: "L'entreprise", description: "Qui sommes-nous, notre histoire, nos valeurs, qualité et sécurité, équipe et moyens.", href: "/entreprise", rubrique: "Pages" },
@@ -26,7 +32,7 @@ export const indexRecherche: Resultat[] = [
     href: `/savoir-faire/${d.slug}`,
     rubrique: "Savoir-faire",
   })),
-  ...projets.map((p) => ({ titre: p.titre, description: p.resume, href: `/realisations/${p.slug}`, rubrique: "Réalisations" })),
+  ...entreesRealisations(projetsStatiques),
   ...besoins.map((b) => ({ titre: b.titre, description: `${b.question} ${listeFrancaise(b.prestations)}.`, href: `/votre-projet#${b.slug}`, rubrique: "Votre projet" })),
   ...metiers.map((m) => ({ titre: m.titre, description: m.texte, href: `/carrieres?metier=${m.id}#candidature`, rubrique: "Carrières" })),
 ];

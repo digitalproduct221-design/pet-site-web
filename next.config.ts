@@ -44,11 +44,10 @@ const nextConfig: NextConfig = {
       { source: "/images/:fichier*", headers: cacheStatique },
     ];
   },
-  // Les actualités d'exemple ont laissé place à « Votre projet » (révision client d'octobre 2026).
   async redirects() {
     return [
-      { source: "/actualites", destination: "/votre-projet", permanent: true },
-      { source: "/actualites/:slug", destination: "/votre-projet", permanent: true },
+      // Anciennes fiches d'actualité d'exemple : la page /actualites porte désormais les nouvelles du quotidien.
+      { source: "/actualites/:slug", destination: "/actualites", permanent: true },
     ];
   },
   cacheComponents: true,

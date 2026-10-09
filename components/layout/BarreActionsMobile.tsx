@@ -11,14 +11,15 @@ interface ItemMenu {
   titre: string;
   href: string;
   icone: string;
+  estCentral?: boolean;
 }
 
 const items: ItemMenu[] = [
   { id: "accueil", titre: "Accueil", href: "/", icone: "accueil" },
   { id: "savoir-faire", titre: "Métiers", href: "/savoir-faire", icone: "engins" },
+  { id: "devis", titre: "Devis", href: "/contact#devis", icone: "devis", estCentral: true },
   { id: "realisations", titre: "Chantiers", href: "/realisations", icone: "photos" },
-  { id: "projet", titre: "Projet", href: "/votre-projet", icone: "liste" },
-  { id: "contact", titre: "Devis", href: "/contact#devis", icone: "telephone" },
+  { id: "contact", titre: "Contact", href: "/contact", icone: "telephone" },
 ];
 
 const domainesRapides = [
@@ -30,42 +31,36 @@ const domainesRapides = [
 ];
 
 /**
- * Navbar mobile flottante (style Apple Dock) :
- * - Position flottante avec verre dépoli liquide
- * - L'élément actif s'agrandit automatiquement avec une animation fluide
- * - Accès express aux sections clés et tiroirs d'actions rapides (domaines & contact direct)
+ * Navbar mobile flottante Liquid Glass (Dock Apple avec bouton central surélevé) :
+ * - 5 menus avec icône en bulle arrondie en haut et libellé en bas
+ * - Bouton central « Devis » (#3) proéminent qui déborde vers le haut (action clé de conversion)
+ * - Morphisme verre liquide dépoli avec biseau supérieur lumineux
  */
 export function BarreActionsMobile() {
   const chemin = usePathname();
   const [tiroir, setTiroir] = useState<"domaines" | "contact" | null>(null);
 
-  // Détermination de l'élément actif selon l'URL courante
   const getActif = () => {
     if (chemin === "/") return "accueil";
     if (chemin.startsWith("/savoir-faire")) return "savoir-faire";
     if (chemin.startsWith("/realisations")) return "realisations";
-    if (chemin.startsWith("/votre-projet")) return "projet";
+    if (chemin.startsWith("/contact#devis") || chemin.includes("devis")) return "devis";
     if (chemin.startsWith("/contact")) return "contact";
     return "";
   };
 
   const actif = getActif();
 
-  // Fermer le tiroir quand la page change
   useEffect(() => {
     setTiroir(null);
   }, [chemin]);
 
-  const handleItemClick = (id: string, href: string) => {
+  const handleItemClick = (id: string) => {
     if (id === "savoir-faire") {
-      // Toggle tiroir des métiers si déjà sur savoir-faire
       if (actif === "savoir-faire") {
         setTiroir((prev) => (prev === "domaines" ? null : "domaines"));
-      } else {
-        setTiroir("domaines");
       }
     } else if (id === "contact") {
-      // Proposer les actions directes rapides
       if (actif === "contact") {
         setTiroir((prev) => (prev === "contact" ? null : "contact"));
       }
@@ -75,12 +70,12 @@ export function BarreActionsMobile() {
   };
 
   return (
-    <div className="fixed inset-x-2.5 bottom-3 z-40 mx-auto max-w-lg lg:hidden select-none">
-      {/* Tiroir d'accès express aux 5 domaines du BTP */}
+    <div className="fixed inset-x-3 bottom-3 z-50 mx-auto max-w-md lg:hidden select-none">
+      {/* Tiroir rapide des 5 domaines */}
       {tiroir === "domaines" && (
-        <div className="mb-2 animate-in fade-in slide-in-from-bottom-2 duration-300 rounded-xl border border-white/20 bg-nuit/95 p-2 shadow-2xl backdrop-blur-2xl">
-          <div className="mb-1.5 flex items-center justify-between px-2 text-[0.75rem] font-bold uppercase tracking-wider text-brume">
-            <span>Accès direct aux domaines</span>
+        <div className="mb-2 animate-in fade-in slide-in-from-bottom-2 duration-300 rounded-2xl liquid-glass-sombre p-2.5 shadow-2xl">
+          <div className="mb-2 flex items-center justify-between px-2 text-[0.75rem] font-bold uppercase tracking-wider text-brume">
+            <span>Métiers du BTP</span>
             <button
               type="button"
               onClick={() => setTiroir(null)}
@@ -96,46 +91,46 @@ export function BarreActionsMobile() {
                 key={d.href}
                 href={d.href}
                 onClick={() => setTiroir(null)}
-                className="flex items-center gap-2 rounded-lg bg-white/5 px-2.5 py-2 text-[0.8125rem] font-medium text-blanc transition-colors hover:bg-jaune hover:text-nuit active:scale-95"
+                className="flex items-center gap-2 rounded-xl bg-white/10 px-2.5 py-2 text-[0.8125rem] font-medium text-blanc transition-colors hover:bg-jaune hover:text-nuit active:scale-95"
               >
-                <Icone nom={d.icone} size={16} className="text-jaune group-hover:text-nuit" />
+                <Icone nom={d.icone} size={16} className="text-jaune" />
                 <span className="truncate">{d.titre}</span>
               </Link>
             ))}
             <Link
               href="/savoir-faire"
               onClick={() => setTiroir(null)}
-              className="flex items-center justify-center gap-1.5 rounded-lg bg-jaune/20 px-2.5 py-2 text-[0.8125rem] font-bold text-jaune hover:bg-jaune hover:text-nuit active:scale-95"
+              className="flex items-center justify-center gap-1.5 rounded-xl bg-jaune/25 px-2.5 py-2 text-[0.8125rem] font-bold text-jaune hover:bg-jaune hover:text-nuit active:scale-95"
             >
-              Vue d'ensemble →
+              Tous les métiers →
             </Link>
           </div>
         </div>
       )}
 
-      {/* Tiroir d'actions directes Devis / WhatsApp / Téléphone */}
+      {/* Tiroir contact direct */}
       {tiroir === "contact" && (
-        <div className="mb-2 animate-in fade-in slide-in-from-bottom-2 duration-300 flex items-center justify-center gap-2 rounded-xl border border-white/20 bg-nuit/95 p-2 shadow-2xl backdrop-blur-2xl">
+        <div className="mb-2 animate-in fade-in slide-in-from-bottom-2 duration-300 flex items-center justify-center gap-2 rounded-2xl liquid-glass-sombre p-2.5 shadow-2xl">
           <a
             href={telephones[0].lien}
-            className="flex flex-1 items-center justify-center gap-2 rounded-lg bg-white/10 px-3 py-2.5 text-[0.8125rem] font-bold text-blanc transition-colors hover:bg-white/20 active:scale-95"
+            className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-white/12 px-3 py-2.5 text-[0.8125rem] font-bold text-blanc transition-colors hover:bg-white/20 active:scale-95"
           >
             <Icone nom="telephone" size={17} className="text-jaune" />
-            Appeler ({telephones[0].affichage})
+            Appeler
           </a>
           <a
             href={whatsapp.lien}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex flex-1 items-center justify-center gap-2 rounded-lg bg-[#25D366] px-3 py-2.5 text-[0.8125rem] font-bold text-white shadow-md transition-transform active:scale-95"
+            className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-[#25D366] px-3 py-2.5 text-[0.8125rem] font-bold text-white shadow-md transition-transform active:scale-95"
           >
             <Icone nom="whatsapp" size={18} weight="bold" />
-            WhatsApp direct
+            WhatsApp
           </a>
           <button
             type="button"
             onClick={() => setTiroir(null)}
-            className="grid size-9 place-items-center rounded-lg bg-white/10 text-brume hover:text-white"
+            className="grid size-9 place-items-center rounded-xl bg-white/10 text-brume hover:text-white"
             aria-label="Fermer"
           >
             ✕
@@ -143,56 +138,64 @@ export function BarreActionsMobile() {
         </div>
       )}
 
-      {/* Barre de navigation principale en dock flottant */}
+      {/* Barre de navigation principale : Dock Liquid Glass avec bouton central débordant */}
       <nav
-        aria-label="Navigation mobile rapide"
-        className="flex h-14 items-center justify-between gap-1 rounded-2xl border border-white/15 bg-nuit/90 p-1.5 shadow-[0_16px_36px_-8px_rgba(7,18,43,0.7),0_2px_8px_rgba(0,0,0,0.3)] backdrop-blur-2xl transition-all duration-300 ease-chantier"
+        aria-label="Navigation mobile principale"
+        className="relative flex h-[3.875rem] items-center justify-around rounded-full liquid-glass-sombre px-2 shadow-[0_16px_40px_-10px_rgba(7,18,43,0.85),0_2px_8px_rgba(0,0,0,0.4)]"
       >
         {items.map((item) => {
           const isActif = actif === item.id;
+
+          // Bouton central proéminent : DEVIS (Action de conversion reine)
+          if (item.estCentral) {
+            return (
+              <div key={item.id} className="relative -top-3.5 flex flex-col items-center">
+                <Link
+                  href={item.href}
+                  onClick={() => handleItemClick(item.id)}
+                  aria-label="Demander un devis immédiat"
+                  className="group/central relative grid size-13.5 place-items-center rounded-full liquid-glass-or text-nuit border-2 border-white/95 shadow-[0_12px_24px_-4px_rgba(247,198,28,0.7),0_4px_12px_rgba(7,18,43,0.35)] transition-transform duration-300 hover:scale-105 active:scale-95"
+                >
+                  <Icone nom={item.icone} size={24} weight="bold" className="transition-transform group-hover/central:scale-110" />
+                </Link>
+                <span className="mt-1 text-[0.6875rem] font-black uppercase tracking-wider text-jaune">
+                  {item.titre}
+                </span>
+              </div>
+            );
+          }
+
+          // Éléments standards (Accueil, Métiers, Chantiers, Contact) :
+          // Icône en bulle arrondie au-dessus, nom de la page en dessous
           return (
             <Link
               key={item.id}
               href={item.href}
-              onClick={() => handleItemClick(item.id, item.href)}
+              onClick={() => handleItemClick(item.id)}
               aria-current={isActif ? "page" : undefined}
-              className={`group/dock relative flex h-full items-center justify-center rounded-xl transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] active:scale-95 ${
-                isActif
-                  ? "flex-[2.4] bg-jaune text-nuit shadow-md font-bold px-3.5"
-                  : "flex-1 text-brume/80 hover:text-blanc hover:bg-white/5 px-2"
-              }`}
+              className="group/nav flex flex-1 flex-col items-center justify-center py-1 transition-transform active:scale-95"
             >
-              {/* Icône du menu */}
+              {/* Bulle d'icône arrondie en haut */}
               <span
-                className={`transition-transform duration-300 ${
-                  isActif ? "scale-110 text-nuit" : "group-hover/dock:scale-105"
+                className={`flex size-8.5 items-center justify-center rounded-full transition-all duration-300 ${
+                  isActif
+                    ? "bg-white/25 text-jaune border border-white/50 shadow-[0_2px_8px_rgba(255,255,255,0.2)] scale-105"
+                    : "bg-white/8 text-white/75 group-hover/nav:bg-white/15 group-hover/nav:text-white border border-white/15"
                 }`}
               >
-                <Icone
-                  nom={item.icone}
-                  size={20}
-                  weight={isActif ? "bold" : "regular"}
-                />
+                <Icone nom={item.icone} size={18} weight={isActif ? "bold" : "regular"} />
               </span>
 
-              {/* Libellé texte qui s'agrandit pour l'élément actif (Style Apple) */}
+              {/* Libellé de la page en bas */}
               <span
-                className={`overflow-hidden whitespace-nowrap text-[0.8125rem] uppercase tracking-wider transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                className={`mt-1 text-[0.625rem] tracking-tight uppercase transition-colors ${
                   isActif
-                    ? "max-w-[75px] ml-1.5 opacity-100 font-bold"
-                    : "max-w-0 ml-0 opacity-0"
+                    ? "font-bold text-jaune"
+                    : "font-medium text-white/70 group-hover/nav:text-white"
                 }`}
               >
                 {item.titre}
               </span>
-
-              {/* Indicateur discret de sous-menu pour Métiers & Devis */}
-              {(item.id === "savoir-faire" || item.id === "contact") && !isActif && (
-                <span
-                  aria-hidden
-                  className="absolute right-1 top-1 size-1 rounded-full bg-jaune/60"
-                />
-              )}
             </Link>
           );
         })}

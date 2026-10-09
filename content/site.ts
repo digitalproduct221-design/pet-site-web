@@ -223,6 +223,7 @@ export const navigation: Rubrique[] = [
       { titre: "Nos valeurs", description: "Sept principes de chantier", href: "/entreprise#valeurs", icone: "valeurs" },
       { titre: "Qualité et sécurité", description: "Au centre de nos préoccupations", href: "/entreprise#qualite-securite", icone: "securite" },
       { titre: "Équipe et moyens", description: "Personnel qualifié, engins mis à niveau", href: "/entreprise#equipe-moyens", icone: "equipe" },
+      { titre: "Actualités", description: "La vie de nos chantiers", href: "/actualites", icone: "actualites" },
       { titre: "Carrières", description: "Nos métiers, candidature spontanée", href: "/carrieres", icone: "emploi" },
     ],
     carte: {
@@ -308,6 +309,7 @@ export const liensRapides = [
   { titre: "Réalisations", href: "/realisations" },
   { titre: "Engagements", href: "/engagements" },
   { titre: "Votre projet", href: "/votre-projet" },
+  { titre: "Actualités", href: "/actualites" },
   { titre: "Carrières", href: "/carrieres" },
   { titre: "Contact et devis", href: "/contact" },
 ];

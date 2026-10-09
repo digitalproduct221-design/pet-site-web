@@ -6,9 +6,14 @@
  * Les photos dont les droits restent à vérifier (06, 07, 09) ne sont pas utilisées.
  * Pour ajouter un chantier : une entrée ici, ses photos dans content/photos.ts.
  */
+import { imageLocale, type ImageSite } from "./images";
 import type { PhotoId } from "./photos";
 
-export type Projet = {
+/** Réalisation telle que l'affiche le site (photos résolues). */
+export type Projet = Omit<ProjetSource, "photos"> & { photos: ImageSite[] };
+
+/** Réalisation livrée avec le site, photos désignées dans le registre. */
+type ProjetSource = {
   slug: string;
   titre: string;
   /** Slug du domaine (voir content/site.ts). */
@@ -21,7 +26,7 @@ export type Projet = {
   reference?: boolean;
 };
 
-export const projets: Projet[] = [
+const sources: ProjetSource[] = [
   {
     slug: "rehabilitation-dalot-regards",
     titre: "Réhabilitation de dalot et construction de regards",
@@ -82,4 +87,9 @@ export const projets: Projet[] = [
   },
 ];
 
-export const projetParSlug = (slug: string) => projets.find((p) => p.slug === slug);
+/**
+ * Réalisations livrées avec le site : contenu de repli quand la base n'est pas
+ * branchée ou ne répond pas (voir lib/contenu.ts), et amorçage de la base
+ * (supabase/seed.sql).
+ */
+export const projetsStatiques: Projet[] = sources.map((p) => ({ ...p, photos: p.photos.map(imageLocale) }));

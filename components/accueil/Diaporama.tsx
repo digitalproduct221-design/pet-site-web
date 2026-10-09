@@ -119,12 +119,12 @@ export function Diaporama({ diapos }: { diapos: Diapo[] }) {
           );
         })}
         {/* Un seul dégradé, ancré en bas à gauche sous le titre (z-[2] : au-dessus de la photo active) */}
-        <div aria-hidden className="absolute inset-0 z-[2] voile-immersif" />
+        <div aria-hidden className="absolute inset-0 z-[2] voile-immersif pointer-events-none" />
       </div>
 
       {/* Panneau de verre : pilote du diaporama */}
       <div
-        className="verre-immersif relative z-[3] w-full rounded-panneau p-3 text-blanc sm:p-4 lg:w-[25rem]"
+        className="liquid-glass-sombre relative z-[3] w-full max-w-sm sm:max-w-md lg:w-[25rem] rounded-2xl p-3.5 sm:p-4 text-blanc self-end mx-auto lg:mx-0 shadow-2xl"
         onMouseEnter={() => setSuspendu(true)}
         onMouseLeave={() => setSuspendu(false)}
         onFocusCapture={() => setSuspendu(true)}

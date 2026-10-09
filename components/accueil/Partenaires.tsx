@@ -1,12 +1,13 @@
 import Image from "next/image";
-import { partenaires } from "@/content/partenaires";
+import { lirePartenaires } from "@/lib/contenu";
 
 /**
  * « Ils nous font confiance » : les logos défilent lentement, en niveaux de gris,
- * et reprennent leurs couleurs au survol. Rien n'est affiché tant que la liste
- * (content/partenaires.ts) est vide.
+ * et reprennent leurs couleurs au survol. Rien n'est affiché tant qu'aucun
+ * partenaire n'est publié (espace admin, ou content/partenaires.ts sans base).
  */
-export function Partenaires() {
+export async function Partenaires() {
+  const partenaires = await lirePartenaires();
   if (partenaires.length === 0) return null;
   const suite = [...partenaires, ...partenaires];
   return (

@@ -2,13 +2,13 @@
 
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { projets } from "@/content/realisations";
+import type { Projet } from "@/content/realisations";
 import { domaines } from "@/content/site";
 import { CarteProjet } from "@/components/ui/CarteProjet";
 import { Icone } from "@/components/ui/Icone";
 
 // Seuls les domaines qui ont au moins une réalisation publiée deviennent des filtres.
-const options = [
+const optionsPour = (projets: Projet[]) => [
   { slug: "tous", titre: "Tous les chantiers" },
   ...domaines.filter((d) => projets.some((p) => p.domaine === d.slug)).map((d) => ({ slug: d.slug, titre: d.titre })),
 ];
@@ -17,7 +17,8 @@ const options = [
  * Grille des réalisations filtrée par domaine. Les filtres sont de vrais liens
  * (?domaine=…) : ils fonctionnent sans JavaScript et se partagent.
  */
-export function Grille({ filtre }: { filtre: string }) {
+export function Grille({ filtre, projets }: { filtre: string; projets: Projet[] }) {
+  const options = optionsPour(projets);
   const visibles = filtre === "tous" ? projets : projets.filter((p) => p.domaine === filtre);
   const domaineActif = domaines.find((d) => d.slug === filtre);
 
@@ -78,8 +79,8 @@ export function Grille({ filtre }: { filtre: string }) {
 }
 
 /** Lit le filtre dans l'URL (rendu côté client, voir <Suspense> dans la page). */
-export function GrilleFiltree() {
+export function GrilleFiltree({ projets }: { projets: Projet[] }) {
   const demande = useSearchParams().get("domaine") ?? "tous";
   const filtre = domaines.some((d) => d.slug === demande) ? demande : "tous";
-  return <Grille filtre={filtre} />;
+  return <Grille filtre={filtre} projets={projets} />;
 }

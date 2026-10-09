@@ -1,21 +1,24 @@
 import Link from "next/link";
-import { projets } from "@/content/realisations";
+import { lireRealisations } from "@/lib/contenu";
 import { domaineParSlug } from "@/content/site";
 import { Icone } from "@/components/ui/Icone";
 import { PhotoCadre } from "@/components/ui/PhotoCadre";
 import { Profil } from "@/components/ui/Profil";
 import { TitreSection } from "@/components/ui/TitreSection";
 
-// Composition de la planche : une grande photo et quatre photos de tailles variées.
+// Composition de la planche : une grande photo et quatre photos de tailles variées,
+// remplies dans l'ordre des réalisations (références d'abord).
 const disposition = [
-  { slug: "rehabilitation-dalot-regards", cellule: "lg:col-span-7 lg:row-span-2", ratio: "aspect-[4/3] lg:aspect-auto lg:h-full", sizes: "(min-width: 1024px) 55vw, 100vw" },
-  { slug: "fourniture-pose-conduite-fonte", cellule: "lg:col-span-5", ratio: "aspect-[16/9]", sizes: "(min-width: 1024px) 38vw, 100vw" },
-  { slug: "terrassement-plateforme", cellule: "lg:col-span-5", ratio: "aspect-[16/9]", sizes: "(min-width: 1024px) 38vw, 100vw" },
-  { slug: "ouvrage-hydraulique-beton-arme", cellule: "lg:col-span-5", ratio: "aspect-[16/10]", sizes: "(min-width: 1024px) 38vw, 100vw" },
-  { slug: "reseau-lotissement", cellule: "lg:col-span-7", ratio: "aspect-[16/10] lg:aspect-[21/10]", sizes: "(min-width: 1024px) 55vw, 100vw" },
+  { cellule: "lg:col-span-7 lg:row-span-2", ratio: "aspect-[4/3] lg:aspect-auto lg:h-full", sizes: "(min-width: 1024px) 55vw, 100vw" },
+  { cellule: "lg:col-span-5", ratio: "aspect-[16/9]", sizes: "(min-width: 1024px) 38vw, 100vw" },
+  { cellule: "lg:col-span-5", ratio: "aspect-[16/9]", sizes: "(min-width: 1024px) 38vw, 100vw" },
+  { cellule: "lg:col-span-5", ratio: "aspect-[16/10]", sizes: "(min-width: 1024px) 38vw, 100vw" },
+  { cellule: "lg:col-span-7", ratio: "aspect-[16/10] lg:aspect-[21/10]", sizes: "(min-width: 1024px) 55vw, 100vw" },
 ];
 
-export function RealisationsVedette() {
+export async function RealisationsVedette() {
+  const toutes = await lireRealisations();
+  const choisies = [...toutes.filter((p) => p.reference), ...toutes.filter((p) => !p.reference)].slice(0, disposition.length);
   return (
     <section aria-labelledby="titre-realisations" className="sur-sombre profondeur relative pb-28 pt-16 text-blanc lg:pb-40 lg:pt-20">
       <div className="conteneur">
@@ -36,8 +39,8 @@ export function RealisationsVedette() {
         </div>
 
         <ul className="revele-groupe mt-10 grid gap-x-6 gap-y-10 max-sm:-mx-4 max-sm:flex max-sm:snap-x max-sm:snap-mandatory max-sm:overflow-x-auto max-sm:scroll-px-4 max-sm:px-4 max-sm:pb-3 max-sm:[scrollbar-width:none] max-sm:gap-4 sm:grid-cols-2 lg:mt-16 lg:grid-cols-12 lg:gap-y-12">
-          {disposition.map((cellule, i) => {
-            const projet = projets.find((p) => p.slug === cellule.slug)!;
+          {choisies.map((projet, i) => {
+            const cellule = disposition[i];
             const domaine = domaineParSlug(projet.domaine);
             return (
               <li key={projet.slug} className={`${cellule.cellule} ${i === 0 ? "sm:col-span-2" : ""} flex flex-col max-sm:w-[84%] max-sm:shrink-0 max-sm:snap-start`}>

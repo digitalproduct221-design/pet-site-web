@@ -1,6 +1,7 @@
 import Image from "next/image";
 import type { ReactNode } from "react";
-import { photos, type PhotoId } from "@/content/photos";
+import { resoudreImage, type ImageSite } from "@/content/images";
+import type { PhotoId } from "@/content/photos";
 import { FilAriane } from "./FilAriane";
 import { Equerres } from "./Equerres";
 import { Motif } from "./Motif";
@@ -10,7 +11,7 @@ type Props = {
   titre: string;
   intro?: ReactNode;
   ariane: { titre: string; href?: string }[];
-  photo?: PhotoId;
+  photo?: PhotoId | ImageSite;
   children?: ReactNode;
   /** Bloc affiché sous l'intro (ex. fiche synthétique). */
   aside?: ReactNode;
@@ -25,14 +26,14 @@ type Props = {
  * (blanc avant un bloc sable, sable avant un bloc blanc) pour ne jamais se confondre.
  */
 export function EnTetePage({ titre, intro, ariane, photo, children, aside, suite = "text-sable" }: Props) {
-  const p = photo ? photos[photo] : null;
+  const p = photo ? resoudreImage(photo) : null;
   const fond = suite === "text-sable" ? "bg-blanc" : "bg-sable";
   return (
     <header className={`relative isolate overflow-hidden ${fond}`}>
       <Motif type="plan" className="text-royal" opacite={0.14} />
       <div className={`grid ${p ? "lg:min-h-[30rem] lg:grid-cols-2" : ""}`}>
         <div
-          className={`flex flex-col justify-center gap-8 px-4 pb-24 pt-8 sm:px-6 lg:pb-28 lg:pl-[max(2rem,calc((100vw-var(--container-site))/2+2rem))] lg:pt-10 ${
+          className={`flex flex-col justify-center gap-8 px-4 pb-24 pt-24 sm:px-6 sm:pt-28 lg:pb-28 lg:pl-[max(2rem,calc((100vw-var(--container-site))/2+2rem))] lg:pt-32 ${
             p ? "lg:pr-10" : "lg:pr-[max(2rem,calc((100vw-var(--container-site))/2+2rem))]"
           }`}
         >

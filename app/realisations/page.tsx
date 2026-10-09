@@ -3,6 +3,7 @@ import { Suspense } from "react";
 import { EnTetePage } from "@/components/ui/EnTetePage";
 import { Grille, GrilleFiltree } from "@/components/realisations/GrilleFiltree";
 import { AppelFinal } from "@/components/accueil/AppelFinal";
+import { lireRealisations } from "@/lib/contenu";
 
 export const metadata: Metadata = {
   title: "Réalisations",
@@ -10,7 +11,8 @@ export const metadata: Metadata = {
   alternates: { canonical: "/realisations" },
 };
 
-export default function PageRealisations() {
+export default async function PageRealisations() {
+  const projets = await lireRealisations();
   return (
     <>
       <EnTetePage
@@ -21,8 +23,8 @@ export default function PageRealisations() {
       />
       <section aria-label="Liste des réalisations" className="bg-sable py-16 lg:py-24">
         <div className="conteneur">
-          <Suspense fallback={<Grille filtre="tous" />}>
-            <GrilleFiltree />
+          <Suspense fallback={<Grille filtre="tous" projets={projets} />}>
+            <GrilleFiltree projets={projets} />
           </Suspense>
         </div>
       </section>

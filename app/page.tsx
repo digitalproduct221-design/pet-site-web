@@ -9,6 +9,7 @@ import { Pourquoi } from "@/components/accueil/Pourquoi";
 import { Methode } from "@/components/accueil/Methode";
 import { Carrieres } from "@/components/accueil/Carrieres";
 import { Partenaires } from "@/components/accueil/Partenaires";
+import { ActualitesAccueil } from "@/components/accueil/ActualitesAccueil";
 import { Temoignages } from "@/components/accueil/Temoignages";
 import { AppelFinal } from "@/components/accueil/AppelFinal";
 
@@ -27,7 +28,8 @@ export default function Accueil() {
       <RealisationsVedette />
       <Pourquoi />
       <Methode />
-      {/* Masquées tant que leurs listes (content/) sont vides */}
+      {/* Masquées tant que rien n'est publié (espace admin) */}
+      <ActualitesAccueil />
       <Temoignages />
       <Partenaires />
       <Carrieres />

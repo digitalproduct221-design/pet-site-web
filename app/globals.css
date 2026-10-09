@@ -1300,31 +1300,78 @@ main > :nth-child(n + 3):not(.ruban-zone) {
 }
 /* Lisibilité du titre seulement : bas et gauche ; le haut et la droite restent nets */
 @utility voile-immersif {
-  /* Ellipse ancrée en bas à gauche, sous le titre ; le haut et la droite restent nets.
-     Mesuré sur les pixels des 5 diapos (voir docs/decisions.md). */
   background:
-    radial-gradient(ellipse 88% 150% at 0% 100%, rgb(7 18 43 / 0.9) 0%, rgb(7 18 43 / 0.84) 48%, rgb(7 18 43 / 0.5) 70%, transparent 100%),
-    linear-gradient(0deg, rgb(7 18 43 / 0.55) 0%, transparent 32%);
+    radial-gradient(ellipse 85% 120% at 0% 100%, rgb(7 18 43 / 0.7) 0%, rgb(7 18 43 / 0.3) 55%, transparent 80%),
+    linear-gradient(0deg, rgb(7 18 43 / 0.22) 0%, transparent 35%);
   @media (width < 64rem) {
-    background: linear-gradient(0deg, rgb(7 18 43 / 0.92) 0%, rgb(7 18 43 / 0.86) 56%, rgb(7 18 43 / 0.78) 66%, rgb(7 18 43 / 0.25) 82%, transparent 92%);
+    background:
+      radial-gradient(ellipse 95% 95% at 0% 100%, rgb(7 18 43 / 0.55) 0%, rgb(7 18 43 / 0.15) 60%, transparent 85%),
+      linear-gradient(0deg, rgb(7 18 43 / 0.15) 0%, transparent 35%);
   }
 }
+
+/* ==========================================================================
+   Liquid Glass Morphism (Apple Style - conforme à la référence)
+   ========================================================================== */
+.liquid-glass {
+  background: rgba(255, 255, 255, 0.6);
+  -webkit-backdrop-filter: blur(28px) saturate(190%);
+  backdrop-filter: blur(28px) saturate(190%);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  box-shadow:
+    inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.95),
+    inset 0 -1px 1px 0 rgba(0, 0, 0, 0.05),
+    0 16px 36px -10px rgba(7, 18, 43, 0.16),
+    0 2px 6px 0 rgba(7, 18, 43, 0.04);
+}
+
+.liquid-glass-sombre {
+  background: rgba(11, 27, 63, 0.72);
+  -webkit-backdrop-filter: blur(28px) saturate(190%);
+  backdrop-filter: blur(28px) saturate(190%);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  box-shadow:
+    inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.5),
+    inset 0 -1px 1px 0 rgba(0, 0, 0, 0.25),
+    0 20px 45px -12px rgba(4, 10, 26, 0.75);
+}
+
+.liquid-glass-or {
+  background: linear-gradient(135deg, #f7c61c 0%, #e0b00f 100%);
+  box-shadow:
+    inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.9),
+    inset 0 -1.5px 2px 0 rgba(0, 0, 0, 0.18),
+    0 12px 28px -6px rgba(247, 198, 28, 0.55),
+    0 4px 10px 0 rgba(7, 18, 43, 0.25);
+}
+
 /* Verre sombre des panneaux posés sur la photo */
 .verre-immersif {
-  background: linear-gradient(140deg, rgb(255 255 255 / 0.12), rgb(255 255 255 / 0.03)), rgb(11 27 63 / 0.58);
-  -webkit-backdrop-filter: blur(18px) saturate(160%);
-  backdrop-filter: blur(18px) saturate(160%);
-  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.24), 0 24px 50px -26px rgb(4 10 26 / 0.75);
+  background: rgba(11, 27, 63, 0.65);
+  -webkit-backdrop-filter: blur(24px) saturate(170%);
+  backdrop-filter: blur(24px) saturate(170%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow:
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.35),
+    0 20px 45px -20px rgba(4, 10, 26, 0.75);
 }
 @media (prefers-reduced-transparency: reduce) {
-  .verre-immersif {
+  .verre-immersif,
+  .liquid-glass-sombre {
     background: var(--pet-nuit-900);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+  .liquid-glass {
+    background: var(--pet-blanc);
     -webkit-backdrop-filter: none;
     backdrop-filter: none;
   }
 }
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-  .verre-immersif { background: rgb(11 27 63 / 0.9); }
+  .verre-immersif,
+  .liquid-glass-sombre { background: rgb(11 27 63 / 0.9); }
+  .liquid-glass { background: rgb(255 255 255 / 0.9); }
 }
 
 /* « Pourquoi PET ? » : accordéon natif et photo qui suit l'engagement ouvert */

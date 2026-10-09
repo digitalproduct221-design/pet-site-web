@@ -1,4 +1,4 @@
-import { temoignages } from "@/content/temoignages";
+import { lireTemoignages } from "@/lib/contenu";
 import { Motif } from "@/components/ui/Motif";
 import { TitreSection } from "@/components/ui/TitreSection";
 
@@ -7,7 +7,8 @@ import { TitreSection } from "@/components/ui/TitreSection";
  * horizontal natif, accrochage par carte). Rien n'est affiché tant que la liste
  * (content/temoignages.ts) est vide.
  */
-export function Temoignages() {
+export async function Temoignages() {
+  const temoignages = await lireTemoignages();
   if (temoignages.length === 0) return null;
   return (
     <section aria-labelledby="titre-temoignages" className="relative isolate overflow-hidden bg-sable py-20 lg:py-28">

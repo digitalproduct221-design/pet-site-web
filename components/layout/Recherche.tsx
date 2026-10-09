@@ -26,7 +26,7 @@ export function Recherche({ classeDeclencheur = "" }: { classeDeclencheur?: stri
         aria-haspopup="dialog"
         aria-expanded={ouvert}
         aria-label="Rechercher sur le site"
-        className={`grid size-11 place-items-center rounded-chantier text-nuit transition-colors hover:bg-sable hover:text-royal ${classeDeclencheur}`}
+        className={`grid size-11 place-items-center rounded-full text-nuit transition-colors hover:bg-white/40 hover:text-royal ${classeDeclencheur}`}
       >
         <Icone nom="recherche" size={24} weight="bold" />
       </button>

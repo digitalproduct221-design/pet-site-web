@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { projetParSlug, projets } from "@/content/realisations";
+import { lireRealisation, lireRealisations } from "@/lib/contenu";
 import { domaineParSlug } from "@/content/site";
 import { EnTetePage } from "@/components/ui/EnTetePage";
 import { CarteProjet } from "@/components/ui/CarteProjet";
@@ -10,13 +10,13 @@ import { Motif } from "@/components/ui/Motif";
 import { Galerie } from "@/components/realisations/Galerie";
 import { AppelFinal } from "@/components/accueil/AppelFinal";
 
-export function generateStaticParams() {
-  return projets.map((p) => ({ slug: p.slug }));
+export async function generateStaticParams() {
+  return (await lireRealisations()).map((p) => ({ slug: p.slug }));
 }
 
 export async function generateMetadata({ params }: PageProps<"/realisations/[slug]">): Promise<Metadata> {
   const { slug } = await params;
-  const p = projetParSlug(slug);
+  const p = await lireRealisation(slug);
   if (!p) return {};
   return { title: p.titre, description: p.resume, alternates: { canonical: `/realisations/${p.slug}` } };
 }
@@ -24,7 +24,8 @@ export async function generateMetadata({ params }: PageProps<"/realisations/[slu
 /** Une réalisation, c'est d'abord sa galerie : les photos passent avant le texte. */
 export default async function PageProjet({ params }: PageProps<"/realisations/[slug]">) {
   const { slug } = await params;
-  const projet = projetParSlug(slug);
+  const projets = await lireRealisations();
+  const projet = projets.find((p) => p.slug === slug);
   if (!projet) notFound();
   const domaine = domaineParSlug(projet.domaine);
   const autres = projets

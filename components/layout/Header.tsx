@@ -52,37 +52,33 @@ export function Header() {
       <div ref={sentinelle} aria-hidden className="pointer-events-none absolute left-0 top-0 h-24 w-px" />
       <header
         data-compact={compact}
-        className="sticky top-2 sm:top-3 z-50 px-2.5 sm:px-4 lg:px-6 transition-[top] duration-500 ease-chantier"
+        className="fixed top-2.5 sm:top-4 inset-x-0 z-50 px-2.5 sm:px-6 pointer-events-none transition-[top] duration-500 ease-chantier"
       >
         <div
-          className={`mx-auto max-w-[85rem] flex items-center justify-between gap-3 sm:gap-6 rounded-2xl border px-3 sm:px-5 lg:px-6 transition-all duration-500 ease-chantier ${
+          className={`pointer-events-auto mx-auto max-w-[85rem] flex items-center justify-between gap-3 sm:gap-6 rounded-full px-3.5 sm:px-6 transition-all duration-500 ease-chantier ${
             compact
-              ? "h-14 sm:h-15 lg:h-16 bg-blanc/92 backdrop-blur-2xl border-white/90 shadow-[0_12px_36px_-10px_rgba(7,18,43,0.18),0_2px_8px_-2px_rgba(7,18,43,0.06)]"
-              : "h-15 sm:h-16 lg:h-[4.75rem] bg-blanc/85 backdrop-blur-xl border-white/60 shadow-[0_8px_30px_-8px_rgba(7,18,43,0.1),0_1px_3px_rgba(0,0,0,0.04)]"
+              ? "h-14 sm:h-15 lg:h-16 liquid-glass-sombre border-white/25 shadow-[0_16px_36px_-10px_rgba(7,18,43,0.5),0_2px_8px_-2px_rgba(7,18,43,0.1)] text-blanc"
+              : "h-15 sm:h-16 lg:h-[4.75rem] liquid-glass shadow-[0_12px_32px_-8px_rgba(7,18,43,0.18),0_1px_3px_rgba(0,0,0,0.04)] text-nuit"
           }`}
         >
-          <Logo compact={compact} />
+          <Logo compact={compact} ton={compact ? "sombre" : "clair"} />
           {grandEcran ? <MegaMenu /> : <NavStatique chemin={chemin} />}
-          <div className="flex items-center gap-1.5 sm:gap-2.5 lg:gap-3">
+          <div className="flex items-center gap-2 sm:gap-2.5 lg:gap-3">
             <Recherche />
-            {/* Action discrète WhatsApp rapide sur mobile */}
+            {/* Action discrète WhatsApp rapide sur mobile en bulle de verre liquide */}
             <a
               href="https://wa.me/221775970198"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Contacter PET sur WhatsApp"
-              className="flex size-9 items-center justify-center rounded-chantier bg-[#25D366]/15 text-[#128C7E] transition-all hover:bg-[#25D366]/25 active:scale-95 sm:hidden"
+              className="flex size-10 items-center justify-center rounded-full bg-white/40 backdrop-blur-xl border border-white/70 shadow-[inset_0_1px_1.5px_rgba(255,255,255,0.9),0_4px_12px_rgba(7,18,43,0.1)] text-[#128C7E] transition-all hover:scale-105 hover:bg-[#25D366] hover:text-white active:scale-95 sm:hidden"
             >
-              <Icone nom="whatsapp" size={19} weight="bold" />
+              <Icone nom="whatsapp" size={20} weight="bold" />
             </a>
             <Link
               href="/contact#devis"
-              className="group/devis relative hidden min-h-11 items-center gap-2 whitespace-nowrap rounded-chantier bg-jaune px-4.5 cote text-[0.9375rem] uppercase tracking-[0.04em] text-nuit ombre-bouton transition-colors duration-300 hover:bg-jaune-profond sm:inline-flex"
+              className="group/devis relative hidden min-h-11 items-center gap-2 whitespace-nowrap rounded-full bg-jaune px-5.5 cote text-[0.9375rem] uppercase tracking-[0.04em] text-nuit ombre-bouton transition-all duration-300 hover:bg-jaune-profond hover:shadow-lg sm:inline-flex"
             >
-              <span
-                aria-hidden
-                className="pointer-events-none absolute -left-1.5 -top-1.5 size-3.5 translate-x-1 translate-y-1 border-l-[3px] border-t-[3px] border-nuit opacity-0 transition-[opacity,translate] duration-300 ease-chantier group-hover/devis:translate-x-0 group-hover/devis:translate-y-0 group-hover/devis:opacity-100"
-              />
               Demander un devis
               <Icone nom="fleche" size={16} weight="bold" className="transition-transform duration-300 group-hover/devis:translate-x-0.5" />
             </Link>
