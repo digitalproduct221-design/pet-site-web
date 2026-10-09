@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { adresse, email, NOM, telephones } from "@/content/site";
+import { adresse, AFFICHER_MENTIONS_MANQUANTES, email, mentionsLegales, NOM, telephones } from "@/content/site";
 import { EnTetePage } from "@/components/ui/EnTetePage";
 
 export const metadata: Metadata = {
@@ -20,16 +20,22 @@ const blocs = [
       ["Siège", adresse],
       ["Téléphone", telephones[0].affichage],
       ["E-mail", email],
-      ["NINEA", ARENSEIGNER],
-      ["RCCM", ARENSEIGNER],
-      ["Directeur de la publication", ARENSEIGNER],
+      ["NINEA", mentionsLegales.ninea],
+      ["RCCM", mentionsLegales.rccm],
+      ["Directeur de la publication", mentionsLegales.directeurPublication],
     ],
   },
   {
     titre: "Hébergement",
-    lignes: [["Hébergeur", ARENSEIGNER]],
+    lignes: [["Hébergeur", mentionsLegales.hebergeur]],
   },
-];
+].map((b) => ({
+  ...b,
+  // Valeur manquante : ligne masquée en production (voir content/site.ts)
+  lignes: b.lignes
+    .filter(([, valeur]) => valeur || AFFICHER_MENTIONS_MANQUANTES)
+    .map(([cle, valeur]) => [cle, valeur || ARENSEIGNER]),
+}));
 
 export default function PageMentions() {
   return (

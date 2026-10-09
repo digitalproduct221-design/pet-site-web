@@ -311,3 +311,18 @@ export const liensRapides = [
   { titre: "Carrières", href: "/carrieres" },
   { titre: "Contact et devis", href: "/contact" },
 ];
+
+/* ---------- Mentions légales ---------- */
+
+/**
+ * Informations légales à fournir par PET avant la mise en ligne définitive.
+ * Une valeur vide masque la ligne sur le site ; passer AFFICHER_MENTIONS_MANQUANTES
+ * à true pour afficher « À renseigner » à la place (relecture interne).
+ */
+export const mentionsLegales = {
+  ninea: "",
+  rccm: "",
+  directeurPublication: "",
+  hebergeur: "Vercel Inc., 440 N Barranca Ave #4133, Covina, CA 91723, États-Unis",
+};
+export const AFFICHER_MENTIONS_MANQUANTES = false;
