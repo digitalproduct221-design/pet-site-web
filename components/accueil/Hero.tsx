@@ -182,7 +182,7 @@ export function Hero() {
         </div>
 
         {/* Panneau de verre liquide : légende et commandes du diaporama */}
-        <div className="verre-liquide w-full max-w-[30rem] self-end rounded-[6px] p-5 sm:p-6">
+        <div className="verre-liquide w-full max-w-[30rem] self-end rounded-panneau p-5 sm:p-6">
           <div aria-live={enPause ? "polite" : "off"} aria-atomic="true">
             <p className="min-h-[3.2em] text-[1.0625rem] leading-snug text-blanc">{diapo.legende}</p>
             <div className="mt-2 flex items-center justify-between gap-4">
@@ -203,7 +203,7 @@ export function Hero() {
                 type="button"
                 onClick={() => aller(index - 1)}
                 aria-label="Photo précédente"
-                className="grid size-11 place-items-center rounded-full text-blanc transition-colors hover:bg-blanc/15"
+                className="grid size-11 place-items-center rounded-chantier text-blanc transition-colors hover:bg-blanc/15"
               >
                 <Icone nom="fleche" size={20} weight="bold" className="rotate-180" />
               </button>
@@ -211,7 +211,7 @@ export function Hero() {
                 type="button"
                 onClick={() => setLecture(!enLecture)}
                 aria-label={enLecture ? "Mettre le diaporama en pause" : "Lancer le diaporama"}
-                className="grid size-11 place-items-center rounded-full text-blanc transition-colors hover:bg-blanc/15"
+                className="grid size-11 place-items-center rounded-chantier text-blanc transition-colors hover:bg-blanc/15"
               >
                 <Icone nom={enLecture ? "pause" : "lecture"} size={20} weight="fill" />
               </button>
@@ -219,7 +219,7 @@ export function Hero() {
                 type="button"
                 onClick={() => aller(index + 1)}
                 aria-label="Photo suivante"
-                className="grid size-11 place-items-center rounded-full text-blanc transition-colors hover:bg-blanc/15"
+                className="grid size-11 place-items-center rounded-chantier text-blanc transition-colors hover:bg-blanc/15"
               >
                 <Icone nom="fleche" size={20} weight="bold" />
               </button>

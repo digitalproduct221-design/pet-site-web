@@ -69,7 +69,7 @@ export default function PageEngagements() {
             <ul className="sticky top-[calc(var(--header-h-compact)+2.5rem)] grid gap-1">
               {engagements.map((e) => (
                 <li key={e.id}>
-                  <Link href={`#${e.id}`} className="flex items-center gap-3 rounded-[6px] px-4 py-3 cote text-[1.0625rem] text-nuit transition-colors hover:bg-sable hover:text-royal">
+                  <Link href={`#${e.id}`} className="flex items-center gap-3 rounded-panneau px-4 py-3 cote text-[1.0625rem] text-nuit transition-colors hover:bg-sable hover:text-royal">
                     <Icone nom={e.icone} size={22} className="text-royal" />
                     {e.titre}
                   </Link>
@@ -94,7 +94,7 @@ export default function PageEngagements() {
               return i % 2 === 0 ? (
                 <section key={e.id} id={e.id} aria-labelledby={`titre-${e.id}`} className="grid scroll-mt-28 gap-10 md:grid-cols-2 md:items-center md:gap-12">
                   <div className="revele">
-                    <span className="grid size-14 place-items-center rounded-[6px] bg-royal text-jaune ombre-tuile">
+                    <span className="grid size-14 place-items-center rounded-panneau bg-royal text-jaune ombre-tuile">
                       <Icone nom={e.icone} size={28} />
                     </span>
                     <h2 id={`titre-${e.id}`} className="mt-6 titre text-titre-l text-nuit">
@@ -110,11 +110,11 @@ export default function PageEngagements() {
                   key={e.id}
                   id={e.id}
                   aria-labelledby={`titre-${e.id}`}
-                  className="sur-sombre relative isolate flex min-h-[34rem] scroll-mt-28 items-end overflow-hidden rounded-[6px] bg-nuit p-5 text-blanc sm:p-8 lg:p-10"
+                  className="sur-sombre relative isolate flex min-h-[34rem] scroll-mt-28 items-end overflow-hidden rounded-panneau bg-nuit p-5 text-blanc sm:p-8 lg:p-10"
                 >
                   <Image src={photos[e.photo].src} alt="" fill sizes="(min-width: 1024px) 70vw, 100vw" className="-z-10 object-cover" style={{ objectPosition: photos[e.photo].focale }} />
                   <span aria-hidden className="absolute inset-0 -z-10 voile-carte" />
-                  <div className="revele verre-liquide w-full max-w-[36rem] rounded-[6px] p-6 lg:p-8">
+                  <div className="revele verre-liquide w-full max-w-[36rem] rounded-panneau p-6 lg:p-8">
                     <span className="flex items-center gap-3">
                       <Icone nom={e.icone} size={28} className="text-jaune" />
                       <h2 id={`titre-${e.id}`} className="titre text-titre-m text-blanc">

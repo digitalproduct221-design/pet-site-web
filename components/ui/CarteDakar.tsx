@@ -15,7 +15,7 @@ export function CarteDakar({ hauteur = "h-72" }: { hauteur?: string }) {
 
   if (active) {
     return (
-      <div className={`relative overflow-hidden rounded-[6px] ${hauteur}`}>
+      <div className={`relative overflow-hidden rounded-panneau ${hauteur}`}>
         <iframe
           title={`Carte : ${adresse}`}
           src={carteIntegree}
@@ -28,11 +28,11 @@ export function CarteDakar({ hauteur = "h-72" }: { hauteur?: string }) {
   }
 
   return (
-    <div className={`relative isolate flex flex-col justify-end overflow-hidden rounded-[6px] p-4 text-blanc ${hauteur}`}>
+    <div className={`relative isolate flex flex-col justify-end overflow-hidden rounded-panneau p-4 text-blanc ${hauteur}`}>
       {/* Une rue de Dakar, très voilée, en attendant la carte */}
       <Image src={photos.dalotRegard.src} alt="" fill sizes="(min-width: 1024px) 24vw, 100vw" className="-z-10 object-cover" />
       <div aria-hidden className="absolute inset-0 -z-10 voile-carte" />
-      <div className="verre-liquide rounded-[6px] p-4">
+      <div className="verre-liquide rounded-panneau p-4">
         <p className="flex items-start gap-2 text-[0.9375rem] leading-snug text-blanc">
           <Icone nom="adresse" size={18} className="mt-0.5 shrink-0 text-jaune" />
           {adresse}

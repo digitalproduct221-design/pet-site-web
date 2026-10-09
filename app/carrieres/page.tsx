@@ -92,7 +92,7 @@ export default function PageCarrieres() {
               Aucune offre ne correspond ? Présentez-vous : nous gardons les profils de terrain pour nos prochains chantiers.
             </p>
           </div>
-          <div className="rounded-[6px] bg-sable p-6 sm:p-8 lg:col-span-7 lg:col-start-6 lg:p-10">
+          <div className="rounded-panneau bg-sable p-6 sm:p-8 lg:col-span-7 lg:col-start-6 lg:p-10">
             <Suspense fallback={<Formulaire type="candidature" />}>
               <FormulaireCandidature />
             </Suspense>

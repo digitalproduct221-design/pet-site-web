@@ -25,7 +25,7 @@ export function ListeOffres({ ton = "sombre" }: { ton?: "clair" | "sombre" }) {
               type="button"
               aria-pressed={actif}
               onClick={() => setFiltre(f)}
-              className={`min-h-11 rounded-full px-5 cote text-[1rem] transition-colors ${
+              className={`min-h-11 rounded-chantier px-5 cote text-[1rem] transition-colors ${
                 actif ? "bg-jaune text-nuit" : sombre ? "bg-blanc/10 text-blanc hover:bg-blanc/20" : "bg-sable text-nuit hover:bg-sable-soutenu"
               }`}
             >
@@ -40,7 +40,7 @@ export function ListeOffres({ ton = "sombre" }: { ton?: "clair" | "sombre" }) {
       </p>
 
       {visibles.length === 0 ? (
-        <div className={`mt-8 rounded-[6px] p-6 ${sombre ? "verre-liquide" : "bg-sable"}`}>
+        <div className={`mt-8 rounded-panneau p-6 ${sombre ? "verre-liquide" : "bg-sable"}`}>
           <p className={sombre ? "text-blanc" : "text-nuit"}>Aucune offre de ce type pour le moment.</p>
           <Link href="/carrieres#candidature" className={`mt-2 inline-flex items-center gap-2 cote text-[1.0625rem] ${sombre ? "text-jaune" : "text-royal"}`}>
             Envoyer une candidature spontanée
@@ -52,7 +52,7 @@ export function ListeOffres({ ton = "sombre" }: { ton?: "clair" | "sombre" }) {
           {visibles.map((o) => (
             <li
               key={o.id}
-              className={`group/offre relative grid gap-4 rounded-[6px] p-6 transition-colors sm:grid-cols-[1fr_auto] sm:items-center lg:p-7 ${
+              className={`group/offre relative grid gap-4 rounded-panneau p-6 transition-colors sm:grid-cols-[1fr_auto] sm:items-center lg:p-7 ${
                 sombre ? "verre-liquide" : "bg-blanc ombre-carte hover:ombre-carte-survol"
               }`}
             >

@@ -86,7 +86,8 @@
   --text-chiffre--line-height: 0.9;
 
   /* Formes, mouvement, mise en page */
-  --radius-chantier: 4px;
+  --radius-chantier: 4px; /* commandes, photos */
+  --radius-panneau: 6px; /* panneaux, cartes, verre */
   --ease-chantier: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-sortie: cubic-bezier(0.7, 0, 0.84, 0);
   --breakpoint-xs: 26rem;
@@ -666,9 +667,6 @@
 @utility voile-carte {
   /* Carte photo portant un panneau de verre en bas */
   background: linear-gradient(180deg, rgb(11 27 63 / 0.1) 0%, rgb(11 27 63 / 0.4) 50%, rgb(7 18 43 / 0.88) 100%);
-}
-@utility voile-royal {
-  background: linear-gradient(115deg, rgb(33 64 154 / 0.95) 0%, rgb(33 64 154 / 0.84) 55%, rgb(11 27 63 / 0.9) 100%);
 }
 @utility ombre-tuile {
   box-shadow: 0 14px 30px -14px rgb(33 64 154 / 0.7);

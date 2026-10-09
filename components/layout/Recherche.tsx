@@ -113,7 +113,7 @@ export function Recherche({ classeDeclencheur = "" }: { classeDeclencheur?: stri
                           <Link
                             href={r.href}
                             onClick={() => setOuvert(false)}
-                            className="group/resultat flex items-start justify-between gap-6 rounded-[6px] px-4 py-4 transition-colors hover:bg-blanc/[0.06]"
+                            className="group/resultat flex items-start justify-between gap-6 rounded-panneau px-4 py-4 transition-colors hover:bg-blanc/[0.06]"
                           >
                             <span>
                               <span className="block titre text-[1.625rem] text-blanc group-hover/resultat:text-jaune">{r.titre}</span>

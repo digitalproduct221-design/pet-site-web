@@ -55,7 +55,7 @@ export default function PageContact() {
 
           <aside aria-labelledby="coordonnees" className="lg:col-span-4 lg:col-start-9">
             <div className="lg:sticky lg:top-[calc(var(--header-h-compact)+2rem)]">
-              <div className="sur-sombre profondeur rounded-[6px] p-7 text-blanc lg:p-8">
+              <div className="sur-sombre profondeur rounded-panneau p-7 text-blanc lg:p-8">
                 <h2 id="coordonnees" className="titre text-titre-s text-blanc">
                   Nos coordonnées
                 </h2>

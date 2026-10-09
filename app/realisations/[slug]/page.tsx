@@ -43,7 +43,7 @@ export default async function PageProjet({ params }: PageProps<"/realisations/[s
         ariane={[{ titre: "Réalisations", href: "/realisations" }, { titre: projet.titre }]}
         photo={projet.photos[0]}
         aside={
-          <dl className="verre-liquide grid grid-cols-2 gap-x-6 gap-y-5 rounded-[6px] p-6 lg:p-7">
+          <dl className="verre-liquide grid grid-cols-2 gap-x-6 gap-y-5 rounded-panneau p-6 lg:p-7">
             {fiche.map((f) => (
               <div key={f.libelle}>
                 <dt className="cote text-[0.875rem] uppercase tracking-[0.1em] text-ciel">{f.libelle}</dt>
@@ -86,7 +86,7 @@ export default async function PageProjet({ params }: PageProps<"/realisations/[s
             </h2>
             <ul className="revele-groupe mt-6 grid gap-3">
               {projet.travaux.map((t) => (
-                <li key={t} className="flex items-start gap-4 rounded-[6px] bg-sable p-5">
+                <li key={t} className="flex items-start gap-4 rounded-panneau bg-sable p-5">
                   <Icone nom="succes" size={24} weight="fill" className="mt-0.5 shrink-0 text-royal" />
                   <span className="cote text-[1.125rem] text-nuit">{t}</span>
                 </li>

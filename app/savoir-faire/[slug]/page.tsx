@@ -60,7 +60,7 @@ export default async function PageDomaine({ params }: PageProps<"/savoir-faire/[
             </h2>
             <ul className="revele-groupe mt-8 grid gap-3 sm:grid-cols-2">
               {d.prestations.map((p) => (
-                <li key={p} id={ancre(p)} className="flex scroll-mt-32 items-start gap-4 rounded-[6px] bg-sable p-5">
+                <li key={p} id={ancre(p)} className="flex scroll-mt-32 items-start gap-4 rounded-panneau bg-sable p-5">
                   <Icone nom="succes" size={24} weight="fill" className="mt-0.5 shrink-0 text-royal" />
                   <span className="cote text-[1.125rem] leading-snug text-nuit">{p}</span>
                 </li>
@@ -116,7 +116,7 @@ export default async function PageDomaine({ params }: PageProps<"/savoir-faire/[
           <ul className="revele-groupe mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {autres.map((x) => (
               <li key={x.slug}>
-                <Link href={`/savoir-faire/${x.slug}`} className="group/autre flex h-full items-center justify-between gap-4 rounded-[6px] bg-blanc/[0.06] p-5 transition-colors hover:bg-blanc/[0.12]">
+                <Link href={`/savoir-faire/${x.slug}`} className="group/autre flex h-full items-center justify-between gap-4 rounded-panneau bg-blanc/[0.06] p-5 transition-colors hover:bg-blanc/[0.12]">
                   <span className="flex items-center gap-3">
                     <Icone nom={x.icone} size={26} className="text-jaune" />
                     <span className="cote text-[1.125rem] text-blanc">{x.titre}</span>

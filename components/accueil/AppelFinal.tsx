@@ -29,7 +29,7 @@ export function AppelFinal() {
               <li key={t.affichage}>
                 <a
                   href={t.lien}
-                  className="group/tel flex items-baseline justify-between gap-4 rounded-[6px] bg-nuit/[0.06] px-4 py-3 transition-colors hover:bg-nuit hover:text-jaune"
+                  className="group/tel flex items-baseline justify-between gap-4 rounded-panneau bg-nuit/[0.06] px-4 py-3 transition-colors hover:bg-nuit hover:text-jaune"
                 >
                   <span className="whitespace-nowrap titre text-[clamp(1.875rem,1.2rem+1.6vw,2.625rem)] chiffres-tabulaires">{t.affichage}</span>
                   <span className="cote text-[0.9375rem] opacity-80">{t.mobile ? "Mobile" : "Standard"}</span>

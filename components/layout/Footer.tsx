@@ -95,7 +95,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-16 flex flex-col gap-4 rounded-[6px] bg-blanc/[0.04] px-5 py-4 text-[0.9375rem] md:flex-row md:items-center md:justify-between">
+        <div className="mt-16 flex flex-col gap-4 rounded-panneau bg-blanc/[0.04] px-5 py-4 text-[0.9375rem] md:flex-row md:items-center md:justify-between">
           <p>
             © <AnneeCourante /> {NOM}. Tous droits réservés.
           </p>

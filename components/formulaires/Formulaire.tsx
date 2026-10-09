@@ -123,7 +123,7 @@ export function Formulaire({ type, posteInitial = "" }: { type: TypeFormulaire; 
 
   if (etat.statut === "succes") {
     return (
-      <div ref={succes} tabIndex={-1} role="status" className="rounded-[6px] bg-blanc-pur p-8 ombre-carte outline-none lg:p-10">
+      <div ref={succes} tabIndex={-1} role="status" className="rounded-panneau bg-blanc-pur p-8 ombre-carte outline-none lg:p-10">
         <Icone nom="succes" size={44} className="text-succes" />
         <h3 className="mt-5 titre text-titre-m text-nuit">
           {type === "devis" ? "Merci, votre demande est prête" : "Merci pour votre candidature"}
@@ -177,7 +177,7 @@ export function Formulaire({ type, posteInitial = "" }: { type: TypeFormulaire; 
       </p>
 
       {listeErreurs.length > 0 ? (
-        <div ref={resume} tabIndex={-1} role="alert" className="rounded-[6px] bg-erreur/[0.07] p-5 outline-none focus-visible:ring-2 focus-visible:ring-erreur">
+        <div ref={resume} tabIndex={-1} role="alert" className="rounded-panneau bg-erreur/[0.07] p-5 outline-none focus-visible:ring-2 focus-visible:ring-erreur">
           <p className="cote text-[1.0625rem] text-erreur">
             {listeErreurs.length === 1 ? "Un champ est à corriger :" : `${listeErreurs.length} champs sont à corriger :`}
           </p>
@@ -332,7 +332,7 @@ export function Formulaire({ type, posteInitial = "" }: { type: TypeFormulaire; 
       </div>
 
       {etat.statut === "echec" ? (
-        <div role="alert" className="rounded-[6px] bg-erreur/[0.07] p-5 text-[1rem] text-encre">
+        <div role="alert" className="rounded-panneau bg-erreur/[0.07] p-5 text-[1rem] text-encre">
           <p className="font-semibold text-erreur">L&apos;envoi n&apos;a pas abouti.</p>
           <p className="mt-1">
             La connexion a peut-être été interrompue. Réessayez dans un instant, ou contactez-nous directement par{" "}

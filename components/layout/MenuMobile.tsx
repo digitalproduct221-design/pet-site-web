@@ -46,7 +46,7 @@ export function MenuMobile() {
           <nav aria-label="Navigation principale" className="conteneur mt-4 flex-1">
             <Accordion.Root type="single" collapsible className="grid gap-1">
               {navigation.map((rubrique) => (
-                <Accordion.Item key={rubrique.id} value={rubrique.id} className="rounded-[6px] px-1 transition-colors data-[state=open]:bg-blanc/[0.05]">
+                <Accordion.Item key={rubrique.id} value={rubrique.id} className="rounded-panneau px-1 transition-colors data-[state=open]:bg-blanc/[0.05]">
                   <Accordion.Header>
                     <Accordion.Trigger className="group/acc flex w-full items-center justify-between px-3 py-4 text-left titre text-[1.875rem] text-blanc">
                       {rubrique.titre}

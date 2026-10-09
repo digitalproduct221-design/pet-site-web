@@ -69,8 +69,8 @@ export default function PageEntreprise() {
             <h3 className="titre text-titre-m text-nuit">Trois types de clients</h3>
             <ul className="revele-groupe mt-6 grid gap-4">
               {clients.map((c) => (
-                <li key={c.titre} className="flex items-start gap-5 rounded-[6px] bg-sable p-6">
-                  <span className="grid size-12 shrink-0 place-items-center rounded-[6px] bg-royal text-jaune">
+                <li key={c.titre} className="flex items-start gap-5 rounded-panneau bg-sable p-6">
+                  <span className="grid size-12 shrink-0 place-items-center rounded-panneau bg-royal text-jaune">
                     <Icone nom={c.icone} size={26} />
                   </span>
                   <span>
@@ -125,7 +125,7 @@ export default function PageEntreprise() {
           <ul className="revele-groupe mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-12 lg:gap-5">
             {valeurs.map((v, i) =>
               i === 0 ? (
-                <li key={v.titre} className={`sur-sombre relative isolate flex min-h-[22rem] flex-col justify-end overflow-hidden rounded-[6px] p-8 text-blanc sm:col-span-2 lg:p-10 ${cellules[i]}`}>
+                <li key={v.titre} className={`sur-sombre relative isolate flex min-h-[22rem] flex-col justify-end overflow-hidden rounded-panneau p-8 text-blanc sm:col-span-2 lg:p-10 ${cellules[i]}`}>
                   <Image src={photos.conduiteOuvrage.src} alt="" fill sizes="(min-width: 1024px) 50vw, 100vw" className="-z-10 object-cover" />
                   <span aria-hidden className="absolute inset-0 -z-10 voile-carte" />
                   <h3 className="titre text-titre-l text-blanc">{v.titre}</h3>
@@ -134,7 +134,7 @@ export default function PageEntreprise() {
               ) : (
                 <li
                   key={v.titre}
-                  className={`flex flex-col rounded-[6px] p-7 lg:p-8 ${cellules[i]} ${i === 1 ? "bg-nuit text-blanc" : i === 4 ? "bg-royal text-blanc" : "bg-blanc"}`}
+                  className={`flex flex-col rounded-panneau p-7 lg:p-8 ${cellules[i]} ${i === 1 ? "bg-nuit text-blanc" : i === 4 ? "bg-royal text-blanc" : "bg-blanc"}`}
                 >
                   <h3 className={`titre text-[1.875rem] leading-[0.95] ${i === 1 || i === 4 ? "text-blanc" : "text-nuit"}`}>{v.titre}</h3>
                   <p className={`mt-3 text-[1.0625rem] leading-relaxed ${i === 1 || i === 4 ? "text-brume" : "text-encre-douce"}`}>{v.texte}</p>
@@ -188,7 +188,7 @@ export default function PageEntreprise() {
           <div className="mt-12 grid gap-10 lg:grid-cols-12 lg:gap-8">
             <ul className="revele-groupe grid gap-4 sm:grid-cols-2 lg:col-span-7">
               {moyens.map((m) => (
-                <li key={m.titre} className="rounded-[6px] bg-blanc/[0.05] p-7">
+                <li key={m.titre} className="rounded-panneau bg-blanc/[0.05] p-7">
                   <Icone nom={m.icone} size={32} className="text-jaune" />
                   <h3 className="mt-5 titre text-[1.625rem] leading-[1] text-blanc">{m.titre}</h3>
                   <p className="mt-3 text-[1rem] leading-relaxed text-brume">{m.texte}</p>

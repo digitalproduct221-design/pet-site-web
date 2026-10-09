@@ -84,7 +84,7 @@ export function Chiffres() {
           </Equerres>
           <p className="mt-6 max-w-[18rem] cote text-[1.125rem] leading-snug text-brume">{annee.libelle}</p>
         </div>
-        <div className="verre-liquide revele-groupe grid gap-6 rounded-[6px] p-6 sm:p-8 lg:col-span-6 lg:col-start-7">
+        <div className="verre-liquide revele-groupe grid gap-6 rounded-panneau p-6 sm:p-8 lg:col-span-6 lg:col-start-7">
           {autres.map((c) => (
             <div key={c.libelle} className="grid grid-cols-[5.5rem_1fr] items-center gap-5 sm:grid-cols-[7rem_1fr]">
               <p className="titre text-[clamp(3rem,2.2rem+2.4vw,4.25rem)] leading-none text-blanc">

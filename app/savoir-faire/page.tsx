@@ -34,7 +34,7 @@ export default function PageSavoirFaire() {
               <li key={d.slug} className={vedette ? "md:col-span-2" : ""}>
                 <Link
                   href={`/savoir-faire/${d.slug}`}
-                  className={`group/domaine relative isolate flex overflow-hidden rounded-[6px] bg-nuit text-blanc ${
+                  className={`group/domaine relative isolate flex overflow-hidden rounded-panneau bg-nuit text-blanc ${
                     vedette ? "min-h-[30rem] items-end p-5 sm:p-8 lg:min-h-[36rem] lg:p-10" : "min-h-[26rem] items-end p-5 sm:p-7"
                   }`}
                 >
@@ -48,7 +48,7 @@ export default function PageSavoirFaire() {
                     style={{ objectPosition: p.focale }}
                   />
                   <span aria-hidden className="absolute inset-0 -z-10 voile-carte" />
-                  <span className={`verre-liquide block w-full rounded-[6px] p-6 ${vedette ? "max-w-[38rem] lg:p-8" : ""}`}>
+                  <span className={`verre-liquide block w-full rounded-panneau p-6 ${vedette ? "max-w-[38rem] lg:p-8" : ""}`}>
                     <span className="flex items-center gap-3">
                       <Icone nom={d.icone} size={28} className="text-jaune" />
                       <span className={`titre leading-[0.95] text-blanc ${vedette ? "text-titre-l" : "text-[2rem]"}`}>{d.titre}</span>

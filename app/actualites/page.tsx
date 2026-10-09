@@ -28,7 +28,7 @@ export default function PageActualites() {
         <div className="conteneur">
           {une ? (
             <article className="revele">
-              <Link href={`/actualites/${une.slug}`} className="group/une relative isolate flex min-h-[28rem] items-end overflow-hidden rounded-[6px] bg-nuit p-5 sm:p-8 lg:min-h-[32rem] lg:p-10">
+              <Link href={`/actualites/${une.slug}`} className="group/une relative isolate flex min-h-[28rem] items-end overflow-hidden rounded-panneau bg-nuit p-5 sm:p-8 lg:min-h-[32rem] lg:p-10">
                 <Image
                   src={photos[une.photo].src}
                   alt=""
@@ -39,7 +39,7 @@ export default function PageActualites() {
                   style={{ objectPosition: photos[une.photo].focale }}
                 />
                 <span aria-hidden className="absolute inset-0 -z-10 voile-carte" />
-                <span className="verre-liquide block max-w-[40rem] rounded-[6px] p-6 lg:p-8">
+                <span className="verre-liquide block max-w-[40rem] rounded-panneau p-6 lg:p-8">
                   <h2 className="titre text-titre-m text-blanc">{une.titre}</h2>
                   <span className="mt-3 flex flex-wrap items-center gap-3">
                     <time dateTime={une.date} className="cote text-[0.9375rem] text-brume">

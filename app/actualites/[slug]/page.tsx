@@ -41,7 +41,7 @@ export default async function PageArticle({ params }: PageProps<"/actualites/[sl
         <div className="conteneur grid gap-14 lg:grid-cols-12 lg:gap-8">
           <div className="revele mx-auto max-w-[42rem] lg:col-span-7 lg:mx-0">
             {article.exemple ? (
-              <p className="mb-8 rounded-[6px] bg-sable p-5 text-[1rem] text-encre">
+              <p className="mb-8 rounded-panneau bg-sable p-5 text-[1rem] text-encre">
                 Cet article est un exemple de mise en page : il sera remplacé par une vraie actualité de PET.
               </p>
             ) : null}

@@ -31,7 +31,7 @@ export function Grille({ filtre }: { filtre: string }) {
                   scroll={false}
                   replace
                   aria-current={choisi ? "page" : undefined}
-                  className={`inline-flex min-h-11 shrink-0 items-center gap-2 whitespace-nowrap rounded-full px-5 cote text-[1rem] transition-colors ${
+                  className={`inline-flex min-h-11 shrink-0 items-center gap-2 whitespace-nowrap rounded-chantier px-5 cote text-[1rem] transition-colors ${
                     choisi ? "bg-nuit text-blanc" : "bg-blanc text-nuit ombre-carte hover:text-royal"
                   }`}
                 >
@@ -50,7 +50,7 @@ export function Grille({ filtre }: { filtre: string }) {
       </p>
 
       {visibles.length === 0 ? (
-        <div className="mt-10 rounded-[6px] bg-blanc p-8">
+        <div className="mt-10 rounded-panneau bg-blanc p-8">
           <p className="titre text-titre-s text-nuit">Aucune réalisation publiée dans ce domaine pour l&apos;instant</p>
           <p className="mt-3 max-w-[36rem] text-encre-douce">
             Nos chantiers sont présentés au fur et à mesure. En attendant, découvrez ce que nous faisons dans ce domaine.

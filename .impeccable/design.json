@@ -1,0 +1,629 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-09T04:40:59.833Z",
+  "title": "Design System: PET – Partenaire Entreprise Travaux",
+  "extensions": {
+    "colorMeta": {
+      "jaune": {
+        "role": "primary",
+        "displayName": "Jaune chantier",
+        "canonical": "#f7c61c",
+        "tonalRamp": [
+          "oklch(15% 0.09 89.995)",
+          "oklch(25% 0.118 89.995)",
+          "oklch(35% 0.146 89.995)",
+          "oklch(48% 0.168 89.995)",
+          "oklch(60% 0.16 89.995)",
+          "oklch(72% 0.127 89.995)",
+          "oklch(84% 0.093 89.995)",
+          "oklch(95% 0.062 89.995)"
+        ]
+      },
+      "jaune-profond": {
+        "role": "primary",
+        "displayName": "Jaune profond",
+        "canonical": "#e0b00f",
+        "tonalRamp": [
+          "oklch(15% 0.085 88.498)",
+          "oklch(25% 0.112 88.498)",
+          "oklch(35% 0.138 88.498)",
+          "oklch(48% 0.157 88.498)",
+          "oklch(60% 0.151 88.498)",
+          "oklch(72% 0.119 88.498)",
+          "oklch(84% 0.088 88.498)",
+          "oklch(95% 0.059 88.498)"
+        ]
+      },
+      "royal": {
+        "role": "secondary",
+        "displayName": "Bleu royal",
+        "canonical": "#21409a",
+        "tonalRamp": [
+          "oklch(15% 0.083 265.524)",
+          "oklch(25% 0.109 265.524)",
+          "oklch(35% 0.134 265.524)",
+          "oklch(48% 0.152 265.524)",
+          "oklch(60% 0.146 265.524)",
+          "oklch(72% 0.116 265.524)",
+          "oklch(84% 0.086 265.524)",
+          "oklch(95% 0.058 265.524)"
+        ]
+      },
+      "royal-vif": {
+        "role": "secondary",
+        "displayName": "Royal vif",
+        "canonical": "#2d52bf",
+        "tonalRamp": [
+          "oklch(15% 0.094 265.725)",
+          "oklch(25% 0.123 265.725)",
+          "oklch(35% 0.152 265.725)",
+          "oklch(48% 0.176 265.725)",
+          "oklch(60% 0.167 265.725)",
+          "oklch(72% 0.132 265.725)",
+          "oklch(84% 0.096 265.725)",
+          "oklch(95% 0.064 265.725)"
+        ]
+      },
+      "ciel": {
+        "role": "tertiary",
+        "displayName": "Bleu ciel",
+        "canonical": "#5b9bd5",
+        "tonalRamp": [
+          "oklch(15% 0.065 247.498)",
+          "oklch(25% 0.084 247.498)",
+          "oklch(35% 0.102 247.498)",
+          "oklch(48% 0.109 247.498)",
+          "oklch(60% 0.109 247.498)",
+          "oklch(72% 0.089 247.498)",
+          "oklch(84% 0.067 247.498)",
+          "oklch(95% 0.047 247.498)"
+        ]
+      },
+      "nuit": {
+        "role": "neutral",
+        "displayName": "Nuit",
+        "canonical": "#0b1b3f",
+        "tonalRamp": [
+          "oklch(15% 0.05 263.706)",
+          "oklch(25% 0.062 263.706)",
+          "oklch(35% 0.072 263.706)",
+          "oklch(48% 0.072 263.706)",
+          "oklch(60% 0.072 263.706)",
+          "oklch(72% 0.066 263.706)",
+          "oklch(84% 0.051 263.706)",
+          "oklch(95% 0.038 263.706)"
+        ]
+      },
+      "nuit-profond": {
+        "role": "neutral",
+        "displayName": "Nuit profond",
+        "canonical": "#07122b",
+        "tonalRamp": [
+          "oklch(15% 0.042 263.753)",
+          "oklch(25% 0.051 263.753)",
+          "oklch(35% 0.053 263.753)",
+          "oklch(48% 0.053 263.753)",
+          "oklch(60% 0.053 263.753)",
+          "oklch(72% 0.053 263.753)",
+          "oklch(84% 0.043 263.753)",
+          "oklch(95% 0.033 263.753)"
+        ]
+      },
+      "nuit-clair": {
+        "role": "neutral",
+        "displayName": "Nuit clair",
+        "canonical": "#13264f",
+        "tonalRamp": [
+          "oklch(15% 0.053 263.429)",
+          "oklch(25% 0.066 263.429)",
+          "oklch(35% 0.079 263.429)",
+          "oklch(48% 0.079 263.429)",
+          "oklch(60% 0.079 263.429)",
+          "oklch(72% 0.07 263.429)",
+          "oklch(84% 0.054 263.429)",
+          "oklch(95% 0.04 263.429)"
+        ]
+      },
+      "brume": {
+        "role": "neutral",
+        "displayName": "Brume",
+        "canonical": "#b9c7e6",
+        "tonalRamp": [
+          "oklch(15% 0.039 266.115)",
+          "oklch(25% 0.046 266.115)",
+          "oklch(35% 0.046 266.115)",
+          "oklch(48% 0.046 266.115)",
+          "oklch(60% 0.046 266.115)",
+          "oklch(72% 0.046 266.115)",
+          "oklch(84% 0.04 266.115)",
+          "oklch(95% 0.032 266.115)"
+        ]
+      },
+      "sable": {
+        "role": "neutral",
+        "displayName": "Sable",
+        "canonical": "#f3ebdd",
+        "tonalRamp": [
+          "oklch(15% 0.021 81.781)",
+          "oklch(25% 0.021 81.781)",
+          "oklch(35% 0.021 81.781)",
+          "oklch(48% 0.021 81.781)",
+          "oklch(60% 0.021 81.781)",
+          "oklch(72% 0.021 81.781)",
+          "oklch(84% 0.021 81.781)",
+          "oklch(95% 0.021 81.781)"
+        ]
+      },
+      "sable-soutenu": {
+        "role": "neutral",
+        "displayName": "Sable soutenu",
+        "canonical": "#e8dcc6",
+        "tonalRamp": [
+          "oklch(15% 0.032 82.764)",
+          "oklch(25% 0.032 82.764)",
+          "oklch(35% 0.032 82.764)",
+          "oklch(48% 0.032 82.764)",
+          "oklch(60% 0.032 82.764)",
+          "oklch(72% 0.032 82.764)",
+          "oklch(84% 0.032 82.764)",
+          "oklch(95% 0.028 82.764)"
+        ]
+      },
+      "sable-fonce": {
+        "role": "neutral",
+        "displayName": "Sable foncé",
+        "canonical": "#d9c8a9",
+        "tonalRamp": [
+          "oklch(15% 0.039 82.57)",
+          "oklch(25% 0.046 82.57)",
+          "oklch(35% 0.046 82.57)",
+          "oklch(48% 0.046 82.57)",
+          "oklch(60% 0.046 82.57)",
+          "oklch(72% 0.046 82.57)",
+          "oklch(84% 0.04 82.57)",
+          "oklch(95% 0.031 82.57)"
+        ]
+      },
+      "encre": {
+        "role": "neutral",
+        "displayName": "Encre",
+        "canonical": "#1a1f2e",
+        "tonalRamp": [
+          "oklch(15% 0.03 269.883)",
+          "oklch(25% 0.03 269.883)",
+          "oklch(35% 0.03 269.883)",
+          "oklch(48% 0.03 269.883)",
+          "oklch(60% 0.03 269.883)",
+          "oklch(72% 0.03 269.883)",
+          "oklch(84% 0.03 269.883)",
+          "oklch(95% 0.027 269.883)"
+        ]
+      },
+      "encre-douce": {
+        "role": "neutral",
+        "displayName": "Encre douce",
+        "canonical": "#454b5e",
+        "tonalRamp": [
+          "oklch(15% 0.033 271.216)",
+          "oklch(25% 0.033 271.216)",
+          "oklch(35% 0.033 271.216)",
+          "oklch(48% 0.033 271.216)",
+          "oklch(60% 0.033 271.216)",
+          "oklch(72% 0.033 271.216)",
+          "oklch(84% 0.033 271.216)",
+          "oklch(95% 0.028 271.216)"
+        ]
+      },
+      "blanc": {
+        "role": "neutral",
+        "displayName": "Blanc cassé",
+        "canonical": "#fbfaf7",
+        "tonalRamp": [
+          "oklch(15% 0.004 91.446)",
+          "oklch(25% 0.004 91.446)",
+          "oklch(35% 0.004 91.446)",
+          "oklch(48% 0.004 91.446)",
+          "oklch(60% 0.004 91.446)",
+          "oklch(72% 0.004 91.446)",
+          "oklch(84% 0.004 91.446)",
+          "oklch(95% 0.004 91.446)"
+        ]
+      },
+      "blanc-pur": {
+        "role": "neutral",
+        "displayName": "Blanc pur",
+        "canonical": "#ffffff",
+        "tonalRamp": [
+          "oklch(15% 0 89.876)",
+          "oklch(25% 0 89.876)",
+          "oklch(35% 0 89.876)",
+          "oklch(48% 0 89.876)",
+          "oklch(60% 0 89.876)",
+          "oklch(72% 0 89.876)",
+          "oklch(84% 0 89.876)",
+          "oklch(95% 0 89.876)"
+        ]
+      },
+      "erreur": {
+        "role": "neutral",
+        "displayName": "Erreur",
+        "canonical": "#b42318",
+        "tonalRamp": [
+          "oklch(15% 0.096 29.513)",
+          "oklch(25% 0.126 29.513)",
+          "oklch(35% 0.157 29.513)",
+          "oklch(48% 0.182 29.513)",
+          "oklch(60% 0.172 29.513)",
+          "oklch(72% 0.135 29.513)",
+          "oklch(84% 0.099 29.513)",
+          "oklch(95% 0.066 29.513)"
+        ]
+      },
+      "succes": {
+        "role": "neutral",
+        "displayName": "Succès",
+        "canonical": "#1d6b3a",
+        "tonalRamp": [
+          "oklch(15% 0.065 151.697)",
+          "oklch(25% 0.083 151.697)",
+          "oklch(35% 0.101 151.697)",
+          "oklch(48% 0.108 151.697)",
+          "oklch(60% 0.108 151.697)",
+          "oklch(72% 0.089 151.697)",
+          "oklch(84% 0.067 151.697)",
+          "oklch(95% 0.047 151.697)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Titre du hero et titres d'en-tête de page, avec équerre."
+      },
+      "chiffre": {
+        "displayName": "Chiffre",
+        "purpose": "Année de création et grands chiffres, tabulaires."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Titres de section par défaut."
+      },
+      "headline-m": {
+        "displayName": "Headline M",
+        "purpose": "Titres de section secondaires."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Titres de panneaux et blocs latéraux."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Texte courant Manrope 17 px."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Navigation, domaines, légendes, libellés de champ."
+      },
+      "label-bouton": {
+        "displayName": "Label bouton",
+        "purpose": "Boutons, en capitales espacées."
+      },
+      "cote": {
+        "displayName": "Cote",
+        "purpose": "Légendes de photo et libellés de données."
+      }
+    },
+    "shadows": [
+      {
+        "name": "ombre-carte",
+        "value": "0 18px 40px -28px rgb(11 27 63 / 0.45)",
+        "purpose": "Cartes blanches et filtres au repos sur fond clair."
+      },
+      {
+        "name": "ombre-carte-survol",
+        "value": "0 24px 48px -26px rgb(11 27 63 / 0.55)",
+        "purpose": "Carte au survol."
+      },
+      {
+        "name": "ombre-flottante",
+        "value": "0 30px 60px -30px rgb(7 18 43 / 0.45)",
+        "purpose": "Panneau du méga-menu, fenêtres."
+      },
+      {
+        "name": "ombre-planche",
+        "value": "0 24px 48px -24px rgb(7 18 43 / 0.45), 0 2px 6px -2px rgb(7 18 43 / 0.2)",
+        "purpose": "Photo secondaire qui chevauche une autre photo."
+      },
+      {
+        "name": "ombre-tuile",
+        "value": "0 14px 30px -14px rgb(33 64 154 / 0.7)",
+        "purpose": "Tuile d'icône royale."
+      },
+      {
+        "name": "ombre-bouton",
+        "value": "inset 0 -3px 0 rgb(7 18 43 / 0.18)",
+        "purpose": "Assise du bouton jaune."
+      },
+      {
+        "name": "ombre-texte",
+        "value": "0 2px 24px rgb(7 18 43 / 0.45)",
+        "purpose": "text-shadow des titres posés sur photo."
+      },
+      {
+        "name": "anneau-champ",
+        "value": "inset 0 0 0 2px #21409a, 0 0 0 4px rgb(33 64 154 / 0.12)",
+        "purpose": "Focus des champs."
+      },
+      {
+        "name": "verre-liquide",
+        "value": "inset 0 1px 0 rgb(255 255 255 / 0.32), inset 0 -1px 0 rgb(255 255 255 / 0.06), 0 24px 60px -28px rgb(4 10 26 / 0.7); backdrop-filter: blur(22px) saturate(170%)",
+        "purpose": "Surfaces posées sur photo."
+      },
+      {
+        "name": "verre",
+        "value": "inset 0 -1px 0 rgb(33 64 154 / 0.1), inset 0 1px 0 rgb(255 255 255 / 0.6), 0 10px 30px -18px rgb(7 18 43 / 0.35); background rgb(251 250 247 / 0.78); backdrop-filter: blur(18px) saturate(170%)",
+        "purpose": "Header compact au défilement."
+      },
+      {
+        "name": "verre-sombre",
+        "value": "inset 0 1px 0 rgb(185 199 230 / 0.18), 0 -12px 30px -18px rgb(7 18 43 / 0.6); background rgb(11 27 63 / 0.82); backdrop-filter: blur(18px) saturate(160%)",
+        "purpose": "Barre d'actions mobile."
+      },
+      {
+        "name": "voile-photo",
+        "value": "linear-gradient(180deg, rgb(11 27 63 / 0.26) 0%, rgb(11 27 63 / 0.38) 55%, rgb(7 18 43 / 0.62) 100%)",
+        "purpose": "Voile léger par défaut sur toute photo."
+      },
+      {
+        "name": "voile-hero",
+        "value": "linear-gradient(95deg, rgb(7 18 43 / 0.92) 0%, rgb(11 27 63 / 0.78) 38%, rgb(11 27 63 / 0.35) 70%, rgb(11 27 63 / 0.25) 100%)",
+        "purpose": "Diaporama du hero, dense à gauche sous le titre."
+      },
+      {
+        "name": "voile-lateral",
+        "value": "linear-gradient(100deg, rgb(7 18 43 / 0.95) 0%, rgb(11 27 63 / 0.82) 45%, rgb(11 27 63 / 0.5) 100%)",
+        "purpose": "En-têtes de page sur photo."
+      },
+      {
+        "name": "voile-carte",
+        "value": "linear-gradient(180deg, rgb(11 27 63 / 0.1) 0%, rgb(11 27 63 / 0.4) 50%, rgb(7 18 43 / 0.88) 100%)",
+        "purpose": "Carte photo portant un panneau en bas."
+      },
+      {
+        "name": "profondeur",
+        "value": "radial-gradient(90% 70% at 88% 0%, rgb(33 64 154 / 0.42), transparent 62%), radial-gradient(70% 60% at 0% 100%, rgb(33 64 154 / 0.18), transparent 60%), linear-gradient(180deg, #0b1b3f 0%, #07122b 100%)",
+        "purpose": "Fond des planches sombres."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-chantier",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Courbe maison de toutes les entrées et transitions d'état."
+      },
+      {
+        "name": "ease-sortie",
+        "value": "cubic-bezier(0.7, 0, 0.84, 0)",
+        "purpose": "Sorties (méga-menu, fenêtres, accordéons, pages)."
+      },
+      {
+        "name": "etat",
+        "value": "300ms",
+        "purpose": "Survols de boutons et liens."
+      },
+      {
+        "name": "header",
+        "value": "500ms",
+        "purpose": "Réduction du header et passage au verre."
+      },
+      {
+        "name": "equerres",
+        "value": "700ms",
+        "purpose": "Fermeture des équerres, ouverture des panneaux de savoir-faire."
+      },
+      {
+        "name": "revele",
+        "value": "800ms opacité / 900ms translation 28-32px, échelon 90ms",
+        "purpose": "Apparitions au défilement, une seule fois."
+      },
+      {
+        "name": "rideau",
+        "value": "clip-path inset(18% 0 0 0) vers 0 en 1200ms ; image 1.12 vers 1 en 1600ms",
+        "purpose": "Révélation des photos."
+      },
+      {
+        "name": "diaporama",
+        "value": "fondu 1400ms ; zoom 1.02 vers 1.12 en 9s linéaire ; 7s par photo",
+        "purpose": "Hero."
+      },
+      {
+        "name": "menu",
+        "value": "entrée 380ms, sortie 200ms, glissement 32px",
+        "purpose": "Méga-menu Radix."
+      },
+      {
+        "name": "page",
+        "value": "sortie 220ms, entrée 520ms avec montée de 14px",
+        "purpose": "View Transitions entre pages."
+      },
+      {
+        "name": "parallaxe",
+        "value": "8% sur 100vh, animation-timeline scroll(root)",
+        "purpose": "Fonds d'en-tête et hero."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "xs",
+        "value": "26rem"
+      },
+      {
+        "name": "md",
+        "value": "48rem"
+      },
+      {
+        "name": "lg",
+        "value": "64rem"
+      },
+      {
+        "name": "nav",
+        "value": "72rem"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Bouton primaire",
+      "kind": "button",
+      "refersTo": "bouton-primaire",
+      "description": "Action principale unique (« Demander un devis ») : jaune, texte nuit, angle d'équerre au survol.",
+      "html": "<a href=\"#\" class=\"ds-btn-primaire\"><span class=\"ds-angle\"></span><span>Demander un devis</span><svg width=\"20\" height=\"20\" viewBox=\"0 0 256 256\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M224.49,136.49l-72,72a12,12,0,0,1-17-17L187,140H40a12,12,0,0,1,0-24H187L135.51,64.48a12,12,0,0,1,17-17l72,72A12,12,0,0,1,224.49,136.49Z\"/></svg></a>",
+      "css": ".ds-btn-primaire{display:inline-flex;align-items:center;gap:12px;min-height:52px;padding:0 24px;border:0;border-radius:4px;font-family:\"Barlow Semi Condensed\",\"Arial Narrow\",sans-serif;font-weight:600;font-size:1.0625rem;letter-spacing:0.04em;text-transform:uppercase;cursor:pointer;position:relative;text-decoration:none;transition:background-color 300ms cubic-bezier(0.16, 1, 0.3, 1),color 300ms cubic-bezier(0.16, 1, 0.3, 1),box-shadow 300ms cubic-bezier(0.16, 1, 0.3, 1),translate 300ms cubic-bezier(0.16, 1, 0.3, 1);background:#f7c61c;color:#0b1b3f;box-shadow:inset 0 -3px 0 rgb(7 18 43 / 0.18);} .ds-btn-primaire:hover{background:#e0b00f;} .ds-btn-primaire:active{translate:0 1px;} .ds-btn-primaire:focus-visible{outline:3px solid #21409a;outline-offset:3px;} .ds-btn-primaire .ds-angle{position:absolute;left:-6px;top:-6px;width:14px;height:14px;border-left:3px solid #0b1b3f;border-top:3px solid #0b1b3f;opacity:0;translate:4px 4px;transition:opacity 300ms cubic-bezier(0.16, 1, 0.3, 1),translate 300ms cubic-bezier(0.16, 1, 0.3, 1);pointer-events:none;} .ds-btn-primaire:hover .ds-angle,.ds-btn-primaire:focus-visible .ds-angle{opacity:1;translate:0 0;} .ds-btn-primaire svg{transition:transform 300ms cubic-bezier(0.16, 1, 0.3, 1);} .ds-btn-primaire:hover svg{transform:translateX(4px);}"
+    },
+    {
+      "name": "Bouton contour",
+      "kind": "button",
+      "refersTo": "bouton-contour",
+      "description": "Action secondaire sur fond clair : contour royal de 2 px qui se remplit au survol.",
+      "html": "<a href=\"#\" class=\"ds-btn-contour\"><span class=\"ds-angle\"></span><span>Nos savoir-faire</span><svg width=\"20\" height=\"20\" viewBox=\"0 0 256 256\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M224.49,136.49l-72,72a12,12,0,0,1-17-17L187,140H40a12,12,0,0,1,0-24H187L135.51,64.48a12,12,0,0,1,17-17l72,72A12,12,0,0,1,224.49,136.49Z\"/></svg></a>",
+      "css": ".ds-btn-contour{display:inline-flex;align-items:center;gap:12px;min-height:52px;padding:0 24px;border:0;border-radius:4px;font-family:\"Barlow Semi Condensed\",\"Arial Narrow\",sans-serif;font-weight:600;font-size:1.0625rem;letter-spacing:0.04em;text-transform:uppercase;cursor:pointer;position:relative;text-decoration:none;transition:background-color 300ms cubic-bezier(0.16, 1, 0.3, 1),color 300ms cubic-bezier(0.16, 1, 0.3, 1),box-shadow 300ms cubic-bezier(0.16, 1, 0.3, 1),translate 300ms cubic-bezier(0.16, 1, 0.3, 1);background:transparent;color:#21409a;box-shadow:inset 0 0 0 2px #21409a;} .ds-btn-contour:hover{background:#21409a;color:#fbfaf7;} .ds-btn-contour:focus-visible{outline:3px solid #21409a;outline-offset:3px;} .ds-btn-contour .ds-angle{position:absolute;left:-6px;top:-6px;width:14px;height:14px;border-left:3px solid #f7c61c;border-top:3px solid #f7c61c;opacity:0;translate:4px 4px;transition:opacity 300ms cubic-bezier(0.16, 1, 0.3, 1),translate 300ms cubic-bezier(0.16, 1, 0.3, 1);pointer-events:none;} .ds-btn-contour:hover .ds-angle,.ds-btn-contour:focus-visible .ds-angle{opacity:1;translate:0 0;}"
+    },
+    {
+      "name": "Bouton contour clair",
+      "kind": "button",
+      "refersTo": "bouton-contour-clair",
+      "description": "Action secondaire posée sur photo ou fond nuit.",
+      "html": "<div class=\"ds-fond-nuit\"><a href=\"#\" class=\"ds-btn-contour-clair\"><span class=\"ds-angle\"></span><span>Nos savoir-faire</span><svg width=\"20\" height=\"20\" viewBox=\"0 0 256 256\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M224.49,136.49l-72,72a12,12,0,0,1-17-17L187,140H40a12,12,0,0,1,0-24H187L135.51,64.48a12,12,0,0,1,17-17l72,72A12,12,0,0,1,224.49,136.49Z\"/></svg></a></div>",
+      "css": ".ds-fond-nuit{background:linear-gradient(180deg,#0b1b3f,#07122b);padding:32px;} .ds-btn-contour-clair{display:inline-flex;align-items:center;gap:12px;min-height:52px;padding:0 24px;border:0;border-radius:4px;font-family:\"Barlow Semi Condensed\",\"Arial Narrow\",sans-serif;font-weight:600;font-size:1.0625rem;letter-spacing:0.04em;text-transform:uppercase;cursor:pointer;position:relative;text-decoration:none;transition:background-color 300ms cubic-bezier(0.16, 1, 0.3, 1),color 300ms cubic-bezier(0.16, 1, 0.3, 1),box-shadow 300ms cubic-bezier(0.16, 1, 0.3, 1),translate 300ms cubic-bezier(0.16, 1, 0.3, 1);background:transparent;color:#fbfaf7;box-shadow:inset 0 0 0 2px rgb(251 250 247 / 0.7);} .ds-btn-contour-clair:hover{background:#fbfaf7;color:#0b1b3f;box-shadow:inset 0 0 0 2px #fbfaf7;} .ds-btn-contour-clair:focus-visible{outline:3px solid #f7c61c;outline-offset:3px;} .ds-btn-contour-clair .ds-angle{position:absolute;left:-6px;top:-6px;width:14px;height:14px;border-left:3px solid #f7c61c;border-top:3px solid #f7c61c;opacity:0;translate:4px 4px;transition:opacity 300ms cubic-bezier(0.16, 1, 0.3, 1),translate 300ms cubic-bezier(0.16, 1, 0.3, 1);pointer-events:none;} .ds-btn-contour-clair:hover .ds-angle,.ds-btn-contour-clair:focus-visible .ds-angle{opacity:1;translate:0 0;}"
+    },
+    {
+      "name": "Bouton sombre",
+      "kind": "button",
+      "refersTo": "bouton-sombre",
+      "description": "Action principale sur l'aplat jaune de l'appel final.",
+      "html": "<div class=\"ds-fond-jaune\"><a href=\"#\" class=\"ds-btn-sombre\"><span class=\"ds-angle\"></span><span>Demander un devis</span><svg width=\"20\" height=\"20\" viewBox=\"0 0 256 256\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M224.49,136.49l-72,72a12,12,0,0,1-17-17L187,140H40a12,12,0,0,1,0-24H187L135.51,64.48a12,12,0,0,1,17-17l72,72A12,12,0,0,1,224.49,136.49Z\"/></svg></a></div>",
+      "css": ".ds-fond-jaune{background:#f7c61c;padding:32px;} .ds-btn-sombre{display:inline-flex;align-items:center;gap:12px;min-height:52px;padding:0 24px;border:0;border-radius:4px;font-family:\"Barlow Semi Condensed\",\"Arial Narrow\",sans-serif;font-weight:600;font-size:1.0625rem;letter-spacing:0.04em;text-transform:uppercase;cursor:pointer;position:relative;text-decoration:none;transition:background-color 300ms cubic-bezier(0.16, 1, 0.3, 1),color 300ms cubic-bezier(0.16, 1, 0.3, 1),box-shadow 300ms cubic-bezier(0.16, 1, 0.3, 1),translate 300ms cubic-bezier(0.16, 1, 0.3, 1);background:#0b1b3f;color:#fbfaf7;} .ds-btn-sombre:hover{background:#21409a;} .ds-btn-sombre:focus-visible{outline:3px solid #21409a;outline-offset:3px;} .ds-btn-sombre .ds-angle{position:absolute;left:-6px;top:-6px;width:14px;height:14px;border-left:3px solid #f7c61c;border-top:3px solid #f7c61c;opacity:0;translate:4px 4px;transition:opacity 300ms cubic-bezier(0.16, 1, 0.3, 1),translate 300ms cubic-bezier(0.16, 1, 0.3, 1);pointer-events:none;} .ds-btn-sombre:hover .ds-angle,.ds-btn-sombre:focus-visible .ds-angle{opacity:1;translate:0 0;}"
+    },
+    {
+      "name": "Champ de formulaire",
+      "kind": "input",
+      "refersTo": "champ",
+      "description": "Champ blanc pur, contour intérieur sable foncé, anneau royal au focus.",
+      "html": "<label class=\"ds-champ-label\" for=\"ds-nom\">Nom et prénom</label><input id=\"ds-nom\" class=\"ds-champ\" placeholder=\"Votre nom\">",
+      "css": ".ds-champ-label{display:block;font-family:\"Barlow Semi Condensed\",\"Arial Narrow\",sans-serif;font-weight:600;letter-spacing:0.02em;font-size:1.0625rem;color:#0b1b3f;} .ds-champ{margin-top:8px;display:block;width:100%;max-width:28rem;border:0;border-radius:4px;background:#ffffff;padding:14px 16px;font-family:Manrope,system-ui,sans-serif;font-size:1.0625rem;color:#1a1f2e;box-shadow:inset 0 0 0 1.5px #d9c8a9;transition:box-shadow 150ms;caret-color:#21409a;} .ds-champ::placeholder{color:rgb(69 75 94 / 0.7);} .ds-champ:hover{box-shadow:inset 0 0 0 1.5px #454b5e;} .ds-champ:focus{outline:none;box-shadow:inset 0 0 0 2px #21409a,0 0 0 4px rgb(33 64 154 / 0.12);} .ds-champ[aria-invalid=true]{box-shadow:inset 0 0 0 2px #b42318;}"
+    },
+    {
+      "name": "Navigation du header",
+      "kind": "nav",
+      "refersTo": "lien-megamenu",
+      "description": "Header blanc cassé, entrées en label avec chevron, trait jaune de 3 px sur l'entrée ouverte ou active.",
+      "html": "<nav class=\"ds-nav\"><strong class=\"ds-nav-logo\">PET</strong><a href=\"#\" class=\"ds-nav-lien ds-actif\">L'entreprise</a><a href=\"#\" class=\"ds-nav-lien\">Savoir-faire</a><a href=\"#\" class=\"ds-nav-lien\">Réalisations</a><a href=\"#\" class=\"ds-nav-devis\">Demander un devis</a></nav>",
+      "css": ".ds-nav{display:flex;align-items:center;gap:8px;height:80px;padding:0 24px;background:#fbfaf7;box-shadow:inset 0 -1px 0 #e8dcc6;} .ds-nav-logo{font-family:\"Barlow Condensed\",\"Arial Narrow\",sans-serif;font-weight:800;font-size:1.75rem;color:#0b1b3f;margin-right:auto;} .ds-nav-lien{position:relative;padding:28px 10px;font-family:\"Barlow Semi Condensed\",\"Arial Narrow\",sans-serif;font-weight:600;letter-spacing:0.02em;font-size:1.0625rem;color:#0b1b3f;text-decoration:none;} .ds-nav-lien::after{content:\"\";position:absolute;left:10px;right:10px;bottom:0;height:3px;background:#f7c61c;transform:scaleX(0);transform-origin:left;transition:transform 500ms cubic-bezier(0.16, 1, 0.3, 1);} .ds-nav-lien:hover::after,.ds-nav-lien.ds-actif::after{transform:scaleX(1);} .ds-nav-lien:focus-visible{outline:3px solid #21409a;outline-offset:3px;} .ds-nav-devis{margin-left:16px;display:inline-flex;align-items:center;min-height:48px;padding:0 20px;border-radius:4px;background:#f7c61c;color:#0b1b3f;font-family:\"Barlow Semi Condensed\",\"Arial Narrow\",sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;text-decoration:none;box-shadow:inset 0 -3px 0 rgb(7 18 43 / 0.18);transition:background-color 300ms;} .ds-nav-devis:hover{background:#e0b00f;}"
+    },
+    {
+      "name": "Mention Exemple",
+      "kind": "chip",
+      "refersTo": "mention-exemple",
+      "description": "Étiquette obligatoire des contenus d'exemple, rectangulaire 4 px.",
+      "html": "<span class=\"ds-exemple\">Exemple</span> <span class=\"ds-exemple ds-exemple-sombre\">Exemple</span>",
+      "css": ".ds-exemple{display:inline-flex;align-items:center;padding:2px 8px;border-radius:4px;background:#e8dcc6;color:#454b5e;font-family:\"Barlow Semi Condensed\",\"Arial Narrow\",sans-serif;font-weight:600;font-size:0.8125rem;text-transform:uppercase;letter-spacing:0.06em;} .ds-exemple-sombre{background:rgb(251 250 247 / 0.1);color:#b9c7e6;margin-left:8px;outline:12px solid #0b1b3f;}"
+    },
+    {
+      "name": "Vignette de projet",
+      "kind": "card",
+      "refersTo": "carte-projet",
+      "description": "Photo voilée qui s'approche au survol, titre condensé, domaine en royal, résumé ; sans fond ni bordure.",
+      "html": "<a href=\"#\" class=\"ds-projet\"><span class=\"ds-projet-photo\"><span class=\"ds-projet-img\"></span></span><span class=\"ds-projet-titre\">Fourniture et pose de conduite fonte</span><span class=\"ds-projet-meta\"><span class=\"ds-projet-domaine\">Hydraulique</span><span class=\"ds-projet-ex\">Exemple</span></span><span class=\"ds-projet-resume\">Pose de conduite en tranchée et ouvrage de vannes.</span></a>",
+      "css": ".ds-projet{display:block;max-width:22rem;text-decoration:none;font-family:Manrope,system-ui,sans-serif;} .ds-projet-photo{position:relative;display:block;aspect-ratio:4/3;overflow:hidden;border-radius:4px;background:#0b1b3f;} .ds-projet-img{position:absolute;inset:0;background:linear-gradient(135deg,#c9a46b,#8a6a3e 55%,#5b9bd5);transition:transform 900ms cubic-bezier(0.16, 1, 0.3, 1);} .ds-projet-photo::after{content:\"\";position:absolute;inset:0;background:linear-gradient(180deg,rgb(11 27 63 / 0.26) 0%,rgb(11 27 63 / 0.38) 55%,rgb(7 18 43 / 0.62) 100%);} .ds-projet:hover .ds-projet-img{transform:scale(1.04);} .ds-projet-titre{display:block;margin-top:20px;font-family:\"Barlow Condensed\",\"Arial Narrow\",sans-serif;font-weight:800;text-transform:uppercase;font-size:1.625rem;line-height:1;color:#0b1b3f;transition:color 150ms;} .ds-projet:hover .ds-projet-titre{color:#21409a;} .ds-projet-meta{display:flex;gap:12px;align-items:center;margin-top:8px;} .ds-projet-domaine{font-family:\"Barlow Semi Condensed\",\"Arial Narrow\",sans-serif;font-weight:600;font-size:0.9375rem;color:#21409a;} .ds-projet-ex{padding:2px 8px;border-radius:4px;background:#e8dcc6;color:#454b5e;font-family:\"Barlow Semi Condensed\",\"Arial Narrow\",sans-serif;font-weight:600;font-size:0.8125rem;text-transform:uppercase;letter-spacing:0.06em;} .ds-projet-resume{display:block;margin-top:8px;color:#454b5e;font-size:1rem;line-height:1.6;} .ds-projet:focus-visible{outline:3px solid #21409a;outline-offset:3px;}"
+    },
+    {
+      "name": "Panneau de verre liquide",
+      "kind": "custom",
+      "refersTo": "panneau-verre",
+      "description": "Surface posée sur photo : flou, liseré lumineux, reflet qui glisse au survol ; repli opaque.",
+      "html": "<div class=\"ds-verre-scene\"><div class=\"ds-verre\"><p class=\"ds-verre-texte\">Terrassement d'une plateforme à la pelle hydraulique et à la chargeuse.</p><p class=\"ds-verre-meta\"><span>Travaux publics et VRD</span><span class=\"ds-verre-num\"><b>01</b> / 05</span></p></div></div>",
+      "css": ".ds-verre-scene{padding:40px;background:linear-gradient(95deg,rgb(7 18 43 / 0.92),rgb(11 27 63 / 0.5)),linear-gradient(135deg,#c9a46b,#5b9bd5);} .ds-verre{position:relative;isolation:isolate;max-width:30rem;padding:24px;border-radius:6px;color:#fbfaf7;font-family:Manrope,system-ui,sans-serif;background:linear-gradient(135deg,rgb(255 255 255 / 0.14) 0%,rgb(255 255 255 / 0.04) 55%,rgb(255 255 255 / 0.08) 100%),rgb(11 27 63 / 0.55);-webkit-backdrop-filter:blur(22px) saturate(170%);backdrop-filter:blur(22px) saturate(170%);box-shadow:inset 0 1px 0 rgb(255 255 255 / 0.32),inset 0 -1px 0 rgb(255 255 255 / 0.06),0 24px 60px -28px rgb(4 10 26 / 0.7);} .ds-verre::after{content:\"\";position:absolute;z-index:-1;inset:0;border-radius:inherit;background:linear-gradient(105deg,transparent 35%,rgb(255 255 255 / 0.14) 50%,transparent 65%);background-size:250% 100%;background-position:120% 0;transition:background-position 1100ms cubic-bezier(0.16, 1, 0.3, 1);pointer-events:none;} .ds-verre:hover::after{background-position:-20% 0;} .ds-verre-texte{margin:0;font-size:1.0625rem;line-height:1.35;} .ds-verre-meta{margin:8px 0 0;display:flex;justify-content:space-between;font-family:\"Barlow Semi Condensed\",\"Arial Narrow\",sans-serif;font-weight:600;font-size:0.9375rem;color:#f7c61c;} .ds-verre-num{color:#b9c7e6;font-variant-numeric:tabular-nums;} .ds-verre-num b{color:#fbfaf7;font-weight:600;}"
+    },
+    {
+      "name": "Équerres du logo",
+      "kind": "custom",
+      "refersTo": "equerres",
+      "description": "Signature : équerre jaune en haut à gauche, ciel en bas à droite, qui serrent leur cadre et s'écartent au survol.",
+      "html": "<div class=\"ds-eq-scene\"><div class=\"ds-equerres\" tabindex=\"0\"><span class=\"ds-eq-titre\">2016</span></div></div>",
+      "css": ".ds-eq-scene{padding:48px;background:#21409a;} .ds-equerres{position:relative;display:inline-block;padding:16px 20px;} .ds-equerres::before,.ds-equerres::after{content:\"\";position:absolute;width:44px;height:44px;pointer-events:none;transition:translate 700ms cubic-bezier(0.16, 1, 0.3, 1);} .ds-equerres::before{top:-18px;left:-18px;border-top:4px solid #f7c61c;border-left:4px solid #f7c61c;} .ds-equerres::after{bottom:-18px;right:-18px;border-bottom:4px solid #5b9bd5;border-right:4px solid #5b9bd5;} .ds-equerres:hover::before,.ds-equerres:focus-visible::before{translate:-6px -6px;} .ds-equerres:hover::after,.ds-equerres:focus-visible::after{translate:6px 6px;} .ds-equerres:focus-visible{outline:3px solid #f7c61c;outline-offset:28px;} .ds-eq-titre{font-family:\"Barlow Condensed\",\"Arial Narrow\",sans-serif;font-weight:800;font-size:6rem;line-height:0.9;color:#fbfaf7;font-variant-numeric:tabular-nums;} @media (prefers-reduced-motion: reduce){.ds-equerres::before,.ds-equerres::after{transition:none;translate:0 0 !important;}}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Le chantier vu de près, signé d'une poignée de main",
+    "overview": "Le site se lit comme une suite de planches : une scène sombre et immersive de vrais chantiers, puis des planches claires et aérées sur sable ou blanc cassé, ponctuées d'aplats bleu royal et d'un aplat jaune final. La voix visuelle vient du logo : capitales condensées très grasses, jaune chantier réservé à l'action, et la paire d'équerres (jaune en haut à gauche, bleu ciel en bas à droite) qui vient serrer les moments forts. Densité modérée, grands blancs entre les sections, compositions asymétriques sur grille de douze colonnes.\n\nDepuis la révision client du 9 octobre 2026, le système est sobre en lignes : pas de quadrillage, pas de filets entre les lignes de liste, pas de cases bordées. La profondeur vient des aplats (dégradé nuit vers nuit profond avec halo royal), des voiles bleu nuit sur les photos et du verre liquide posé sur les photos. Les photos de chantier, de basse définition, ne sont jamais nues : toujours cadrées, toujours voilées.\n\nLe mouvement est mesuré et décélérant (une courbe maison unique), il part toujours d'un état déjà lisible et s'efface entièrement sous `prefers-reduced-motion` ; le verre passe à l'opaque sous `prefers-reduced-transparency`.",
+    "keyCharacteristics": [
+      "Capitales Barlow Condensed 800 pour tous les titres, Manrope pour le texte, Barlow Semi Condensed 600 pour les étiquettes et commandes.",
+      "Jaune chantier réservé à l'action principale, à l'équerre haute et aux accents sur fond sombre.",
+      "Alternance de planches : blanc cassé, sable, nuit profond, royal, jaune.",
+      "Équerres du logo comme unique signature linéaire.",
+      "Verre liquide sur les surfaces posées sur photo, verre dépoli pour le header compact et la barre mobile.",
+      "Angles vifs : 4 px pour les commandes et photos, 6 px pour les panneaux et cartes."
+    ],
+    "rules": [
+      {
+        "name": "The Jaune Rule",
+        "body": "Le jaune signale ce qu'on peut faire (devis, action, focus sur sombre) ou l'équerre haute ; il n'habille jamais une surface décorative, sauf l'aplat de l'appel final, où les boutons passent en nuit.",
+        "section": "colors"
+      },
+      {
+        "name": "The Palette-Only Shadow Rule",
+        "body": "Toute ombre, tout voile et tout liseré est teinté de nuit, nuit profond, royal ou blanc ; jamais de noir pur.",
+        "section": "colors"
+      },
+      {
+        "name": "The Title-Carries-Itself Rule",
+        "body": "Aucune étiquette au-dessus d'un titre : le titre porte seul sa section. Les petites capitales espacées ne servent qu'à nommer une donnée qui suit (adresse, téléphone, champ de fiche).",
+        "section": "typography"
+      },
+      {
+        "name": "The Uppercase-Display Rule",
+        "body": "Tout titre est en Barlow Condensed 800 capitales, `text-wrap: balance` ; le texte courant n'est jamais en capitales.",
+        "section": "typography"
+      },
+      {
+        "name": "The Planche Rule",
+        "body": "Chaque section est une planche à fond plein (blanc cassé, sable, nuit profond, royal ou jaune) ; deux planches voisines ne partagent pas le même fond et aucune ligne ne les sépare.",
+        "section": "layout"
+      },
+      {
+        "name": "The Veiled Photo Rule",
+        "body": "Aucune photo n'apparaît nette et nue : voile bleu nuit au minimum léger, dense sous le texte, et jamais d'agrandissement plein écran sans voile.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Glass-On-Photo Rule",
+        "body": "Le verre liquide n'existe que posé sur une photo ou un fond sombre ; sur une planche claire, la même carte devient sable ou blanche avec ombre carte.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Equerre Rule",
+        "body": "Les équerres sont la seule signature linéaire du site : paire complète sur les photos phares et l'année de création, équerre haute seule sur le titre du hero, les titres d'en-tête de page et les titres de section phares. Ailleurs, aucun filet.",
+        "section": "shapes"
+      }
+    ],
+    "dos": [
+      "Do réserver le jaune chantier aux actions, à l'équerre haute et aux accents sur fond sombre, toujours avec texte nuit.",
+      "Do faire passer toute photo par le cadre unique : angles 4 px, voile bleu nuit, légende sous la photo et jamais posée dessus.",
+      "Do construire la profondeur avec le dégradé nuit vers nuit profond et le verre liquide sur photo, avec repli opaque.",
+      "Do dessiner les contours en ombres internes (2 px boutons, 1,5 px champs) plutôt qu'en bordures.",
+      "Do utiliser la courbe maison pour toute transition et tout couper sous `prefers-reduced-motion`.",
+      "Do utiliser les chiffres tabulaires pour les compteurs, téléphones et numéros de diapositive.",
+      "Do étiqueter tout contenu d'exemple avec la mention « Exemple »."
+    ],
+    "donts": [
+      "Don't réintroduire de quadrillage, de filets entre lignes de liste, de cases bordées ou de règle graduée (révision client du 9 octobre 2026).",
+      "Don't poser une petite étiquette au-dessus d'un titre ni numéroter les sections pour décorer.",
+      "Don't afficher une photo de chantier nette et nue en plein écran.",
+      "Don't utiliser le bleu ciel pour du texte sur fond clair ou sur royal.",
+      "Don't utiliser d'ombres noires ou dures, de dégradés violets ni de texte en dégradé.",
+      "Don't aligner des cartes identiques en série ni une bande de chiffres en tuiles égales.",
+      "Don't arrondir en pilule les boutons, filtres ou étiquettes.",
+      "Don't utiliser le verre liquide sur une planche claire."
+    ]
+  }
+}
