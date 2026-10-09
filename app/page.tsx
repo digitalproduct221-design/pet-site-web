@@ -8,6 +8,8 @@ import { RealisationsVedette } from "@/components/accueil/RealisationsVedette";
 import { Pourquoi } from "@/components/accueil/Pourquoi";
 import { Methode } from "@/components/accueil/Methode";
 import { Carrieres } from "@/components/accueil/Carrieres";
+import { Partenaires } from "@/components/accueil/Partenaires";
+import { Temoignages } from "@/components/accueil/Temoignages";
 import { AppelFinal } from "@/components/accueil/AppelFinal";
 
 export const metadata: Metadata = {
@@ -25,6 +27,9 @@ export default function Accueil() {
       <RealisationsVedette />
       <Pourquoi />
       <Methode />
+      {/* Masquées tant que leurs listes (content/) sont vides */}
+      <Temoignages />
+      <Partenaires />
       <Carrieres />
       <AppelFinal />
     </>
