@@ -53,14 +53,19 @@ assets/         sources du client (logo, photos de la bâche)
 docs/           brief, direction, décisions, documents d'origine
 ```
 
-## Espace admin (`/admin`)
+## Espace admin (`/admin`) et demandes de devis
 
-Un espace volontairement simple pour ajouter ou retirer les photos des réalisations, publier des nouvelles du quotidien, des partenaires et des témoignages. Le site se met à jour tout seul après chaque modification.
+Le lien « Espace admin » du pied de page mène à la connexion. L'espace permet de lire les demandes de devis et candidatures, d'ajouter ou retirer les photos des réalisations, de publier des nouvelles, des partenaires et des témoignages. Le site se met à jour tout seul.
 
-Mise en service (une fois) :
-1. Créer un projet Supabase et appliquer `supabase/migrations/20261009150000_espace_admin.sql`, puis `supabase/seed.sql` (les 7 réalisations actuelles).
-2. Dans Vercel, définir `NEXT_PUBLIC_SUPABASE_URL` et `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` (Supabase, *Project Settings > API*), puis redéployer.
-3. Créer le compte de l'administrateur (Supabase, *Authentication > Users > Add user*, avec e-mail et mot de passe), puis l'autoriser :
-   `insert into public.admins (user_id, email) select id, email from auth.users where email = 'adresse@exemple.sn';`
+Les demandes envoyées par les formulaires sont enregistrées et envoyées par e-mail (Resend) via la fonction `supabase/functions/demande`. Pour changer le destinataire ou l'expéditeur : Supabase, *Edge Functions > Secrets*, variables `DEMANDES_DESTINATAIRES` (plusieurs adresses séparées par des virgules) et `DEMANDES_EXPEDITEUR`.
 
-Sans ces variables, le site garde le contenu livré avec lui (`content/`) et `/admin` l'indique.
+Mise en service du site (Vercel, *Settings > Environment Variables*, tous les environnements, puis redéployer) :
+
+| Variable | Valeur |
+|---|---|
+| `NEXT_PUBLIC_SUPABASE_URL` | `https://biehvhzlxacednllfclu.supabase.co` |
+| `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | la clé « Publishable » (Supabase, *Project Settings > API Keys*) |
+
+Sans ces variables, le site garde le contenu livré avec lui, `/admin` l'indique et les formulaires n'envoient rien.
+
+Ajouter un administrateur : créer l'utilisateur (Supabase, *Authentication > Users*), puis `insert into public.admins (user_id, email) select id, email from auth.users where email = 'adresse@exemple.sn';`.
