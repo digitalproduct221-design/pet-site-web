@@ -337,6 +337,6 @@ Courbe maison `cubic-bezier(0.16, 1, 0.3, 1)` pour les entrées, `cubic-bezier(0
 | Ruban de valeurs | `components/accueil/RubanValeurs.tsx` | Jaune, -1,6°, défilement continu de 38 s, pause au survol, figé sous mouvement réduit. |
 | Galerie | `components/realisations/Galerie.tsx` | Mosaïque et visionneuse Radix Dialog (flèches, ←/→, glisser au doigt). Photo jamais agrandie au-delà de sa largeur d'origine. |
 | Carte | `components/ui/CarteDakar.tsx` | MapLibre et OpenFreeMap (style positron), repère PET en goutte nuit cerclée de jaune, gestes coopératifs, chargée à l'approche. |
-| Globe | `components/ui/Globe.tsx` | cobe, sable et repère jaune, se pose sur Dakar, rendu suspendu hors de l'écran. |
+| Carte du Sénégal | `components/ui/CarteSenegal.tsx` (données : `carte-senegal-donnees.ts`) | SVG serveur : pays en blanc cerclé de nuit, régions en pointillé sable, villes en repère (les secondaires sont masquées sous 48rem), Dakar en jaune pulsé, loupe cerclée de nuit vers l'itinéraire. Tracé qui se dessine au `data-vu`. |
 | Pelleteuse | `components/ui/Pelleteuse.tsx` | SVG au trait (`currentColor`), cycle de creusement de 5,6 s, en pause hors de l'écran. |
 | Bord des champs | jeton `--color-contour` (#7d725e) | 4,6:1 sur blanc. |

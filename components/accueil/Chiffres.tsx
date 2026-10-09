@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { entreprise } from "@/content/site";
-import { Globe } from "@/components/ui/Globe";
+import { CarteSenegal } from "@/components/ui/CarteSenegal";
 import { Motif } from "@/components/ui/Motif";
 
 type Chiffre = { valeur: number; depart: number; suffixe?: string; libelle: string };
@@ -67,33 +67,28 @@ export function Chiffres() {
     <section aria-labelledby="titre-chiffres" className="relative isolate overflow-hidden bg-sable pb-20 pt-12 lg:pb-28 lg:pt-16">
       <Motif type="courbes" className="text-royal" opacite={0.1} />
       <div className="conteneur">
-        <div className="grid items-center gap-10 md:grid-cols-12">
-          <h2
-            id="titre-chiffres"
-            className="revele max-w-[56rem] text-[clamp(1.75rem,1.2rem+2.2vw,3rem)] font-semibold leading-[1.15] tracking-[-0.02em] text-nuit md:col-span-8"
-          >
-            De la conception à l&apos;entretien, nous construisons et réhabilitons{" "}
-            <span className="text-royal">les bâtiments, les réseaux d&apos;eau et les infrastructures</span> du Sénégal.
-          </h2>
-          {/* Basés à Dakar : le globe tourne puis se pose sur la ville */}
-          <figure className="hidden md:col-span-4 md:block">
-            <Globe className="mx-auto w-full max-w-[22rem]" />
-            <figcaption className="mt-2 text-center cote text-[0.9375rem] text-encre-douce">
-              <span className="text-nuit">Dakar</span>, Rond-point Liberté 6
-            </figcaption>
-          </figure>
-        </div>
+        <h2
+          id="titre-chiffres"
+          className="revele max-w-[60rem] text-[clamp(1.75rem,1.2rem+2.2vw,3rem)] font-semibold leading-[1.15] tracking-[-0.02em] text-nuit"
+        >
+          De la conception à l&apos;entretien, nous construisons et réhabilitons{" "}
+          <span className="text-royal">les bâtiments, les réseaux d&apos;eau et les infrastructures</span> du Sénégal.
+        </h2>
 
-        <dl className="revele-groupe mt-14 grid grid-cols-2 gap-x-6 gap-y-12 lg:mt-20 lg:grid-cols-4 lg:gap-x-10">
-          {chiffres.map((c) => (
-            <div key={c.libelle} className="flex flex-col-reverse justify-end">
-              <dt className="mt-3 max-w-[15rem] cote text-[1.0625rem] leading-snug text-encre-douce">{c.libelle}</dt>
-              <dd className="titre text-chiffre text-royal">
-                <Compteur valeur={c.valeur} depart={c.depart} suffixe={c.suffixe} />
-              </dd>
-            </div>
-          ))}
-        </dl>
+        {/* Basés à Dakar : la carte illustrée, et nos chiffres à côté */}
+        <div className="mt-12 grid items-center gap-12 lg:mt-16 lg:grid-cols-12 lg:gap-10">
+          <CarteSenegal className="w-full lg:col-span-7" />
+          <dl className="revele-groupe grid grid-cols-2 gap-x-6 gap-y-10 lg:col-span-5 lg:gap-y-14">
+            {chiffres.map((c) => (
+              <div key={c.libelle} className="flex flex-col-reverse justify-end">
+                <dt className="mt-3 max-w-[15rem] cote text-[1.0625rem] leading-snug text-encre-douce">{c.libelle}</dt>
+                <dd className="titre text-[clamp(3.25rem,2.2rem+3.4vw,5.5rem)] leading-[0.9] text-royal">
+                  <Compteur valeur={c.valeur} depart={c.depart} suffixe={c.suffixe} />
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </div>
       </div>
     </section>
   );

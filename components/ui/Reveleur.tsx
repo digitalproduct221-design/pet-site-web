@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 
-const SELECTEUR = ".revele:not([data-vu]), .revele-groupe:not([data-vu]), .revele-image:not([data-vu]), .equerres:not([data-vu])";
+const SELECTEUR = ".revele:not([data-vu]), .revele-groupe:not([data-vu]), .revele-image:not([data-vu]), .equerres:not([data-vu]), .carte-senegal:not([data-vu])";
 
 /**
  * Apparitions au défilement, une seule fois par élément
