@@ -25,6 +25,8 @@ export function OngletPartenaires({ supabase, publier }: Contexte) {
   }, [supabase]);
 
   useEffect(() => {
+    // Chargement initial depuis la base : l'état est mis à jour une fois la réponse reçue
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     void charger();
   }, [charger]);
 

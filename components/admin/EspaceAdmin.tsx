@@ -7,6 +7,7 @@ import { rafraichirSite } from "@/app/admin/actions";
 import type { Etiquette } from "@/lib/contenu";
 import { supabaseNavigateur } from "@/lib/supabase-navigateur";
 import { OngletActualites } from "./OngletActualites";
+import { OngletDemandes } from "./OngletDemandes";
 import { OngletPartenaires } from "./OngletPartenaires";
 import { OngletRealisations } from "./OngletRealisations";
 import { OngletTemoignages } from "./OngletTemoignages";
@@ -19,6 +20,7 @@ export type Contexte = {
 };
 
 const onglets = [
+  { id: "demandes", titre: "Demandes" },
   { id: "realisations", titre: "Réalisations" },
   { id: "actualites", titre: "Actualités" },
   { id: "partenaires", titre: "Partenaires" },
@@ -35,7 +37,8 @@ export function EspaceAdmin() {
   const [session, setSession] = useState<Session | null>(null);
   const [pret, setPret] = useState(false);
   const [estAdmin, setEstAdmin] = useState<boolean | null>(null);
-  const [onglet, setOnglet] = useState<(typeof onglets)[number]["id"]>("realisations");
+  const [onglet, setOnglet] = useState<(typeof onglets)[number]["id"]>("demandes");
+  const [aTraiter, setATraiter] = useState(0);
 
   useEffect(() => {
     if (!supabase) return;
@@ -111,10 +114,14 @@ export function EspaceAdmin() {
                 className={`min-h-11 rounded-chantier px-5 cote text-[1.0625rem] transition-colors ${onglet === o.id ? "bg-nuit text-blanc" : "bg-blanc text-nuit ombre-carte hover:text-royal"}`}
               >
                 {o.titre}
+                {o.id === "demandes" && aTraiter > 0 ? (
+                  <span className="ml-2 rounded-full bg-erreur px-2 py-0.5 text-[0.8125rem] text-blanc">{aTraiter}</span>
+                ) : null}
               </button>
             ))}
           </div>
           <div role="tabpanel" className="mt-8">
+            {onglet === "demandes" ? <OngletDemandes supabase={supabase} onCompte={setATraiter} /> : null}
             {onglet === "realisations" ? <OngletRealisations supabase={supabase} publier={publier} /> : null}
             {onglet === "actualites" ? <OngletActualites supabase={supabase} publier={publier} /> : null}
             {onglet === "partenaires" ? <OngletPartenaires supabase={supabase} publier={publier} /> : null}

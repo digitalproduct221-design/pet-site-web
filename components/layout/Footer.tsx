@@ -105,6 +105,12 @@ export function Footer() {
                 Mentions légales
               </Link>
             </li>
+            <li>
+              <Link href="/admin" className="inline-flex min-h-11 items-center gap-2 text-brume transition-colors hover:text-jaune">
+                <Icone nom="connexion" size={18} />
+                Espace admin
+              </Link>
+            </li>
             {reseauxRenseignes.map((r) => (
               <li key={r.nom}>
                 <a href={r.url} target="_blank" rel="noopener noreferrer" className="hover:text-blanc">

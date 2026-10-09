@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 /** Espace admin : ajouter ou retirer des photos de réalisations, des nouvelles, des partenaires, des témoignages. */
 export default function PageAdmin() {
   return (
-    <section className="min-h-[70svh] bg-sable py-12 lg:py-16">
+    <section className="min-h-[70svh] bg-sable pb-16 pt-32 lg:pt-36">
       <div className="conteneur max-w-[60rem]">
         <h1 className="titre text-titre-l text-nuit">Espace admin</h1>
         <p className="mt-3 max-w-[40rem] text-encre-douce">
