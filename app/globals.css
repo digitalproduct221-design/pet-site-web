@@ -1410,17 +1410,17 @@ main > :nth-child(n + 3):not(.ruban-zone) {
   to { scale: 1 1; }
 }
 
-/* Fondu organique immersif pour les en-têtes de pages intérieures :
-   - Sur mobile : transition progressive verticale du haut vers le bas
-   - Sur bureau (>= 1024px) : transition progressive horizontale de gauche à droite
-   Aucun trait dur, aucun débordement. */
-.masque-fondu-hero {
-  mask-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.25) 8%, rgba(0, 0, 0, 0.9) 24%, black 45%);
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.25) 8%, rgba(0, 0, 0, 0.9) 24%, black 45%);
+/* Fonds doux et apaisants pour les en-têtes de pages intérieures :
+   - Nuance minérale naturelle et veloutée, reposante pour l'œil (ne tape pas l'œil)
+   - Laisse la photo de chantier exprimer toute sa force et sa profondeur */
+.bg-hero-doux {
+  background-color: #f7f3ea;
+  background-image: radial-gradient(110% 90% at 15% 15%, #fcfbfa 0%, #f6f1e8 55%, #ede4d3 100%);
+  color: #f7f3ea;
 }
-@media (min-width: 1024px) {
-  .masque-fondu-hero {
-    mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.15) 5%, rgba(0, 0, 0, 0.85) 20%, black 36%);
-    -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.15) 5%, rgba(0, 0, 0, 0.85) 20%, black 36%);
-  }
+
+.bg-hero-blanc {
+  background-color: #fbfaf7;
+  background-image: radial-gradient(110% 90% at 15% 15%, #ffffff 0%, #faf8f5 65%, #f2ede4 100%);
+  color: #fbfaf7;
 }
