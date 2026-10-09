@@ -12,8 +12,9 @@ const DUREE = 7000;
 const VOLET = 1300; // durée du volet diagonal (voir .diapo dans globals.css)
 
 /**
- * Le diaporama du hero (photos, légende, onglets numérotés, pause) : seule
- * partie interactive du hero, dont le texte est rendu par le serveur.
+ * Le diaporama du hero, dans son cadre photo : les photos sont affichées nettes,
+ * sans voile ; légende, onglets numérotés et pause sont posés sur une barre de
+ * verre clair en bas du cadre (lisible sur n'importe quelle photo).
  * Ne charge que la photo affichée et la suivante. Le défilement s'arrête au
  * survol ou au focus des commandes, hors de l'écran, et ne démarre pas sous
  * mouvement réduit.
@@ -28,9 +29,8 @@ export function Diaporama({ diapos }: { diapos: Diapo[] }) {
   const [reduit, setReduit] = useState(false);
   const [suspendu, setSuspendu] = useState(false);
   const [horsEcran, setHorsEcran] = useState(false);
-  // Photos déjà demandées : la première, puis chaque photo affichée et sa suivante.
   const [chargees, setChargees] = useState<Set<number>>(() => new Set([0]));
-  const racine = useRef<HTMLDivElement>(null);
+  const cadre = useRef<HTMLDivElement>(null);
 
   const enLecture = lecture ?? !reduit;
   const enPause = !enLecture || suspendu || horsEcran;
@@ -70,7 +70,7 @@ export function Diaporama({ diapos }: { diapos: Diapo[] }) {
   }, [index, total]);
 
   useEffect(() => {
-    const el = racine.current?.closest("section");
+    const el = cadre.current;
     if (!el) return;
     const obs = new IntersectionObserver(([e]) => setHorsEcran(!e.isIntersecting), { threshold: 0.15 });
     obs.observe(el);
@@ -80,50 +80,43 @@ export function Diaporama({ diapos }: { diapos: Diapo[] }) {
   const diapo = diapos[index];
 
   return (
-    <div ref={racine} className="contents">
-      {/* Photos */}
-      <div className="absolute inset-0 -z-10">
-        {diapos.map((d, i) => {
-          const p = photos[d.photo];
-          return (
-            <div
-              key={d.photo}
-              role="group"
-              aria-roledescription="diapositive"
-              aria-label={`${i + 1} sur ${total} : ${d.onglet}`}
-              aria-hidden={i !== index}
-              data-active={i === index}
-              data-pause={enPause}
-              data-initial={!aBouge || undefined}
-              className="diapo absolute inset-0 overflow-hidden"
-              style={{ ["--origine" as string]: d.origine }}
-            >
-              {chargees.has(i) || i === index ? (
-                <Image
-                  src={p.src}
-                  alt={p.alt}
-                  fill
-                  preload={i === 0}
-                  fetchPriority={i === 0 ? "high" : "low"}
-                  sizes="100vw"
-                  quality={75}
-                  className="object-cover"
-                  style={{ objectPosition: p.focale }}
-                />
-              ) : null}
-            </div>
-          );
-        })}
-        {/* Lisibilité seulement là où il y a du texte : à gauche et sous les onglets */}
-        {/* z-[2] : au-dessus de la photo active (z-index 1 pendant le volet) */}
-        <div aria-hidden className="absolute inset-0 z-[2] voile-hero-clair" />
-        <div aria-hidden className="absolute inset-x-0 bottom-0 z-[2] h-[60%] voile-bas-clair" />
-        <div aria-hidden className="absolute inset-0 z-[2] grain" />
-      </div>
+    <div ref={cadre} className="absolute inset-0 overflow-hidden bg-sable-soutenu">
+      {/* Photos, nettes, sans voile */}
+      {diapos.map((d, i) => {
+        const p = photos[d.photo];
+        return (
+          <div
+            key={d.photo}
+            role="group"
+            aria-roledescription="diapositive"
+            aria-label={`${i + 1} sur ${total} : ${d.onglet}`}
+            aria-hidden={i !== index}
+            data-active={i === index}
+            data-pause={enPause}
+            data-initial={!aBouge || undefined}
+            className="diapo absolute inset-0 overflow-hidden"
+            style={{ ["--origine" as string]: d.origine }}
+          >
+            {chargees.has(i) || i === index ? (
+              <Image
+                src={p.src}
+                alt={p.alt}
+                fill
+                preload={i === 0}
+                fetchPriority={i === 0 ? "high" : "low"}
+                sizes="(min-width: 1024px) 60vw, 100vw"
+                quality={75}
+                className="object-cover"
+                style={{ objectPosition: p.focale }}
+              />
+            ) : null}
+          </div>
+        );
+      })}
 
-      {/* Commandes : légende, pause, onglets numérotés */}
+      {/* Barre de verre clair : légende, pause, onglets */}
       <div
-        className="absolute inset-x-0 bottom-[clamp(2.25rem,5vw,5.5rem)] z-[2] pb-6"
+        className="verre-clair absolute inset-x-3 bottom-3 z-[2] rounded-panneau p-3 sm:inset-x-5 sm:bottom-5 sm:p-4 lg:bottom-[calc(clamp(2.25rem,5vw,5.5rem)+0.5rem)] lg:left-[14%] lg:right-[max(1.25rem,calc((100vw-var(--container-site))/2+2rem))]"
         onMouseEnter={() => setSuspendu(true)}
         onMouseLeave={() => setSuspendu(false)}
         onFocusCapture={() => setSuspendu(true)}
@@ -131,74 +124,71 @@ export function Diaporama({ diapos }: { diapos: Diapo[] }) {
           if (!e.currentTarget.contains(e.relatedTarget as Node)) setSuspendu(false);
         }}
       >
-        <div className="conteneur grid gap-4">
-          <div className="flex items-end justify-between gap-6">
-            {/* La légende arrive avec la photo, pas avant : léger retard calé sur le volet */}
-            <p
-              key={index}
-              aria-live={enPause ? "polite" : "off"}
-              className="max-w-[34rem] text-[1.0625rem] leading-snug text-blanc ombre-texte animate-[apparition_600ms_var(--ease-chantier)_both] max-md:sr-only [@media(min-width:48rem)_and_(max-height:820px)]:hidden"
-              style={{ animationDelay: aBouge ? `${VOLET * 0.45}ms` : "0ms" }}
-            >
-              {diapo.legende}{" "}
-              <Link
-                href={diapo.href}
-                className="group/lien inline-flex min-h-11 items-center gap-1.5 whitespace-nowrap align-middle cote text-jaune hover:text-blanc"
-              >
-                Voir le domaine
-                <Icone nom="fleche" size={16} weight="bold" className="transition-transform group-hover/lien:translate-x-1" />
-              </Link>
-            </p>
-            <button
-              type="button"
-              onClick={() => setLecture(!enLecture)}
-              aria-label={enLecture ? "Mettre le diaporama en pause" : "Lancer le diaporama"}
-              className="bouton-verre ml-auto grid size-11 shrink-0 place-items-center rounded-full text-blanc transition-colors"
-            >
-              <Icone nom={enLecture ? "pause" : "lecture"} size={18} weight="fill" />
-            </button>
-          </div>
+        <div className="flex items-start justify-between gap-4 max-sm:absolute max-sm:right-3 max-sm:top-3">
+          {/* La légende arrive avec la photo, pas avant : léger retard calé sur le volet */}
+          <p
+            key={index}
+            aria-live={enPause ? "polite" : "off"}
+            className="min-h-[2.6em] text-[0.9375rem] leading-snug text-encre animate-[apparition_600ms_var(--ease-chantier)_both] max-sm:sr-only sm:text-[1rem]"
+            style={{ animationDelay: aBouge ? `${VOLET * 0.45}ms` : "0ms" }}
+          >
+            <strong className="cote font-semibold text-nuit">{diapo.onglet}</strong>
+            <span aria-hidden className="mx-1.5 text-encre-douce">·</span>
+            {diapo.legende}{" "}
+            <Link href={diapo.href} className="group/lien inline-flex items-center gap-1 whitespace-nowrap cote text-royal hover:text-nuit">
+              Voir le domaine
+              <Icone nom="fleche" size={15} weight="bold" className="transition-transform group-hover/lien:translate-x-1" />
+            </Link>
+          </p>
+          <button
+            type="button"
+            onClick={() => setLecture(!enLecture)}
+            aria-label={enLecture ? "Mettre le diaporama en pause" : "Lancer le diaporama"}
+            className="grid size-11 shrink-0 place-items-center rounded-full bg-nuit text-blanc transition-colors hover:bg-royal"
+          >
+            <Icone nom={enLecture ? "pause" : "lecture"} size={16} weight="fill" />
+          </button>
+        </div>
 
-          <ol className="grid grid-cols-5 gap-3 sm:gap-5" style={{ ["--duree-diapo" as string]: `${DUREE}ms` }}>
-            {diapos.map((d, i) => {
-              const actif = i === index;
-              return (
-                <li key={d.photo}>
-                  {/* Nom accessible = texte visible (« 01 Terrassement ») */}
-                  <button
-                    type="button"
-                    onClick={() => aller(i)}
-                    aria-current={actif ? "true" : undefined}
-                    className="group/onglet block min-h-11 w-full pt-3 text-left"
+        <ol className="grid grid-cols-5 gap-2 max-sm:pr-14 sm:mt-2 sm:gap-4" style={{ ["--duree-diapo" as string]: `${DUREE}ms` }}>
+          {diapos.map((d, i) => {
+            const actif = i === index;
+            return (
+              <li key={d.photo}>
+                {/* Nom accessible = texte visible (« 01 Terrassement ») */}
+                <button
+                  type="button"
+                  onClick={() => aller(i)}
+                  aria-current={actif ? "true" : undefined}
+                  className="group/onglet block min-h-11 w-full pt-2 text-left"
+                >
+                  <span
+                    aria-hidden
+                    data-active={actif && !enPause}
+                    className="progression-diapo relative block h-[3px] overflow-hidden rounded-full bg-nuit/15 transition-colors group-hover/onglet:bg-nuit/30"
                   >
                     <span
-                      aria-hidden
-                      data-active={actif && !enPause}
-                      className="progression-diapo relative block h-[3px] overflow-hidden rounded-full bg-blanc/35 transition-colors group-hover/onglet:bg-blanc/60"
+                      className={`absolute inset-0 origin-left rounded-full bg-jaune-profond ${i < index || (actif && enPause) ? "scale-x-100" : "scale-x-0"}`}
+                    />
+                  </span>
+                  <span className="mt-2 flex items-baseline gap-2">
+                    <span
+                      className={`titre text-[1.375rem] leading-none chiffres-tabulaires transition-colors sm:text-[1.625rem] ${actif ? "text-nuit" : "text-encre-douce group-hover/onglet:text-nuit"}`}
                     >
-                      <span
-                        className={`absolute inset-0 origin-left rounded-full bg-jaune ${i < index || (actif && enPause) ? "scale-x-100" : "scale-x-0"}`}
-                      />
+                      {String(i + 1).padStart(2, "0")}
                     </span>
-                    <span className="mt-3 flex items-baseline gap-3">
-                      <span
-                        className={`titre text-[1.75rem] leading-none chiffres-tabulaires transition-colors sm:text-[2.25rem] ${actif ? "text-blanc" : "text-blanc/75 group-hover/onglet:text-blanc"}`}
-                      >
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
-                      <span
-                        className={`sr-only cote text-[1rem] leading-tight transition-colors lg:not-sr-only ${actif ? "text-blanc" : "text-blanc/80 group-hover/onglet:text-blanc"}`}
-                      >
-                        {" "}
-                        {d.onglet}
-                      </span>
+                    <span
+                      className="sr-only"
+                    >
+                      {" "}
+                      {d.onglet}
                     </span>
-                  </button>
-                </li>
-              );
-            })}
-          </ol>
-        </div>
+                  </span>
+                </button>
+              </li>
+            );
+          })}
+        </ol>
       </div>
     </div>
   );

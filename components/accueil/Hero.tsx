@@ -1,6 +1,7 @@
 import { SLOGAN } from "@/content/site";
 import { BoutonLien } from "@/components/ui/Bouton";
 import { Equerres } from "@/components/ui/Equerres";
+import { Motif } from "@/components/ui/Motif";
 import { Profil } from "@/components/ui/Profil";
 import { Diaporama, type Diapo } from "./Diaporama";
 
@@ -44,47 +45,56 @@ const diapos: Diapo[] = [
 ];
 
 /**
- * Hero immersif et lumineux : diaporama plein écran de vrais chantiers, sans voile
- * général (seuls un dégradé sous le texte et un autre sous les onglets assurent la
- * lisibilité). Le texte est rendu par le serveur ; le diaporama est la seule
- * partie interactive. Profil de terrain vers la section suivante.
+ * Hero clair et lumineux : le texte sur fond blanc à gauche, la photo en grand à
+ * droite, nette et sans voile, dans un cadre coupé en biais (le geste du volet).
+ * Sur mobile, la photo passe au-dessus du texte. Le texte est rendu par le
+ * serveur ; le diaporama est la seule partie interactive.
  */
 export function Hero() {
   return (
     <section
       aria-roledescription="carrousel"
       aria-label="Nos chantiers en images"
-      className="sur-sombre relative isolate flex min-h-[max(34rem,calc(100svh-var(--header-h)-var(--barre-mobile-h)))] flex-col overflow-hidden bg-nuit text-blanc lg:min-h-[max(40rem,calc(100svh-var(--header-h)-var(--topbar-h)))]"
+      className="relative isolate overflow-hidden bg-blanc"
     >
-      <Diaporama diapos={diapos} />
+      <Motif type="plan" className="text-royal" opacite={0.16} />
+      <div className="grid lg:min-h-[max(38rem,calc(100svh-var(--header-h)-var(--topbar-h)))] lg:grid-cols-2">
+        {/* Texte */}
+        <div className="flex flex-col justify-center px-4 pb-24 pt-8 sm:px-6 lg:pb-28 lg:pl-[max(2rem,calc((100vw-var(--container-site))/2+2rem))] lg:pr-10 lg:pt-12">
+          <div className="entree">
+            <p className="cote text-[0.9375rem] uppercase tracking-[0.16em] text-royal">Entreprise de BTP à Dakar, depuis 2016</p>
+            <Equerres
+              decalage={18}
+              className="-ml-3 mt-5 inline-block px-3 pb-4 pt-3"
+              style={{ ["--equerre-taille" as string]: "clamp(2.25rem, 1.4rem + 2.6vw, 3.75rem)", ["--equerre-epaisseur" as string]: "5px" }}
+            >
+              <h1 className="titre text-[clamp(2.75rem,1.4rem+3.6vw,4.625rem)] leading-[0.94] text-nuit">
+                <span className="block">Nous bâtissons.</span>
+                <span className="block">Nous raccordons.</span>
+                <span className="block">
+                  <span className="surligne">Nous durons.</span>
+                </span>
+              </h1>
+            </Equerres>
+            <p className="mt-6 max-w-[30rem] text-[1.1875rem] leading-relaxed text-encre-douce">
+              {SLOGAN} : bâtiment, travaux publics, hydraulique, assainissement et génie civil.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-4">
+              {/* Sur mobile, la barre d'actions fixe porte déjà « Devis » : un seul appel principal à l'écran */}
+              <span className="hidden sm:contents">
+                <BoutonLien href="/contact#devis">Demander un devis</BoutonLien>
+              </span>
+              <BoutonLien href="/savoir-faire" variante="contour">
+                Nos savoir-faire
+              </BoutonLien>
+            </div>
+          </div>
+        </div>
 
-      {/* Mobile : texte en bas, la photo reste dégagée en haut ; écrans bas : moins de marge */}
-      <div className="conteneur pb-[calc(clamp(2.25rem,5vw,5.5rem)+13rem)] pt-12 max-md:mt-auto max-md:pb-[calc(clamp(2.25rem,5vw,5.5rem)+8rem)] sm:pt-14 lg:pt-20 [@media(min-width:64rem)_and_(max-height:820px)]:pt-10">
-        <div className="entree max-w-[44rem]">
-          <p className="hidden cote text-[0.9375rem] uppercase tracking-[0.16em] text-blanc ombre-texte sm:block">
-            Bâtiment · Travaux publics · Hydraulique · Assainissement · Génie civil
-          </p>
-          <Equerres
-            decalage={20}
-            className="-ml-3 inline-block px-3 pb-4 pt-3 sm:mt-6"
-            style={{ ["--equerre-taille" as string]: "clamp(2.5rem, 1.5rem + 3vw, 4.25rem)", ["--equerre-epaisseur" as string]: "5px" }}
-          >
-            <h1 className="titre text-[clamp(2.5rem,min(1.2rem+5.6vw,9svh),5.5rem)] leading-[0.94] text-blanc ombre-texte">
-              <span className="block">Nous bâtissons.</span>
-              <span className="block">Nous raccordons.</span>
-              <span className="block text-jaune">Nous durons.</span>
-            </h1>
-          </Equerres>
-          {/* Sous 640 px, le slogan cède la place à la photo (il est repris plus bas et dans le pied de page) */}
-          <p className="mt-7 max-w-[30rem] text-[1.1875rem] leading-relaxed text-blanc ombre-texte max-sm:hidden">{SLOGAN}, depuis 2016.</p>
-          <div className="mt-7 flex flex-wrap gap-4 sm:mt-9">
-            {/* Sur mobile, la barre d'actions fixe porte déjà « Devis » : un seul appel principal à l'écran */}
-            <span className="hidden sm:contents">
-              <BoutonLien href="/contact#devis">Demander un devis</BoutonLien>
-            </span>
-            <BoutonLien href="/savoir-faire" variante="contour-clair">
-              Nos savoir-faire
-            </BoutonLien>
+        {/* Photo : au-dessus du texte sur mobile, à droite sur grand écran */}
+        <div className="relative order-first h-[min(62svh,32rem)] sm:h-[34rem] lg:order-none lg:h-auto">
+          <div className="cadre-hero absolute inset-0">
+            <Diaporama diapos={diapos} />
           </div>
         </div>
       </div>

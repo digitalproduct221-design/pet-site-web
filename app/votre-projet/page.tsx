@@ -35,7 +35,7 @@ export default function PageVotreProjet() {
         photo="niveleuseVoirie"
       >
         <BoutonLien href="#besoins">Choisir mon besoin</BoutonLien>
-        <BoutonLien href="/contact#devis" variante="contour-clair">
+        <BoutonLien href="/contact#devis" variante="contour">
           Demander un devis
         </BoutonLien>
       </EnTetePage>

@@ -33,7 +33,7 @@ export default function PageCarrieres() {
         photo="trancheeLotissement"
       >
         <BoutonLien href="#candidature">Candidature spontanée</BoutonLien>
-        <BoutonLien href="#metiers" variante="contour-clair">
+        <BoutonLien href="#metiers" variante="contour">
           Nos métiers
         </BoutonLien>
       </EnTetePage>
@@ -89,7 +89,7 @@ export default function PageCarrieres() {
                     className="group/metier relative flex h-full flex-col rounded-panneau bg-blanc p-6 ombre-carte transition-[translate,box-shadow] duration-500 ease-chantier hover:-translate-y-1 hover:ombre-carte-survol"
                   >
                     <span className="flex items-center justify-between">
-                      <span className="titre text-[2.25rem] leading-none text-sable-fonce chiffres-tabulaires transition-colors group-hover/metier:text-jaune-profond">
+                      <span className="titre text-[2.25rem] leading-none text-contour chiffres-tabulaires transition-colors group-hover/metier:text-royal">
                         {String(i + 1).padStart(2, "0")}
                       </span>
                       {domaine ? <Icone nom={domaine.icone} size={28} weight="light" className="text-royal" /> : null}

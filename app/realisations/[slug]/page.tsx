@@ -42,7 +42,7 @@ export default async function PageProjet({ params }: PageProps<"/realisations/[s
       >
         <a
           href="#galerie"
-          className="inline-flex min-h-11 items-center gap-2 rounded-chantier bg-nuit/70 px-5 cote text-[1.0625rem] text-blanc transition-colors hover:bg-jaune hover:text-nuit"
+          className="inline-flex min-h-11 items-center gap-2 rounded-chantier bg-nuit px-5 cote text-[1.0625rem] text-blanc transition-colors hover:bg-jaune hover:text-nuit"
         >
           <Icone nom="photos" size={20} />
           Voir les {projet.photos.length} photos

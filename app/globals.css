@@ -1224,3 +1224,62 @@ main > :nth-child(n + 3):not(.ruban-zone) {
 @media (width < 48rem) {
   .cs-loupe-action { translate: 0 22px; }
 }
+
+/* ==========================================================================
+   Hero clair (refonte d'octobre 2026, 3ᵉ série) : texte sur fond blanc,
+   photo nette dans un cadre coupé en biais, barre de verre clair.
+   ========================================================================== */
+@media (width >= 64rem) {
+  .cadre-hero {
+    clip-path: polygon(11% 0, 100% 0, 100% 100%, 0 100%);
+  }
+}
+/* « Nous durons. » : surligné jaune sous la moitié basse des lettres */
+.surligne {
+  background: linear-gradient(transparent 56%, var(--pet-jaune-400) 56%, var(--pet-jaune-400) 90%, transparent 90%);
+  padding-inline: 0.06em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+/* Verre clair posé sur photo : presque opaque pour que le texte reste lisible partout */
+.verre-clair {
+  background: rgb(251 250 247 / 0.86);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  backdrop-filter: blur(14px) saturate(160%);
+  box-shadow: 0 18px 40px -22px rgb(7 18 43 / 0.55), inset 0 1px 0 rgb(255 255 255 / 0.7);
+}
+@media (prefers-reduced-transparency: reduce) {
+  .verre-clair {
+    background: var(--pet-blanc);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .verre-clair { background: rgb(251 250 247 / 0.96); }
+}
+
+/* Pictogrammes des chiffres : le tracé se dessine à l'entrée dans l'écran */
+.picto .accent {
+  stroke: var(--pet-jaune-500);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .picto path,
+  .picto circle {
+    stroke-dasharray: 1;
+    transition: stroke-dashoffset 1400ms var(--ease-chantier) 250ms;
+  }
+  html.js .revele-groupe:not([data-vu]) .picto path,
+  html.js .revele-groupe:not([data-vu]) .picto circle {
+    stroke-dashoffset: 1;
+  }
+}
+
+/* Mobile et tablette : pas d'écart initial des équerres (elles dépasseraient le bord de l'écran) */
+@media (width < 64rem) {
+  :root { --equerre-ecart: 0px; }
+}
+/* Carte du Sénégal sous 400 px : on retire les étiquettes qui se toucheraient */
+@media (width < 25rem) {
+  .cs-v-kaolack, .cs-v-thies { display: none; }
+}

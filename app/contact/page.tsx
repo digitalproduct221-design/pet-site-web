@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import { adresse, email, telephones, whatsapp } from "@/content/site";
+import { adresse, email, lienItineraire, telephones, whatsapp } from "@/content/site";
 import { EnTetePage } from "@/components/ui/EnTetePage";
 import { CarteDakar } from "@/components/ui/CarteDakar";
+import { CarteSenegal } from "@/components/ui/CarteSenegal";
 import { Icone } from "@/components/ui/Icone";
 import { Formulaire } from "@/components/formulaires/Formulaire";
 import { FormulaireDevis } from "@/components/formulaires/FormulaireDevis";
@@ -34,7 +35,7 @@ export default function PageContact() {
           href={whatsapp.lien}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex min-h-[var(--bouton-h)] items-center gap-3 rounded-chantier px-6 cote text-[1.0625rem] uppercase tracking-[0.04em] text-blanc contour-clair hover:bg-blanc hover:text-nuit"
+          className="inline-flex min-h-[var(--bouton-h)] items-center gap-3 rounded-chantier px-6 cote text-[1.0625rem] uppercase tracking-[0.04em] text-nuit shadow-[inset_0_0_0_2px_var(--color-nuit)] hover:bg-nuit hover:text-blanc"
         >
           <Icone nom="whatsapp" size={20} weight="bold" />
           WhatsApp<span className="sr-only"> (nouvel onglet)</span>
@@ -99,11 +100,41 @@ export default function PageContact() {
                   Écrire sur WhatsApp<span className="sr-only"> (nouvel onglet)</span>
                 </a>
               </div>
-              <div className="mt-5">
-                <CarteDakar hauteur="h-72" />
-              </div>
             </div>
           </aside>
+        </div>
+      </section>
+
+      {/* Nous trouver : du pays à la rue */}
+      <section aria-labelledby="nous-trouver" className="bg-blanc py-20 lg:py-28">
+        <div className="conteneur">
+          <div className="revele flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+            <div>
+              <h2 id="nous-trouver" className="titre text-titre-l text-nuit">
+                Nous trouver
+              </h2>
+              <p className="mt-4 max-w-[36rem] text-lg leading-relaxed text-encre-douce">
+                Notre siège est à Dakar, {adresse.replace(", Dakar, Sénégal", "")}. La loupe et la carte du quartier ouvrent
+                l&apos;itinéraire.
+              </p>
+            </div>
+            <a
+              href={lienItineraire}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex min-h-[var(--bouton-h)] shrink-0 items-center gap-3 self-start rounded-chantier bg-jaune px-6 cote text-[1.0625rem] uppercase tracking-[0.04em] text-nuit ombre-bouton hover:bg-jaune-profond lg:self-auto"
+            >
+              Itinéraire
+              <Icone nom="fleche-externe" size={20} weight="bold" />
+              <span className="sr-only">(nouvel onglet)</span>
+            </a>
+          </div>
+          <div className="mt-12 grid items-center gap-10 lg:grid-cols-12 lg:gap-12">
+            <CarteSenegal className="w-full lg:col-span-7" />
+            <div className="lg:col-span-5">
+              <CarteDakar hauteur="h-[22rem] lg:h-[26rem]" />
+            </div>
+          </div>
         </div>
       </section>
     </>
