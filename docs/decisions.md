@@ -94,3 +94,8 @@ Choix faits en autonomie quand le brief laissait un doute. Chaque ligne dit ce q
 
     **Non traité** : les avertissements « Expected value to be of type number », qui viennent du style positron d'OpenFreeMap et non du site.
 52. **Page Bâtiment** : son en-tête montre une photo de tranchée de lotissement, faute de photo de bâtiment sûre (la photo 09 a des droits à vérifier). À remplacer dès réception des photos HD.
+53. **Quatrième série de retours (références : MR L Production, Lavilla, HomeFind, Orizon)**.
+    - **Hero immersif** : photo plein cadre et nette, posée sur le sable comme un tableau, avec les équerres du logo dans les angles et le coin bas-gauche coupé. Le titre est en bas à gauche, sur un dégradé elliptique localisé. Les domaines figurent dans une pastille de verre en haut à droite. Un panneau de verre en bas à droite pilote le diaporama (vignette de la photo suivante, compteur, intitulé, flèches, pause). Contraste mesuré sur les 5 photos : au moins 7,4:1 à 1440 et 390 px. Pensé pour les photos HD : le haut et la droite de l'image restent libres.
+    - **Sections variées** : « Pourquoi PET » en accordéon natif dont la photo suit l'engagement ouvert ; la méthode en frise dont la ligne se remplit au défilement.
+    - **Partenaires et Témoignages prêts mais masqués** : ils s'affichent dès que `content/partenaires.ts` ou `content/temoignages.ts` contiennent des entrées réelles.
+54. **Travail en parallèle** : un autre agent (celui de l'IDE) modifie et pousse le même dépôt. Exemple : le commit 7befd76, qui contient l'en-tête flottant, la barre mobile en dock, et mes fichiers du hero alors en cours d'écriture. Mieux vaut qu'un seul agent travaille à la fois.
