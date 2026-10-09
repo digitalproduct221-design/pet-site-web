@@ -1,5 +1,6 @@
 import { SLOGAN } from "@/content/site";
 import { BoutonLien } from "@/components/ui/Bouton";
+import { Profil } from "@/components/ui/Profil";
 import { Diaporama, type Diapo } from "./Diaporama";
 
 // Photos réelles de chantier, les plus lumineuses d'abord (droits à vérifier : écartées).
@@ -66,7 +67,7 @@ export function Hero() {
         </ul>
 
         {/* Titre en bas à gauche, panneau du diaporama en bas à droite */}
-        <div className="conteneur mt-auto grid items-end gap-6 pb-20 sm:pb-12 lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-10 lg:pb-16">
+        <div className="conteneur mt-auto grid items-end gap-6 pb-24 sm:pb-16 lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-10 lg:pb-24">
           <div className="entree max-w-[46rem]">
             <p className="cote text-[0.9375rem] uppercase tracking-[0.16em] text-blanc ombre-texte max-sm:hidden">Entreprise de BTP à Dakar, depuis 2016</p>
             <h1 className="titre sm:mt-4 text-[clamp(2.75rem,1.2rem+5.4vw,6rem)] leading-[0.92] text-blanc ombre-texte">
@@ -87,6 +88,7 @@ export function Hero() {
           <Diaporama diapos={diapos} />
         </div>
       </div>
+      <Profil couleur="text-sable" forme="terrain" className="z-20" />
     </section>
   );
 }
