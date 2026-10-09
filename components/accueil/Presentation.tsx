@@ -1,29 +1,52 @@
-import { entreprise, valeurs } from "@/content/site";
+import { valeurs } from "@/content/site";
 import { BoutonLien } from "@/components/ui/Bouton";
+import { Icone } from "@/components/ui/Icone";
+import { Motif } from "@/components/ui/Motif";
 import { PhotoCadre } from "@/components/ui/PhotoCadre";
 import { TitreSection } from "@/components/ui/TitreSection";
 
-/** Qui est PET : le texte de présentation, et deux photos en cascade. */
+/**
+ * Qui est PET : une grande photo d'équipe posée sur une feuille de plan (trame de
+ * points), une carte de verre qui dit l'essentiel, et les valeurs en deux colonnes.
+ */
 export function Presentation() {
   return (
-    <section aria-labelledby="titre-presentation" className="bg-blanc py-20 lg:py-32">
-      <div className="conteneur grid gap-14 lg:grid-cols-12 lg:gap-8">
-        <div className="revele lg:col-span-6">
-          <TitreSection id="titre-presentation" titre="Une entreprise de travaux, tous corps d'état" />
-          <div className="mt-8 max-w-[38rem] space-y-5 text-[1.125rem] leading-relaxed text-texte">
-            <p>
-              Fondée en {entreprise.fondation}, <strong className="font-semibold text-nuit">{entreprise.nom}</strong> conçoit,
-              construit, réhabilite et entretient des réseaux d&apos;eau, des bâtiments et des infrastructures, pour des clients
-              publics, industriels et privés.
-            </p>
-            <p className="text-texte-doux">
-              Notre équipe cumule plus de 40 ans d&apos;expérience. La qualité et la sécurité sont au centre de nos
-              préoccupations, avec un personnel qualifié et des équipements régulièrement mis à niveau.
-            </p>
+    <section aria-labelledby="titre-presentation" className="relative bg-blanc pb-28 pt-20 lg:pb-36 lg:pt-28">
+      <div className="conteneur grid items-center gap-16 lg:grid-cols-12 lg:gap-8">
+        <div className="relative lg:col-span-6">
+          {/* Feuille de plan décalée derrière la photo */}
+          <div aria-hidden className="absolute -inset-y-6 -left-4 right-10 isolate rounded-panneau bg-sable sm:-left-8 lg:-left-12">
+            <Motif type="plan" className="text-royal" opacite={0.22} />
           </div>
-          <ul aria-label="Nos valeurs" className="mt-8 flex max-w-[38rem] flex-wrap gap-2">
+          <div className="relative">
+            <PhotoCadre
+              photo="trancheeLotissement"
+              ratio="aspect-[5/4]"
+              sizes="(min-width: 1024px) 46vw, 100vw"
+              voile="leger"
+              equerres
+              decalage={14}
+            />
+            {/* .verre-liquide impose position: relative : l'ancrage se fait sur un conteneur */}
+            <div className="absolute -bottom-10 right-3 max-w-[19rem] sm:right-6 lg:-right-10">
+              <div className="verre-liquide rounded-panneau p-5 text-blanc">
+                <Icone nom="securite" size={28} className="text-jaune" />
+                <p className="mt-3 cote text-[1.125rem] leading-snug">Personnel qualifié et équipements régulièrement mis à niveau.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="revele lg:col-span-5 lg:col-start-8">
+          <TitreSection id="titre-presentation" titre="La qualité et la sécurité au centre de nos chantiers" />
+          <p className="mt-8 max-w-[34rem] text-[1.125rem] leading-relaxed text-texte">
+            Entreprise de bâtiment et de travaux publics, de génie civil, d&apos;hydraulique et d&apos;assainissement, tous corps
+            d&apos;état, PET s&apos;appuie sur une équipe qui cumule plus de 40 ans d&apos;expérience.
+          </p>
+          <ul aria-label="Nos valeurs" className="mt-8 grid max-w-[34rem] gap-x-6 gap-y-3 sm:grid-cols-2">
             {valeurs.map((v) => (
-              <li key={v.titre} className="rounded-chantier bg-sable px-3 py-1.5 cote text-[0.9375rem] text-nuit">
+              <li key={v.titre} className="flex items-center gap-3 cote text-[1.0625rem] text-nuit">
+                <span aria-hidden className="size-2 shrink-0 rounded-[1px] bg-jaune" />
                 {v.titre}
               </li>
             ))}
@@ -33,25 +56,6 @@ export function Presentation() {
               Découvrir PET
             </BoutonLien>
           </div>
-        </div>
-
-        <div className="relative lg:col-span-5 lg:col-start-8">
-          <PhotoCadre
-            photo="poseConduiteTopographie"
-            ratio="aspect-[5/4]"
-            sizes="(min-width: 1024px) 36vw, 100vw"
-            voile="leger"
-            equerres
-            decalage={14}
-          />
-          <PhotoCadre
-            photo="dalotRegard"
-            ratio="aspect-[4/3]"
-            sizes="(min-width: 1024px) 20vw, 60vw"
-            voile="leger"
-            equerres={false}
-            className="-mt-24 ml-auto w-3/5 shadow-[var(--ombre-planche)] lg:absolute lg:-bottom-14 lg:-left-20 lg:mt-0 lg:ml-0 lg:w-[52%]"
-          />
         </div>
       </div>
     </section>

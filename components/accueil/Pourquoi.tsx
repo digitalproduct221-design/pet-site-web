@@ -1,12 +1,13 @@
 import { engagementsCles } from "@/content/site";
 import { Icone } from "@/components/ui/Icone";
 import { PhotoCadre } from "@/components/ui/PhotoCadre";
+import { Profil } from "@/components/ui/Profil";
 import { TitreSection } from "@/components/ui/TitreSection";
 
 /** Quatre engagements, en liste éditoriale (pas en cartes identiques). */
 export function Pourquoi() {
   return (
-    <section aria-labelledby="titre-pourquoi" className="bg-blanc py-20 lg:py-32">
+    <section aria-labelledby="titre-pourquoi" className="relative bg-blanc pb-28 pt-20 lg:pb-40 lg:pt-28">
       <div className="conteneur grid gap-14 lg:grid-cols-12 lg:gap-8">
         <div className="lg:col-span-5">
           <div className="lg:sticky lg:top-[calc(var(--header-h-compact)+3rem)]">
@@ -39,6 +40,7 @@ export function Pourquoi() {
           ))}
         </ul>
       </div>
+      <Profil couleur="text-sable" forme="terrain" miroir />
     </section>
   );
 }

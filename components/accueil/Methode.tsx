@@ -1,10 +1,13 @@
 import { methode } from "@/content/site";
+import { Motif } from "@/components/ui/Motif";
+import { Profil } from "@/components/ui/Profil";
 import { TitreSection } from "@/components/ui/TitreSection";
 
 /** La méthode en quatre temps : de grands numéros, sans trait ni filet. */
 export function Methode() {
   return (
-    <section aria-labelledby="titre-methode" className="bg-sable py-20 lg:py-28">
+    <section aria-labelledby="titre-methode" className="relative isolate overflow-hidden bg-sable pb-28 pt-16 lg:pb-40 lg:pt-20">
+      <Motif type="beton" className="text-nuit" opacite={0.07} />
       <div className="conteneur">
         <div className="revele">
           <TitreSection
@@ -30,6 +33,7 @@ export function Methode() {
           ))}
         </ol>
       </div>
+      <Profil couleur="text-nuit" forme="talus" miroir />
     </section>
   );
 }

@@ -8,55 +8,65 @@ import { SLOGAN } from "@/content/site";
 import { BoutonLien } from "@/components/ui/Bouton";
 import { Equerres } from "@/components/ui/Equerres";
 import { Icone } from "@/components/ui/Icone";
+import { Profil } from "@/components/ui/Profil";
 
-type Diapo = { photo: PhotoId; domaine: string; legende: string; href: string };
+type Diapo = { photo: PhotoId; onglet: string; legende: string; href: string; origine: string };
 
-// Photos réelles de chantier (celles dont les droits sont à vérifier sont écartées).
+// Photos réelles de chantier, les plus lumineuses d'abord (droits à vérifier : écartées).
 const diapos: Diapo[] = [
   {
     photo: "terrassementEngins",
-    domaine: "Travaux publics et VRD",
-    legende: "Terrassement d'une plateforme à la pelle hydraulique et à la chargeuse.",
+    onglet: "Terrassement",
+    legende: "Plateforme terrassée à la pelle hydraulique et à la chargeuse.",
     href: "/savoir-faire/travaux-publics-vrd",
+    origine: "62% 58%",
+  },
+  {
+    photo: "niveleuseVoirie",
+    onglet: "Voirie",
+    legende: "Réglage d'une voirie en terre à la niveleuse, guidée par le chef de chantier.",
+    href: "/savoir-faire/travaux-publics-vrd",
+    origine: "40% 45%",
   },
   {
     photo: "conduiteOuvrage",
-    domaine: "Hydraulique",
-    legende: "Pose de conduite fonte et ferraillage de l'ouvrage de vannes.",
+    onglet: "Réseaux d'eau",
+    legende: "Conduite en fonte, vannes et ferraillage de l'ouvrage, en fond de fouille.",
     href: "/savoir-faire/hydraulique",
-  },
-  {
-    photo: "ferraillageOuvrage",
-    domaine: "Génie civil",
-    legende: "Armatures d'un ouvrage hydraulique en béton armé, avant coulage.",
-    href: "/savoir-faire/genie-civil",
+    origine: "55% 50%",
   },
   {
     photo: "dalotRegard",
-    domaine: "Assainissement",
-    legende: "Regard en béton raccordé au réseau, au cœur d'un quartier.",
+    onglet: "Assainissement",
+    legende: "Regard en béton raccordé au réseau, au cœur d'un quartier de Dakar.",
     href: "/savoir-faire/assainissement",
+    origine: "48% 62%",
   },
   {
-    photo: "poseConduiteTopographie",
-    domaine: "Hydraulique",
-    legende: "Pose de conduite en tranchée, suivie au GPS par notre topographe.",
-    href: "/savoir-faire/hydraulique",
+    photo: "ferraillageOuvrage",
+    onglet: "Génie civil",
+    legende: "Armatures d'un ouvrage hydraulique en béton armé, avant coulage.",
+    href: "/savoir-faire/genie-civil",
+    origine: "45% 60%",
   },
 ];
 
 const DUREE = 7000;
 
 /**
- * Hero immersif : diaporama plein écran de chantiers, fondu enchaîné et zoom lent
- * sous un voile bleu nuit (les photos basse définition ne sont jamais nues).
- * Commandes accessibles : précédent, suivant, pause, accès direct à chaque photo.
+ * Hero immersif et lumineux : diaporama plein écran de vrais chantiers, sans voile
+ * général. Seuls un dégradé sous le texte et un autre sous les onglets assurent la
+ * lisibilité. Chaque photo entre par un volet diagonal (comme la transition entre
+ * pages) puis s'approche lentement. En bas, des onglets numérotés : la ligne de
+ * l'onglet actif se remplit pendant l'affichage, un clic montre la photo.
  * Le défilement s'arrête au survol, au focus, hors de l'écran, et ne démarre pas
  * sous mouvement réduit.
  */
 export function Hero() {
   const [index, setIndex] = useState(0);
-  // null : comportement par défaut (défilement, sauf mouvement réduit) ; sinon, choix explicite du visiteur.
+  // Tant que le diaporama n'a pas bougé, la première photo s'affiche sans volet.
+  const [aBouge, setABouge] = useState(false);
+  // null : comportement par défaut (défilement, sauf mouvement réduit) ; sinon, choix du visiteur.
   const [lecture, setLecture] = useState<boolean | null>(null);
   const [reduit, setReduit] = useState(false);
   const [suspendu, setSuspendu] = useState(false); // survol ou focus
@@ -68,6 +78,14 @@ export function Hero() {
 
   const enLecture = lecture ?? !reduit;
   const enPause = !enLecture || suspendu || horsEcran;
+  const total = diapos.length;
+  const aller = useCallback(
+    (i: number) => {
+      setABouge(true);
+      setIndex(((i % total) + total) % total);
+    },
+    [total],
+  );
 
   useEffect(() => {
     const requete = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -76,8 +94,6 @@ export function Hero() {
     requete.addEventListener("change", maj);
     return () => requete.removeEventListener("change", maj);
   }, []);
-  const total = diapos.length;
-  const aller = useCallback((i: number) => setIndex(((i % total) + total) % total), [total]);
 
   useEffect(() => {
     if (enPause) return;
@@ -96,7 +112,6 @@ export function Hero() {
     return () => clearTimeout(t);
   }, []);
 
-  // Hors de l'écran : on suspend.
   useEffect(() => {
     const el = section.current;
     if (!el) return;
@@ -118,7 +133,7 @@ export function Hero() {
       onBlurCapture={(e) => {
         if (!e.currentTarget.contains(e.relatedTarget as Node)) setSuspendu(false);
       }}
-      className="sur-sombre relative isolate flex min-h-[max(38rem,calc(100svh-var(--header-h)-var(--topbar-h)))] flex-col overflow-hidden bg-nuit text-blanc"
+      className="sur-sombre relative isolate flex min-h-[max(40rem,calc(100svh-var(--header-h)-var(--topbar-h)))] flex-col overflow-hidden bg-nuit text-blanc"
     >
       {/* Diapositives */}
       <div className="absolute inset-0 -z-10">
@@ -129,40 +144,45 @@ export function Hero() {
               key={d.photo}
               role="group"
               aria-roledescription="diapositive"
-              aria-label={`${i + 1} sur ${total} : ${d.domaine}`}
+              aria-label={`${i + 1} sur ${total} : ${d.onglet}`}
               aria-hidden={i !== index}
               data-active={i === index}
               data-pause={enPause}
+              data-initial={!aBouge || undefined}
               className="diapo absolute inset-0 overflow-hidden"
+              style={{ ["--origine" as string]: d.origine }}
             >
               {i === 0 || suivantesPretes || i === index ? (
-              <Image
-                src={p.src}
-                alt={p.alt}
-                fill
-                preload={i === 0}
-                fetchPriority={i === 0 ? "high" : "low"}
-                sizes="(max-width: 768px) 70vw, 100vw"
-                quality={50}
-               
-                className="object-cover"
-                style={{ objectPosition: p.focale }}
-              />
+                <Image
+                  src={p.src}
+                  alt={p.alt}
+                  fill
+                  preload={i === 0}
+                  fetchPriority={i === 0 ? "high" : "low"}
+                  sizes="(max-width: 768px) 80vw, 100vw"
+                  quality={75}
+                  className="object-cover"
+                  style={{ objectPosition: p.focale }}
+                />
               ) : null}
             </div>
           );
         })}
-        {/* Voile : dense à gauche pour le texte, en bas pour le panneau */}
-        <div aria-hidden className="absolute inset-0 voile-hero" />
-        <div aria-hidden className="absolute inset-x-0 bottom-0 h-1/2 voile-bas" />
+        {/* Lisibilité seulement là où il y a du texte : à gauche et sous les onglets */}
+        <div aria-hidden className="absolute inset-0 voile-hero-clair" />
+        <div aria-hidden className="absolute inset-x-0 bottom-0 h-[55%] voile-bas-clair" />
+        <div aria-hidden className="absolute inset-0 grain" />
       </div>
 
-      <div className="conteneur flex flex-1 flex-col justify-between gap-12 pb-8 pt-16 lg:pb-12 lg:pt-24">
-        <div className="entree max-w-[46rem]">
+      <div className="conteneur flex flex-1 flex-col justify-between gap-12 pb-[calc(clamp(2.25rem,5vw,5.5rem)+1.5rem)] pt-14 lg:pt-20">
+        <div className="entree max-w-[44rem]">
+          <p className="cote text-[0.9375rem] uppercase tracking-[0.16em] text-blanc ombre-texte">
+            Bâtiment · Travaux publics · Hydraulique · Assainissement · Génie civil
+          </p>
           <Equerres
-            decalage={22}
-            className="inline-block px-3 pb-4 pt-3"
-            style={{ ["--equerre-taille" as string]: "clamp(2.75rem, 1.6rem + 3.4vw, 4.75rem)", ["--equerre-epaisseur" as string]: "5px" }}
+            decalage={20}
+            className="mt-6 inline-block px-3 pb-4 pt-3"
+            style={{ ["--equerre-taille" as string]: "clamp(2.5rem, 1.5rem + 3vw, 4.25rem)", ["--equerre-epaisseur" as string]: "5px" }}
           >
             <h1 className="titre text-titre-xl text-blanc ombre-texte">
               <span className="block">Nous bâtissons.</span>
@@ -170,10 +190,10 @@ export function Hero() {
               <span className="block text-jaune">Nous durons.</span>
             </h1>
           </Equerres>
-          <p className="mt-8 max-w-[32rem] text-[1.1875rem] leading-relaxed text-blanc/90">
-            {SLOGAN}. Bâtiment, travaux publics, hydraulique, assainissement et génie civil, depuis 2016.
+          <p className="mt-7 max-w-[30rem] text-[1.1875rem] leading-relaxed text-blanc ombre-texte">
+            {SLOGAN}, depuis 2016.
           </p>
-          <div className="mt-10 flex flex-wrap gap-4">
+          <div className="mt-9 flex flex-wrap gap-4">
             <BoutonLien href="/contact#devis">Demander un devis</BoutonLien>
             <BoutonLien href="/savoir-faire" variante="contour-clair">
               Nos savoir-faire
@@ -181,75 +201,67 @@ export function Hero() {
           </div>
         </div>
 
-        {/* Panneau de verre liquide : légende et commandes du diaporama */}
-        <div className="verre-liquide w-full max-w-[30rem] self-end rounded-panneau p-5 sm:p-6">
-          <div aria-live={enPause ? "polite" : "off"} aria-atomic="true">
-            <p className="min-h-[3.2em] text-[1.0625rem] leading-snug text-blanc">{diapo.legende}</p>
-            <div className="mt-2 flex items-center justify-between gap-4">
-              <p className="cote text-[0.9375rem] text-jaune">{diapo.domaine}</p>
-              <p className="cote text-[0.9375rem] text-brume chiffres-tabulaires">
-                <span className="text-blanc">{String(index + 1).padStart(2, "0")}</span> / {String(total).padStart(2, "0")}
-              </p>
-            </div>
+        {/* Onglets numérotés : légende de la photo, progression, accès direct */}
+        <div className="grid gap-4">
+          <div aria-live={enPause ? "polite" : "off"} aria-atomic="true" className="flex items-end justify-between gap-6">
+            <p className="max-w-[34rem] text-[1.0625rem] leading-snug text-blanc ombre-texte">
+              {diapo.legende}{" "}
+              <Link href={diapo.href} className="group/lien inline-flex items-center gap-1.5 whitespace-nowrap cote text-jaune hover:text-blanc">
+                Voir le domaine
+                <Icone nom="fleche" size={16} weight="bold" className="transition-transform group-hover/lien:translate-x-1" />
+              </Link>
+            </p>
+            <button
+              type="button"
+              onClick={() => setLecture(!enLecture)}
+              aria-label={enLecture ? "Mettre le diaporama en pause" : "Lancer le diaporama"}
+              className="grid size-11 shrink-0 place-items-center rounded-full bg-blanc/15 text-blanc backdrop-blur-sm transition-colors hover:bg-blanc/30"
+            >
+              <Icone nom={enLecture ? "pause" : "lecture"} size={18} weight="fill" />
+            </button>
           </div>
 
-          <div className="mt-4 flex items-center justify-between gap-4">
-            <Link href={diapo.href} className="group/lien inline-flex items-center gap-2 cote text-[1rem] text-blanc hover:text-jaune">
-              Voir le domaine
-              <Icone nom="fleche" size={18} weight="bold" className="transition-transform group-hover/lien:translate-x-1" />
-            </Link>
-            <div className="flex items-center gap-1">
-              <button
-                type="button"
-                onClick={() => aller(index - 1)}
-                aria-label="Photo précédente"
-                className="grid size-11 place-items-center rounded-chantier text-blanc transition-colors hover:bg-blanc/15"
-              >
-                <Icone nom="fleche" size={20} weight="bold" className="rotate-180" />
-              </button>
-              <button
-                type="button"
-                onClick={() => setLecture(!enLecture)}
-                aria-label={enLecture ? "Mettre le diaporama en pause" : "Lancer le diaporama"}
-                className="grid size-11 place-items-center rounded-chantier text-blanc transition-colors hover:bg-blanc/15"
-              >
-                <Icone nom={enLecture ? "pause" : "lecture"} size={20} weight="fill" />
-              </button>
-              <button
-                type="button"
-                onClick={() => aller(index + 1)}
-                aria-label="Photo suivante"
-                className="grid size-11 place-items-center rounded-chantier text-blanc transition-colors hover:bg-blanc/15"
-              >
-                <Icone nom="fleche" size={20} weight="bold" />
-              </button>
-            </div>
-          </div>
-
-          {/* Progression : un segment par photo, cliquable */}
-          <div className="mt-4 flex gap-1.5" style={{ ["--duree-diapo" as string]: `${DUREE}ms` }}>
-            {diapos.map((d, i) => (
-              <button
-                key={d.photo}
-                type="button"
-                onClick={() => aller(i)}
-                aria-label={`Afficher la photo ${i + 1} : ${d.domaine}`}
-                aria-current={i === index ? "true" : undefined}
-                className="group/segment relative h-6 flex-1"
-              >
-                <span
-                  data-active={i === index && !enPause}
-                  className="progression-diapo absolute inset-x-0 top-1/2 block h-[3px] -translate-y-1/2 overflow-hidden rounded-full bg-blanc/25 transition-colors group-hover/segment:bg-blanc/45"
-                >
-                  <span
-                    className={`absolute inset-0 origin-left rounded-full bg-jaune ${i < index || (i === index && enPause) ? "scale-x-100" : "scale-x-0"}`}
-                  />
-                </span>
-              </button>
-            ))}
-          </div>
+          <ol className="grid grid-cols-5 gap-3 sm:gap-5" style={{ ["--duree-diapo" as string]: `${DUREE}ms` }}>
+            {diapos.map((d, i) => {
+              const actif = i === index;
+              return (
+                <li key={d.photo}>
+                  <button
+                    type="button"
+                    onClick={() => aller(i)}
+                    aria-label={`Afficher la photo ${i + 1} : ${d.onglet}`}
+                    aria-current={actif ? "true" : undefined}
+                    className="group/onglet block w-full pt-3 text-left"
+                  >
+                    <span
+                      data-active={actif && !enPause}
+                      className="progression-diapo relative block h-[3px] overflow-hidden rounded-full bg-blanc/35 transition-colors group-hover/onglet:bg-blanc/60"
+                    >
+                      <span
+                        className={`absolute inset-0 origin-left rounded-full bg-jaune ${i < index || (actif && enPause) ? "scale-x-100" : "scale-x-0"}`}
+                      />
+                    </span>
+                    <span className="mt-3 flex items-baseline gap-3">
+                      <span
+                        className={`titre text-[1.75rem] leading-none chiffres-tabulaires transition-colors sm:text-[2.25rem] ${actif ? "text-blanc" : "text-blanc/55 group-hover/onglet:text-blanc/80"}`}
+                      >
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <span
+                        className={`hidden cote text-[1rem] leading-tight transition-colors md:block ${actif ? "text-blanc" : "text-blanc/70 group-hover/onglet:text-blanc"}`}
+                      >
+                        {d.onglet}
+                      </span>
+                    </span>
+                  </button>
+                </li>
+              );
+            })}
+          </ol>
         </div>
       </div>
+
+      <Profil couleur="text-sable" />
     </section>
   );
 }

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { photos } from "@/content/photos";
 import { domaines } from "@/content/site";
 import { Icone } from "@/components/ui/Icone";
+import { Profil } from "@/components/ui/Profil";
 import { TitreSection } from "@/components/ui/TitreSection";
 
 /**
@@ -14,7 +15,7 @@ const ordrePanneaux = [...domaines].sort((a, b) => Number(b.slug === "travaux-pu
 
 export function SavoirFaire() {
   return (
-    <section aria-labelledby="titre-savoir-faire" className="bg-sable py-20 lg:py-28">
+    <section aria-labelledby="titre-savoir-faire" className="relative bg-sable pb-28 pt-20 lg:pb-40 lg:pt-28">
       <div className="conteneur">
         <div className="revele flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
           <TitreSection
@@ -70,6 +71,7 @@ export function SavoirFaire() {
           })}
         </ul>
       </div>
+      <Profil couleur="text-nuit" forme="talus" />
     </section>
   );
 }

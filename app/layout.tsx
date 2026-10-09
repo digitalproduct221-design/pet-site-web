@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from "next";
-import { ViewTransition } from "react";
 import { Barlow_Condensed, Barlow_Semi_Condensed, Manrope } from "next/font/google";
 import "./globals.css";
 import { BarreHaut } from "@/components/layout/BarreHaut";
@@ -7,6 +6,8 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { BarreActionsMobile } from "@/components/layout/BarreActionsMobile";
 import { Reveleur } from "@/components/ui/Reveleur";
+import { TransitionPage } from "@/components/layout/TransitionPage";
+import { CLE_INTRO } from "@/components/layout/intro";
 import { adresse, email, entreprise, NOM, SIGLE, SITE_URL, SLOGAN, telephones } from "@/content/site";
 
 // Seules les graisses réellement utilisées sont chargées (latin suffit pour le français).
@@ -85,7 +86,15 @@ const donneesOrganisation = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="fr" className={`${barlowCondensed.variable} ${barlowSemi.variable} ${manrope.variable}`}>
+    <html lang="fr" data-scroll-behavior="smooth" suppressHydrationWarning className={`${barlowCondensed.variable} ${barlowSemi.variable} ${manrope.variable}`}>
+      <head>
+        {/* Avant le premier rendu : l'écran d'accueil au logo ne rejoue pas dans la même session */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{if(sessionStorage.getItem("${CLE_INTRO}"))document.documentElement.classList.add("intro-vue")}catch(e){}`,
+          }}
+        />
+      </head>
       <body className="relative min-h-dvh">
         <script
           type="application/ld+json"
@@ -100,12 +109,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <BarreHaut />
         <Header />
         <main id="contenu" tabIndex={-1} className="outline-none">
-          {/* Fondu entre les pages (navigateurs compatibles) */}
-          <ViewTransition>{children}</ViewTransition>
+          {children}
         </main>
         <Footer />
         <BarreActionsMobile />
         <Reveleur />
+        <TransitionPage />
       </body>
     </html>
   );

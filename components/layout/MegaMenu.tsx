@@ -17,6 +17,12 @@ import { Icone } from "@/components/ui/Icone";
 export function MegaMenu() {
   const [ouvert, setOuvert] = useState("");
   const chemin = usePathname();
+  // Ferme le panneau quand la page change (le rideau de transition intercepte le clic).
+  const [cheminPrecedent, setCheminPrecedent] = useState(chemin);
+  if (chemin !== cheminPrecedent) {
+    setCheminPrecedent(chemin);
+    setOuvert("");
+  }
 
   return (
     <>

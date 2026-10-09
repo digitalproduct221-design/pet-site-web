@@ -114,8 +114,9 @@
   --bouton-primaire-bg-survol: var(--pet-jaune-500);
   --bouton-primaire-texte: var(--pet-nuit-900);
 
-  /* Voile bleu nuit perceptible sur toutes les photos (basse définition, extraites d'une bâche) */
-  --voile-photo: linear-gradient(180deg, rgb(11 27 63 / 0.26) 0%, rgb(11 27 63 / 0.38) 55%, rgb(7 18 43 / 0.62) 100%);
+  /* Voile bleu nuit léger sur les photos (basse définition) : la photo reste lumineuse,
+     le bas s'assombrit juste assez pour asseoir l'image (révision client d'octobre 2026) */
+  --voile-photo: linear-gradient(180deg, rgb(11 27 63 / 0.04) 0%, rgb(11 27 63 / 0.1) 55%, rgb(7 18 43 / 0.34) 100%);
   --ombre-planche: 0 24px 48px -24px rgb(7 18 43 / 0.45), 0 2px 6px -2px rgb(7 18 43 / 0.2);
 
 }
@@ -595,31 +596,26 @@
   }
 }
 
-/* Fondu entre les pages (React <ViewTransition>, navigateurs compatibles) */
-@media (prefers-reduced-motion: no-preference) {
-  ::view-transition-old(root) {
-    animation: 220ms var(--ease-sortie) both page-sort;
-  }
-  ::view-transition-new(root) {
-    animation: 520ms var(--ease-chantier) both page-entre;
-  }
-}
-@keyframes page-sort { to { opacity: 0; } }
-@keyframes page-entre { from { opacity: 0; translate: 0 14px; } }
-
 /* ==========================================================================
-   Diaporama du hero : fondu enchaîné et zoom lent
+   Diaporama du hero : chaque photo entre par un volet diagonal (écho de la
+   transition entre pages), la précédente reste dessous le temps du passage,
+   puis zoom lent depuis un point propre à chaque photo (--origine).
    ========================================================================== */
 .diapo {
   opacity: 0;
-  transition: opacity 1400ms var(--ease-chantier);
+  transition: opacity 0s linear 1300ms;
 }
 .diapo[data-active="true"] {
+  z-index: 1;
   opacity: 1;
+  transition: none;
 }
 @media (prefers-reduced-motion: no-preference) {
+  .diapo[data-active="true"] {
+    animation: diapo-volet 1300ms cubic-bezier(0.76, 0, 0.24, 1) both;
+  }
   .diapo img {
-    transform-origin: 60% 50%;
+    transform-origin: var(--origine, 50% 50%);
   }
   .diapo[data-active="true"] img {
     animation: zoom-lent 9s linear both;
@@ -632,11 +628,20 @@
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .diapo { transition-duration: 1ms; }
+  .diapo { transition: opacity 400ms ease; }
+  .diapo[data-active="true"] { transition: opacity 400ms ease; }
+}
+/* Premier affichage : pas de volet, la photo est déjà là */
+.diapo[data-initial] {
+  animation-name: none !important;
+}
+@keyframes diapo-volet {
+  from { clip-path: polygon(118% 0, 118% 0, 100% 100%, 100% 100%); }
+  to { clip-path: polygon(-18% 0, 118% 0, 100% 100%, -36% 100%); }
 }
 @keyframes zoom-lent {
-  from { scale: 1.02; }
-  to { scale: 1.12; }
+  from { scale: 1; }
+  to { scale: 1.07; }
 }
 @keyframes progression {
   from { scale: 0 1; }
@@ -698,4 +703,170 @@
   @media (width >= 64rem) {
     background: linear-gradient(90deg, rgb(33 64 154 / 1) 0%, rgb(33 64 154 / 0.92) 42%, rgb(33 64 154 / 0.5) 78%, rgb(33 64 154 / 0.3) 100%);
   }
+}
+
+/* ==========================================================================
+   Rideau de transition entre les pages et écran d'accueil au logo
+   (components/layout/TransitionPage.tsx). Deux volets inclinés, jaune puis
+   bleu nuit, balaient l'écran ; le logo attend au centre.
+   ========================================================================== */
+.rideau {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  overflow: hidden;
+  pointer-events: none;
+  visibility: hidden;
+}
+.rideau[data-etat="intro"],
+.rideau[data-etat="anime"] {
+  visibility: visible;
+  pointer-events: auto;
+}
+/* Parallélogramme plus large que l'écran : bord diagonal, il couvre tout une fois posé */
+.rideau-volet {
+  --biais: 22vh;
+  position: absolute;
+  inset: 0 calc(var(--biais) * -1);
+  clip-path: polygon(var(--biais) 0, 100% 0, calc(100% - var(--biais)) 100%, 0 100%);
+  translate: 102% 0;
+}
+.rideau-logo {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 1.5rem;
+  opacity: 0;
+}
+.rideau-nom {
+  font-size: 0.9375rem;
+  letter-spacing: 0.32em;
+  color: var(--pet-brume-200);
+}
+/* Barre de chargement sous le nom : visible à l'accueil et quand la page tarde */
+.rideau-barre {
+  position: relative;
+  width: 7.5rem;
+  height: 3px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgb(185 199 230 / 0.18);
+  opacity: 0;
+  transition: opacity 300ms ease;
+}
+.rideau-barre::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 40%;
+  border-radius: inherit;
+  background: var(--pet-jaune-400);
+  animation: rideau-charge 1100ms var(--ease-chantier) infinite;
+}
+.rideau[data-etat="intro"] .rideau-barre,
+.rideau[data-attente="oui"] .rideau-barre {
+  opacity: 1;
+}
+@keyframes rideau-charge {
+  from { translate: -100% 0; }
+  to { translate: 250% 0; }
+}
+/* Première page vue : rendu couvert par le serveur, puis dévoilé par le script */
+.rideau[data-etat="intro"] .rideau-volet {
+  translate: 0 0;
+}
+.rideau[data-etat="intro"] .rideau-logo {
+  opacity: 1;
+}
+.rideau[data-etat="intro"] .rideau-logo > * {
+  animation: monte 800ms var(--ease-chantier) both;
+}
+.rideau[data-etat="intro"] .rideau-nom {
+  animation-delay: 160ms;
+}
+/* Sans script : l'écran d'accueil s'efface seul ; déjà vu dans la session : jamais */
+.rideau[data-etat="intro"] {
+  animation: rideau-secours 0s 3s forwards;
+}
+@keyframes rideau-secours { to { visibility: hidden; pointer-events: none; } }
+html.intro-vue .rideau[data-etat="intro"] {
+  visibility: hidden;
+  pointer-events: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .rideau { display: none; }
+}
+
+/* ==========================================================================
+   Motifs BTP en fond : dessins au trait (courbes de niveau, ferraillage,
+   coupe de béton, trame de plan) appliqués en masque. Leur couleur suit
+   `color` (currentColor), leur intensité --motif-opacite. Toujours discrets.
+   ========================================================================== */
+.motif {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-color: currentColor;
+  opacity: var(--motif-opacite, 0.08);
+  -webkit-mask-image: var(--motif);
+  mask-image: var(--motif);
+  -webkit-mask-size: var(--motif-taille, cover);
+  mask-size: var(--motif-taille, cover);
+  -webkit-mask-repeat: var(--motif-repetition, no-repeat);
+  mask-repeat: var(--motif-repetition, no-repeat);
+  -webkit-mask-position: var(--motif-position, center);
+  mask-position: var(--motif-position, center);
+}
+.motif-courbes {
+  --motif: url("/motifs/courbes-niveau.svg");
+}
+.motif-ferraillage {
+  --motif: url("/motifs/ferraillage.svg");
+  --motif-taille: 72px;
+  --motif-repetition: repeat;
+}
+.motif-beton {
+  --motif: url("/motifs/beton.svg");
+  --motif-taille: 168px;
+  --motif-repetition: repeat;
+}
+.motif-plan {
+  --motif: radial-gradient(circle at center, #000 1.1px, transparent 1.6px);
+  --motif-taille: 22px 22px;
+  --motif-repetition: repeat;
+}
+
+/* ==========================================================================
+   Hero lumineux : photo naturelle, voiles seulement sous le texte
+   ========================================================================== */
+@utility voile-hero-clair {
+  background: linear-gradient(100deg, rgb(7 18 43 / 0.72) 0%, rgb(7 18 43 / 0.52) 32%, rgb(7 18 43 / 0.14) 56%, transparent 74%);
+  @media (width < 48rem) {
+    background: linear-gradient(180deg, rgb(7 18 43 / 0.5) 0%, rgb(7 18 43 / 0.35) 55%, rgb(7 18 43 / 0.15) 100%);
+  }
+}
+@utility voile-bas-clair {
+  background: linear-gradient(0deg, rgb(7 18 43 / 0.72) 0%, rgb(7 18 43 / 0.32) 45%, transparent 100%);
+}
+/* Grain fixe très léger : masque l'agrandissement des photos basse définition */
+@utility grain {
+  opacity: 0.09;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+}
+
+/* Ruban de valeurs : défilement continu (deux copies, on glisse d'une largeur) */
+@media (prefers-reduced-motion: no-preference) {
+  .ruban-piste {
+    animation: ruban 38s linear infinite;
+  }
+  .ruban:hover .ruban-piste {
+    animation-play-state: paused;
+  }
+}
+@keyframes ruban {
+  to { translate: -50% 0; }
 }

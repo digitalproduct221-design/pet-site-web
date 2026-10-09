@@ -4,6 +4,7 @@ import { domaineParSlug } from "@/content/site";
 import { Icone } from "@/components/ui/Icone";
 import { MentionExemple } from "@/components/ui/Exemple";
 import { PhotoCadre } from "@/components/ui/PhotoCadre";
+import { Profil } from "@/components/ui/Profil";
 import { TitreSection } from "@/components/ui/TitreSection";
 
 // Composition de la planche : une grande photo et quatre photos de tailles variées.
@@ -17,7 +18,7 @@ const disposition = [
 
 export function RealisationsVedette() {
   return (
-    <section aria-labelledby="titre-realisations" className="sur-sombre profondeur py-20 text-blanc lg:py-28">
+    <section aria-labelledby="titre-realisations" className="sur-sombre profondeur relative pb-28 pt-16 text-blanc lg:pb-40 lg:pt-20">
       <div className="conteneur">
         <div className="revele flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
           <TitreSection
@@ -64,6 +65,7 @@ export function RealisationsVedette() {
           })}
         </ul>
       </div>
+      <Profil couleur="text-blanc" forme="deblai" miroir />
     </section>
   );
 }
