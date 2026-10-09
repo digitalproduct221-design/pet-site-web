@@ -84,7 +84,7 @@ async function main() {
   await raw(inverse).extract(emblem).png().toFile(`${BRAND_OUT}/embleme-pet-inverse.png`);
 
   // Icônes et image de partage.
-  await raw(logo).extract(emblem).resize(512, 512, { fit: "contain", background: { r: 255, g: 255, b: 255, alpha: 1 } }).flatten({ background: "#ffffff" }).png().toFile("app/icon.png");
+  await raw(logo).extract(emblem).resize(192, 192, { fit: "contain", background: { r: 255, g: 255, b: 255, alpha: 1 } }).flatten({ background: "#ffffff" }).png().toFile("app/icon.png");
   await raw(logo).extract(emblem).resize(180, 180, { fit: "contain", background: { r: 255, g: 255, b: 255, alpha: 1 } }).flatten({ background: "#ffffff" }).png().toFile("app/apple-icon.png");
 
   // Image de partage (Open Graph) : photo des engins voilée de bleu nuit et logo inversé.

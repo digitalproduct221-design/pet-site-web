@@ -61,6 +61,9 @@ export function Hero() {
   const [reduit, setReduit] = useState(false);
   const [suspendu, setSuspendu] = useState(false); // survol ou focus
   const [horsEcran, setHorsEcran] = useState(false);
+  // Les photos suivantes ne se chargent qu'une fois la page au repos, pour ne pas
+  // concurrencer la première (élément le plus visible du premier écran).
+  const [suivantesPretes, setSuivantesPretes] = useState(false);
   const section = useRef<HTMLElement>(null);
 
   const enLecture = lecture ?? !reduit;
@@ -81,6 +84,17 @@ export function Hero() {
     const minuteur = window.setTimeout(() => aller(index + 1), DUREE);
     return () => window.clearTimeout(minuteur);
   }, [index, enPause, aller]);
+
+  useEffect(() => {
+    const charger = () => setSuivantesPretes(true);
+    // Safari ne connaît pas requestIdleCallback : repli sur un délai.
+    if (typeof window.requestIdleCallback === "function") {
+      const id = window.requestIdleCallback(charger, { timeout: 3000 });
+      return () => window.cancelIdleCallback(id);
+    }
+    const t = setTimeout(charger, 2000);
+    return () => clearTimeout(t);
+  }, []);
 
   // Hors de l'écran : on suspend.
   useEffect(() => {
@@ -121,17 +135,20 @@ export function Hero() {
               data-pause={enPause}
               className="diapo absolute inset-0 overflow-hidden"
             >
+              {i === 0 || suivantesPretes || i === index ? (
               <Image
                 src={p.src}
                 alt={p.alt}
                 fill
                 preload={i === 0}
                 fetchPriority={i === 0 ? "high" : "low"}
-                sizes="100vw"
+                sizes="(max-width: 768px) 70vw, 100vw"
+                quality={50}
                
                 className="object-cover"
                 style={{ objectPosition: p.focale }}
               />
+              ) : null}
             </div>
           );
         })}

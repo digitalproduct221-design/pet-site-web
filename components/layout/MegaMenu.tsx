@@ -56,7 +56,7 @@ export function MegaMenu() {
                     {/* Colonne 1 : titre et intro */}
                     <div className="col-span-4 border-r border-ligne pr-8">
                       <p className="titre text-titre-l text-nuit">{rubrique.titre}</p>
-                      <p className="mt-5 cote text-[1.25rem] font-medium italic leading-snug text-royal">{rubrique.intro}</p>
+                      <p className="mt-5 cote text-[1.25rem] italic leading-snug text-royal">{rubrique.intro}</p>
                       <NavigationMenu.Link asChild>
                         <Link
                           href={rubrique.href}

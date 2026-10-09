@@ -10,7 +10,7 @@ export function Carrieres() {
     <section aria-labelledby="titre-carrieres" className="sur-sombre relative isolate overflow-hidden bg-nuit py-20 text-blanc lg:py-28">
       {/* Photo d'équipe très voilée : la matière du verre des offres */}
       <div aria-hidden className="absolute inset-0 -z-10">
-        <Image src={photos.trancheeLotissement.src} alt="" fill sizes="100vw" className="object-cover opacity-70" />
+        <Image src={photos.trancheeLotissement.src} alt="" fill sizes="(max-width: 768px) 70vw, 100vw" quality={50} className="object-cover opacity-70" />
         <div className="absolute inset-0 voile-lateral" />
       </div>
       <div className="conteneur grid gap-12 lg:grid-cols-12 lg:gap-8">

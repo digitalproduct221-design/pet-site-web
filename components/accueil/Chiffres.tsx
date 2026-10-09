@@ -69,7 +69,7 @@ export function Chiffres() {
         PET en chiffres
       </h2>
       <div aria-hidden className="absolute inset-0 -z-10">
-        <Image src={fond.src} alt="" fill sizes="100vw" className="object-cover opacity-60" style={{ objectPosition: "50% 40%" }} />
+        <Image src={fond.src} alt="" fill sizes="(max-width: 768px) 70vw, 100vw" quality={50} className="object-cover opacity-60" style={{ objectPosition: "50% 40%" }} />
         <div className="absolute inset-0 voile-royal" />
       </div>
       <div className="conteneur py-16 lg:py-24">

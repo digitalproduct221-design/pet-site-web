@@ -9,23 +9,24 @@ import { BarreActionsMobile } from "@/components/layout/BarreActionsMobile";
 import { Reveleur } from "@/components/ui/Reveleur";
 import { adresse, email, entreprise, NOM, SIGLE, SITE_URL, SLOGAN, telephones } from "@/content/site";
 
+// Seules les graisses réellement utilisées sont chargées (latin suffit pour le français).
 const barlowCondensed = Barlow_Condensed({
-  subsets: ["latin", "latin-ext"],
-  weight: ["600", "700", "800"],
+  subsets: ["latin"],
+  weight: ["800"],
   variable: "--font-barlow-condensed",
   display: "swap",
 });
 
 const barlowSemi = Barlow_Semi_Condensed({
-  subsets: ["latin", "latin-ext"],
-  weight: ["500", "600"],
+  subsets: ["latin"],
+  weight: ["600"],
   style: ["normal", "italic"],
   variable: "--font-barlow-semi",
   display: "swap",
 });
 
 const manrope = Manrope({
-  subsets: ["latin", "latin-ext"],
+  subsets: ["latin"],
   variable: "--font-manrope",
   display: "swap",
 });
