@@ -7,10 +7,11 @@ import embleme from "@/public/brand/embleme-pet-inverse.png";
 import { CLE_INTRO } from "./intro";
 
 
-const COUVRE = 520; // entrée des volets
-const DEVOILE = 640; // sortie des volets
-const DECALAGE = 90; // le second volet suit le premier
-const MAINTIEN = 160; // le logo reste un instant à l'écran
+// Transition courte (≈ 0,6 s au total) : le volet jaune ne fait qu'un liseré devant le bleu nuit.
+const COUVRE = 300; // entrée des volets
+const DEVOILE = 340; // sortie des volets
+const DECALAGE = 40; // le volet nuit suit de près le jaune : seul un liseré jaune se voit
+const MAINTIEN = 0; // pas de pause : le logo ne reste que si la page tarde
 const ATTENTE_MAX = 8000; // au-delà, on dévoile quoi qu'il arrive
 const COURBE = "cubic-bezier(0.76, 0, 0.24, 1)";
 
@@ -68,7 +69,7 @@ export function TransitionPage() {
       el.dataset.etat = "anime";
       await Promise.all([
         ...volets.map((v, i) => animer(v, [{ translate: "102% 0" }, { translate: "0 0" }], COUVRE, i * DECALAGE)),
-        animer(logo, [{ opacity: 0, scale: "0.92" }, { opacity: 1, scale: "1" }], 380, COUVRE - 120),
+        animer(logo, [{ opacity: 0, scale: "0.94" }, { opacity: 1, scale: "1" }], 180, COUVRE - 140),
       ]);
     };
 
@@ -78,8 +79,8 @@ export function TransitionPage() {
       // Le volet de dessus (bleu nuit) part en premier, le jaune le suit.
       const ordre = [...volets].reverse();
       await Promise.all([
-        animer(logo, [{ opacity: 1 }, { opacity: 0, translate: "-6% 0" }], 260),
-        ...ordre.map((v, i) => animer(v, [{ translate: "0 0" }, { translate: "-102% 0" }], DEVOILE, 80 + i * DECALAGE)),
+        animer(logo, [{ opacity: 1 }, { opacity: 0 }], 120),
+        ...ordre.map((v, i) => animer(v, [{ translate: "0 0" }, { translate: "-102% 0" }], DEVOILE, 40 + i * DECALAGE)),
       ]);
       el.dataset.etat = "repos";
       for (const a of el.getAnimations({ subtree: true })) a.cancel();
@@ -117,7 +118,7 @@ export function TransitionPage() {
         const arrive = new Promise<void>((resoudre) => (arrivee.current = { chemin: cheminCible, resoudre }));
         router.push(cible);
         // Si la page tarde, la barre de chargement apparaît sous le logo.
-        const signal = setTimeout(() => (el.dataset.attente = "oui"), 350);
+        const signal = setTimeout(() => (el.dataset.attente = "oui"), 250);
         await Promise.all([Promise.race([arrive, pause(ATTENTE_MAX)]), pause(MAINTIEN)]);
         clearTimeout(signal);
         arrivee.current = null;
