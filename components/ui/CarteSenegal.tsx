@@ -53,7 +53,7 @@ export function CarteSenegal({ className = "" }: { className?: string }) {
                   ? { x: v.x - 13, y: v.y + 9, ancre: "end" as const }
                   : { x: v.x + 13, y: v.y + 9, ancre: "start" as const };
             return (
-              <g key={v.nom} className={v.principale ? undefined : "cs-secondaire"}>
+              <g key={v.nom} className={`${v.principale ? "" : "cs-secondaire"} cs-v-${v.nom.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase()}`}>
                 <circle cx={v.x} cy={v.y} r="6.5" />
                 <text x={pos.x} y={pos.y} textAnchor={pos.ancre}>
                   {v.nom}

@@ -14,6 +14,8 @@ import { Motif } from "./Motif";
 export function CarteDakar({ hauteur = "h-72" }: { hauteur?: string }) {
   const cadre = useRef<HTMLDivElement>(null);
   const [prete, setPrete] = useState(false);
+  // Repli : pas de WebGL, ou tuiles injoignables → fond de plan, adresse et itinéraire
+  const [echec, setEchec] = useState(false);
 
   useEffect(() => {
     const el = cadre.current;
@@ -22,6 +24,12 @@ export function CarteDakar({ hauteur = "h-72" }: { hauteur?: string }) {
     let annule = false;
 
     const creer = async () => {
+      const essai = document.createElement("canvas");
+      if (!(essai.getContext("webgl2") || essai.getContext("webgl"))) {
+        setEchec(true);
+        return;
+      }
+      const delai = window.setTimeout(() => setEchec(true), 8000);
       const maplibregl = (await import("maplibre-gl")).default;
       await import("maplibre-gl/dist/maplibre-gl.css");
       if (annule || !cadre.current) return;
@@ -54,7 +62,10 @@ export function CarteDakar({ hauteur = "h-72" }: { hauteur?: string }) {
           ),
         )
         .addTo(carte);
-      carte.once("load", () => setPrete(true));
+      carte.once("load", () => {
+        window.clearTimeout(delai);
+        setPrete(true);
+      });
     };
 
     const obs = new IntersectionObserver(
@@ -76,10 +87,15 @@ export function CarteDakar({ hauteur = "h-72" }: { hauteur?: string }) {
   return (
     <div className={`relative isolate overflow-hidden rounded-panneau bg-sable ${hauteur}`}>
       {/* En attendant la carte : un fond de plan et l'adresse */}
-      {!prete ? (
+      {!prete || echec ? (
         <div aria-hidden className="absolute inset-0 grid place-items-center text-royal">
           <Motif type="courbes" className="text-royal" opacite={0.18} />
           <Icone nom="adresse" size={36} className="text-royal" />
+          {echec ? (
+            <p className="absolute inset-x-4 bottom-4 text-center cote text-[0.9375rem] text-nuit">
+              {adresse}. Carte interactive indisponible sur cet appareil.
+            </p>
+          ) : null}
         </div>
       ) : null}
       <div ref={cadre} role="region" aria-label={`Carte interactive : ${adresse}`} className={`carte-pet absolute inset-0 transition-opacity duration-700 ${prete ? "opacity-100" : "opacity-0"}`} />

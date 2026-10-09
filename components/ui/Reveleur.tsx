@@ -24,7 +24,7 @@ export function Reveleur() {
         const cible = document.getElementById(ancre);
         if (!cible) return;
         const haut = cible.getBoundingClientRect().top;
-        if (haut < 0 || haut > window.innerHeight * 0.4) cible.scrollIntoView({ block: "start" });
+        if (haut < 0 || haut > window.innerHeight * 0.4) cible.scrollIntoView({ block: "start", behavior: "instant" });
       };
       requestAnimationFrame(placer);
       window.addEventListener("load", placer, { once: true });

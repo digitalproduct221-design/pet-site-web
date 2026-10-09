@@ -37,19 +37,7 @@ export function BarreHaut() {
               ))}
             </ul>
           ) : null}
-          <div role="group" aria-label="Langue du site" className="flex items-center gap-1">
-            <span aria-current="true" className="rounded-chantier bg-blanc/10 px-2 py-0.5 text-blanc">
-              FR
-            </span>
-            <button
-              type="button"
-              disabled
-              title="Version anglaise bientôt disponible"
-              className="cursor-not-allowed rounded-chantier px-2 py-0.5 text-brume/70"
-            >
-              EN<span className="sr-only"> (bientôt disponible)</span>
-            </button>
-          </div>
+          {/* Sélecteur de langue : à remettre quand la version anglaise existera */}
         </div>
       </div>
     </div>
