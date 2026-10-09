@@ -104,7 +104,7 @@ export function MegaMenu() {
                                
                                 className="object-cover transition-transform duration-700 ease-chantier group-hover/carte:scale-[1.04]"
                               />
-                              <span aria-hidden className="absolute inset-0 bg-[var(--voile-photo)]" />
+                              <span aria-hidden className="absolute inset-0 bg-(image:--voile-photo)" />
                             </span>
                           </span>
                           <span className="mt-4 block text-[0.9375rem] leading-snug text-texte-doux">{rubrique.carte.titre}</span>

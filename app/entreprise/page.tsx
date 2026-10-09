@@ -66,7 +66,7 @@ export default function PageEntreprise() {
               ))}
           </div>
           <div className="lg:col-span-5 lg:col-start-8">
-            <h3 className="titre text-titre-s text-nuit">Trois types de clients</h3>
+            <h3 className="titre text-titre-m text-nuit">Trois types de clients</h3>
             <ul className="revele-groupe mt-6 grid gap-4">
               {clients.map((c) => (
                 <li key={c.titre} className="flex items-start gap-5 rounded-[6px] bg-sable p-6">
@@ -74,7 +74,7 @@ export default function PageEntreprise() {
                     <Icone nom={c.icone} size={26} />
                   </span>
                   <span>
-                    <span className="block titre text-[1.75rem] leading-none text-nuit">{c.titre}</span>
+                    <span className="block cote text-[1.25rem] leading-none text-nuit">{c.titre}</span>
                     <span className="mt-2 block text-[1rem] text-encre-douce">{c.texte}</span>
                   </span>
                 </li>

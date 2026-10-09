@@ -6,7 +6,7 @@ type Voile = "aucun" | "leger" | "fort";
 
 const voiles: Record<Voile, string> = {
   aucun: "",
-  leger: "bg-[var(--voile-photo)]",
+  leger: "bg-(image:--voile-photo)",
   fort: "voile-carte",
 };
 

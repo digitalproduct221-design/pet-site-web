@@ -113,7 +113,8 @@
   --bouton-primaire-bg-survol: var(--pet-jaune-500);
   --bouton-primaire-texte: var(--pet-nuit-900);
 
-  --voile-photo: linear-gradient(180deg, rgb(11 27 63 / 0.15) 0%, rgb(11 27 63 / 0.55) 100%);
+  /* Voile bleu nuit perceptible sur toutes les photos (basse définition, extraites d'une bâche) */
+  --voile-photo: linear-gradient(180deg, rgb(11 27 63 / 0.26) 0%, rgb(11 27 63 / 0.38) 55%, rgb(7 18 43 / 0.62) 100%);
   --ombre-planche: 0 24px 48px -24px rgb(7 18 43 / 0.45), 0 2px 6px -2px rgb(7 18 43 / 0.2);
 
 }
