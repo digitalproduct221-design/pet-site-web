@@ -35,7 +35,8 @@ function cibleInterne(e: MouseEvent): string | null {
  * puis un volet bleu nuit balaient l'écran en diagonale, le logo PET apparaît au
  * centre (une barre de chargement s'y ajoute si la page tarde), puis les
  * volets repartent du même côté pour dévoiler la nouvelle page.
- * À la première page vue, le même rideau sert d'écran d'accueil.
+ * À la première page vue, le même rideau sert d'écran de chargement, mais
+ * seulement si la page tarde (plus de 600 ms) : sinon il ne s'affiche jamais.
  * Aucun effet sous mouvement réduit : la navigation reste instantanée.
  */
 export function TransitionPage() {
@@ -84,22 +85,19 @@ export function TransitionPage() {
       for (const a of el.getAnimations({ subtree: true })) a.cancel();
     };
 
-    // Écran d'accueil (première page vue) : rendu couvert par le serveur.
+    // Écran d'accueil au logo : il n'apparaît (en CSS) que si la page met plus de
+    // 600 ms à devenir interactive. Page prête avant : il ne se montre jamais.
+    // Page lente : on le dévoile dès que le script tourne, sans attendre les images.
     if (el.dataset.etat === "intro") {
       try {
         sessionStorage.setItem(CLE_INTRO, "1");
       } catch {}
-      if (reduit() || document.documentElement.classList.contains("intro-vue")) {
+      const affiche = getComputedStyle(el).visibility === "visible";
+      if (!affiche || reduit()) {
         el.dataset.etat = "repos";
       } else {
         occupe.current = true;
-        const charge =
-          document.readyState === "complete"
-            ? Promise.resolve()
-            : new Promise<void>((r) => window.addEventListener("load", () => r(), { once: true }));
-        // Au moins le temps de lire le logo, au plus 2,5 s même si une image traîne.
-        const minimum = pause(Math.max(0, 900 - performance.now()));
-        Promise.all([Promise.race([charge, pause(2500)]), minimum])
+        pause(MAINTIEN)
           .then(devoiler)
           .finally(() => (occupe.current = false));
       }
@@ -132,7 +130,7 @@ export function TransitionPage() {
   }, [router]);
 
   return (
-    <div ref={rideau} aria-hidden data-etat="intro" data-attente="non" className="rideau">
+    <div ref={rideau} aria-hidden inert data-etat="intro" data-attente="non" className="rideau">
       <div data-volet className="rideau-volet bg-jaune" />
       <div data-volet className="rideau-volet profondeur" />
       <div data-logo className="rideau-logo">

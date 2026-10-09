@@ -8,7 +8,7 @@ import { BarreActionsMobile } from "@/components/layout/BarreActionsMobile";
 import { Reveleur } from "@/components/ui/Reveleur";
 import { TransitionPage } from "@/components/layout/TransitionPage";
 import { CLE_INTRO } from "@/components/layout/intro";
-import { adresse, email, entreprise, NOM, SIGLE, SITE_URL, SLOGAN, telephones } from "@/content/site";
+import { email, entreprise, NOM, SIGLE, SITE_URL, SLOGAN, telephones } from "@/content/site";
 
 // Seules les graisses réellement utilisées sont chargées (latin suffit pour le français).
 const barlowCondensed = Barlow_Condensed({
@@ -24,6 +24,9 @@ const barlowSemi = Barlow_Semi_Condensed({
   style: ["normal", "italic"],
   variable: "--font-barlow-semi",
   display: "swap",
+  // Étiquettes et menus (italique dans les panneaux fermés) : pas de préchargement,
+  // le repli métrique ajusté évite le décalage à l'arrivée de la police.
+  preload: false,
 });
 
 const manrope = Manrope({
@@ -81,7 +84,6 @@ const donneesOrganisation = {
   areaServed: { "@type": "Country", name: "Sénégal" },
   knowsAbout: entreprise.domaines.map((d) => d.titre),
   description,
-  location: adresse,
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

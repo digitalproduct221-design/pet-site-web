@@ -34,7 +34,7 @@ const blocs = [
 export default function PageMentions() {
   return (
     <>
-      <EnTetePage titre="Mentions légales" ariane={[{ titre: "Mentions légales" }]} />
+      <EnTetePage suite="text-blanc" titre="Mentions légales" ariane={[{ titre: "Mentions légales" }]} />
       <section className="bg-blanc py-20 lg:py-24">
         <div className="conteneur grid max-w-[60rem] gap-14">
           {blocs.map((b) => (

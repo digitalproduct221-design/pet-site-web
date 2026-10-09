@@ -17,18 +17,18 @@ export function Methode() {
           />
         </div>
 
-        <ol className="revele-groupe mt-14 grid gap-12 sm:grid-cols-2 lg:mt-20 lg:grid-cols-4 lg:gap-10">
+        <ol className="revele-groupe mt-10 grid grid-cols-2 gap-x-5 gap-y-10 sm:gap-12 lg:mt-20 lg:grid-cols-4 lg:gap-10">
           {methode.map((etape, i) => (
             <li key={etape.titre} className="relative">
               {/* Le numéro porte l'ordre des étapes : il compte vraiment ici */}
               <span aria-hidden className="block titre text-[2.75rem] leading-none text-royal chiffres-tabulaires">
                 {String(i + 1).padStart(2, "0")}
               </span>
-              <h3 className="mt-4 titre text-[1.875rem] leading-[0.95] text-nuit lg:text-[2.125rem]">
+              <h3 className="mt-3 titre text-[1.5rem] leading-[0.95] text-nuit sm:mt-4 sm:text-[1.875rem] lg:text-[2.125rem]">
                 <span className="sr-only">Étape {i + 1} : </span>
                 {etape.titre}
               </h3>
-              <p className="mt-3 max-w-[18rem] text-[1.0625rem] leading-relaxed text-texte-doux">{etape.texte}</p>
+              <p className="mt-3 max-w-[18rem] text-[1rem] leading-relaxed text-texte-doux sm:text-[1.0625rem]">{etape.texte}</p>
             </li>
           ))}
         </ol>

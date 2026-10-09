@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 export default function PageSavoirFaire() {
   return (
     <>
-      <EnTetePage
+      <EnTetePage suite="text-blanc"
         titre="Savoir-faire"
         intro="Cinq domaines d'expertise, tous corps d'état, pour des clients publics, industriels et privés. Du gros œuvre aux réseaux, nous menons vos travaux de l'étude à la livraison."
         ariane={[{ titre: "Savoir-faire" }]}

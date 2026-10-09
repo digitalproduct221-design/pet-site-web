@@ -32,16 +32,16 @@ export function Footer() {
             <p className={etiquette}>Coordonnées</p>
             <address className="mt-5 not-italic">
               <p className="text-blanc">{adresse}</p>
-              <ul className="mt-5 grid gap-1.5">
+              <ul className="mt-3 grid">
                 {telephones.map((t) => (
                   <li key={t.affichage}>
-                    <a href={t.lien} className="cote text-[1.1875rem] text-blanc chiffres-tabulaires hover:text-jaune">
+                    <a href={t.lien} className="inline-flex min-h-11 items-center cote text-[1.1875rem] text-blanc chiffres-tabulaires hover:text-jaune">
                       {t.affichage}
                     </a>
                   </li>
                 ))}
               </ul>
-              <a href={`mailto:${email}`} className="mt-5 inline-block text-blanc underline decoration-ciel/60 underline-offset-4 hover:text-jaune">
+              <a href={`mailto:${email}`} className="mt-3 inline-flex min-h-11 items-center text-blanc underline decoration-ciel/60 underline-offset-4 hover:text-jaune">
                 {email.split("@")[0]}@<wbr />
                 {email.split("@")[1]}
               </a>
@@ -49,7 +49,7 @@ export function Footer() {
                 href={whatsapp.lien}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-5 flex items-center gap-2 cote text-[1.0625rem] text-blanc hover:text-jaune"
+                className="mt-2 flex min-h-11 items-center gap-2 cote text-[1.0625rem] text-blanc hover:text-jaune"
               >
                 <Icone nom="whatsapp" size={20} className="text-jaune" />
                 WhatsApp
@@ -62,10 +62,10 @@ export function Footer() {
           <nav aria-label="Liens du pied de page" className="grid grid-cols-2 gap-8 lg:col-span-2 lg:grid-cols-1">
             <div>
               <p className={etiquette}>Le site</p>
-              <ul className="mt-5 grid gap-2.5">
+              <ul className="mt-3 grid">
                 {liensRapides.map((l) => (
                   <li key={l.href}>
-                    <Link href={l.href} className="text-blanc transition-colors hover:text-jaune">
+                    <Link href={l.href} className="inline-flex min-h-11 items-center text-blanc transition-colors hover:text-jaune">
                       {l.titre}
                     </Link>
                   </li>
@@ -74,10 +74,10 @@ export function Footer() {
             </div>
             <div className="lg:hidden">
               <p className={etiquette}>Savoir-faire</p>
-              <ul className="mt-5 grid gap-2.5">
+              <ul className="mt-3 grid">
                 {domaines.map((d) => (
                   <li key={d.slug}>
-                    <Link href={`/savoir-faire/${d.slug}`} className="text-blanc transition-colors hover:text-jaune">
+                    <Link href={`/savoir-faire/${d.slug}`} className="inline-flex min-h-11 items-center text-blanc transition-colors hover:text-jaune">
                       {d.titre}
                     </Link>
                   </li>
@@ -101,7 +101,7 @@ export function Footer() {
           </p>
           <ul className="flex flex-wrap items-center gap-x-6 gap-y-2">
             <li>
-              <Link href="/mentions-legales" className="text-blanc underline underline-offset-4 hover:text-jaune">
+              <Link href="/mentions-legales" className="inline-flex min-h-11 items-center text-blanc underline underline-offset-4 hover:text-jaune">
                 Mentions légales
               </Link>
             </li>

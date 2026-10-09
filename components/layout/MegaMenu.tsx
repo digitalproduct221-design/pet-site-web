@@ -36,7 +36,7 @@ export function MegaMenu() {
       >
         <NavigationMenu.List className="flex items-center">
           {navigation.map((rubrique) => {
-            const actif = chemin.startsWith(rubrique.href) || (rubrique.id === "actualites-carrieres" && chemin.startsWith("/carrieres"));
+            const actif = chemin.startsWith(rubrique.href) || (rubrique.id === "entreprise" && chemin.startsWith("/carrieres"));
             return (
               <NavigationMenu.Item key={rubrique.id} value={rubrique.id}>
                 <NavigationMenu.Trigger
@@ -63,9 +63,10 @@ export function MegaMenu() {
                     <div className="col-span-4 border-r border-ligne pr-8">
                       <p className="titre text-titre-l text-nuit">{rubrique.titre}</p>
                       <p className="mt-5 cote text-[1.25rem] italic leading-snug text-royal">{rubrique.intro}</p>
-                      <NavigationMenu.Link asChild>
+                      <NavigationMenu.Link asChild active={chemin === rubrique.href}>
                         <Link
                           href={rubrique.href}
+                          aria-current={chemin === rubrique.href ? "page" : undefined}
                           className="mt-8 inline-flex items-center gap-2 cote text-[1.0625rem] uppercase tracking-[0.04em] text-nuit underline decoration-jaune decoration-[3px] underline-offset-[6px] hover:text-royal"
                         >
                           Vue d&apos;ensemble
@@ -78,9 +79,10 @@ export function MegaMenu() {
                     <ul className={`col-span-5 grid content-start gap-x-6 gap-y-1 ${rubrique.liens.length > 5 ? "grid-cols-2" : "grid-cols-1"}`}>
                       {rubrique.liens.map((lien) => (
                         <li key={lien.href}>
-                          <NavigationMenu.Link asChild>
+                          <NavigationMenu.Link asChild active={chemin === lien.href}>
                             <Link
                               href={lien.href}
+                              aria-current={chemin === lien.href ? "page" : undefined}
                               className="group/lien flex items-start gap-4 rounded-chantier p-3 transition-colors hover:bg-sable focus-visible:bg-sable"
                             >
                               <span className="mt-0.5 grid size-10 shrink-0 place-items-center rounded-chantier bg-sable text-royal transition-colors group-hover/lien:bg-royal group-hover/lien:text-blanc">

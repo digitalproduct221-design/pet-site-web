@@ -1,11 +1,24 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { Icone } from "@/components/ui/Icone";
 import { Logo } from "./Logo";
-import { MegaMenu } from "./MegaMenu";
 import { MenuMobile } from "./MenuMobile";
+import { NavStatique } from "./NavStatique";
+
+// Le méga-menu (Radix) ne se charge que sur grand écran : sous 1152 px, le menu
+// plein écran prend le relais. La barre statique tient la place pendant le chargement.
+const MegaMenu = dynamic(() => import("./MegaMenu").then((m) => m.MegaMenu), {
+  ssr: false,
+  loading: () => <NavStatiqueCourante />,
+});
+
+function NavStatiqueCourante() {
+  return <NavStatique chemin={usePathname()} />;
+}
 import { Recherche } from "./Recherche";
 
 /**
@@ -15,6 +28,16 @@ import { Recherche } from "./Recherche";
 export function Header() {
   const sentinelle = useRef<HTMLDivElement>(null);
   const [compact, setCompact] = useState(false);
+  const [grandEcran, setGrandEcran] = useState(false);
+  const chemin = usePathname();
+
+  useEffect(() => {
+    const requete = window.matchMedia("(width >= 72rem)");
+    const maj = () => setGrandEcran(requete.matches);
+    maj();
+    requete.addEventListener("change", maj);
+    return () => requete.removeEventListener("change", maj);
+  }, []);
 
   useEffect(() => {
     const el = sentinelle.current;
@@ -39,7 +62,7 @@ export function Header() {
           }`}
         >
           <Logo compact={compact} />
-          <MegaMenu />
+          {grandEcran ? <MegaMenu /> : <NavStatique chemin={chemin} />}
           <div className="flex items-center gap-2 lg:gap-3">
             <Recherche />
             <Link

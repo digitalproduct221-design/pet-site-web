@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { adresse, email, telephones, whatsapp } from "@/content/site";
 import { EnTetePage } from "@/components/ui/EnTetePage";
 import { CarteDakar } from "@/components/ui/CarteDakar";
 import { Icone } from "@/components/ui/Icone";
 import { Formulaire } from "@/components/formulaires/Formulaire";
+import { FormulaireDevis } from "@/components/formulaires/FormulaireDevis";
 
 export const metadata: Metadata = {
   title: "Contact et devis",
@@ -49,7 +51,9 @@ export default function PageContact() {
               Plus votre description est précise (nature des travaux, lieu, délais), plus notre premier échange sera utile.
             </p>
             <div className="mt-10">
-              <Formulaire type="devis" />
+              <Suspense fallback={<Formulaire type="devis" />}>
+                <FormulaireDevis />
+              </Suspense>
             </div>
           </div>
 

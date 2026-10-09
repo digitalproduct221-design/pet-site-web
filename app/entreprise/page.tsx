@@ -43,7 +43,7 @@ const moyens = [
 export default function PageEntreprise() {
   return (
     <>
-      <EnTetePage
+      <EnTetePage suite="text-blanc"
         titre="L'entreprise"
         intro={`Fondée à Dakar en ${entreprise.fondation}, PET réalise des bâtiments, des réseaux d'eau et des infrastructures pour des clients publics, industriels et privés.`}
         ariane={[{ titre: "L'entreprise" }]}

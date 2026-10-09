@@ -1,7 +1,7 @@
 import Link from "next/link";
-import type { Projet } from "@/content/exemples";
+import type { Projet } from "@/content/realisations";
 import { domaineParSlug } from "@/content/site";
-import { MentionExemple } from "./Exemple";
+import { Icone } from "./Icone";
 import { PhotoCadre } from "./PhotoCadre";
 
 /** Vignette de réalisation : photo, domaine, titre ; la photo s'approche au survol. */
@@ -22,7 +22,10 @@ export function CarteProjet({ projet, ton = "clair", ratio = "aspect-[4/3]" }: {
       </span>
       <span className="mt-2 flex flex-wrap items-center gap-3">
         <span className={`cote text-[0.9375rem] ${sombre ? "text-ciel" : "text-royal"}`}>{domaine?.titre}</span>
-        <MentionExemple visible={projet.exemple} ton={ton} />
+        <span className={`inline-flex items-center gap-1.5 cote text-[0.9375rem] ${sombre ? "text-brume" : "text-encre-douce"}`}>
+          <Icone nom="photos" size={16} />
+          {projet.photos.length} photos
+        </span>
       </span>
       <span className={`mt-2 block text-[1rem] leading-relaxed ${sombre ? "text-brume" : "text-encre-douce"}`}>{projet.resume}</span>
     </Link>

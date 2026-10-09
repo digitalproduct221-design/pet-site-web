@@ -40,7 +40,7 @@ const engagements: Engagement[] = [
     icone: "local",
     photo: "trancheeLotissement",
     intro: "PET est une entreprise sénégalaise, installée à Dakar, qui construit pour les territoires où elle travaille.",
-    points: ["Des équipes de terrain qui transmettent leur savoir-faire", "Des offres d'emploi et des candidatures spontanées ouvertes à tous", "Des ouvrages utiles au quotidien : eau, assainissement, voiries"],
+    points: ["Des équipes de terrain qui transmettent leur savoir-faire", "Des candidatures spontanées ouvertes à tous les métiers de chantier", "Des ouvrages utiles au quotidien : eau, assainissement, voiries"],
   },
   {
     id: "qualite",
@@ -55,7 +55,7 @@ const engagements: Engagement[] = [
 export default function PageEngagements() {
   return (
     <>
-      <EnTetePage
+      <EnTetePage suite="text-blanc"
         titre="Engagements"
         intro="Ce que nous promettons à nos clients, à nos équipes et aux territoires où nous travaillons."
         ariane={[{ titre: "Engagements" }]}

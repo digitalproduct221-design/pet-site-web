@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { projets } from "@/content/exemples";
+import { projets } from "@/content/realisations";
 import { domaineParSlug, domaines } from "@/content/site";
 import { listeFrancaise } from "@/content/texte";
 import { EnTetePage } from "@/components/ui/EnTetePage";
@@ -40,7 +40,7 @@ export default async function PageDomaine({ params }: PageProps<"/savoir-faire/[
 
   return (
     <>
-      <EnTetePage titre={d.titre} intro={d.resume} ariane={[{ titre: "Savoir-faire", href: "/savoir-faire" }, { titre: d.titre }]} photo={photoA}>
+      <EnTetePage suite="text-blanc" titre={d.titre} intro={d.resume} ariane={[{ titre: "Savoir-faire", href: "/savoir-faire" }, { titre: d.titre }]} photo={photoA}>
         <BoutonLien href="/contact#devis">Demander un devis</BoutonLien>
       </EnTetePage>
 
@@ -96,10 +96,11 @@ export default async function PageDomaine({ params }: PageProps<"/savoir-faire/[
                 <Icone nom="fleche" size={18} weight="bold" />
               </Link>
             </div>
-            <ul className="revele-groupe mt-12 grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+            {/* Autant de colonnes que de réalisations (trois au plus) : jamais de colonne vide */}
+            <ul className={`revele-groupe mt-12 grid gap-x-6 gap-y-12 sm:grid-cols-2 ${lies.length >= 3 ? "lg:grid-cols-3" : ""}`}>
               {lies.map((p) => (
                 <li key={p.slug}>
-                  <CarteProjet projet={p} />
+                  <CarteProjet projet={p} ratio={lies.length < 3 ? "aspect-[16/10]" : undefined} />
                 </li>
               ))}
             </ul>

@@ -29,12 +29,15 @@ export function Profil({
   forme = "terrain",
   miroir = false,
   haut = false,
+  arriere,
   className = "",
 }: {
   couleur: string;
   forme?: FormeProfil;
   miroir?: boolean;
   haut?: boolean;
+  /** Couleur propre de la strate arrière (classe text-*), quand le mélange translucide donnerait une teinte terne. */
+  arriere?: string;
   className?: string;
 }) {
   const f = formes[forme];
@@ -44,7 +47,7 @@ export function Profil({
       className={`pointer-events-none absolute inset-x-0 z-[1] leading-none ${haut ? "top-0 -scale-y-100" : "-bottom-px"} ${miroir ? "-scale-x-100" : ""} ${couleur} ${className}`}
     >
       <svg viewBox="0 0 1440 96" preserveAspectRatio="none" className="block h-[clamp(2.25rem,5vw,5.5rem)] w-full">
-        <path d={f.arriere} fill="currentColor" opacity="0.42" />
+        <path d={f.arriere} fill="currentColor" opacity={arriere ? 1 : 0.42} className={arriere} />
         <path d={f.avant} fill="currentColor" />
       </svg>
     </div>

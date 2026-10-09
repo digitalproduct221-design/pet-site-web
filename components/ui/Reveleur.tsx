@@ -2,13 +2,13 @@
 
 import { useEffect } from "react";
 
-const SELECTEUR = ".revele:not([data-vu]), .revele-groupe:not([data-vu]), .revele-image:not([data-vu])";
+const SELECTEUR = ".revele:not([data-vu]), .revele-groupe:not([data-vu]), .revele-image:not([data-vu]), .equerres:not([data-vu])";
 
 /**
  * Apparitions au défilement, une seule fois par élément
- * (.revele, .revele-groupe, .revele-image).
- * Le contenu est visible par défaut : il n'est masqué qu'une fois ce script
- * actif (classe `js` sur <html>), et jamais sous mouvement réduit (voir CSS).
+ * (.revele, .revele-groupe, .revele-image, et la fermeture des .equerres).
+ * Le contenu n'est jamais masqué : il est seulement un peu décalé tant qu'il
+ * n'est pas vu (classe `js` sur <html>), et rien ne bouge sous mouvement réduit.
  * Les éléments ajoutés plus tard (changement de page, filtres) sont pris en compte.
  */
 export function Reveleur() {
@@ -24,7 +24,7 @@ export function Reveleur() {
           }
         }
       },
-      { rootMargin: "0px 0px -8% 0px", threshold: 0.12 },
+      { rootMargin: "0px 0px -6% 0px", threshold: 0.05 },
     );
 
     const suivis = new WeakSet<Element>();

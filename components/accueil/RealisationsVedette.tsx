@@ -1,8 +1,7 @@
 import Link from "next/link";
-import { projets } from "@/content/exemples";
+import { projets } from "@/content/realisations";
 import { domaineParSlug } from "@/content/site";
 import { Icone } from "@/components/ui/Icone";
-import { MentionExemple } from "@/components/ui/Exemple";
 import { PhotoCadre } from "@/components/ui/PhotoCadre";
 import { Profil } from "@/components/ui/Profil";
 import { TitreSection } from "@/components/ui/TitreSection";
@@ -25,7 +24,7 @@ export function RealisationsVedette() {
             id="titre-realisations"
             ton="sombre"
             titre="Réalisations en vedette"
-            intro="Quelques chantiers menés par nos équipes, du réseau d'eau à la voirie."
+            intro="Nos chantiers en images, du réseau d'eau à la voirie. Chaque réalisation s'ouvre sur sa galerie."
           />
           <Link
             href="/realisations"
@@ -36,12 +35,12 @@ export function RealisationsVedette() {
           </Link>
         </div>
 
-        <ul className="revele-groupe mt-12 grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:mt-16 lg:grid-cols-12 lg:gap-y-12">
+        <ul className="revele-groupe mt-10 grid gap-x-6 gap-y-10 max-sm:-mx-4 max-sm:flex max-sm:snap-x max-sm:snap-mandatory max-sm:overflow-x-auto max-sm:scroll-px-4 max-sm:px-4 max-sm:pb-3 max-sm:[scrollbar-width:none] max-sm:gap-4 sm:grid-cols-2 lg:mt-16 lg:grid-cols-12 lg:gap-y-12">
           {disposition.map((cellule, i) => {
             const projet = projets.find((p) => p.slug === cellule.slug)!;
             const domaine = domaineParSlug(projet.domaine);
             return (
-              <li key={projet.slug} className={`${cellule.cellule} ${i === 0 ? "sm:col-span-2" : ""} flex flex-col`}>
+              <li key={projet.slug} className={`${cellule.cellule} ${i === 0 ? "sm:col-span-2" : ""} flex flex-col max-sm:w-[84%] max-sm:shrink-0 max-sm:snap-start`}>
                 <Link href={`/realisations/${projet.slug}`} className="group/projet flex h-full flex-col">
                   <PhotoCadre
                     photo={projet.photos[0]}
@@ -57,7 +56,10 @@ export function RealisationsVedette() {
                   </span>
                   <span className="mt-2 flex flex-wrap items-center gap-3">
                     <span className="cote text-[0.9375rem] text-ciel">{domaine?.titre}</span>
-                    <MentionExemple visible={projet.exemple} ton="sombre" />
+                    <span className="inline-flex items-center gap-1.5 cote text-[0.9375rem] text-brume">
+                      <Icone nom="photos" size={16} />
+                      {projet.photos.length} photos
+                    </span>
                   </span>
                 </Link>
               </li>

@@ -5,14 +5,21 @@
  */
 import entreprise from "./entreprise.json";
 import type { PhotoId } from "./photos";
+import { besoins } from "./besoins";
 
 export { entreprise };
 
 /** Slogan provisoire, à valider par le client. */
 export const SLOGAN = "Votre partenaire pour bâtir et raccorder le Sénégal";
 
-/** Domaine public du site, fourni au déploiement (NEXT_PUBLIC_SITE_URL). */
-export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+/**
+ * Domaine public du site : NEXT_PUBLIC_SITE_URL s'il est défini (domaine définitif),
+ * sinon le domaine de production fourni par Vercel, sinon l'adresse Vercel actuelle.
+ */
+export const SITE_URL = (
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : "https://pet-site-web.vercel.app")
+).replace(/\/$/, "");
 
 export const NOM = entreprise.nom;
 export const SIGLE = entreprise.sigle;
@@ -44,8 +51,9 @@ export const whatsapp = (() => {
 
 export const email = entreprise.contact.email;
 export const adresse = entreprise.contact.adresse;
-export const lienItineraire = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(adresse)}`;
-export const carteIntegree = `https://www.google.com/maps?q=${encodeURIComponent(adresse)}&output=embed`;
+/** Rond-point Liberté 6 (OpenStreetMap). L'emplacement exact des bureaux reste à confirmer par PET. */
+export const coordonnees = { lat: 14.72863, lng: -17.45723 };
+export const lienItineraire = `https://www.google.com/maps/dir/?api=1&destination=${coordonnees.lat},${coordonnees.lng}`;
 
 /** Réseaux sociaux : liens à renseigner par le client (vides = non affichés). */
 export const reseaux: { nom: "LinkedIn" | "Facebook" | "Instagram"; url: string }[] = [
@@ -177,6 +185,20 @@ export const methode: { titre: string; texte: string }[] = [
   { titre: "Livraison et suivi", texte: "Réception des travaux, levée des réserves et suivi de l'ouvrage après livraison." },
 ];
 
+/* ---------- Métiers de nos chantiers (page Carrières) ---------- */
+
+/** Les métiers exercés sur nos chantiers, d'après nos domaines. Ce ne sont pas des offres ouvertes. */
+export const metiers: { id: string; titre: string; texte: string; domaine: string }[] = [
+  { id: "conducteur-engins", titre: "Conducteur d'engins", texte: "Pelle hydraulique, chargeuse, niveleuse : terrassements et voiries.", domaine: "travaux-publics-vrd" },
+  { id: "chef-equipe", titre: "Chef d'équipe", texte: "Organise le travail de l'équipe et veille à la sécurité sur le terrain.", domaine: "travaux-publics-vrd" },
+  { id: "canalisateur", titre: "Canalisateur", texte: "Pose de conduites d'eau et de réseaux d'eaux usées, regards et branchements.", domaine: "hydraulique" },
+  { id: "ferrailleur-coffreur", titre: "Ferrailleur coffreur", texte: "Armatures et coffrages des ouvrages en béton armé.", domaine: "genie-civil" },
+  { id: "macon", titre: "Maçon", texte: "Gros œuvre des bâtiments, murs de clôture et ouvrages maçonnés.", domaine: "batiment" },
+  { id: "topographe", titre: "Topographe", texte: "Implantation des ouvrages et contrôle des cotes au GPS.", domaine: "hydraulique" },
+  { id: "electricien", titre: "Électricien", texte: "Installations électriques de nos bâtiments.", domaine: "batiment" },
+  { id: "peintre", titre: "Peintre", texte: "Finitions intérieures et extérieures des bâtiments.", domaine: "batiment" },
+];
+
 /* ---------- Navigation (méga-menu) ---------- */
 
 export type LienMenu = { titre: string; description: string; href: string; icone: string };
@@ -201,6 +223,7 @@ export const navigation: Rubrique[] = [
       { titre: "Nos valeurs", description: "Sept principes de chantier", href: "/entreprise#valeurs", icone: "valeurs" },
       { titre: "Qualité et sécurité", description: "Au centre de nos préoccupations", href: "/entreprise#qualite-securite", icone: "securite" },
       { titre: "Équipe et moyens", description: "Personnel qualifié, engins mis à niveau", href: "/entreprise#equipe-moyens", icone: "equipe" },
+      { titre: "Carrières", description: "Nos métiers, candidature spontanée", href: "/carrieres", icone: "emploi" },
     ],
     carte: {
       photo: "poseConduiteTopographie",
@@ -232,18 +255,18 @@ export const navigation: Rubrique[] = [
     id: "realisations",
     titre: "Réalisations",
     href: "/realisations",
-    intro: "Nos chantiers en images, classés par domaine. Chaque fiche présente le contexte et les travaux réalisés.",
+    intro: "Nos chantiers en images, classés par domaine. Chaque réalisation s'ouvre sur sa galerie de photos.",
     liens: [
-      { titre: "Tous les projets", description: "L'ensemble de nos réalisations", href: "/realisations", icone: "grille" },
-      { titre: "Bâtiment", description: "Constructions et clôtures", href: "/realisations?domaine=batiment", icone: "batiment" },
+      { titre: "Tous les chantiers", description: "L'ensemble de nos réalisations", href: "/realisations", icone: "grille" },
       { titre: "Hydraulique", description: "Conduites et ouvrages", href: "/realisations?domaine=hydraulique", icone: "eau" },
+      { titre: "Génie civil", description: "Ouvrages en béton armé", href: "/realisations?domaine=genie-civil", icone: "genie-civil" },
       { titre: "Assainissement", description: "Réseaux, regards et dalots", href: "/realisations?domaine=assainissement", icone: "assainissement" },
       { titre: "Routes et VRD", description: "Terrassements et voiries", href: "/realisations?domaine=travaux-publics-vrd", icone: "route" },
     ],
     carte: {
       photo: "dalotRegard",
       titre: "Réhabilitation de dalot et construction de regards",
-      lien: { libelle: "Voir le projet", href: "/realisations/rehabilitation-dalot-regards" },
+      lien: { libelle: "Voir la galerie", href: "/realisations/rehabilitation-dalot-regards" },
     },
   },
   {
@@ -264,19 +287,17 @@ export const navigation: Rubrique[] = [
     },
   },
   {
-    id: "actualites-carrieres",
-    titre: "Actualités et carrières",
-    href: "/actualites",
-    intro: "Les nouvelles de nos chantiers et les postes ouverts dans nos équipes.",
+    id: "votre-projet",
+    titre: "Votre projet",
+    href: "/votre-projet",
+    intro: "Dites-nous ce que vous voulez réaliser : nous vous montrons ce que nous faisons, ce qu'il faut préparer et comment nous avançons.",
     liens: [
-      { titre: "Actualités", description: "La vie de nos chantiers", href: "/actualites", icone: "actualites" },
-      { titre: "Offres d'emploi", description: "Les postes ouverts", href: "/carrieres#offres", icone: "emploi" },
-      { titre: "Candidature spontanée", description: "Proposez votre profil", href: "/carrieres#candidature", icone: "candidature" },
+      ...besoins.map((b) => ({ titre: b.titre, description: b.question, href: `/votre-projet#${b.slug}`, icone: domaineParSlug(b.domaine)?.icone ?? "batiment" })),
     ],
     carte: {
-      photo: "trancheeLotissement",
-      titre: "Rejoindre des équipes de terrain",
-      lien: { libelle: "Voir les offres", href: "/carrieres" },
+      photo: "niveleuseVoirie",
+      titre: "Un projet ? Décrivez-le, nous vous rappelons",
+      lien: { libelle: "Demander un devis", href: "/contact#devis" },
     },
   },
 ];
@@ -286,7 +307,7 @@ export const liensRapides = [
   { titre: "Savoir-faire", href: "/savoir-faire" },
   { titre: "Réalisations", href: "/realisations" },
   { titre: "Engagements", href: "/engagements" },
-  { titre: "Actualités", href: "/actualites" },
+  { titre: "Votre projet", href: "/votre-projet" },
   { titre: "Carrières", href: "/carrieres" },
   { titre: "Contact et devis", href: "/contact" },
 ];

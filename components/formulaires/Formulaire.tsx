@@ -4,6 +4,7 @@ import { useRef, useState, type ReactNode } from "react";
 import { EXTENSIONS_ACCEPTEES, optionsDomaine, valider, type Erreurs, type TypeFormulaire } from "@/content/formulaires";
 import { email, whatsapp } from "@/content/site";
 import { Icone } from "@/components/ui/Icone";
+import { Pelleteuse } from "@/components/ui/Pelleteuse";
 
 type Etat = { statut: "repos" } | { statut: "envoi" } | { statut: "succes"; simule: boolean } | { statut: "echec" };
 
@@ -20,7 +21,7 @@ const libelles: Record<string, string> = {
 };
 
 const champBase =
-  "mt-2 block w-full rounded-chantier bg-blanc-pur px-4 py-3.5 text-[1.0625rem] text-encre shadow-[inset_0_0_0_1.5px_var(--color-sable-fonce)] transition-shadow placeholder:text-encre-douce/70 hover:shadow-[inset_0_0_0_1.5px_var(--color-encre-douce)] focus:outline-none focus:anneau-champ aria-[invalid=true]:shadow-[inset_0_0_0_2px_var(--color-erreur)]";
+  "mt-2 block w-full rounded-chantier bg-blanc-pur px-4 py-3.5 text-[1.0625rem] text-encre shadow-[inset_0_0_0_1.5px_var(--color-contour)] transition-shadow placeholder:text-encre-douce hover:shadow-[inset_0_0_0_1.5px_var(--color-encre-douce)] focus:outline-none focus:anneau-champ aria-[invalid=true]:shadow-[inset_0_0_0_2px_var(--color-erreur)]";
 
 function Champ({
   nom,
@@ -70,7 +71,17 @@ function Champ({
  * Formulaire de devis ou de candidature, envoyé à /api/contact.
  * Validation au départ du champ puis à l'envoi ; résumé des erreurs focalisé.
  */
-export function Formulaire({ type, posteInitial = "" }: { type: TypeFormulaire; posteInitial?: string }) {
+export function Formulaire({
+  type,
+  posteInitial = "",
+  domaineInitial = "",
+  messageInitial = "",
+}: {
+  type: TypeFormulaire;
+  posteInitial?: string;
+  domaineInitial?: string;
+  messageInitial?: string;
+}) {
   const [erreurs, setErreurs] = useState<Erreurs>({});
   const [etat, setEtat] = useState<Etat>({ statut: "repos" });
   const [nomFichier, setNomFichier] = useState("");
@@ -123,7 +134,9 @@ export function Formulaire({ type, posteInitial = "" }: { type: TypeFormulaire; 
 
   if (etat.statut === "succes") {
     return (
-      <div ref={succes} tabIndex={-1} role="status" className="rounded-panneau bg-blanc-pur p-8 ombre-carte outline-none lg:p-10">
+      <div ref={succes} tabIndex={-1} role="status" className="relative overflow-hidden rounded-panneau bg-blanc-pur p-8 ombre-carte outline-none sm:pr-44 lg:p-10 lg:pr-48">
+        {/* Petit clin d'œil : le chantier démarre */}
+        <Pelleteuse className="absolute -right-4 top-4 hidden h-auto w-40 text-royal/80 sm:block" />
         <Icone nom="succes" size={44} className="text-succes" />
         <h3 className="mt-5 titre text-titre-m text-nuit">
           {type === "devis" ? "Merci, votre demande est prête" : "Merci pour votre candidature"}
@@ -177,7 +190,7 @@ export function Formulaire({ type, posteInitial = "" }: { type: TypeFormulaire; 
       </p>
 
       {listeErreurs.length > 0 ? (
-        <div ref={resume} tabIndex={-1} role="alert" className="rounded-panneau bg-erreur/[0.07] p-5 outline-none focus-visible:ring-2 focus-visible:ring-erreur">
+        <div ref={resume} tabIndex={-1} className="rounded-panneau bg-erreur/[0.07] p-5 outline-none focus-visible:ring-2 focus-visible:ring-erreur">
           <p className="cote text-[1.0625rem] text-erreur">
             {listeErreurs.length === 1 ? "Un champ est à corriger :" : `${listeErreurs.length} champs sont à corriger :`}
           </p>
@@ -229,7 +242,7 @@ export function Formulaire({ type, posteInitial = "" }: { type: TypeFormulaire; 
             <select
               id="champ-domaine"
               name="domaine"
-              defaultValue=""
+              defaultValue={optionsDomaine.includes(domaineInitial) ? domaineInitial : ""}
               className={`${champBase} appearance-none pr-12`}
               aria-invalid={!!erreurs.domaine}
               aria-describedby={decrit("domaine")}
@@ -256,7 +269,7 @@ export function Formulaire({ type, posteInitial = "" }: { type: TypeFormulaire; 
         aide={type === "devis" ? "Nature des travaux, lieu du chantier, délais souhaités, plans disponibles." : "Votre expérience, vos disponibilités, ce qui vous motive."}
         erreur={erreurs.message}
       >
-        <textarea id="champ-message" name="message" rows={6} className={`${champBase} resize-y`} aria-invalid={!!erreurs.message} aria-describedby={decrit("message", true)} onBlur={() => revalider("message")} />
+        <textarea id="champ-message" name="message" rows={6} defaultValue={messageInitial} className={`${champBase} resize-y`} aria-invalid={!!erreurs.message} aria-describedby={decrit("message", true)} onBlur={() => revalider("message")} />
       </Champ>
 
       <Champ
@@ -268,7 +281,7 @@ export function Formulaire({ type, posteInitial = "" }: { type: TypeFormulaire; 
       >
         <label
           htmlFor="champ-fichier"
-          className={`mt-2 flex cursor-pointer items-center gap-4 rounded-chantier border-2 border-dashed px-5 py-5 transition-colors hover:border-royal hover:bg-blanc-pur ${
+          className={`depot-fichier mt-2 flex cursor-pointer items-center gap-4 rounded-chantier border-2 border-dashed px-5 py-5 transition-colors hover:border-royal hover:bg-blanc-pur ${
             erreurs.fichier ? "border-erreur" : "border-sable-fonce"
           }`}
         >

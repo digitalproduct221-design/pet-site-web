@@ -63,6 +63,7 @@
   --color-action-texte: var(--pet-nuit-900);
   --color-lien: var(--pet-royal-600);
   --color-ligne: var(--pet-sable-200);
+  --color-contour: #7d725e; /* bord des champs : 4,6:1 sur blanc (≥ 3:1 exigé) */
   --color-ligne-sombre: rgb(185 199 230 / 0.18);
   --color-erreur: var(--pet-erreur-600);
   --color-succes: var(--pet-succes-600);
@@ -264,14 +265,14 @@
   translate: var(--equerre-ecart) var(--equerre-ecart);
 }
 /* Fermées : à l'entrée dans l'écran (data-vu) et au survol ou au focus du cadre */
-.equerres[data-vu="true"]::before,
-.equerres[data-vu="true"]::after {
+.equerres[data-vu]::before,
+.equerres[data-vu]::after {
   translate: 0 0;
 }
-.equerres[data-vu="true"]:is(:hover, :focus-within)::before {
+.equerres[data-vu]:is(:hover, :focus-within)::before {
   translate: -6px -6px;
 }
-.equerres[data-vu="true"]:is(:hover, :focus-within)::after {
+.equerres[data-vu]:is(:hover, :focus-within)::after {
   translate: 6px 6px;
 }
 /* Variante : seulement l'équerre haute (titres de section) */
@@ -419,9 +420,9 @@
       opacity 800ms var(--ease-chantier),
       translate 900ms var(--ease-chantier);
   }
+  /* Jamais masqué : un léger décalage seulement, rattrapé à l'entrée dans l'écran */
   html.js .revele:not([data-vu]) {
-    opacity: 0.001;
-    translate: 0 28px;
+    translate: 0 22px;
   }
   @supports (animation-timeline: scroll()) {
     .parallaxe {
@@ -571,8 +572,7 @@
       translate 900ms var(--ease-chantier);
   }
   html.js .revele-groupe:not([data-vu]) > * {
-    opacity: 0.001;
-    translate: 0 32px;
+    translate: 0 24px;
   }
   .revele-groupe > *:nth-child(2) { transition-delay: 90ms; }
   .revele-groupe > *:nth-child(3) { transition-delay: 180ms; }
@@ -582,17 +582,11 @@
   .revele-groupe > *:nth-child(n + 7) { transition-delay: 520ms; }
 
   /* Photos : rideau qui se lève et léger recul de l'image */
-  .revele-image {
-    transition: clip-path 1200ms var(--ease-chantier);
-  }
   .revele-image img {
     transition: scale 1600ms var(--ease-chantier);
   }
-  html.js .revele-image:not([data-vu]) {
-    clip-path: inset(18% 0 0 0);
-  }
   html.js .revele-image:not([data-vu]) img {
-    scale: 1.12;
+    scale: 1.1;
   }
 }
 
@@ -718,10 +712,17 @@
   pointer-events: none;
   visibility: hidden;
 }
-.rideau[data-etat="intro"],
 .rideau[data-etat="anime"] {
   visibility: visible;
   pointer-events: auto;
+}
+/* Première page vue : caché, puis montré seulement si le script n'a pas pris la main à 600 ms */
+.rideau[data-etat="intro"] {
+  animation: rideau-lent 200ms ease-out 600ms forwards, rideau-secours 0s 3s forwards;
+}
+@keyframes rideau-lent {
+  from { visibility: visible; opacity: 0; pointer-events: auto; }
+  to { visibility: visible; opacity: 1; pointer-events: auto; }
 }
 /* Parallélogramme plus large que l'écran : bord diagonal, il couvre tout une fois posé */
 .rideau-volet {
@@ -786,11 +787,8 @@
 .rideau[data-etat="intro"] .rideau-nom {
   animation-delay: 160ms;
 }
-/* Sans script : l'écran d'accueil s'efface seul ; déjà vu dans la session : jamais */
-.rideau[data-etat="intro"] {
-  animation: rideau-secours 0s 3s forwards;
-}
-@keyframes rideau-secours { to { visibility: hidden; pointer-events: none; } }
+/* Sans script : l'écran d'accueil s'efface seul à 3 s ; déjà vu dans la session : jamais */
+@keyframes rideau-secours { to { visibility: hidden; opacity: 0; pointer-events: none; } }
 html.intro-vue .rideau[data-etat="intro"] {
   visibility: hidden;
   pointer-events: none;
@@ -843,9 +841,11 @@ html.intro-vue .rideau[data-etat="intro"] {
    Hero lumineux : photo naturelle, voiles seulement sous le texte
    ========================================================================== */
 @utility voile-hero-clair {
-  background: linear-gradient(100deg, rgb(7 18 43 / 0.72) 0%, rgb(7 18 43 / 0.52) 32%, rgb(7 18 43 / 0.14) 56%, transparent 74%);
+  /* Dense sous le bloc de texte (moitié gauche), la photo reste naturelle à droite.
+     Mesuré sur les pixels des 5 diapos : texte ≥ 4,5:1, « Nous durons » en jaune compris. */
+  background: linear-gradient(100deg, rgb(7 18 43 / 0.82) 0%, rgb(7 18 43 / 0.76) 40%, rgb(7 18 43 / 0.42) 56%, rgb(7 18 43 / 0.08) 70%, transparent 80%);
   @media (width < 48rem) {
-    background: linear-gradient(180deg, rgb(7 18 43 / 0.5) 0%, rgb(7 18 43 / 0.35) 55%, rgb(7 18 43 / 0.15) 100%);
+    background: linear-gradient(180deg, rgb(7 18 43 / 0.74) 0%, rgb(7 18 43 / 0.68) 60%, rgb(7 18 43 / 0.55) 100%);
   }
 }
 @utility voile-bas-clair {
@@ -869,4 +869,169 @@ html.intro-vue .rideau[data-etat="intro"] {
 }
 @keyframes ruban {
   to { translate: -50% 0; }
+}
+
+/* ==========================================================================
+   Pelleteuse animée (components/ui/Pelleteuse.tsx) : cycle de creusement.
+   Chaque pièce pivote autour de son axe, en coordonnées du dessin.
+   ========================================================================== */
+.pelleteuse g {
+  transform-box: view-box;
+}
+.pelleteuse-fleche { transform-origin: 160px 122px; }
+.pelleteuse-bras { transform-origin: 222px 54px; }
+.pelleteuse-godet { transform-origin: 262px 124px; }
+.pelleteuse-tourelle { transform-origin: 110px 160px; }
+.pelleteuse-terre { opacity: 0; }
+@media (prefers-reduced-motion: no-preference) {
+  .pelleteuse .pelleteuse-fleche { animation: pel-fleche 5.6s var(--ease-chantier) infinite; }
+  .pelleteuse .pelleteuse-bras { animation: pel-bras 5.6s var(--ease-chantier) infinite; }
+  .pelleteuse .pelleteuse-godet { animation: pel-godet 5.6s var(--ease-chantier) infinite; }
+  .pelleteuse .pelleteuse-tourelle { animation: pel-tourelle 5.6s var(--ease-chantier) infinite; }
+  .pelleteuse .pelleteuse-terre { animation: pel-terre 5.6s ease-out infinite; }
+  .pelleteuse:not([data-visible="true"]) g {
+    animation-play-state: paused;
+  }
+}
+@keyframes pel-fleche {
+  0%, 100% { rotate: 0deg; }
+  25% { rotate: 10deg; }
+  50% { rotate: 6deg; }
+  72% { rotate: -14deg; }
+}
+@keyframes pel-bras {
+  0%, 100% { rotate: 0deg; }
+  25% { rotate: 22deg; }
+  50% { rotate: -6deg; }
+  72% { rotate: -18deg; }
+}
+@keyframes pel-godet {
+  0%, 100% { rotate: 0deg; }
+  25% { rotate: 30deg; }
+  50% { rotate: -38deg; }
+  72% { rotate: -38deg; }
+  82% { rotate: 40deg; }
+}
+@keyframes pel-tourelle {
+  0%, 100% { translate: 0 0; }
+  26% { translate: 0 1.5px; }
+  30% { translate: 0 0; }
+}
+@keyframes pel-terre {
+  0%, 78% { opacity: 0; translate: 0 -12px; }
+  84% { opacity: 1; }
+  96%, 100% { opacity: 0; translate: 0 14px; }
+}
+
+/* Bouton rond translucide posé sur photo (pause du diaporama, galerie) */
+.bouton-verre {
+  background: rgb(251 250 247 / 0.16);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+.bouton-verre:hover {
+  background: rgb(251 250 247 / 0.3);
+}
+@media (prefers-reduced-transparency: reduce) {
+  .bouton-verre,
+  .bouton-verre:hover {
+    background: var(--pet-nuit-900);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
+
+/* Dépôt de fichier : l'input est masqué, le focus clavier se voit sur l'étiquette */
+.depot-fichier:has(+ input:focus-visible) {
+  outline: 3px solid var(--pet-royal-600);
+  outline-offset: 3px;
+}
+
+/* ==========================================================================
+   Carte interactive (MapLibre) aux couleurs PET
+   ========================================================================== */
+.carte-pet {
+  font-family: var(--font-sans);
+}
+.carte-pet .maplibregl-ctrl-group {
+  border-radius: var(--radius-chantier);
+  box-shadow: 0 10px 24px -12px rgb(7 18 43 / 0.5);
+}
+.carte-pet .maplibregl-ctrl-group button {
+  width: 44px;
+  height: 44px;
+}
+.carte-pet .maplibregl-ctrl-group button:hover {
+  background-color: var(--pet-jaune-400);
+}
+.carte-pet .maplibregl-popup-content {
+  border-radius: var(--radius-panneau);
+  padding: 0.75rem 2rem 0.75rem 1rem;
+  font-size: 0.9375rem;
+  color: var(--pet-encre-900);
+}
+.carte-pet .maplibregl-popup-content a {
+  color: var(--pet-royal-600);
+  font-weight: 600;
+}
+.carte-pet .maplibregl-cooperative-gesture-screen {
+  font-family: var(--font-label);
+  background: rgb(11 27 63 / 0.6);
+}
+.repere-pet {
+  width: 52px;
+  height: 60px;
+  cursor: pointer;
+}
+.repere-pet-pin {
+  position: absolute;
+  left: 4px;
+  top: 0;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50% 50% 50% 0;
+  rotate: -45deg;
+  background: var(--pet-nuit-900);
+  box-shadow: 0 0 0 3px var(--pet-jaune-400), 0 10px 20px -8px rgb(7 18 43 / 0.6);
+  color: var(--pet-jaune-400);
+  font: 800 13px/1 var(--font-display);
+  letter-spacing: 0.04em;
+}
+.repere-pet-pin > span {
+  rotate: 45deg;
+}
+.repere-pet-halo {
+  position: absolute;
+  left: 14px;
+  bottom: -4px;
+  width: 24px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgb(7 18 43 / 0.25);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .repere-pet-halo {
+    animation: halo 2.4s ease-out infinite;
+  }
+}
+@keyframes halo {
+  0% { scale: 0.6; opacity: 0.6; }
+  100% { scale: 2.2; opacity: 0; }
+}
+
+/* Accessibilité des effets : indicateur d'envoi figé, voiles opaques, grain retiré sur mobile */
+@media (prefers-reduced-motion: reduce) {
+  .animate-spin { animation: none; }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .voile-fenetre { background-color: var(--pet-nuit-950); }
+}
+@media (width < 48rem) {
+  .grain { display: none; }
+}
+.carte-pet .maplibregl-ctrl-attrib {
+  font-size: 11px;
+  line-height: 1.4;
 }

@@ -32,14 +32,15 @@ export function SavoirFaire() {
           </Link>
         </div>
 
-        <ul className="panneaux revele-groupe mt-12 grid gap-4 sm:grid-cols-2 lg:mt-16">
+        {/* Mobile : carrousel horizontal (la carte suivante dépasse) ; tablette : grille ; grand écran : panneaux */}
+        <ul className="panneaux revele-groupe mt-10 grid gap-4 max-sm:-mx-4 max-sm:flex max-sm:snap-x max-sm:snap-mandatory max-sm:overflow-x-auto max-sm:scroll-px-4 max-sm:px-4 max-sm:pb-3 max-sm:[scrollbar-width:none] sm:grid-cols-2 lg:mt-16">
           {ordrePanneaux.map((d, i) => {
             const photo = photos[d.photos[0]];
             return (
-              <li key={d.slug} className={`panneau ${i === 0 ? "sm:col-span-2 lg:col-span-1" : ""}`}>
+              <li key={d.slug} className={`panneau max-sm:w-[84%] max-sm:shrink-0 max-sm:snap-start ${i === 0 ? "sm:col-span-2 lg:col-span-1" : ""}`}>
                 <Link
                   href={`/savoir-faire/${d.slug}`}
-                  className="group/panneau relative flex h-full min-h-[24rem] flex-col justify-end overflow-hidden rounded-chantier bg-nuit text-blanc lg:min-h-0"
+                  className="group/panneau relative flex h-full min-h-[22rem] flex-col justify-end sm:min-h-[24rem] overflow-hidden rounded-chantier bg-nuit text-blanc lg:min-h-0"
                 >
                   <Image
                     src={photo.src}

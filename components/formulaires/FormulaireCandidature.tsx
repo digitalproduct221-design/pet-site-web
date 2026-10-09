@@ -1,12 +1,12 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { offres } from "@/content/exemples";
+import { metiers } from "@/content/site";
 import { Formulaire } from "./Formulaire";
 
-/** Candidature : le poste est prérempli quand on arrive depuis « Postuler ». */
+/** Candidature spontanée : le métier est prérempli quand on arrive depuis la liste des métiers. */
 export function FormulaireCandidature() {
-  const id = useSearchParams().get("poste");
-  const offre = offres.find((o) => o.id === id);
-  return <Formulaire key={offre?.id ?? "spontanee"} type="candidature" posteInitial={offre?.poste ?? ""} />;
+  const id = useSearchParams().get("metier");
+  const metier = metiers.find((m) => m.id === id);
+  return <Formulaire key={metier?.id ?? "spontanee"} type="candidature" posteInitial={metier?.titre ?? ""} />;
 }

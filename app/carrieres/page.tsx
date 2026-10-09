@@ -1,18 +1,19 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import { valeurs } from "@/content/site";
+import { domaineParSlug, metiers, valeurs } from "@/content/site";
 import { listeFrancaise } from "@/content/texte";
 import { EnTetePage } from "@/components/ui/EnTetePage";
 import { BoutonLien } from "@/components/ui/Bouton";
 import { Icone } from "@/components/ui/Icone";
 import { PhotoCadre } from "@/components/ui/PhotoCadre";
-import { ListeOffres } from "@/components/accueil/CarrieresBloc";
+import Link from "next/link";
+import { Motif } from "@/components/ui/Motif";
 import { Formulaire } from "@/components/formulaires/Formulaire";
 import { FormulaireCandidature } from "@/components/formulaires/FormulaireCandidature";
 
 export const metadata: Metadata = {
   title: "Carrières",
-  description: "Rejoignez les équipes de PET à Dakar : offres d'emploi dans le BTP et candidature spontanée.",
+  description: "Rejoignez les équipes de PET à Dakar : les métiers de nos chantiers et la candidature spontanée.",
   alternates: { canonical: "/carrieres" },
 };
 
@@ -25,15 +26,15 @@ const atouts = [
 export default function PageCarrieres() {
   return (
     <>
-      <EnTetePage
+      <EnTetePage suite="text-blanc"
         titre="Carrières"
-        intro="Conducteurs d'engins, chefs d'équipe, techniciens : rejoignez une entreprise de terrain où le travail bien fait compte."
+        intro="Conducteurs d'engins, canalisateurs, ferrailleurs, topographes : rejoignez une entreprise de terrain où le travail bien fait compte."
         ariane={[{ titre: "Carrières" }]}
         photo="trancheeLotissement"
       >
-        <BoutonLien href="#offres">Voir les offres</BoutonLien>
-        <BoutonLien href="#candidature" variante="contour-clair">
-          Candidature spontanée
+        <BoutonLien href="#candidature">Candidature spontanée</BoutonLien>
+        <BoutonLien href="#metiers" variante="contour-clair">
+          Nos métiers
         </BoutonLien>
       </EnTetePage>
 
@@ -65,20 +66,45 @@ export default function PageCarrieres() {
         </div>
       </section>
 
-      <section id="offres" aria-labelledby="titre-offres" className="bg-sable py-20 lg:py-28">
-        <div className="conteneur grid gap-12 lg:grid-cols-12 lg:gap-8">
-          <div className="revele lg:col-span-4">
-            <h2 id="titre-offres" className="titre text-titre-l text-nuit">
-              Offres d&apos;emploi
+      <section id="metiers" aria-labelledby="titre-metiers" className="relative isolate overflow-hidden bg-sable py-20 lg:py-28">
+        <Motif type="ferraillage" className="text-nuit" opacite={0.05} />
+        <div className="conteneur">
+          <div className="revele max-w-[44rem]">
+            <h2 id="titre-metiers" className="titre text-titre-l text-nuit">
+              Les métiers de nos chantiers
             </h2>
             <p className="mt-5 text-lg leading-relaxed text-encre-douce">
-              Les offres ci-contre sont des exemples de mise en page : les postes réellement ouverts seront publiés ici.
+              Les métiers que nous exerçons au quotidien. Le vôtre y figure&nbsp;? Choisissez-le&nbsp;: il sera indiqué dans votre
+              candidature.
             </p>
-            <PhotoCadre photo="niveleuseVoirie" ratio="aspect-[4/3]" sizes="(min-width: 1024px) 30vw, 100vw" equerres className="mt-10 hidden lg:block" />
           </div>
-          <div className="lg:col-span-7 lg:col-start-6">
-            <ListeOffres ton="clair" />
-          </div>
+          <ul className="revele-groupe mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {metiers.map((m, i) => {
+              const domaine = domaineParSlug(m.domaine);
+              return (
+                <li key={m.id}>
+                  <Link
+                    href={`/carrieres?metier=${m.id}#candidature`}
+                    scroll={false}
+                    className="group/metier relative flex h-full flex-col rounded-panneau bg-blanc p-6 ombre-carte transition-[translate,box-shadow] duration-500 ease-chantier hover:-translate-y-1 hover:ombre-carte-survol"
+                  >
+                    <span className="flex items-center justify-between">
+                      <span className="titre text-[2.25rem] leading-none text-sable-fonce chiffres-tabulaires transition-colors group-hover/metier:text-jaune-profond">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      {domaine ? <Icone nom={domaine.icone} size={28} weight="light" className="text-royal" /> : null}
+                    </span>
+                    <span className="mt-6 titre text-[1.625rem] leading-[1] text-nuit">{m.titre}</span>
+                    <span className="mt-3 flex-1 text-[1rem] leading-relaxed text-encre-douce">{m.texte}</span>
+                    <span className="mt-6 inline-flex items-center gap-2 cote text-[1.0625rem] text-royal">
+                      Postuler
+                      <Icone nom="fleche" size={18} weight="bold" className="transition-transform group-hover/metier:translate-x-1" />
+                    </span>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
         </div>
       </section>
 
@@ -89,7 +115,7 @@ export default function PageCarrieres() {
               Candidature spontanée
             </h2>
             <p className="mt-5 text-lg leading-relaxed text-encre-douce">
-              Aucune offre ne correspond ? Présentez-vous : nous gardons les profils de terrain pour nos prochains chantiers.
+              Présentez-vous en quelques lignes et joignez votre CV&nbsp;: votre candidature est transmise à la direction.
             </p>
           </div>
           <div className="rounded-panneau bg-sable p-6 sm:p-8 lg:col-span-7 lg:col-start-6 lg:p-10">

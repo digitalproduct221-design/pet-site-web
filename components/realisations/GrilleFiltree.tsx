@@ -2,12 +2,16 @@
 
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { projets } from "@/content/exemples";
+import { projets } from "@/content/realisations";
 import { domaines } from "@/content/site";
 import { CarteProjet } from "@/components/ui/CarteProjet";
 import { Icone } from "@/components/ui/Icone";
 
-const options = [{ slug: "tous", titre: "Tous les projets" }, ...domaines.map((d) => ({ slug: d.slug, titre: d.titre }))];
+// Seuls les domaines qui ont au moins une réalisation publiée deviennent des filtres.
+const options = [
+  { slug: "tous", titre: "Tous les chantiers" },
+  ...domaines.filter((d) => projets.some((p) => p.domaine === d.slug)).map((d) => ({ slug: d.slug, titre: d.titre })),
+];
 
 /**
  * Grille des réalisations filtrée par domaine. Les filtres sont de vrais liens
@@ -46,7 +50,7 @@ export function Grille({ filtre }: { filtre: string }) {
 
       <p aria-live="polite" className="mt-6 text-[1rem] text-encre-douce">
         {visibles.length} réalisation{visibles.length > 1 ? "s" : ""}
-        {domaineActif ? ` en ${domaineActif.titre}` : ""}. Les fiches marquées « Exemple » sont à compléter par PET.
+        {domaineActif ? ` en ${domaineActif.titre}` : ""}.
       </p>
 
       {visibles.length === 0 ? (
