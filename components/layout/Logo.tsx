@@ -24,15 +24,41 @@ export function Logo({ ton = "clair", compact = false, nom = true }: { ton?: "cl
         sizes="96px"
       />
       {nom ? (
-        <span
-          aria-hidden
-          className={`hidden titre text-[1.0625rem] leading-[0.95] tracking-[0.01em] min-[90rem]:block ${ton === "sombre" ? "text-blanc" : "text-nuit"}`}
-        >
-          Partenaire
-          <br />
-          Entreprise Travaux
+        <>
+          <span
+            aria-hidden
+            className={`h-6 sm:h-7.5 w-px transition-colors ${
+              ton === "sombre" ? "bg-blanc/20" : "bg-nuit/15 group-hover/logo:bg-royal/30"
+            }`}
+          />
+          <span
+            aria-hidden
+            className="flex flex-col justify-center leading-[0.88] select-none"
+          >
+          <span
+            className={`font-display font-extrabold text-[0.65rem] sm:text-[0.72rem] nav:text-[0.78rem] tracking-[0.14em] uppercase transition-colors ${
+              ton === "sombre" ? "text-blanc" : "text-nuit group-hover/logo:text-royal"
+            }`}
+          >
+            Partenaire
+          </span>
+          <span
+            className={`font-display font-extrabold text-[0.65rem] sm:text-[0.72rem] nav:text-[0.78rem] tracking-[0.14em] uppercase transition-colors ${
+              ton === "sombre" ? "text-brume" : "text-royal"
+            }`}
+          >
+            Entreprise
+          </span>
+          <span
+            className={`font-display font-extrabold text-[0.65rem] sm:text-[0.72rem] nav:text-[0.78rem] tracking-[0.14em] uppercase transition-colors ${
+              ton === "sombre" ? "text-jaune" : "text-nuit/85 group-hover/logo:text-jaune-profond"
+            }`}
+          >
+            Travaux
+          </span>
         </span>
-      ) : null}
+      </>
+    ) : null}
     </Link>
   );
 }

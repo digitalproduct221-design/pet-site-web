@@ -7,14 +7,17 @@ import {
   Buildings,
   Bulldozer,
   CaretDown,
+  ChatCircleDots,
   CheckCircle,
   ClockCountdown,
   ClockCounterClockwise,
+  Compass,
   EnvelopeSimple,
   FacebookLogo,
   FileArrowUp,
   Handshake,
   HardHat,
+  House,
   Images,
   InstagramLogo,
   Leaf,
@@ -45,6 +48,9 @@ import type { IconProps } from "@phosphor-icons/react";
 
 /** Une seule famille d'icônes (Phosphor), un seul trait. Les noms sont métier. */
 const icones = {
+  accueil: House,
+  projet: Compass,
+  chat: ChatCircleDots,
   batiment: Buildings,
   route: RoadHorizon,
   eau: Pipe,

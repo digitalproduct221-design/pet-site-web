@@ -1,8 +1,5 @@
 import { SLOGAN } from "@/content/site";
 import { BoutonLien } from "@/components/ui/Bouton";
-import { Equerres } from "@/components/ui/Equerres";
-import { Motif } from "@/components/ui/Motif";
-import { Profil } from "@/components/ui/Profil";
 import { Diaporama, type Diapo } from "./Diaporama";
 
 // Photos réelles de chantier, les plus lumineuses d'abord (droits à vérifier : écartées).
@@ -45,61 +42,52 @@ const diapos: Diapo[] = [
 ];
 
 /**
- * Hero clair et lumineux : le texte sur fond blanc à gauche, la photo en grand à
- * droite, nette et sans voile, dans un cadre coupé en biais (le geste du volet).
- * Sur mobile, la photo passe au-dessus du texte. Le texte est rendu par le
- * serveur ; le diaporama est la seule partie interactive.
+ * Hero immersif : la photo occupe tout le cadre, nette, posée sur le sable comme
+ * un tableau (équerres du logo dans les angles, coin bas-gauche coupé). Le titre
+ * se lit en bas à gauche sur un dégradé localisé ; les domaines flottent en haut
+ * à droite ; le panneau de verre en bas à droite pilote le diaporama.
+ * Pensé pour recevoir des photos HD : rien ne couvre le haut ni la droite.
  */
 export function Hero() {
   return (
-    <section
-      aria-roledescription="carrousel"
-      aria-label="Nos chantiers en images"
-      className="relative isolate overflow-hidden bg-blanc"
-    >
-      <Motif type="plan" className="text-royal" opacite={0.16} />
-      <div className="grid lg:min-h-[max(38rem,calc(100svh-var(--header-h)-var(--topbar-h)))] lg:grid-cols-2">
-        {/* Texte */}
-        <div className="flex flex-col justify-center px-4 pb-24 pt-8 sm:px-6 lg:pb-28 lg:pl-[max(2rem,calc((100vw-var(--container-site))/2+2rem))] lg:pr-10 lg:pt-12">
-          <div className="entree">
-            <p className="cote text-[0.9375rem] uppercase tracking-[0.16em] text-royal">Entreprise de BTP à Dakar, depuis 2016</p>
-            <Equerres
-              decalage={18}
-              className="-ml-3 mt-5 inline-block px-3 pb-4 pt-3"
-              style={{ ["--equerre-taille" as string]: "clamp(2.25rem, 1.4rem + 2.6vw, 3.75rem)", ["--equerre-epaisseur" as string]: "5px" }}
-            >
-              <h1 className="titre text-[clamp(2.75rem,1.4rem+3.6vw,4.625rem)] leading-[0.94] text-nuit">
-                <span className="block">Nous bâtissons.</span>
-                <span className="block">Nous raccordons.</span>
-                <span className="block">
-                  <span className="surligne">Nous durons.</span>
-                </span>
-              </h1>
-            </Equerres>
-            <p className="mt-6 max-w-[30rem] text-[1.1875rem] leading-relaxed text-encre-douce">
-              {SLOGAN} : bâtiment, travaux publics, hydraulique, assainissement et génie civil.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-4">
+    <section aria-roledescription="carrousel" aria-label="Nos chantiers en images" className="bg-sable lg:px-4 lg:pt-4">
+      <div className="cadre-immersif equerres relative isolate flex min-h-[max(34rem,calc(100svh-var(--header-h)-var(--barre-mobile-h)))] flex-col justify-between text-blanc lg:min-h-[max(40rem,calc(100svh-var(--header-h)-var(--topbar-h)-1rem))]" data-vu="">
+        {/* Domaines, en haut à droite */}
+        <ul
+          aria-label="Nos domaines"
+          className="verre-immersif mr-4 mt-4 hidden self-end rounded-panneau px-5 py-4 cote text-[0.875rem] uppercase leading-[1.9] tracking-[0.16em] md:block lg:mr-8 lg:mt-8"
+        >
+          {["Bâtiment", "Travaux publics et VRD", "Hydraulique", "Assainissement", "Génie civil"].map((d) => (
+            <li key={d} className="flex items-center gap-2.5">
+              <span aria-hidden className="size-1.5 rotate-45 bg-jaune" />
+              {d}
+            </li>
+          ))}
+        </ul>
+
+        {/* Titre en bas à gauche, panneau du diaporama en bas à droite */}
+        <div className="conteneur mt-auto grid items-end gap-6 pb-6 pt-24 sm:pb-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-10 lg:pb-12">
+          <div className="entree max-w-[46rem]">
+            <p className="cote text-[0.9375rem] uppercase tracking-[0.16em] text-blanc ombre-texte max-sm:hidden">Entreprise de BTP à Dakar, depuis 2016</p>
+            <h1 className="titre sm:mt-4 text-[clamp(2.75rem,1.2rem+5.4vw,6rem)] leading-[0.92] text-blanc ombre-texte">
+              <span className="block">Nous bâtissons.</span>
+              <span className="block">Nous raccordons.</span>
+              <span className="block text-jaune">Nous durons.</span>
+            </h1>
+            <p className="mt-5 max-w-[32rem] text-[1.1875rem] leading-relaxed text-blanc ombre-texte max-sm:hidden">{SLOGAN}.</p>
+            <div className="mt-7 flex flex-wrap gap-4">
               {/* Sur mobile, la barre d'actions fixe porte déjà « Devis » : un seul appel principal à l'écran */}
               <span className="hidden sm:contents">
                 <BoutonLien href="/contact#devis">Demander un devis</BoutonLien>
               </span>
-              <BoutonLien href="/savoir-faire" variante="contour">
-                Nos savoir-faire
+              <BoutonLien href="/realisations" variante="contour-clair">
+                Nos réalisations
               </BoutonLien>
             </div>
           </div>
-        </div>
-
-        {/* Photo : au-dessus du texte sur mobile, à droite sur grand écran */}
-        <div className="relative order-first h-[min(62svh,32rem)] sm:h-[34rem] lg:order-none lg:h-auto">
-          <div className="cadre-hero absolute inset-0">
-            <Diaporama diapos={diapos} />
-          </div>
+          <Diaporama diapos={diapos} />
         </div>
       </div>
-
-      <Profil couleur="text-sable" />
     </section>
   );
 }

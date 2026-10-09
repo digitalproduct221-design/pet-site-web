@@ -1283,3 +1283,46 @@ main > :nth-child(n + 3):not(.ruban-zone) {
 @media (width < 25rem) {
   .cs-v-kaolack, .cs-v-thies { display: none; }
 }
+
+/* ==========================================================================
+   Hero immersif (4ᵉ série de retours) : photo plein cadre posée sur le sable,
+   équerres dans les angles, coin bas-gauche coupé, dégradé localisé.
+   ========================================================================== */
+.cadre-immersif {
+  --equerre-decalage: -22px; /* équerres à l'intérieur du cadre */
+  --equerre-taille: clamp(2.25rem, 1.5rem + 2.4vw, 4rem);
+  --equerre-epaisseur: 5px;
+}
+@media (width >= 64rem) {
+  .cadre-immersif {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 5.5rem 100%, 0 calc(100% - 5.5rem));
+  }
+}
+/* Lisibilité du titre seulement : bas et gauche ; le haut et la droite restent nets */
+@utility voile-immersif {
+  /* Ellipse ancrée en bas à gauche, sous le titre ; le haut et la droite restent nets.
+     Mesuré sur les pixels des 5 diapos (voir docs/decisions.md). */
+  background:
+    radial-gradient(ellipse 88% 150% at 0% 100%, rgb(7 18 43 / 0.9) 0%, rgb(7 18 43 / 0.84) 48%, rgb(7 18 43 / 0.5) 70%, transparent 100%),
+    linear-gradient(0deg, rgb(7 18 43 / 0.55) 0%, transparent 32%);
+  @media (width < 64rem) {
+    background: linear-gradient(0deg, rgb(7 18 43 / 0.92) 0%, rgb(7 18 43 / 0.86) 56%, rgb(7 18 43 / 0.78) 66%, rgb(7 18 43 / 0.25) 82%, transparent 92%);
+  }
+}
+/* Verre sombre des panneaux posés sur la photo */
+.verre-immersif {
+  background: linear-gradient(140deg, rgb(255 255 255 / 0.12), rgb(255 255 255 / 0.03)), rgb(11 27 63 / 0.58);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  backdrop-filter: blur(18px) saturate(160%);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.24), 0 24px 50px -26px rgb(4 10 26 / 0.75);
+}
+@media (prefers-reduced-transparency: reduce) {
+  .verre-immersif {
+    background: var(--pet-nuit-900);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .verre-immersif { background: rgb(11 27 63 / 0.9); }
+}
