@@ -69,3 +69,14 @@ Choix faits en autonomie quand le brief laissait un doute. Chaque ligne dit ce q
 44. **Interrupteur des photos à droits incertains** : `MASQUER_PHOTOS_A_VERIFIER` dans `content/photos.ts` (désactivé, décision du client). Activé, il retire les photos 06, 07 et 09 partout.
 45. **Lighthouse mobile en production** (mesuré depuis une machine chargée, d'où la variance) : accueil 87 à 94, `/realisations` 81 à 96. Accessibilité, bonnes pratiques et SEO à 100.
 46. **Le globe laisse place à une carte illustrée du Sénégal** (demande du client : « plus utile, plus illustratif »). Elle montre le contour du pays et les régions en pointillé, les grandes villes comme repères géographiques et la Gambie. Une loupe sur la presqu'île du Cap-Vert pointe le siège (Liberté 6) et ouvre l'itinéraire. Le tracé se dessine à l'entrée dans l'écran. C'est un SVG rendu côté serveur, sans JavaScript ajouté : la bibliothèque cobe est supprimée. Fond de carte geoBoundaries (CC BY 3.0 IGO), simplifié et projeté par le script `scripts/carte-senegal.mjs`. Aucune zone d'intervention n'est revendiquée : les villes ne sont que des repères.
+47. **Audit n°2** :
+    - **Hero mobile** : le texte descend en bas du hero et la photo se dégage en haut. Sous 640 px, le slogan est masqué (il est repris dans la section suivante et dans le pied de page) et la légende ne reste que pour les lecteurs d'écran.
+    - **Voiles** recalibrés par mesure sur les pixels des 5 diapos : au moins 6,3:1 à 360 et 1440 px.
+    - **Écrans bas** (1024 × 768) : le titre se règle aussi sur la hauteur et la légende est masquée. Libellés des onglets à partir de 1024 px.
+    - **Photos du hero** en qualité 75. Variante 3840 supprimée (`deviceSizes` plafonné à 2560).
+    - **Visionneuse** chargée au premier clic.
+    - **Barre « Votre projet »** affichée seulement pendant la lecture des besoins.
+    - **Ancre au chargement direct** sécurisée.
+    - **Méga-menu** : les flèches ouvrent le panneau voisin.
+48. **Mentions légales à fournir par le client avant la mise en ligne définitive** : NINEA, RCCM, directeur de la publication. Elles se renseignent dans `mentionsLegales`, dans `content/site.ts`. Tant qu'elles sont vides, leur ligne est masquée. `AFFICHER_MENTIONS_MANQUANTES = true` affiche « À renseigner » pour une relecture. Hébergeur renseigné : Vercel Inc., 440 N Barranca Ave #4133, Covina, CA 91723, États-Unis.
+49. **Non retenu** : intégrer le CSS au HTML (`experimental.inlineCss`). Le HTML compressé passait de 41 à 96 Ko, le CSS étant aussi recopié dans la charge RSC. Ce serait plus lent en 4G.
