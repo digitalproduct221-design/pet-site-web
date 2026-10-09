@@ -2,17 +2,17 @@
 
 import { useEffect, useRef } from "react";
 import { entreprise } from "@/content/site";
-import { CarteSenegal } from "@/components/ui/CarteSenegal";
+import { Pictogramme, type NomPicto } from "./Pictogramme";
 import { Motif } from "@/components/ui/Motif";
 
-type Chiffre = { valeur: number; depart: number; suffixe?: string; libelle: string };
+type Chiffre = { valeur: number; depart: number; suffixe?: string; libelle: string; picto: NomPicto };
 
 // Seuls chiffres autorisés : 2016, 40+, 5 domaines, 3 types de clients.
 const chiffres: Chiffre[] = [
-  { valeur: entreprise.fondation, depart: 1990, libelle: "Année de création, à Dakar" },
-  { valeur: 40, depart: 0, suffixe: "+", libelle: "Années d'expérience cumulée dans l'équipe" },
-  { valeur: entreprise.domaines.length, depart: 0, libelle: "Domaines d'expertise, du bâtiment aux réseaux" },
-  { valeur: entreprise.clients.length, depart: 0, libelle: "Types de clients : publics, industriels et privés" },
+  { valeur: entreprise.fondation, depart: 1990, libelle: "Année de création, à Dakar", picto: "creation" },
+  { valeur: 40, depart: 0, suffixe: "+", libelle: "Années d'expérience cumulée dans l'équipe", picto: "experience" },
+  { valeur: entreprise.domaines.length, depart: 0, libelle: "Domaines d'expertise, du bâtiment aux réseaux", picto: "domaines" },
+  { valeur: entreprise.clients.length, depart: 0, libelle: "Types de clients : publics, industriels et privés", picto: "clients" },
 ];
 
 /** Courbe de décélération exponentielle, comme le reste du site. */
@@ -58,37 +58,38 @@ function Compteur({ valeur, depart, suffixe }: Pick<Chiffre, "valeur" | "depart"
 }
 
 /**
- * Juste après le hero, sur le sable du profil de terrain : une phrase qui dit ce
- * que fait PET, puis les quatre chiffres composés en très grand, posés sur des
- * courbes de niveau. Ni cadre ni filet : la typographie porte la section.
+ * Juste après le hero : une phrase qui dit ce que fait PET, et les quatre chiffres
+ * en cartes compactes. Chaque chiffre a son pictogramme au trait, qui se dessine
+ * pendant que le compteur défile. Posé sur des courbes de niveau.
  */
 export function Chiffres() {
   return (
-    <section aria-labelledby="titre-chiffres" className="relative isolate overflow-hidden bg-sable pb-20 pt-12 lg:pb-28 lg:pt-16">
+    <section aria-labelledby="titre-chiffres" className="relative isolate overflow-hidden bg-sable pb-20 pt-12 lg:pb-24 lg:pt-14">
       <Motif type="courbes" className="text-royal" opacite={0.1} />
-      <div className="conteneur">
+      <div className="conteneur grid items-center gap-10 lg:grid-cols-12 lg:gap-12">
         <h2
           id="titre-chiffres"
-          className="revele max-w-[60rem] text-[clamp(1.75rem,1.2rem+2.2vw,3rem)] font-semibold leading-[1.15] tracking-[-0.02em] text-nuit"
+          className="revele text-[clamp(1.625rem,1.2rem+1.6vw,2.5rem)] font-semibold leading-[1.18] tracking-[-0.02em] text-nuit lg:col-span-5"
         >
           De la conception à l&apos;entretien, nous construisons et réhabilitons{" "}
           <span className="text-royal">les bâtiments, les réseaux d&apos;eau et les infrastructures</span> du Sénégal.
         </h2>
 
-        {/* Basés à Dakar : la carte illustrée, et nos chiffres à côté */}
-        <div className="mt-12 grid items-center gap-12 lg:mt-16 lg:grid-cols-12 lg:gap-10">
-          <CarteSenegal className="w-full lg:col-span-7" />
-          <dl className="revele-groupe grid grid-cols-2 gap-x-6 gap-y-10 lg:col-span-5 lg:gap-y-14">
-            {chiffres.map((c) => (
-              <div key={c.libelle} className="flex flex-col-reverse justify-end">
-                <dt className="mt-3 max-w-[15rem] cote text-[1.0625rem] leading-snug text-encre-douce">{c.libelle}</dt>
-                <dd className="titre text-[clamp(3.25rem,2.2rem+3.4vw,5.5rem)] leading-[0.9] text-royal">
+        <dl className="revele-groupe grid grid-cols-2 gap-3 sm:gap-4 lg:col-span-7">
+          {chiffres.map((c) => (
+            <div key={c.libelle} className="flex flex-col-reverse justify-end rounded-panneau bg-blanc/85 p-4 ombre-carte sm:p-6">
+              <dt className="mt-2 cote text-[0.9375rem] leading-snug text-encre-douce sm:text-[1.0625rem]">{c.libelle}</dt>
+              <dd className="flex items-center justify-between gap-3">
+                <span className="titre text-[clamp(2.5rem,1.6rem+2.6vw,4rem)] leading-[0.9] text-royal">
                   <Compteur valeur={c.valeur} depart={c.depart} suffixe={c.suffixe} />
-                </dd>
-              </div>
-            ))}
-          </dl>
-        </div>
+                </span>
+                <span className="grid size-14 shrink-0 place-items-center rounded-full bg-sable text-royal sm:size-16">
+                  <Pictogramme nom={c.picto} />
+                </span>
+              </dd>
+            </div>
+          ))}
+        </dl>
       </div>
     </section>
   );
