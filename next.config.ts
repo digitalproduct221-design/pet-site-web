@@ -9,9 +9,9 @@ const csp = [
   "default-src 'self'",
   `script-src 'self' 'unsafe-inline'${dev ? " 'unsafe-eval'" : ""}`,
   "style-src 'self' 'unsafe-inline'",
-  "img-src 'self' data: blob: https://tiles.openfreemap.org",
+  "img-src 'self' data: blob: https://tiles.openfreemap.org https://*.supabase.co",
   "font-src 'self'",
-  `connect-src 'self' https://tiles.openfreemap.org${dev ? " ws: wss:" : ""}`,
+  `connect-src 'self' https://tiles.openfreemap.org https://*.supabase.co${dev ? " ws: wss:" : ""}`,
   "worker-src 'self' blob:",
   "frame-src 'none'",
   "object-src 'none'",
@@ -58,6 +58,8 @@ const nextConfig: NextConfig = {
     qualities: [50, 60, 75],
     // Pas de variante 3840 : les photos sources font au plus 2500 px.
     deviceSizes: [640, 750, 828, 1080, 1200, 1600, 1920, 2560],
+    // Photos ajoutées depuis l'espace admin (stockage Supabase « medias »)
+    remotePatterns: [{ protocol: "https", hostname: "*.supabase.co", pathname: "/storage/v1/object/public/medias/**" }],
     minimumCacheTTL: 2592000,
   },
   experimental: {
