@@ -29,7 +29,7 @@ export function Pourquoi() {
             {engagementsCles.map((e, i) => (
               <details key={e.titre} name="pourquoi" open={i === 0} className="accordeon group/acc rounded-panneau bg-sable px-5 transition-colors open:bg-nuit open:text-blanc sm:px-6">
                 <summary className="flex min-h-16 cursor-pointer list-none items-center gap-4 py-4 [&::-webkit-details-marker]:hidden">
-                  <Icone nom={e.icone} size={30} weight="light" className="shrink-0 text-royal group-open/acc:text-jaune" />
+                  <Icone nom={e.icone} size={30} weight="regular" className="shrink-0 text-royal group-open/acc:text-jaune" />
                   <span className="flex-1 titre text-[1.625rem] leading-none text-nuit group-open/acc:text-blanc sm:text-[1.875rem]">{e.titre}</span>
                   {/* La croix tournée de 45° fait un « + » ; ouverte, elle redevient une croix */}
                   <span aria-hidden className="grid size-9 shrink-0 place-items-center rounded-full bg-blanc text-nuit transition-colors group-open/acc:bg-jaune">

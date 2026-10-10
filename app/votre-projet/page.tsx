@@ -35,7 +35,7 @@ export default function PageVotreProjet() {
         photo="niveleuseVoirie"
       >
         <BoutonLien href="#besoins">Choisir mon besoin</BoutonLien>
-        <BoutonLien href="/contact#devis" variante="contour">
+        <BoutonLien href="/contact#devis" variante="contour-clair">
           Demander un devis
         </BoutonLien>
       </EnTetePage>
@@ -47,12 +47,12 @@ export default function PageVotreProjet() {
           <h2 id="titre-besoins" className="revele titre text-titre-l text-nuit">
             Que voulez-vous réaliser&nbsp;?
           </h2>
-          <ul className="revele-groupe mt-10 grid gap-4 sm:grid-cols-2 lg:mt-14 lg:grid-cols-3 lg:gap-5">
+          <ul className="revele-groupe mt-8 grid grid-cols-2 gap-3 lg:mt-14 lg:grid-cols-3 lg:gap-5">
             {besoins.map((b, i) => {
               const p = photos[b.photo];
               return (
                 <li key={b.slug}>
-                  <a href={`#${b.slug}`} className="group/besoin relative block aspect-[4/3] overflow-hidden rounded-panneau bg-nuit text-blanc">
+                  <a href={`#${b.slug}`} className="group/besoin relative block aspect-square overflow-hidden sm:aspect-[4/3] rounded-panneau bg-nuit text-blanc">
                     <Image
                       src={p.src}
                       alt=""
@@ -62,15 +62,15 @@ export default function PageVotreProjet() {
                       style={{ objectPosition: p.focale }}
                     />
                     <span aria-hidden className="absolute inset-0 voile-carte" />
-                    <span className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-5 lg:p-6">
+                    <span className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-2 p-3 sm:gap-4 sm:p-5 lg:p-6">
                       <span>
                         <span className="cote text-[0.9375rem] text-jaune chiffres-tabulaires">{String(i + 1).padStart(2, "0")}</span>
-                        <span className="mt-1 block titre text-[1.75rem] leading-[0.95]">{b.titre}</span>
-                        <span className="mt-2 block max-w-[22rem] text-[0.9375rem] leading-snug text-blanc/85">{b.question}</span>
+                        <span className="mt-1 block titre text-[1.375rem] leading-[0.95] sm:text-[1.75rem]">{b.titre}</span>
+                        <span className="mt-2 hidden max-w-[22rem] text-[0.9375rem] leading-snug text-blanc/85 sm:block">{b.question}</span>
                       </span>
                       <span
                         aria-hidden
-                        className="grid size-11 shrink-0 place-items-center rounded-full bg-nuit/55 transition-colors group-hover/besoin:bg-jaune group-hover/besoin:text-nuit"
+                        className="hidden size-11 shrink-0 place-items-center rounded-full bg-nuit/55 transition-colors sm:grid group-hover/besoin:bg-jaune group-hover/besoin:text-nuit"
                       >
                         <Icone nom="fleche" size={20} weight="bold" className="rotate-90" />
                       </span>
@@ -98,7 +98,7 @@ export default function PageVotreProjet() {
           >
             <div className="conteneur grid items-center gap-12 lg:grid-cols-12 lg:gap-8">
               <div className={`relative lg:col-span-6 ${inverse ? "lg:order-2 lg:col-start-7" : ""}`}>
-                <PhotoCadre photo={b.photo} ratio="aspect-[5/4]" sizes="(min-width: 1024px) 46vw, 100vw" voile="leger" equerres={i === 0} decalage={12} />
+                <PhotoCadre photo={b.photo} ratio="aspect-[16/9] sm:aspect-[5/4]" sizes="(min-width: 1024px) 46vw, 100vw" voile="leger" equerres={i === 0} decalage={12} />
                 <span
                   aria-hidden
                   className={`absolute -top-8 titre text-[clamp(5rem,3rem+6vw,8.5rem)] leading-none text-jaune [-webkit-text-stroke:2px_var(--color-nuit)] ${inverse ? "-left-2 lg:-left-8" : "-right-2 lg:-right-8"}`}

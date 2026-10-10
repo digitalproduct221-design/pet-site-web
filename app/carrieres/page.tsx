@@ -33,7 +33,7 @@ export default function PageCarrieres() {
         photo="trancheeLotissement"
       >
         <BoutonLien href="#candidature">Candidature spontanée</BoutonLien>
-        <BoutonLien href="#metiers" variante="contour">
+        <BoutonLien href="#metiers" variante="contour-clair">
           Nos métiers
         </BoutonLien>
       </EnTetePage>
@@ -55,7 +55,7 @@ export default function PageCarrieres() {
           <ul className="revele-groupe grid content-center gap-12 lg:col-span-6 lg:col-start-7 lg:gap-16">
             {atouts.map((a) => (
               <li key={a.titre} className="grid grid-cols-[auto_1fr] gap-x-6">
-                <Icone nom={a.icone} size={40} weight="light" className="mt-1 text-royal" />
+                <Icone nom={a.icone} size={40} weight="regular" className="mt-1 text-royal" />
                 <div>
                   <h3 className="titre text-titre-m text-royal">{a.titre}</h3>
                   <p className="mt-3 max-w-[32rem] text-[1.0625rem] leading-relaxed text-encre-douce">{a.texte}</p>
@@ -92,7 +92,7 @@ export default function PageCarrieres() {
                       <span className="titre text-[2.25rem] leading-none text-contour chiffres-tabulaires transition-colors group-hover/metier:text-royal">
                         {String(i + 1).padStart(2, "0")}
                       </span>
-                      {domaine ? <Icone nom={domaine.icone} size={28} weight="light" className="text-royal" /> : null}
+                      {domaine ? <Icone nom={domaine.icone} size={28} weight="regular" className="text-royal" /> : null}
                     </span>
                     <span className="mt-6 titre text-[1.625rem] leading-[1] text-nuit">{m.titre}</span>
                     <span className="mt-3 flex-1 text-[1rem] leading-relaxed text-encre-douce">{m.texte}</span>

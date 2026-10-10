@@ -11,7 +11,7 @@ export function AppelFinal() {
       <Motif type="courbes" className="text-nuit" opacite={0.07} />
       <div className="conteneur relative grid gap-12 pb-28 pt-20 lg:grid-cols-12 lg:items-end lg:gap-8 lg:pb-40 lg:pt-28">
         <div className="relative lg:col-span-7">
-          <Pelleteuse className="mb-6 h-auto w-44 text-nuit sm:w-56 lg:absolute lg:-top-6 lg:right-0 lg:mb-0 lg:w-64 xl:w-72" />
+          <Pelleteuse className="mb-6 hidden h-auto w-44 sm:block text-nuit sm:w-56 lg:absolute lg:-top-6 lg:right-0 lg:mb-0 lg:w-64 xl:w-72" />
           <h2 id="titre-appel" className="titre text-[clamp(3.25rem,1.6rem+7vw,6rem)] leading-[0.9] text-nuit">
             Un projet ?<br />
             Parlons-en.

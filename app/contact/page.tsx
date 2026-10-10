@@ -35,7 +35,7 @@ export default function PageContact() {
           href={whatsapp.lien}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex min-h-[var(--bouton-h)] items-center gap-3 rounded-chantier px-6 cote text-[1.0625rem] uppercase tracking-[0.04em] text-nuit shadow-[inset_0_0_0_2px_var(--color-nuit)] hover:bg-nuit hover:text-blanc"
+          className="inline-flex min-h-[var(--bouton-h)] items-center gap-3 rounded-chantier px-6 cote text-[1.0625rem] uppercase tracking-[0.04em] text-blanc contour-clair hover:bg-blanc hover:text-nuit"
         >
           <Icone nom="whatsapp" size={20} weight="bold" />
           WhatsApp<span className="sr-only"> (nouvel onglet)</span>

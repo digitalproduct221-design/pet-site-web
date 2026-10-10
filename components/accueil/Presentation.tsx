@@ -15,20 +15,20 @@ export function Presentation() {
       <div className="conteneur grid items-center gap-16 lg:grid-cols-12 lg:gap-8">
         <div className="relative lg:col-span-6">
           {/* Feuille de plan décalée derrière la photo */}
-          <div aria-hidden className="absolute -inset-y-6 -left-4 right-10 isolate rounded-panneau bg-sable sm:-left-8 lg:-left-12">
+          <div aria-hidden className="absolute -inset-y-6 -left-4 right-10 isolate max-md:hidden rounded-panneau bg-sable sm:-left-8 lg:-left-12">
             <Motif type="plan" className="text-royal" opacite={0.22} />
           </div>
           <div className="relative">
             <PhotoCadre
               photo="trancheeLotissement"
-              ratio="aspect-[5/4]"
+              ratio="aspect-[16/10] md:aspect-[5/4]"
               sizes="(min-width: 1024px) 46vw, 100vw"
               voile="leger"
               equerres
               decalage={14}
             />
             {/* .verre-liquide impose position: relative : l'ancrage se fait sur un conteneur */}
-            <div className="absolute -bottom-10 right-3 max-w-[19rem] sm:right-6 lg:-right-10">
+            <div className="absolute -bottom-10 right-3 hidden max-w-[19rem] sm:right-6 md:block lg:-right-10">
               <div className="verre-liquide rounded-panneau p-5 text-blanc">
                 <Icone nom="securite" size={28} className="text-jaune" />
                 <p className="mt-3 cote text-[1.125rem] leading-snug">Personnel qualifié et équipements régulièrement mis à niveau.</p>

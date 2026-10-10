@@ -19,8 +19,8 @@ export function Footer() {
 
   return (
     <footer className="sur-sombre profondeur text-brume">
-      <div className="conteneur pb-10 pt-20 lg:pt-28">
-        <div className="grid gap-14 sm:grid-cols-2 lg:grid-cols-12 lg:gap-8">
+      <div className="conteneur pb-10 pt-14 sm:pb-10 sm:pt-20 lg:pt-28">
+        <div className="grid gap-10 sm:grid-cols-2 sm:gap-14 lg:grid-cols-12 lg:gap-8">
           {/* Identité */}
           <div className="sm:col-span-2 lg:col-span-4">
             <Image src={logoInverse} alt={`Logo ${SIGLE}, ${NOM}`} className="h-auto w-60" sizes="240px" />
@@ -59,7 +59,7 @@ export function Footer() {
           </div>
 
           {/* Liens */}
-          <nav aria-label="Liens du pied de page" className="grid grid-cols-2 gap-8 lg:col-span-2 lg:grid-cols-1">
+          <nav aria-label="Liens du pied de page" className="grid grid-cols-2 gap-8 max-md:hidden lg:col-span-2 lg:grid-cols-1">
             <div>
               <p className={etiquette}>Le site</p>
               <ul className="mt-3 grid">

@@ -1409,3 +1409,46 @@ main > :nth-child(n + 3):not(.ruban-zone) {
   from { scale: 1 0; }
   to { scale: 1 1; }
 }
+
+/* ==========================================================================
+   Mobile d'abord (90 % de la fréquentation) : le site se lit et se manipule
+   comme une application. Texte plus gros, plus gras et plus foncé ; sections
+   moins espacées ; cibles tactiles confortables. Ces règles ne sont pas dans
+   un @layer : elles l'emportent sur les utilitaires Tailwind.
+   ========================================================================== */
+:root {
+  --pet-encre-600: #353b4d; /* gris de texte courant : 9,6:1 sur blanc (était 7,6:1) */
+}
+@media (width < 48rem) {
+  body {
+    font-size: 1.0625rem;
+    font-weight: 500;
+    line-height: 1.55;
+  }
+  /* Rien de lu en dessous de 16 px : étiquettes, légendes, mentions */
+  .text-cote,
+  [class*="text-[0.75rem]"],
+  [class*="text-[0.8"],
+  [class*="text-[0.9"] {
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+  /* Étiquettes et libellés : plus de corps, plus de présence */
+  .cote {
+    font-weight: 700;
+    letter-spacing: 0.015em;
+  }
+  /* Sections plus compactes, avec juste la place du profil de terrain */
+  main > section:not([aria-roledescription]) {
+    padding-top: 2.75rem;
+    padding-bottom: 2.75rem;
+  }
+  main > section:not([aria-roledescription]):has(> .profil),
+  main > section:not([aria-roledescription]):has(> * > .profil) {
+    padding-bottom: calc(clamp(2.25rem, 5vw, 5.5rem) + 1.5rem);
+  }
+  /* Paragraphes d'introduction : lisibles d'un coup d'œil */
+  p {
+    text-wrap: pretty;
+  }
+}
