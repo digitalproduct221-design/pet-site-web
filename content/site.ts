@@ -90,42 +90,47 @@ const photosParDomaine: Record<string, PhotoId[]> = {
 const textesDomaines: Record<string, Pick<Domaine, "icone" | "accroche" | "presentation">> = {
   batiment: {
     icone: "batiment",
-    accroche: "Logements, écoles, ateliers et usines, du gros œuvre aux finitions.",
+    accroche: "Du gros œuvre aux finitions : logements, écoles, locaux industriels et aménagements.",
     presentation: [
-      "Nous construisons des bâtiments à usage d'habitation et industriel : logements, écoles et universités, ateliers et usines.",
-      "Nos équipes prennent aussi en charge les murs de clôture et les corps d'état de finition, dont l'électricité et la peinture, pour livrer un ouvrage complet.",
+      "Que ce soit pour construire une résidence, un établissement scolaire ou un bâtiment industriel, nous prenons en charge votre projet de A à Z. Nous bâtissons des structures solides, bien ventilées et adaptées aux exigences de notre climat.",
+      "Nos équipes réalisent les fondations, l'élévation des murs, les dalles en béton et les clôtures de protection. Nous assurons également les travaux de second œuvre indispensables — électricité, plomberie et peinture — pour vous livrer un bâtiment propre, sécurisé et prêt à l'emploi.",
+      "Sur chaque chantier, nous veillons à la qualité des matériaux, à la propreté du site et au respect strict du calendrier convenu, avec un interlocuteur unique pour vous accompagner.",
     ],
   },
   "travaux-publics-vrd": {
     icone: "route",
-    accroche: "Routes, pistes, voiries, terrassements et ouvrages d'art.",
+    accroche: "Terrassement, voiries, pistes et viabilisation de terrains pour bâtir sur des bases saines.",
     presentation: [
-      "Nous réalisons les routes et pistes, les ponts et ouvrages d'art, les voiries et réseaux divers (VRD) et les terrassements.",
-      "Pelles, chargeuses et niveleuses : nos engins préparent les plateformes et mettent en forme les chaussées avant revêtement.",
+      "Avant de construire, il faut préparer le sol. Nous intervenons pour déblayer, niveler et terrasser vos plateformes, qu'il s'agisse d'un lotissement d'habitation, d'une zone d'activités ou d'un site industriel.",
+      "Nos conducteurs d'engins manient pelles mécaniques, chargeuses et niveleuses pour aménager les voies d'accès, ouvrir des pistes en latérite ou bitumées, et creuser les tranchées nécessaires au passage des réseaux.",
+      "Nous intégrons les caniveaux d'évacuation des eaux de pluie dès la phase de voirie, pour garantir la longévité des voies même pendant les fortes pluies de l'hivernage.",
     ],
   },
   hydraulique: {
     icone: "eau",
-    accroche: "Conduites de tous diamètres, dont la fonte, pompage et irrigation.",
+    accroche: "Distribution et adduction d'eau potable : conduites tous diamètres, pompage et stockage.",
     presentation: [
-      "Nous posons des conduites de différents diamètres, y compris en fonte, et construisons les ouvrages qui les accompagnent : stations de pompage, bâches à eau et dalots.",
-      "Nous intervenons aussi sur les réseaux d'irrigation, de la pose des canalisations à la mise en service.",
+      "L'accès à l'eau est au cœur de notre métier. Nous posons les canalisations qui alimentent en eau potable les quartiers, les communes, les usines et les exploitations agricoles.",
+      "Nos équipes posent des conduites en fonte de gros diamètre et en PEHD, guidées au GPS par nos topographes pour garantir des pentes et des raccordements parfaits. Nous construisons également les réservoirs, bâches à eau et stations de pompage.",
+      "Chaque réseau fait l'objet d'essais de pression rigoureux avant sa mise en service, pour vous assurer un approvisionnement continu, sans fuite ni baisse de débit.",
     ],
   },
   assainissement: {
     icone: "assainissement",
-    accroche: "Réseaux d'eaux usées, regards, branchements et réhabilitation.",
+    accroche: "Collecte des eaux usées, drainage des pluies, regards et réhabilitation de réseaux.",
     presentation: [
-      "Nous construisons des stations de traitement des eaux usées et installons ou réhabilitons les réseaux qui y mènent.",
-      "Regards de visite, boîtes de branchement et réhabilitation de dalots : nous traitons chaque ouvrage du réseau, en milieu urbain comme en périphérie.",
+      "Un bon assainissement protège la santé des habitants, préserve les sols et met fin aux problèmes d'inondation. Nous concevons et rénovons les réseaux d'évacuation en milieu urbain comme en zone rurale.",
+      "Nous installons les collecteurs d'eaux usées, raccordons les boîtes de branchement des habitations et coulons sur place les regards de visite qui permettent un entretien facile au fil des années.",
+      "Pour la gestion des eaux pluviales, nous construisons et réhabilitons des dalots en béton armé capables d'absorber les gros volumes d'eau et de sécuriser les voies de circulation.",
     ],
   },
   "genie-civil": {
     icone: "genie-civil",
-    accroche: "Ouvrages en béton armé, travaux souterrains et ouvrages d'art.",
+    accroche: "Ouvrages en béton armé, structures hydrauliques et fondations spéciales durables.",
     presentation: [
-      "Nous réalisons les ouvrages de génie civil qui portent les réseaux et les infrastructures : ouvrages hydrauliques en béton armé, travaux souterrains et ouvrages d'art.",
-      "Du ferraillage au coulage, nos équipes travaillent au plus près des plans pour des ouvrages durables.",
+      "Le génie civil regroupe les ouvrages techniques qui demandent une solidité à toute épreuve : radiers de fondation, ponts, dalots de grand gabarit, bassins et ouvrages souterrains.",
+      "Nos ferrailleurs et coffreurs travaillent dans le respect scrupuleux des plans d'ingénierie et des normes de dosage du béton, pour que chaque structure résiste durablement aux charges et au temps.",
+      "De la préparation du coffrage jusqu'au coulage et au séchage contrôlé, chaque étape est vérifiée pour garantir une sécurité totale aux usagers et aux riverains.",
     ],
   },
 };
