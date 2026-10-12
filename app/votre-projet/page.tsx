@@ -111,7 +111,7 @@ export default function PageVotreProjet() {
           >
             <div className="conteneur grid items-center gap-12 lg:grid-cols-12 lg:gap-8">
               <div className={`relative lg:col-span-6 ${inverse ? "lg:order-2 lg:col-start-7" : ""}`}>
-                <PhotoCadre photo={b.photo} ratio="aspect-[16/9] sm:aspect-[5/4]" sizes="(min-width: 1024px) 46vw, 100vw" voile="leger" equerres={i === 0} decalage={12} />
+                <PhotoCadre photo={b.photoDetail ?? b.photo} ratio="aspect-[16/9] sm:aspect-[5/4]" sizes="(min-width: 1024px) 46vw, 100vw" voile="leger" equerres={i === 0} decalage={12} />
                 <span
                   aria-hidden
                   className={`absolute -top-8 titre text-[clamp(5rem,3rem+6vw,8.5rem)] leading-none text-jaune [-webkit-text-stroke:2px_var(--color-nuit)] ${inverse ? "-left-2 lg:-left-8" : "-right-2 lg:-right-8"}`}

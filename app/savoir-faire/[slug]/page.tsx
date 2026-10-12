@@ -64,6 +64,25 @@ export default async function PageDomaine({ params }: PageProps<"/savoir-faire/[
   const autres = domaines.filter((x) => x.slug !== d.slug);
   const photoHero = heroParDomaine[d.slug] ?? d.photos[0];
 
+  // Élimine tout doublon entre l'en-tête, la galerie et les cartes de réalisations liées ci-dessous
+  const heroSrc = photos[photoHero]?.src;
+  const heroSrcStr = typeof heroSrc === "string" ? heroSrc : heroSrc?.src;
+  const cardCovers = new Set(
+    lies
+      .map((p) => {
+        const src = p.photos[0]?.src;
+        return typeof src === "string" ? src : src?.src;
+      })
+      .filter(Boolean),
+  );
+
+  const photosGalerie = d.photos
+    .map(imageLocale)
+    .filter((img) => {
+      const s = typeof img.src === "string" ? img.src : img.src?.src;
+      return s !== heroSrcStr && !cardCovers.has(s);
+    });
+
   const schemaDonnees = [
     {
       "@context": "https://schema.org",
@@ -137,7 +156,7 @@ export default async function PageDomaine({ params }: PageProps<"/savoir-faire/[
               Photos réelles de nos chantiers au Sénégal, complétées par nos savoir-faire techniques.
             </p>
           </div>
-          <Galerie photos={d.photos.map(imageLocale)} titre={`Chantiers et savoir-faire : ${d.titre}`} />
+          <Galerie photos={photosGalerie.length > 0 ? photosGalerie : d.photos.map(imageLocale)} titre={`Chantiers et savoir-faire : ${d.titre}`} />
         </div>
       </section>
 

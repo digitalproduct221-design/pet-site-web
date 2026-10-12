@@ -10,6 +10,8 @@ export type Besoin = {
   titre: string;
   question: string;
   photo: PhotoId;
+  /** Photo complémentaire pour la section détaillée afin d'éviter tout doublon visuel sur la page. */
+  photoDetail?: PhotoId;
   /** Domaine principal (pour préremplir le devis et renvoyer vers le savoir-faire). */
   domaine: string;
   prestations: string[];
@@ -22,6 +24,7 @@ export const besoins: Besoin[] = [
     titre: "Construire un bâtiment",
     question: "Un logement, une école, un atelier ou une usine à construire ?",
     photo: "immeubleDakar",
+    photoDetail: "batimentCommercialDakar",
     domaine: "batiment",
     prestations: ["Logements", "Écoles et universités", "Ateliers et usines", "Murs de clôture", "Électricité et peinture"],
     preparer: ["Les plans ou un croquis du bâtiment", "La localisation et la surface du terrain", "L'usage prévu et le calendrier souhaité"],
@@ -31,6 +34,7 @@ export const besoins: Besoin[] = [
     titre: "Viabiliser un terrain",
     question: "Un terrain ou un lotissement à terrasser, desservir et équiper ?",
     photo: "voirieAsphalte",
+    photoDetail: "niveleuseTerrassementPiste",
     domaine: "travaux-publics-vrd",
     prestations: ["Terrassement", "Voiries et réseaux divers", "Routes et pistes"],
     preparer: ["Le plan de masse ou de lotissement", "Un relevé topographique, s'il existe", "Les réseaux à prévoir (eau, assainissement, voirie)"],
@@ -40,6 +44,7 @@ export const besoins: Besoin[] = [
     titre: "Amener l'eau",
     question: "Une conduite à poser, une station de pompage ou une bâche à eau ?",
     photo: "epreuveHydraulique",
+    photoDetail: "hydrauliqueCanalisationsPose",
     domaine: "hydraulique",
     prestations: [
       "Pose de conduites de différents diamètres (dont fonte)",
@@ -55,6 +60,7 @@ export const besoins: Besoin[] = [
     titre: "Assainir",
     question: "Des eaux usées à collecter, traiter ou raccorder ?",
     photo: "stationPompageSolaire",
+    photoDetail: "dalotRegard",
     domaine: "assainissement",
     prestations: [
       "Stations de traitement des eaux usées",
@@ -69,7 +75,8 @@ export const besoins: Besoin[] = [
     slug: "ouvrage-beton-arme",
     titre: "Bâtir un ouvrage en béton armé",
     question: "Un ouvrage hydraulique, un ouvrage d'art ou des travaux souterrains ?",
-    photo: "controleQualiteBeton",
+    photo: "genieCivilReservoirBeton",
+    photoDetail: "ferraillageOuvrage",
     domaine: "genie-civil",
     prestations: ["Ouvrages hydrauliques en béton armé", "Travaux souterrains", "Ouvrages d'art"],
     preparer: ["Les plans d'exécution ou l'étude de structure", "Les conditions d'accès au site", "Le calendrier et les contraintes d'exploitation"],
@@ -79,6 +86,7 @@ export const besoins: Besoin[] = [
     titre: "Réhabiliter ou entretenir",
     question: "Un réseau, un bâtiment ou une infrastructure à remettre en état ?",
     photo: "grosOeuvreDakar",
+    photoDetail: "conduiteOuvrage",
     domaine: "assainissement",
     prestations: [
       "Réhabilitation de réseaux d'eaux usées",

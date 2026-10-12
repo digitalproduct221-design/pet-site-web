@@ -168,11 +168,11 @@ const photosParDomaine: Record<string, PhotoId[]> = {
     "pilotageChantier",
   ],
   "electricite-peinture": [
-    "immeubleDakar",
     "villaContemporaine",
-    "ecoleSenegal",
-    "batimentCommercialDakar",
     "cloturePortailAcier",
+    "batimentCommercialDakar",
+    "ecoleSenegal",
+    "immeubleDakar",
   ],
 };
 

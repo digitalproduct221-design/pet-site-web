@@ -34,7 +34,7 @@ export default function PageSavoirFaire() {
         titre="Savoir-faire"
         intro="Nos domaines d'expertise, tous corps d'état, pour des clients publics, industriels et privés. Du gros œuvre aux réseaux et finitions, nous menons vos travaux de l'étude à la livraison au Sénégal."
         ariane={[{ titre: "Savoir-faire" }]}
-        photo="immeubleDakar"
+        photo="batimentCommercialDakar"
       />
 
       <section aria-label="Nos domaines d'activité" className="bg-blanc py-20 lg:py-28">

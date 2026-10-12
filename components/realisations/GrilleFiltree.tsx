@@ -119,24 +119,42 @@ export function Grille({ filtre, projets }: { filtre: string; projets: Projet[] 
             </ul>
           </div>
 
-          {/* Section 2 : Galerie complète de chantiers du domaine */}
-          {domaineActif.photos.length > 0 && (
-            <div className="rounded-panneau bg-blanc/60 p-6 sm:p-8 lg:p-10">
-              <div className="mb-8 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
-                <div>
-                  <span className="cote text-[0.875rem] uppercase tracking-[0.08em] text-royal">Nos équipes au travail</span>
-                  <h3 className="titre text-titre-m text-nuit">Galerie complète : {domaineActif.titre}</h3>
-                  <p className="mt-2 max-w-[42rem] text-[1.0625rem] text-encre-douce">
-                    Retrouvez l&apos;ensemble de nos prises de vue de terrain et savoir-faire techniques pour ce domaine ({domaineActif.photos.length} photos).
-                  </p>
+          {/* Section 2 : Galerie de terrain du domaine (sans doublon avec les cartes ci-dessus) */}
+          {(() => {
+            const cardCovers = new Set(
+              visibles
+                .map((p) => {
+                  const src = p.photos[0]?.src;
+                  return typeof src === "string" ? src : src?.src;
+                })
+                .filter(Boolean),
+            );
+            const photosSansDoublon = domaineActif.photos
+              .map(imageLocale)
+              .filter((img) => {
+                const s = typeof img.src === "string" ? img.src : img.src?.src;
+                return !cardCovers.has(s);
+              });
+            const photosAffichees = photosSansDoublon.length > 0 ? photosSansDoublon : domaineActif.photos.map(imageLocale);
+
+            return domaineActif.photos.length > 0 && (
+              <div className="rounded-panneau bg-blanc/60 p-6 sm:p-8 lg:p-10">
+                <div className="mb-8 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+                  <div>
+                    <span className="cote text-[0.875rem] uppercase tracking-[0.08em] text-royal">Nos équipes au travail</span>
+                    <h3 className="titre text-titre-m text-nuit">Galerie de terrain : {domaineActif.titre}</h3>
+                    <p className="mt-2 max-w-[42rem] text-[1.0625rem] text-encre-douce">
+                      Retrouvez nos prises de vue complémentaires de terrain et savoir-faire techniques pour ce domaine ({photosAffichees.length} photos).
+                    </p>
+                  </div>
                 </div>
+                <Galerie
+                  photos={photosAffichees}
+                  titre={`Chantiers PET : ${domaineActif.titre}`}
+                />
               </div>
-              <Galerie
-                photos={domaineActif.photos.map(imageLocale)}
-                titre={`Chantiers PET : ${domaineActif.titre}`}
-              />
-            </div>
-          )}
+            );
+          })()}
         </div>
       ) : (
         /* CAS 2 : VUE D'ENSEMBLE (« TOUS LES CHANTIERS ») ORGANISÉE PAR DOMAINE */

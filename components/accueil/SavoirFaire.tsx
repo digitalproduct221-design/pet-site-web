@@ -19,7 +19,7 @@ const expertises: ExpertiseItem[] = [
     titre: "Bâtiment",
     slug: "batiment",
     icone: "batiment",
-    photo: "immeubleDakar",
+    photo: "batimentCommercialDakar",
     accroche: "Construction de bâtiments industriels, tertiaires et commerciaux de la conception à la réalisation.",
     points: [
       "Bâtiments tertiaires & commerciaux",
@@ -43,7 +43,7 @@ const expertises: ExpertiseItem[] = [
     titre: "Génie civil",
     slug: "genie-civil",
     icone: "genie-civil",
-    photo: "genieCivilDalotPrefa",
+    photo: "ferraillageOuvrage",
     accroche: "Génie civil de l'eau, ouvrages d'art en béton armé, dalots et structures hydrauliques durables.",
     points: [
       "Ouvrages en béton armé & radiers",

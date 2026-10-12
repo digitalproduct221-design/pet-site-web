@@ -3,6 +3,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { lireRealisation, lireRealisations } from "@/lib/contenu";
 import { domaineParSlug, SITE_URL } from "@/content/site";
+import type { PhotoId } from "@/content/photos";
+import { photos } from "@/content/photos";
 import { EnTetePage } from "@/components/ui/EnTetePage";
 import { CarteProjet } from "@/components/ui/CarteProjet";
 import { Icone } from "@/components/ui/Icone";
@@ -60,6 +62,23 @@ export default async function PageProjet({ params }: PageProps<"/realisations/[s
     ],
   };
 
+  const heroParDomaine: Record<string, PhotoId> = {
+    batiment: "batimentCommercialDakar",
+    "travaux-publics-vrd": "vrdAsphalteBoulevard",
+    hydraulique: "hydrauliqueCanalisationsPose",
+    assainissement: "genieCivilDalotPrefa",
+    "genie-civil": "genieCivilReservoirBeton",
+  };
+  const photoHero = heroParDomaine[projet.domaine] ?? "vrdAsphalteBoulevard";
+
+  // Élimine tout doublon entre l'en-tête immersif et la galerie sous-jacente
+  const heroSrc = photos[photoHero]?.src;
+  const heroSrcStr = typeof heroSrc === "string" ? heroSrc : heroSrc?.src;
+  const photosGalerie = projet.photos.filter((p) => {
+    const pSrcStr = typeof p.src === "string" ? p.src : p.src.src;
+    return pSrcStr !== heroSrcStr;
+  });
+
   return (
     <>
       <script
@@ -70,21 +89,21 @@ export default async function PageProjet({ params }: PageProps<"/realisations/[s
         titre={projet.titre}
         intro={projet.resume}
         ariane={[{ titre: "Réalisations", href: "/realisations" }, { titre: projet.titre }]}
-        photo={projet.photos[0]}
+        photo={photoHero}
       >
         <a
           href="#galerie"
           className="inline-flex min-h-11 items-center gap-2 rounded-chantier bg-blanc px-5 cote text-[1.0625rem] text-nuit transition-colors hover:bg-jaune"
         >
           <Icone nom="photos" size={20} />
-          Voir les {projet.photos.length} photos
+          Voir les {photosGalerie.length} photos
         </a>
       </EnTetePage>
 
       <section id="galerie" aria-label="Galerie du chantier" className="relative isolate overflow-hidden bg-sable py-14 lg:py-20">
         <Motif type="courbes" className="text-royal" opacite={0.08} />
         <div className="conteneur">
-          <Galerie photos={projet.photos} titre={projet.titre} />
+          <Galerie photos={photosGalerie.length > 0 ? photosGalerie : projet.photos} titre={projet.titre} />
         </div>
       </section>
 
