@@ -9,8 +9,8 @@ import { besoins } from "./besoins";
 
 export { entreprise };
 
-/** Slogan provisoire, à valider par le client. */
-export const SLOGAN = "Votre partenaire pour bâtir et raccorder le Sénégal";
+/** Slogan officiel PET. */
+export const SLOGAN = "Votre allié de confiance pour des solutions sûres et respectueuses des normes environnementales";
 
 /**
  * Domaine public du site : NEXT_PUBLIC_SITE_URL s'il est défini (domaine définitif),
@@ -64,7 +64,7 @@ export const reseaux: { nom: "LinkedIn" | "Facebook" | "Instagram"; url: string 
 
 /* ---------- Domaines d'activité ---------- */
 
-export type IconeDomaine = "batiment" | "route" | "eau" | "assainissement" | "genie-civil";
+export type IconeDomaine = "batiment" | "route" | "eau" | "assainissement" | "genie-civil" | "electricite";
 
 export type Domaine = {
   slug: string;
@@ -85,6 +85,7 @@ const photosParDomaine: Record<string, PhotoId[]> = {
   hydraulique: ["epreuveHydraulique", "stationPompageSolaire", "irrigationNiayes", "conduiteOuvrage", "poseConduiteTopographie"],
   assainissement: ["stationPompageSolaire", "dalotRegard", "trancheeLotissement", "conduiteOuvrage"],
   "genie-civil": ["controleQualiteBeton", "pilotageChantier", "grosOeuvreDakar", "ferraillageOuvrage", "dalotRegard"],
+  "electricite-peinture": ["immeubleDakar", "villaContemporaine", "ecoleSenegal"],
 };
 
 const textesDomaines: Record<string, Pick<Domaine, "icone" | "accroche" | "presentation">> = {
@@ -93,7 +94,7 @@ const textesDomaines: Record<string, Pick<Domaine, "icone" | "accroche" | "prese
     accroche: "Du gros œuvre aux finitions : logements, écoles, locaux industriels et aménagements.",
     presentation: [
       "Que ce soit pour construire une résidence, un établissement scolaire ou un bâtiment industriel, nous prenons en charge votre projet de A à Z. Nous bâtissons des structures solides, bien ventilées et adaptées aux exigences de notre climat.",
-      "Nos équipes réalisent les fondations, l'élévation des murs, les dalles en béton et les clôtures de protection. Nous assurons également les travaux de second œuvre indispensables — électricité, plomberie et peinture — pour vous livrer un bâtiment propre, sécurisé et prêt à l'emploi.",
+      "Nos équipes réalisent les fondations, l'élévation des murs, les dalles en béton et les clôtures de protection. Nous assurons également les travaux de second œuvre indispensables pour vous livrer un bâtiment propre, sécurisé et prêt à l'emploi.",
       "Sur chaque chantier, nous veillons à la qualité des matériaux, à la propreté du site et au respect strict du calendrier convenu, avec un interlocuteur unique pour vous accompagner.",
     ],
   },
@@ -133,6 +134,15 @@ const textesDomaines: Record<string, Pick<Domaine, "icone" | "accroche" | "prese
       "De la préparation du coffrage jusqu'au coulage et au séchage contrôlé, chaque étape est vérifiée pour garantir une sécurité totale aux usagers et aux riverains.",
     ],
   },
+  "electricite-peinture": {
+    icone: "electricite",
+    accroche: "Installations électriques sécurisées aux normes et finitions soignées pour sublimer et protéger vos bâtiments.",
+    presentation: [
+      "Une construction n'est achevée que lorsque ses réseaux techniques sont parfaitement sûrs et ses finitions irréprochables. PET prend en charge l'ensemble des travaux d'électricité générale et de mise aux normes pour bâtiments résidentiels, tertiaires et industriels.",
+      "Nos électriciens qualifiés réalisent la distribution électrique, les armoires de protection, l'éclairage économe en énergie et les dispositifs de sécurité. Chaque installation est vérifiée minutieusement pour garantir la protection des personnes et des équipements.",
+      "Nos équipes de peintres et applicateurs assurent le traitement des surfaces, l'application d'enduits et de peintures de haute résistance adaptées aux rigueurs du climat sénégalais, garantissant un rendu esthétique et pérenne.",
+    ],
+  },
 };
 
 export const domaines: Domaine[] = entreprise.domaines.map((d) => ({
@@ -140,8 +150,8 @@ export const domaines: Domaine[] = entreprise.domaines.map((d) => ({
   titre: d.titre,
   resume: d.resume,
   prestations: d.prestations,
-  photos: photosParDomaine[d.id].filter(photoAutorisee),
-  ...textesDomaines[d.id],
+  photos: (photosParDomaine[d.id] ?? []).filter(photoAutorisee),
+  ...(textesDomaines[d.id] ?? textesDomaines.batiment),
 }));
 
 export const domaineParSlug = (slug: string) => domaines.find((d) => d.slug === slug);
@@ -220,40 +230,38 @@ export const navigation: Rubrique[] = [
   {
     id: "entreprise",
     titre: "L'entreprise",
-    href: "/entreprise",
-    intro: "Une entreprise de BTP tous corps d'état, fondée à Dakar en 2016 et portée par une équipe de plus de 40 ans d'expérience cumulée.",
+    href: "/a-propos",
+    intro: "Une entreprise de BTP tous corps d'état, fondée en 2016 et portée par une équipe de plus de 40 ans d'expérience cumulée au Sénégal.",
     liens: [
+      { titre: "À propos de PET", description: "Histoire, mot de la direction et partenaires", href: "/a-propos", icone: "valeurs" },
+      { titre: "Mot du Directeur", description: "Vision et engagements environnementaux", href: "/a-propos#mot-directeur", icone: "valeurs" },
+      { titre: "Notre histoire", description: "De 2016 à aujourd'hui", href: "/a-propos#histoire", icone: "histoire" },
+      { titre: "Nos partenaires", description: "Bailleurs et maîtres d'ouvrage", href: "/a-propos#partenaires", icone: "qualite" },
       { titre: "Qui sommes-nous", description: "Notre métier et nos clients", href: "/entreprise#qui-sommes-nous", icone: "batiment" },
-      { titre: "Notre histoire", description: "De 2016 à aujourd'hui", href: "/entreprise#histoire", icone: "histoire" },
-      { titre: "Nos valeurs", description: "Sept principes de chantier", href: "/entreprise#valeurs", icone: "valeurs" },
-      { titre: "Qualité et sécurité", description: "Au centre de nos préoccupations", href: "/entreprise#qualite-securite", icone: "securite" },
-      { titre: "Équipe et moyens", description: "Personnel qualifié, engins mis à niveau", href: "/entreprise#equipe-moyens", icone: "equipe" },
+      { titre: "Équipe et moyens", description: "Topographie GNSS, engins mis à niveau", href: "/entreprise#equipe-moyens", icone: "equipe" },
       { titre: "Actualités", description: "La vie de nos chantiers", href: "/actualites", icone: "actualites" },
       { titre: "Carrières", description: "Nos métiers, candidature spontanée", href: "/carrieres", icone: "emploi" },
     ],
     carte: {
-      photo: "equipePet",
-      titre: "Une équipe d'experts mobilisée sur le terrain",
-      lien: { libelle: "Découvrir PET", href: "/entreprise" },
+      photo: "directeurChantier",
+      titre: "Partenaire de confiance sur les chantiers au Sénégal",
+      lien: { libelle: "Découvrir PET", href: "/a-propos" },
     },
   },
   {
     id: "savoir-faire",
     titre: "Savoir-faire",
     href: "/savoir-faire",
-    intro: "Cinq domaines d'expertise, du bâtiment aux réseaux d'eau, pour des clients publics, industriels et privés.",
-    liens: [
-      ...domaines.map((d) => ({ titre: d.titre, description: d.resume, href: `/savoir-faire/${d.slug}`, icone: d.icone })),
-      {
-        titre: "Électricité et peinture",
-        description: "Les finitions de nos bâtiments",
-        href: "/savoir-faire/batiment#electricite-peinture",
-        icone: "electricite",
-      },
-    ],
+    intro: "Six domaines d'expertise, du bâtiment aux réseaux d'eau et finitions, pour des clients publics, industriels et privés.",
+    liens: domaines.map((d) => ({
+      titre: d.titre,
+      description: d.resume,
+      href: `/savoir-faire/${d.slug}`,
+      icone: d.icone,
+    })),
     carte: {
       photo: "immeubleDakar",
-      titre: "Bâtiment, réseaux et génie civil à Dakar",
+      titre: "Bâtiment, réseaux et génie civil au Sénégal",
       lien: { libelle: "Voir le savoir-faire", href: "/savoir-faire" },
     },
   },
@@ -309,6 +317,7 @@ export const navigation: Rubrique[] = [
 ];
 
 export const liensRapides = [
+  { titre: "À propos", href: "/a-propos" },
   { titre: "L'entreprise", href: "/entreprise" },
   { titre: "Savoir-faire", href: "/savoir-faire" },
   { titre: "Réalisations", href: "/realisations" },

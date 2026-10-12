@@ -28,6 +28,9 @@ import stationPompageSolaire from "@/public/images/chantiers/station-pompage-sol
 import controleQualiteBeton from "@/public/images/chantiers/controle-qualite-beton.jpg";
 import partenariatChantier from "@/public/images/chantiers/partenariat-chantier.jpg";
 import pilotageChantier from "@/public/images/chantiers/pilotage-chantier.jpg";
+import directeurChantier from "@/public/images/chantiers/directeur-chantier-meckhe.jpg";
+import topographieGps from "@/public/images/chantiers/topographie-gps-chantier.jpg";
+import geometresImplantation from "@/public/images/chantiers/geometres-implantation-chantier.jpg";
 
 import type { StaticImageData } from "next/image";
 
@@ -177,6 +180,23 @@ export const photos = {
   immeubleGrue: {
     src: immeubleDakar,
     alt: "Immeuble R+3 en structure béton armé en cours de construction dans un quartier résidentiel de Dakar.",
+    focale: "50% 45%",
+  },
+
+  // Photos réelles de terrain PET – Chantier ISDND Meckhé et Direction
+  directeurChantier: {
+    src: directeurChantier,
+    alt: "Le Directeur de PET SUARL en tenue de chantier devant le panneau officiel du projet ISDND Meckhé financé par l'AFD.",
+    focale: "50% 28%",
+  },
+  topographieGps: {
+    src: topographieGps,
+    alt: "Technicien géomètre topographe de PET équipé d'un système de positionnement GNSS/GPS de précision sur le chantier.",
+    focale: "50% 35%",
+  },
+  geometresImplantation: {
+    src: geometresImplantation,
+    alt: "Équipe de géomètres PET en gilets de sécurité orange effectuant l'implantation technique et les cotes altimétriques sur le terrain.",
     focale: "50% 45%",
   },
 } satisfies Record<string, Photo>;

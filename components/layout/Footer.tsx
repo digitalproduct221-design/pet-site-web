@@ -23,7 +23,7 @@ export function Footer() {
         <div className="grid gap-10 sm:grid-cols-2 sm:gap-14 lg:grid-cols-12 lg:gap-8">
           {/* Identité */}
           <div className="sm:col-span-2 lg:col-span-4">
-            <Image src={logoInverse} alt={`Logo ${SIGLE}, ${NOM}`} className="h-auto w-60" sizes="240px" />
+            <Image src={logoInverse} alt={`Logo ${SIGLE}, ${NOM}`} className="h-auto w-64 sm:w-72 lg:w-80 object-contain" sizes="320px" />
             <p className="mt-8 max-w-[22rem] titre text-[1.625rem] leading-[1] text-blanc">{SLOGAN}.</p>
           </div>
 

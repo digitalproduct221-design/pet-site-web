@@ -27,6 +27,20 @@ type ProjetSource = {
 
 const sources: ProjetSource[] = [
   {
+    slug: "installation-stockage-dechets-isdnd-meckhe",
+    titre: "Installation de stockage de déchets (ISDND Meckhé)",
+    domaine: "assainissement",
+    resume: "Construction d'une installation de stockage de déchets non dangereux sous financement de l'AFD et contrôle technique SETEC.",
+    travaux: [
+      "Relevés altimétriques et implantation de précision par station GNSS",
+      "Terrassements généraux et profilage de casiers",
+      "Pistes d'accès et voies de circulation internes",
+      "Application stricte des normes environnementales et de sécurité",
+    ],
+    photos: ["directeurChantier", "topographieGps", "geometresImplantation"],
+    reference: true,
+  },
+  {
     slug: "rehabilitation-dalot-regards",
     titre: "Réhabilitation de dalot et construction de regards",
     domaine: "assainissement",

@@ -12,7 +12,10 @@ export function NavStatique({ chemin }: { chemin: string }) {
     <nav aria-label="Navigation principale" className="static hidden nav:block">
       <ul className="flex items-center">
         {navigation.map((rubrique) => {
-          const actif = chemin.startsWith(rubrique.href) || (rubrique.id === "entreprise" && chemin.startsWith("/carrieres"));
+          const actif =
+            chemin.startsWith(rubrique.href) ||
+            (rubrique.id === "entreprise" &&
+              (chemin.startsWith("/carrieres") || chemin.startsWith("/a-propos") || chemin.startsWith("/entreprise")));
           return (
             <li key={rubrique.id}>
               <Link

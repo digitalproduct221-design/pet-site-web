@@ -2,7 +2,7 @@
   "nom": "PARTENAIRE ENTREPRISE TRAVAUX SUARL",
   "sigle": "PET",
   "baseline_logo": ["Bâtiment", "Hydraulique", "Assainissement", "Génie civil", "VRD"],
-  "slogan_propose": "Votre partenaire pour bâtir et raccorder le Sénégal",
+  "slogan_propose": "Votre allié de confiance pour des solutions sûres et respectueuses des normes environnementales",
   "fondation": 2016,
   "experience_cumulee_equipe_ans": "40+",
   "contact": {
@@ -68,6 +68,20 @@
       "resume": "Ouvrages de génie civil et travaux souterrains.",
       "prestations": ["Ouvrages hydrauliques en béton armé", "Travaux souterrains", "Ouvrages d'art"],
       "photos": ["05-ferraillage-ouvrage-hydraulique.png"]
+    },
+    {
+      "id": "electricite-peinture",
+      "titre": "Électricité et peinture",
+      "resume": "Installations électriques conformes, éclairage et finitions soignées pour tous types d'ouvrages.",
+      "prestations": [
+        "Installations électriques basse tension (BT)",
+        "Câblage et tableaux de distribution",
+        "Éclairage intérieur et extérieur",
+        "Mise aux normes et sécurité électrique",
+        "Peintures intérieures et extérieures",
+        "Ravalement et revêtements de façade"
+      ],
+      "photos": ["09-immeuble-grue-coffrage.png", "07-cloture-grillage.png"]
     }
   ],
   "references_visibles_sur_photos": [

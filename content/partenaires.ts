@@ -1,8 +1,59 @@
 /**
- * Partenaires et clients de référence, avec leur accord. Vide pour l'instant :
- * la section « Ils nous font confiance » de l'accueil reste masquée tant que
- * cette liste est vide. Logo : fichier dans public/partenaires/ (SVG ou PNG transparent).
+ * Partenaires et clients de référence de PARTENAIRE ENTREPRISE TRAVAUX SUARL.
+ * Données réelles documentées sur nos panneaux de chantiers officiels (ISDND Meckhé).
  */
 export type Partenaire = { nom: string; logo: string; url?: string };
 
 export const partenaires: Partenaire[] = [];
+
+export type PartenaireInstitutionnel = {
+  nom: string;
+  sigle: string;
+  role: string;
+  projet: string;
+  description: string;
+  type: "bailleur" | "maitrise-ouvrage" | "maitrise-oeuvre" | "cooperation";
+};
+
+export const partenairesOfficiels: PartenaireInstitutionnel[] = [
+  {
+    nom: "Agence Française de Développement",
+    sigle: "AFD",
+    role: "Bailleur de fonds international",
+    projet: "Construction de l'ISDND (Installation de Stockage de Déchets Non Dangereux)",
+    description: "Financement d'infrastructures environnementales durables et conformes aux standards internationaux.",
+    type: "bailleur",
+  },
+  {
+    nom: "Commune de Meckhé",
+    sigle: "Meckhé",
+    role: "Maître d'Ouvrage",
+    projet: "Aménagement ISDND & infrastructures territoriales",
+    description: "Collectivité territoriale sénégalaise engagée dans la modernisation et la salubrité environnementale.",
+    type: "maitrise-ouvrage",
+  },
+  {
+    nom: "SETEC Infrastructures Afrique",
+    sigle: "SETEC",
+    role: "Maître d'Œuvre & Ingénierie",
+    projet: "Contrôle technique et supervision des travaux",
+    description: "Cabinet d'ingénierie internationale veillant au strict respect des règles de l'art et des tolérances d'exécution.",
+    type: "maitrise-oeuvre",
+  },
+  {
+    nom: "GESCOD",
+    sigle: "GESCOD",
+    role: "Appui à la Maîtrise d'Ouvrage",
+    projet: "Coopération décentralisée (Saint-Dié-des-Vosges)",
+    description: "Grand Est Solidarité et Coopération pour le Développement, appui technique territorial.",
+    type: "cooperation",
+  },
+  {
+    nom: "Ministère des Collectivités Territoriales",
+    sigle: "MCTDAT",
+    role: "Ministère de tutelle",
+    projet: "Programmes nationaux d'aménagement des territoires",
+    description: "Cadre gouvernemental pour le développement durable et l'équipement des collectivités du Sénégal.",
+    type: "maitrise-ouvrage",
+  },
+];

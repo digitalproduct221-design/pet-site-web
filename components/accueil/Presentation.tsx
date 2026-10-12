@@ -52,7 +52,7 @@ export function Presentation() {
             ))}
           </ul>
           <div className="mt-10">
-            <BoutonLien href="/entreprise" variante="contour">
+            <BoutonLien href="/a-propos" variante="contour">
               Découvrir PET
             </BoutonLien>
           </div>

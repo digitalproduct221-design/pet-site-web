@@ -11,18 +11,18 @@ import { AppelFinal } from "@/components/accueil/AppelFinal";
 export const metadata: Metadata = {
   title: "Savoir-faire",
   description:
-    "Bâtiment, travaux publics et VRD, hydraulique, assainissement et génie civil : les cinq domaines d'expertise de PET à Dakar.",
+    "Bâtiment, travaux publics et VRD, hydraulique, assainissement, génie civil, électricité et peinture : nos domaines d'expertise au Sénégal.",
   alternates: { canonical: "/savoir-faire" },
   openGraph: {
-    title: "Savoir-faire | PET SUARL Dakar",
-    description: "Bâtiment, travaux publics et VRD, hydraulique, assainissement et génie civil : les cinq domaines d'expertise de PET à Dakar.",
+    title: "Savoir-faire | PET SUARL Sénégal",
+    description: "Bâtiment, VRD, hydraulique, assainissement, génie civil, électricité et peinture : nos domaines d'expertise au Sénégal.",
     url: "/savoir-faire",
     images: [{ url: "/images/chantiers/immeuble-dakar.jpg", width: 1376, height: 768, alt: "Savoir-faire et domaines d'expertise PET SUARL" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Savoir-faire | PET SUARL Dakar",
-    description: "Bâtiment, VRD, hydraulique, assainissement et génie civil à Dakar.",
+    title: "Savoir-faire | PET SUARL Sénégal",
+    description: "Bâtiment, VRD, hydraulique, assainissement et génie civil au Sénégal.",
     images: ["/images/chantiers/immeuble-dakar.jpg"],
   },
 };
@@ -32,12 +32,12 @@ export default function PageSavoirFaire() {
     <>
       <EnTetePage suite="text-blanc"
         titre="Savoir-faire"
-        intro="Cinq domaines d'expertise, tous corps d'état, pour des clients publics, industriels et privés. Du gros œuvre aux réseaux, nous menons vos travaux de l'étude à la livraison."
+        intro="Nos domaines d'expertise, tous corps d'état, pour des clients publics, industriels et privés. Du gros œuvre aux réseaux et finitions, nous menons vos travaux de l'étude à la livraison au Sénégal."
         ariane={[{ titre: "Savoir-faire" }]}
         photo="immeubleDakar"
       />
 
-      <section aria-label="Nos cinq domaines" className="bg-blanc py-20 lg:py-28">
+      <section aria-label="Nos domaines d'activité" className="bg-blanc py-20 lg:py-28">
         <ul className="conteneur revele-groupe grid gap-6 md:grid-cols-2 lg:gap-8">
           {domaines.map((d, i) => {
             const p = photos[d.photos[0]];

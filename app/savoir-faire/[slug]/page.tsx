@@ -25,17 +25,17 @@ export async function generateMetadata({ params }: PageProps<"/savoir-faire/[slu
   const photoUrl = photoObj?.src ? (typeof photoObj.src === "string" ? photoObj.src : photoObj.src.src) : "/og-image.jpg";
   return {
     title: d.titre,
-    description: `${d.titre} à Dakar avec PET : ${listeFrancaise(d.prestations).toLowerCase()}.`,
+    description: `${d.titre} au Sénégal avec PET : ${listeFrancaise(d.prestations).toLowerCase()}.`,
     alternates: { canonical: `/savoir-faire/${d.slug}` },
     openGraph: {
-      title: `${d.titre} | PET SUARL Dakar`,
+      title: `${d.titre} | PET SUARL Sénégal`,
       description: d.resume,
       url: `/savoir-faire/${d.slug}`,
       images: [{ url: photoUrl, alt: d.titre }],
     },
     twitter: {
       card: "summary_large_image",
-      title: `${d.titre} | PET SUARL Dakar`,
+      title: `${d.titre} | PET SUARL Sénégal`,
       description: d.resume,
       images: [photoUrl],
     },

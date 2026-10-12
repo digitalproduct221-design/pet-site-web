@@ -9,7 +9,7 @@ type Chiffre = { valeur: number; depart: number; suffixe?: string; libelle: stri
 
 // Seuls chiffres autorisés : 2016, 40+, 5 domaines, 3 types de clients.
 const chiffres: Chiffre[] = [
-  { valeur: entreprise.fondation, depart: 1990, libelle: "Année de création, à Dakar", picto: "creation" },
+  { valeur: entreprise.fondation, depart: 1990, libelle: "Année de création, au Sénégal", picto: "creation" },
   { valeur: 40, depart: 0, suffixe: "+", libelle: "Années d'expérience cumulée dans l'équipe", picto: "experience" },
   { valeur: entreprise.domaines.length, depart: 0, libelle: "Domaines d'expertise, du bâtiment aux réseaux", picto: "domaines" },
   { valeur: entreprise.clients.length, depart: 0, libelle: "Types de clients : publics, industriels et privés", picto: "clients" },

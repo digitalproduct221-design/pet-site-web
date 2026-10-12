@@ -36,7 +36,10 @@ export function MegaMenu() {
       >
         <NavigationMenu.List className="flex items-center">
           {navigation.map((rubrique) => {
-            const actif = chemin.startsWith(rubrique.href) || (rubrique.id === "entreprise" && chemin.startsWith("/carrieres"));
+            const actif =
+              chemin.startsWith(rubrique.href) ||
+              (rubrique.id === "entreprise" &&
+                (chemin.startsWith("/carrieres") || chemin.startsWith("/a-propos") || chemin.startsWith("/entreprise")));
             return (
               <NavigationMenu.Item key={rubrique.id} value={rubrique.id}>
                 <NavigationMenu.Trigger

@@ -5,18 +5,25 @@ import { Diaporama, type Diapo } from "./Diaporama";
 
 const diapos: Diapo[] = [
   {
-    photo: "immeubleDakar",
-    onglet: "Bâtiment",
-    legende: "Élévation de structures en béton armé et gros œuvre de qualité à Dakar.",
-    href: "/savoir-faire/batiment",
-    origine: "50% 45%",
+    photo: "directeurChantier",
+    onglet: "Chantiers",
+    legende: "Conduite de chantiers d'envergure au Sénégal respectant les normes environnementales.",
+    href: "/a-propos",
+    origine: "50% 25%",
   },
   {
-    photo: "equipePet",
-    onglet: "Notre Équipe",
-    legende: "Ingénieurs, conducteurs de travaux et équipes de terrain mobilisés pour bâtir le Sénégal.",
+    photo: "topographieGps",
+    onglet: "Topographie",
+    legende: "Implantation et relevés GNSS de haute précision sur nos chantiers d'aménagement.",
     href: "/entreprise",
-    origine: "50% 35%",
+    origine: "50% 30%",
+  },
+  {
+    photo: "immeubleDakar",
+    onglet: "Bâtiment",
+    legende: "Élévation de structures en béton armé et gros œuvre de qualité au Sénégal.",
+    href: "/savoir-faire/batiment",
+    origine: "50% 45%",
   },
   {
     photo: "voirieAsphalte",
@@ -37,13 +44,6 @@ const diapos: Diapo[] = [
     onglet: "Génie civil",
     legende: "Ouvrages d'art en béton armé et contrôle qualité rigoureux des matériaux.",
     href: "/savoir-faire/genie-civil",
-    origine: "50% 50%",
-  },
-  {
-    photo: "stationPompageSolaire",
-    onglet: "Aménagements",
-    legende: "Stations de pompage solaire et réseaux d'irrigation agricole moderne.",
-    href: "/savoir-faire/prestations-generales",
     origine: "50% 50%",
   },
 ];
@@ -75,7 +75,7 @@ export function Hero() {
         {/* Titre en bas à gauche, panneau du diaporama en bas à droite */}
         <div className="conteneur mt-auto grid items-end gap-6 pb-24 sm:pb-16 lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-10 lg:pb-24">
           <div className="entree max-w-[46rem]">
-            <p className="cote text-[0.9375rem] uppercase tracking-[0.16em] text-blanc ombre-texte max-sm:hidden">Entreprise de BTP à Dakar, depuis 2016</p>
+            <p className="cote text-[0.9375rem] uppercase tracking-[0.16em] text-blanc ombre-texte max-sm:hidden">Entreprise de BTP au Sénégal, depuis 2016</p>
             <h1 className="titre sm:mt-4 text-[clamp(2.75rem,1.2rem+5.4vw,6rem)] leading-[0.92] text-blanc ombre-texte">
               <span className="block">Nous bâtissons.</span>
               <span className="block">Nous raccordons.</span>

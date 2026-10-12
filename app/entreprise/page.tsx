@@ -12,18 +12,18 @@ import { AppelFinal } from "@/components/accueil/AppelFinal";
 export const metadata: Metadata = {
   title: "L'entreprise",
   description:
-    "PARTENAIRE ENTREPRISE TRAVAUX SUARL : entreprise de BTP tous corps d'état fondée à Dakar en 2016, portée par une équipe de plus de 40 ans d'expérience cumulée.",
+    "PARTENAIRE ENTREPRISE TRAVAUX SUARL : entreprise de BTP au Sénégal fondée en 2016, portée par une équipe de plus de 40 ans d'expérience cumulée.",
   alternates: { canonical: "/entreprise" },
   openGraph: {
-    title: "L'entreprise | PET SUARL Dakar",
-    description: "Entreprise de BTP tous corps d'état fondée à Dakar en 2016, portée par une équipe de plus de 40 ans d'expérience cumulée.",
+    title: "L'entreprise | PET SUARL Sénégal",
+    description: "Entreprise de BTP tous corps d'état fondée en 2016, portée par une équipe de plus de 40 ans d'expérience cumulée au Sénégal.",
     url: "/entreprise",
     images: [{ url: "/images/chantiers/pilotage-chantier.jpg", width: 1376, height: 768, alt: "L'entreprise PET SUARL" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "L'entreprise | PET SUARL Dakar",
-    description: "Entreprise de BTP tous corps d'état fondée à Dakar en 2016.",
+    title: "L'entreprise | PET SUARL Sénégal",
+    description: "Entreprise de BTP tous corps d'état au Sénégal depuis 2016.",
     images: ["/images/chantiers/pilotage-chantier.jpg"],
   },
 };
@@ -57,7 +57,7 @@ export default function PageEntreprise() {
     <>
       <EnTetePage suite="text-blanc"
         titre="L'entreprise"
-        intro={`Fondée à Dakar en ${entreprise.fondation}, PET réalise des bâtiments, des réseaux d'eau et des infrastructures pour des clients publics, industriels et privés.`}
+        intro={`Fondée en ${entreprise.fondation}, PET réalise des bâtiments, des réseaux d'eau et des infrastructures pour des clients publics, industriels et privés au Sénégal.`}
         ariane={[{ titre: "L'entreprise" }]}
         photo="pilotageChantier"
       />
