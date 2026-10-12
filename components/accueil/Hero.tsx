@@ -5,11 +5,11 @@ import { Diaporama, type Diapo } from "./Diaporama";
 
 const diapos: Diapo[] = [
   {
-    photo: "topographieGps",
-    onglet: "Topographie",
-    legende: "Implantation et relevés GNSS de haute précision sur nos chantiers d'aménagement au Sénégal.",
-    href: "/a-propos",
-    origine: "50% 30%",
+    photo: "vrdAsphalteBoulevard",
+    onglet: "Voirie et Réseaux Divers",
+    legende: "Aménagement d'artères urbaines, voiries bitumées et réseaux divers (VRD) aux normes internationales.",
+    href: "/savoir-faire/travaux-publics-vrd",
+    origine: "50% 50%",
   },
   {
     photo: "immeubleDakar",
@@ -19,32 +19,32 @@ const diapos: Diapo[] = [
     origine: "50% 45%",
   },
   {
-    photo: "voirieAsphalte",
-    onglet: "Voirie et Réseaux Divers",
-    legende: "Aménagement de voiries urbaines, pistes et réseaux divers (VRD) avec bordures et assainissement intégrés.",
-    href: "/savoir-faire/travaux-publics-vrd",
-    origine: "50% 50%",
-  },
-  {
-    photo: "epreuveHydraulique",
-    onglet: "Hydraulique et Assainissement",
-    legende: "Gestion et aménagement des infrastructures hydrauliques, réseaux d'eau potable et canalisations.",
+    photo: "hydrauliqueCanalisationsPose",
+    onglet: "Hydraulique",
+    legende: "Pose de canalisations maîtresses et gestion complète des infrastructures d'adduction d'eau potable.",
     href: "/savoir-faire/hydraulique",
     origine: "50% 50%",
   },
   {
-    photo: "dalotRegard",
+    photo: "genieCivilReservoirBeton",
     onglet: "Génie civil",
-    legende: "Ouvrages en béton armé, réservoirs d'eau potable, dalots et stations d'épuration durables.",
+    legende: "Construction de grands réservoirs en béton armé, bassins de stockage et stations d'épuration durables.",
     href: "/savoir-faire/genie-civil",
+    origine: "50% 45%",
+  },
+  {
+    photo: "genieCivilDalotPrefa",
+    onglet: "Assainissement & Ouvrages",
+    legende: "Pose et assemblage de dalots préfabriqués de grand gabarit pour réseaux d'évacuation et ouvrages d'art.",
+    href: "/savoir-faire/assainissement",
     origine: "50% 50%",
   },
   {
-    photo: "directeurChantier",
-    onglet: "Construction décharge",
-    legende: "Réalisation du casier et des infrastructures de la décharge contrôlée ISDND Meckhé (Projet AFD / SETEC).",
-    href: "/realisations/installation-stockage-dechets-isdnd-meckhe",
-    origine: "50% 25%",
+    photo: "niveleuseTerrassementPiste",
+    onglet: "Terrassement & Engins",
+    legende: "Régalage, compactage dynamique et terrassement de plateformes lourdes pour voiries et lotissements.",
+    href: "/savoir-faire/travaux-publics-vrd",
+    origine: "50% 50%",
   },
 ];
 

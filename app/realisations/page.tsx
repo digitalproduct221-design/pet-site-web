@@ -31,7 +31,7 @@ export default async function PageRealisations() {
         titre="Réalisations"
         intro="Nos chantiers en images, classés par domaine. Ouvrez une réalisation pour parcourir sa galerie en plein écran."
         ariane={[{ titre: "Réalisations" }]}
-        photo="trancheeLotissement"
+        photo="vrdAsphalteBoulevard"
       />
       <section aria-label="Liste des réalisations" className="bg-sable py-16 lg:py-24">
         <div className="conteneur">

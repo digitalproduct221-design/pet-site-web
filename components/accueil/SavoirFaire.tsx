@@ -43,7 +43,7 @@ const expertises: ExpertiseItem[] = [
     titre: "Génie civil",
     slug: "genie-civil",
     icone: "genie-civil",
-    photo: "dalotRegard",
+    photo: "genieCivilDalotPrefa",
     accroche: "Génie civil de l'eau, ouvrages d'art en béton armé, dalots et structures hydrauliques durables.",
     points: [
       "Ouvrages en béton armé & radiers",

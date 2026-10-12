@@ -67,7 +67,7 @@ export default function PageAPropos() {
           { titre: "Accueil", href: "/" },
           { titre: "À propos" },
         ]}
-        photo="directeurChantier"
+        photo="batimentCommercialDakar"
       />
 
       {/* 1. À propos de nous : Présentation et domaines clés */}

@@ -3,14 +3,24 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { lireRealisations } from "@/lib/contenu";
 import { domaineParSlug, domaines, SITE_URL } from "@/content/site";
-import { photos } from "@/content/photos";
+import { photos, type PhotoId } from "@/content/photos";
+import { imageLocale } from "@/content/images";
 import { listeFrancaise } from "@/content/texte";
 import { EnTetePage } from "@/components/ui/EnTetePage";
 import { BoutonLien } from "@/components/ui/Bouton";
 import { CarteProjet } from "@/components/ui/CarteProjet";
 import { Icone } from "@/components/ui/Icone";
-import { PhotoCadre } from "@/components/ui/PhotoCadre";
+import { Galerie } from "@/components/realisations/Galerie";
 import { AppelFinal } from "@/components/accueil/AppelFinal";
+
+const heroParDomaine: Record<string, PhotoId> = {
+  batiment: "batimentCommercialDakar",
+  "travaux-publics-vrd": "vrdAsphalteBoulevard",
+  hydraulique: "hydrauliqueCanalisationsPose",
+  assainissement: "genieCivilDalotPrefa",
+  "genie-civil": "genieCivilReservoirBeton",
+  "electricite-peinture": "batimentCommercialDakar",
+};
 
 export function generateStaticParams() {
   return domaines.map((d) => ({ slug: d.slug }));
@@ -20,7 +30,7 @@ export async function generateMetadata({ params }: PageProps<"/savoir-faire/[slu
   const { slug } = await params;
   const d = domaineParSlug(slug);
   if (!d) return {};
-  const photoId = d.photos[0];
+  const photoId = heroParDomaine[d.slug] ?? d.photos[0];
   const photoObj = photoId ? photos[photoId] : null;
   const photoUrl = photoObj?.src ? (typeof photoObj.src === "string" ? photoObj.src : photoObj.src.src) : "/og-image.jpg";
   return {
@@ -52,7 +62,7 @@ export default async function PageDomaine({ params }: PageProps<"/savoir-faire/[
 
   const lies = (await lireRealisations()).filter((p) => p.domaine === d.slug);
   const autres = domaines.filter((x) => x.slug !== d.slug);
-  const [photoA, photoB, photoC] = d.photos;
+  const photoHero = heroParDomaine[d.slug] ?? d.photos[0];
 
   const schemaDonnees = [
     {
@@ -87,7 +97,7 @@ export default async function PageDomaine({ params }: PageProps<"/savoir-faire/[
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaDonnees).replace(/</g, "\\u003c") }}
       />
-      <EnTetePage suite="text-blanc" titre={d.titre} intro={d.resume} ariane={[{ titre: "Savoir-faire", href: "/savoir-faire" }, { titre: d.titre }]} photo={photoA}>
+      <EnTetePage suite="text-blanc" titre={d.titre} intro={d.resume} ariane={[{ titre: "Savoir-faire", href: "/savoir-faire" }, { titre: d.titre }]} photo={photoHero}>
         <BoutonLien href="/contact#devis">Demander un devis</BoutonLien>
       </EnTetePage>
 
@@ -118,12 +128,16 @@ export default async function PageDomaine({ params }: PageProps<"/savoir-faire/[
       </section>
 
       {/* Galerie */}
-      <section aria-label="Galerie" className="bg-sable pb-20 pt-4 lg:pb-28">
-        <div className="conteneur grid gap-4 sm:grid-cols-2 lg:grid-cols-12 lg:gap-5">
-          <PhotoCadre photo={photoB} ratio="aspect-[4/3]" sizes="(min-width: 1024px) 55vw, 100vw" voile="leger" equerres decalage={12} className="sm:col-span-2 lg:col-span-7" />
-          <div className="grid gap-4 lg:col-span-5 lg:gap-5">
-            <PhotoCadre photo={photoC} ratio="aspect-[4/3] lg:aspect-auto lg:h-full" sizes="(min-width: 1024px) 38vw, 50vw" voile="leger" className="lg:h-full [&>div]:h-full" />
+      <section aria-label="Galerie" className="bg-sable pb-20 pt-8 lg:pb-28">
+        <div className="conteneur">
+          <div className="revele mb-8 flex flex-col gap-2">
+            <span className="cote text-[0.875rem] uppercase tracking-[0.08em] text-royal">Nos chantiers en images</span>
+            <h2 className="titre text-titre-m text-nuit">Savoir-faire et réalisations de terrain</h2>
+            <p className="max-w-[42rem] text-[1.0625rem] text-encre-douce">
+              Photos réelles de nos chantiers au Sénégal, complétées par nos savoir-faire techniques.
+            </p>
           </div>
+          <Galerie photos={d.photos.map(imageLocale)} titre={`Chantiers et savoir-faire : ${d.titre}`} />
         </div>
       </section>
 

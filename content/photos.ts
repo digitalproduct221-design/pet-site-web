@@ -48,6 +48,27 @@ import implantationVoirieBatiment from "@/public/images/chantiers/implantation-v
 import niveauOptiqueGeometre from "@/public/images/chantiers/niveau-optique-geometre-pet.jpg";
 import etudePlansEquipePet from "@/public/images/chantiers/etude-plans-equipe-pet.jpg";
 
+// Photos supplémentaires haute définition (redistribuées sur les différentes rubriques)
+import niveleuseTerrassementPiste from "@/public/images/chantiers/niveleuse-terrassement-piste.jpg";
+import compacteurSolLaterite from "@/public/images/chantiers/compacteur-sol-laterite.jpg";
+import compacteurVibrantTerrassement from "@/public/images/chantiers/compacteur-vibrant-terrassement.jpg";
+import rueResidentielleBitumee from "@/public/images/chantiers/rue-residentielle-bitumee.jpg";
+import grandeAvenueUrbaineDakar from "@/public/images/chantiers/grande-avenue-urbaine-dakar.jpg";
+import inspectionTechniqueCanalisation from "@/public/images/chantiers/inspection-technique-canalisation.jpg";
+import controleConduiteEauPotable from "@/public/images/chantiers/controle-conduite-eau-potable.jpg";
+import ouvertureVanneReseauEau from "@/public/images/chantiers/ouverture-vanne-reseau-eau.jpg";
+import vanneReservoirEauPotable from "@/public/images/chantiers/vanne-reservoir-eau-potable.jpg";
+import pompeIrrigationAgricole from "@/public/images/chantiers/pompe-irrigation-agricole.jpg";
+import irrigationParcellesMaraicheres from "@/public/images/chantiers/irrigation-parcelles-maraicheres.jpg";
+import essaiAffaissementBeton from "@/public/images/chantiers/essai-affaissement-beton.jpg";
+import mesureQualiteBetonFrais from "@/public/images/chantiers/mesure-qualite-beton-frais.jpg";
+import maconnerieImmeubleSenegal from "@/public/images/chantiers/maconnerie-immeuble-senegal.jpg";
+import murClotureIndustriel from "@/public/images/chantiers/mur-cloture-industriel.jpg";
+import cloturePortailAcier from "@/public/images/chantiers/cloture-portail-acier.jpg";
+import briefingSecuriteEquipe from "@/public/images/chantiers/briefing-securite-equipe.jpg";
+import reunionTechniqueChantier from "@/public/images/chantiers/reunion-technique-chantier.jpg";
+import partenariatConfianceClient from "@/public/images/chantiers/partenariat-confiance-client.jpg";
+
 import type { StaticImageData } from "next/image";
 
 export type Photo = {
@@ -285,6 +306,103 @@ export const photos = {
   etudePlansEquipePet: {
     src: etudePlansEquipePet,
     alt: "Trois ingénieurs et techniciens de PET SUARL avec casquettes et gilets de sécurité analysant les plans d'exécution et la mire de nivellement sur le tracé de la voie.",
+    focale: "50% 45%",
+  },
+
+  // Photos haute définition redistribuées par rubriques et savoir-faire
+  niveleuseTerrassementPiste: {
+    src: niveleuseTerrassementPiste,
+    alt: "Niveleuse de terrassement lourd en pleine opération de régalage et de profilage de plateforme au Sénégal.",
+    focale: "50% 50%",
+  },
+  compacteurSolLaterite: {
+    src: compacteurSolLaterite,
+    alt: "Compacteur monocylindre lourd compactant le sol latéritique sur plateforme de terrassement.",
+    focale: "50% 50%",
+  },
+  compacteurVibrantTerrassement: {
+    src: compacteurVibrantTerrassement,
+    alt: "Compacteur vibrant assurant la portance et le compactage dynamique de fond de forme.",
+    focale: "50% 50%",
+  },
+  rueResidentielleBitumee: {
+    src: rueResidentielleBitumee,
+    alt: "Rue résidentielle aménagée et bitumée avec bordures et assainissement pluvial achevé.",
+    focale: "50% 50%",
+  },
+  grandeAvenueUrbaineDakar: {
+    src: grandeAvenueUrbaineDakar,
+    alt: "Grande avenue urbaine à Dakar avec double voie bitumée, trottoirs et réseau d'évacuation pluviale.",
+    focale: "50% 50%",
+  },
+  inspectionTechniqueCanalisation: {
+    src: inspectionTechniqueCanalisation,
+    alt: "Techniciens en tranchée inspectant le calage et l'emboîtement d'une conduite maîtresse d'eau potable.",
+    focale: "50% 50%",
+  },
+  controleConduiteEauPotable: {
+    src: controleConduiteEauPotable,
+    alt: "Équipe technique de canalisateurs procédant au contrôle qualité sur réseau de distribution d'eau potable.",
+    focale: "50% 50%",
+  },
+  ouvertureVanneReseauEau: {
+    src: ouvertureVanneReseauEau,
+    alt: "Manœuvre d'ouverture et test hydraulique sur vanne de régulation de réseau d'eau.",
+    focale: "50% 50%",
+  },
+  vanneReservoirEauPotable: {
+    src: vanneReservoirEauPotable,
+    alt: "Chambre de vannes et raccordement étanche sur grand réservoir de stockage d'eau potable.",
+    focale: "50% 50%",
+  },
+  pompeIrrigationAgricole: {
+    src: pompeIrrigationAgricole,
+    alt: "Station de pompage hydro-agricole et collecteur d'irrigation pour parcelles maraîchères.",
+    focale: "50% 50%",
+  },
+  irrigationParcellesMaraicheres: {
+    src: irrigationParcellesMaraicheres,
+    alt: "Aménagement hydro-agricole et arrosage de cultures maraîchères en plein champ au Sénégal.",
+    focale: "50% 50%",
+  },
+  essaiAffaissementBeton: {
+    src: essaiAffaissementBeton,
+    alt: "Contrôle qualité du béton au cône d'Abrams mesurant l'affaissement avant coulage d'ouvrage.",
+    focale: "50% 50%",
+  },
+  mesureQualiteBetonFrais: {
+    src: mesureQualiteBetonFrais,
+    alt: "Prélèvement d'échantillons d'éprouvettes de béton armé pour essais d'écrasement en laboratoire.",
+    focale: "50% 50%",
+  },
+  maconnerieImmeubleSenegal: {
+    src: maconnerieImmeubleSenegal,
+    alt: "Élévation de maçonnerie et coulage de linteaux béton armé sur un immeuble en chantier à Dakar.",
+    focale: "50% 50%",
+  },
+  murClotureIndustriel: {
+    src: murClotureIndustriel,
+    alt: "Mur de clôture périphérique de haute sécurité ceinturant un complexe industriel et logistique.",
+    focale: "50% 50%",
+  },
+  cloturePortailAcier: {
+    src: cloturePortailAcier,
+    alt: "Mur d'enceinte maçonné crépi et portail battant en acier d'une résidence contemporaine.",
+    focale: "50% 50%",
+  },
+  briefingSecuriteEquipe: {
+    src: briefingSecuriteEquipe,
+    alt: "Briefing sécurité et quart d'heure hygiène-sécurité animé par l'ingénieur de travaux avant prise de poste.",
+    focale: "50% 45%",
+  },
+  reunionTechniqueChantier: {
+    src: reunionTechniqueChantier,
+    alt: "Réunion de coordination technique sur site entre l'ingénieur travaux et les chefs d'équipes.",
+    focale: "50% 45%",
+  },
+  partenariatConfianceClient: {
+    src: partenariatConfianceClient,
+    alt: "Poignée de main de confiance scellant un partenariat de qualité entre l'entreprise PET et le maître d'ouvrage.",
     focale: "50% 45%",
   },
 } satisfies Record<string, Photo>;
