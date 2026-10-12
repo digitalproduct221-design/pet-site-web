@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Barlow_Condensed, Barlow_Semi_Condensed, Manrope } from "next/font/google";
 import "./globals.css";
-import { BarreHaut } from "@/components/layout/BarreHaut";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { BarreActionsMobile } from "@/components/layout/BarreActionsMobile";
@@ -66,24 +65,48 @@ export const viewport: Viewport = {
 
 const donneesOrganisation = {
   "@context": "https://schema.org",
-  "@type": "Organization",
+  "@type": ["Organization", "GeneralContractor"],
   name: NOM,
   alternateName: SIGLE,
+  legalName: NOM,
   url: SITE_URL,
   logo: `${SITE_URL}/brand/logo-pet.png`,
+  image: `${SITE_URL}/og-image.jpg`,
   slogan: SLOGAN,
   foundingDate: String(entreprise.fondation),
   email,
   telephone: telephones.map((t) => `+221 ${t.affichage}`),
+  priceRange: "$$",
   address: {
     "@type": "PostalAddress",
     streetAddress: "Rond-point Liberté 6",
     addressLocality: "Dakar",
+    addressRegion: "Dakar",
     addressCountry: "SN",
   },
-  areaServed: { "@type": "Country", name: "Sénégal" },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 14.7167,
+    longitude: -17.4677,
+  },
+  areaServed: [
+    { "@type": "AdministrativeArea", name: "Dakar" },
+    { "@type": "Country", name: "Sénégal" },
+  ],
   knowsAbout: entreprise.domaines.map((d) => d.titre),
   description,
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Prestations BTP et Génie Civil",
+    itemListElement: entreprise.domaines.map((d) => ({
+      "@type": "Offer",
+      itemOffered: {
+        "@type": "Service",
+        name: d.titre,
+        description: d.resume,
+      },
+    })),
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

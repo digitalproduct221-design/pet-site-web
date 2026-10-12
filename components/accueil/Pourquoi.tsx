@@ -5,8 +5,8 @@ import { Icone } from "@/components/ui/Icone";
 import { Profil } from "@/components/ui/Profil";
 import { TitreSection } from "@/components/ui/TitreSection";
 
-// Une photo par engagement : elle change quand on ouvre l'engagement.
-const illustrations: PhotoId[] = ["niveleuseVoirie", "poseConduiteTopographie", "terrassementEngins", "trancheeLotissement"];
+// Une photo HD par engagement : elle change dynamiquement quand on ouvre l'accordéon.
+const illustrations: PhotoId[] = ["controleQualiteBeton", "equipePet", "pilotageChantier", "partenariatChantier"];
 
 /**
  * « Pourquoi PET ? » en accordéon : quatre engagements, un seul ouvert à la fois

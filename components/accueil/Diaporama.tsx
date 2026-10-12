@@ -107,7 +107,7 @@ export function Diaporama({ diapos }: { diapos: Diapo[] }) {
                   src={p.src}
                   alt={p.alt}
                   fill
-                  preload={i === 0}
+                  priority={i === 0}
                   fetchPriority={i === 0 ? "high" : "low"}
                   sizes="100vw"
                   quality={75}

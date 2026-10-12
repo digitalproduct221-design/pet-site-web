@@ -9,6 +9,18 @@ export const metadata: Metadata = {
   title: "Actualités",
   description: "La vie des chantiers de PET à Dakar : travaux en cours, équipes, ouvrages livrés.",
   alternates: { canonical: "/actualites" },
+  openGraph: {
+    title: "Actualités des chantiers | PET SUARL Dakar",
+    description: "La vie des chantiers de PET à Dakar : travaux en cours, équipes, ouvrages livrés.",
+    url: "/actualites",
+    images: [{ url: "/images/chantiers/gros-oeuvre-dakar.jpg", width: 1376, height: 768, alt: "Actualités des chantiers PET SUARL" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Actualités des chantiers | PET SUARL Dakar",
+    description: "La vie des chantiers de PET à Dakar : travaux en cours, équipes, ouvrages livrés.",
+    images: ["/images/chantiers/gros-oeuvre-dakar.jpg"],
+  },
 };
 
 /** Les nouvelles du quotidien, publiées depuis l'espace admin. */

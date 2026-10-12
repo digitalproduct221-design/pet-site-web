@@ -1,7 +1,13 @@
+import type { Metadata } from "next";
 import { BoutonLien } from "@/components/ui/Bouton";
 import { Equerres } from "@/components/ui/Equerres";
 import { Motif } from "@/components/ui/Motif";
 import { Pelleteuse } from "@/components/ui/Pelleteuse";
+
+export const metadata: Metadata = {
+  title: "Page introuvable",
+  description: "La page demandée est introuvable sur le site de PET SUARL.",
+};
 
 /** 404 : la page n'existe pas… la pelleteuse continue de creuser. */
 export default function PageIntrouvable() {

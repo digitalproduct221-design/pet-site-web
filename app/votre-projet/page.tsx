@@ -18,6 +18,19 @@ export const metadata: Metadata = {
   description:
     "Construire, viabiliser, amener l'eau, assainir, bâtir un ouvrage en béton armé ou réhabiliter : ce que PET réalise pour vous, ce qu'il faut préparer et comment nous avançons.",
   alternates: { canonical: "/votre-projet" },
+  openGraph: {
+    title: "Votre projet | PET SUARL Dakar",
+    description:
+      "Construire, viabiliser, amener l'eau, assainir, bâtir un ouvrage en béton armé ou réhabiliter : ce que PET réalise pour vous.",
+    url: "/votre-projet",
+    images: [{ url: "/images/chantiers/niveleuse-piste.jpg", width: 1376, height: 768, alt: "Votre projet de BTP avec PET SUARL" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Votre projet | PET SUARL Dakar",
+    description: "Construire, viabiliser, amener l'eau, assainir : votre projet avec PET SUARL Dakar.",
+    images: ["/images/chantiers/niveleuse-piste.jpg"],
+  },
 };
 
 /**

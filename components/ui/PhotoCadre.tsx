@@ -62,7 +62,7 @@ export function PhotoCadre({
         alt={alt ?? p.alt}
         fill
         sizes={sizes}
-        preload={priority}
+        priority={priority}
         fetchPriority={priority ? "high" : undefined}
        
         className={`object-cover ${imageClassName}`}

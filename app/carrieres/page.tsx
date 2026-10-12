@@ -15,6 +15,18 @@ export const metadata: Metadata = {
   title: "Carrières",
   description: "Rejoignez les équipes de PET à Dakar : les métiers de nos chantiers et la candidature spontanée.",
   alternates: { canonical: "/carrieres" },
+  openGraph: {
+    title: "Carrières | PET SUARL Dakar",
+    description: "Rejoignez les équipes de PET à Dakar : les métiers de nos chantiers et la candidature spontanée.",
+    url: "/carrieres",
+    images: [{ url: "/images/chantiers/equipe-en-marche.jpg", width: 1376, height: 768, alt: "Équipe de chantier PET SUARL" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Carrières | PET SUARL Dakar",
+    description: "Rejoignez les équipes de PET à Dakar : les métiers de nos chantiers et la candidature spontanée.",
+    images: ["/images/chantiers/equipe-en-marche.jpg"],
+  },
 };
 
 const atouts = [

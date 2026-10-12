@@ -14,6 +14,18 @@ export const metadata: Metadata = {
   description:
     "PARTENAIRE ENTREPRISE TRAVAUX SUARL : entreprise de BTP tous corps d'état fondée à Dakar en 2016, portée par une équipe de plus de 40 ans d'expérience cumulée.",
   alternates: { canonical: "/entreprise" },
+  openGraph: {
+    title: "L'entreprise | PET SUARL Dakar",
+    description: "Entreprise de BTP tous corps d'état fondée à Dakar en 2016, portée par une équipe de plus de 40 ans d'expérience cumulée.",
+    url: "/entreprise",
+    images: [{ url: "/images/chantiers/pilotage-chantier.jpg", width: 1376, height: 768, alt: "L'entreprise PET SUARL" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "L'entreprise | PET SUARL Dakar",
+    description: "Entreprise de BTP tous corps d'état fondée à Dakar en 2016.",
+    images: ["/images/chantiers/pilotage-chantier.jpg"],
+  },
 };
 
 const clients = [

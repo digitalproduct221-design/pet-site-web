@@ -13,6 +13,18 @@ export const metadata: Metadata = {
   description:
     "Demandez un devis à PET pour vos travaux de bâtiment, VRD, hydraulique, assainissement ou génie civil à Dakar. Téléphone, WhatsApp, e-mail et formulaire.",
   alternates: { canonical: "/contact" },
+  openGraph: {
+    title: "Contact et devis | PET SUARL Dakar",
+    description: "Demandez un devis à PET pour vos travaux de bâtiment, VRD, hydraulique, assainissement ou génie civil à Dakar.",
+    url: "/contact",
+    images: [{ url: "/images/chantiers/partenariat-chantier.jpg", width: 1376, height: 768, alt: "Contact PET SUARL" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Contact et devis | PET SUARL Dakar",
+    description: "Demandez un devis à PET pour vos travaux BTP à Dakar et au Sénégal.",
+    images: ["/images/chantiers/partenariat-chantier.jpg"],
+  },
 };
 
 export default function PageContact() {

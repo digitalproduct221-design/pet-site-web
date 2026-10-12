@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { lireRealisations } from "@/lib/contenu";
-import { domaineParSlug, domaines } from "@/content/site";
+import { domaineParSlug, domaines, SITE_URL } from "@/content/site";
+import { photos } from "@/content/photos";
 import { listeFrancaise } from "@/content/texte";
 import { EnTetePage } from "@/components/ui/EnTetePage";
 import { BoutonLien } from "@/components/ui/Bouton";
@@ -19,10 +20,25 @@ export async function generateMetadata({ params }: PageProps<"/savoir-faire/[slu
   const { slug } = await params;
   const d = domaineParSlug(slug);
   if (!d) return {};
+  const photoId = d.photos[0];
+  const photoObj = photoId ? photos[photoId] : null;
+  const photoUrl = photoObj?.src ? (typeof photoObj.src === "string" ? photoObj.src : photoObj.src.src) : "/og-image.jpg";
   return {
     title: d.titre,
     description: `${d.titre} à Dakar avec PET : ${listeFrancaise(d.prestations).toLowerCase()}.`,
     alternates: { canonical: `/savoir-faire/${d.slug}` },
+    openGraph: {
+      title: `${d.titre} | PET SUARL Dakar`,
+      description: d.resume,
+      url: `/savoir-faire/${d.slug}`,
+      images: [{ url: photoUrl, alt: d.titre }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${d.titre} | PET SUARL Dakar`,
+      description: d.resume,
+      images: [photoUrl],
+    },
   };
 }
 
@@ -38,8 +54,39 @@ export default async function PageDomaine({ params }: PageProps<"/savoir-faire/[
   const autres = domaines.filter((x) => x.slug !== d.slug);
   const [photoA, photoB, photoC] = d.photos;
 
+  const schemaDonnees = [
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Accueil", item: SITE_URL },
+        { "@type": "ListItem", position: 2, name: "Savoir-faire", item: `${SITE_URL}/savoir-faire` },
+        { "@type": "ListItem", position: 3, name: d.titre, item: `${SITE_URL}/savoir-faire/${d.slug}` },
+      ],
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      name: d.titre,
+      description: d.resume,
+      provider: {
+        "@type": "Organization",
+        name: "PARTENAIRE ENTREPRISE TRAVAUX SUARL",
+        url: SITE_URL,
+      },
+      areaServed: {
+        "@type": "Country",
+        name: "Sénégal",
+      },
+    },
+  ];
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaDonnees).replace(/</g, "\\u003c") }}
+      />
       <EnTetePage suite="text-blanc" titre={d.titre} intro={d.resume} ariane={[{ titre: "Savoir-faire", href: "/savoir-faire" }, { titre: d.titre }]} photo={photoA}>
         <BoutonLien href="/contact#devis">Demander un devis</BoutonLien>
       </EnTetePage>

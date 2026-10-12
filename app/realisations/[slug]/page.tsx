@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { lireRealisation, lireRealisations } from "@/lib/contenu";
-import { domaineParSlug } from "@/content/site";
+import { domaineParSlug, SITE_URL } from "@/content/site";
 import { EnTetePage } from "@/components/ui/EnTetePage";
 import { CarteProjet } from "@/components/ui/CarteProjet";
 import { Icone } from "@/components/ui/Icone";
@@ -18,7 +18,24 @@ export async function generateMetadata({ params }: PageProps<"/realisations/[slu
   const { slug } = await params;
   const p = await lireRealisation(slug);
   if (!p) return {};
-  return { title: p.titre, description: p.resume, alternates: { canonical: `/realisations/${p.slug}` } };
+  const photoUrl = p.photos[0]?.src ? (typeof p.photos[0].src === "string" ? p.photos[0].src : p.photos[0].src.src) : "/og-image.jpg";
+  return {
+    title: p.titre,
+    description: p.resume,
+    alternates: { canonical: `/realisations/${p.slug}` },
+    openGraph: {
+      title: `${p.titre} | PET SUARL`,
+      description: p.resume,
+      url: `/realisations/${p.slug}`,
+      images: [{ url: photoUrl, alt: p.titre }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${p.titre} | PET SUARL`,
+      description: p.resume,
+      images: [photoUrl],
+    },
+  };
 }
 
 /** Une réalisation, c'est d'abord sa galerie : les photos passent avant le texte. */
@@ -33,8 +50,22 @@ export default async function PageProjet({ params }: PageProps<"/realisations/[s
     .concat(projets.filter((p) => p.domaine !== projet.domaine))
     .slice(0, 3);
 
+  const schemaFilAriane = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Accueil", item: SITE_URL },
+      { "@type": "ListItem", position: 2, name: "Réalisations", item: `${SITE_URL}/realisations` },
+      { "@type": "ListItem", position: 3, name: projet.titre, item: `${SITE_URL}/realisations/${projet.slug}` },
+    ],
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaFilAriane).replace(/</g, "\\u003c") }}
+      />
       <EnTetePage
         titre={projet.titre}
         intro={projet.resume}

@@ -79,8 +79,8 @@ export function BarreActionsMobile() {
             <button
               type="button"
               onClick={() => setTiroir(null)}
-              className="text-jaune hover:text-white"
-              aria-label="Fermer"
+              className="grid size-8 place-items-center rounded-lg text-jaune hover:bg-white/10 hover:text-white"
+              aria-label="Fermer le menu des métiers"
             >
               ✕
             </button>
@@ -130,8 +130,8 @@ export function BarreActionsMobile() {
           <button
             type="button"
             onClick={() => setTiroir(null)}
-            className="grid size-9 place-items-center rounded-xl bg-white/10 text-brume hover:text-white"
-            aria-label="Fermer"
+            className="grid size-11 place-items-center rounded-xl bg-white/10 text-brume hover:text-white"
+            aria-label="Fermer les options de contact"
           >
             ✕
           </button>

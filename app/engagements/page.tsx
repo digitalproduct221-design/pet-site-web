@@ -12,6 +12,18 @@ export const metadata: Metadata = {
   title: "Engagements",
   description: "Sécurité, environnement, ancrage local et qualité : les engagements de PET sur ses chantiers à Dakar et au Sénégal.",
   alternates: { canonical: "/engagements" },
+  openGraph: {
+    title: "Engagements | PET SUARL Dakar",
+    description: "Sécurité, environnement, ancrage local et qualité : les engagements de PET sur ses chantiers à Dakar et au Sénégal.",
+    url: "/engagements",
+    images: [{ url: "/images/chantiers/partenariat-chantier.jpg", width: 1376, height: 768, alt: "Engagements PET SUARL" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Engagements | PET SUARL Dakar",
+    description: "Sécurité, environnement, ancrage local et qualité : nos engagements sur le terrain.",
+    images: ["/images/chantiers/partenariat-chantier.jpg"],
+  },
 };
 
 type Engagement = { id: string; titre: string; icone: string; photo: PhotoId; intro: string; points: string[] };

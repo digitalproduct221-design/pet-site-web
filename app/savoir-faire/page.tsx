@@ -13,6 +13,18 @@ export const metadata: Metadata = {
   description:
     "Bâtiment, travaux publics et VRD, hydraulique, assainissement et génie civil : les cinq domaines d'expertise de PET à Dakar.",
   alternates: { canonical: "/savoir-faire" },
+  openGraph: {
+    title: "Savoir-faire | PET SUARL Dakar",
+    description: "Bâtiment, travaux publics et VRD, hydraulique, assainissement et génie civil : les cinq domaines d'expertise de PET à Dakar.",
+    url: "/savoir-faire",
+    images: [{ url: "/images/chantiers/immeuble-dakar.jpg", width: 1376, height: 768, alt: "Savoir-faire et domaines d'expertise PET SUARL" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Savoir-faire | PET SUARL Dakar",
+    description: "Bâtiment, VRD, hydraulique, assainissement et génie civil à Dakar.",
+    images: ["/images/chantiers/immeuble-dakar.jpg"],
+  },
 };
 
 export default function PageSavoirFaire() {

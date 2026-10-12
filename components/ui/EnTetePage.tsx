@@ -67,7 +67,7 @@ export function EnTetePage({
               src={p.src}
               alt=""
               fill
-              preload
+              priority
               fetchPriority="high"
               sizes="100vw"
               quality={82}

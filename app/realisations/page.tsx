@@ -9,6 +9,18 @@ export const metadata: Metadata = {
   title: "Réalisations",
   description: "Les chantiers de PET à Dakar et au Sénégal : bâtiment, hydraulique, assainissement, routes et VRD, génie civil.",
   alternates: { canonical: "/realisations" },
+  openGraph: {
+    title: "Réalisations de chantiers | PET SUARL Dakar",
+    description: "Les chantiers de PET à Dakar et au Sénégal : bâtiment, hydraulique, assainissement, routes et VRD, génie civil.",
+    url: "/realisations",
+    images: [{ url: "/images/chantiers/tranchee-lotissement.jpg", width: 1376, height: 768, alt: "Réalisations de chantiers PET SUARL Dakar" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Réalisations de chantiers | PET SUARL Dakar",
+    description: "Les chantiers et ouvrages de PET à Dakar et au Sénégal.",
+    images: ["/images/chantiers/tranchee-lotissement.jpg"],
+  },
 };
 
 export default async function PageRealisations() {
