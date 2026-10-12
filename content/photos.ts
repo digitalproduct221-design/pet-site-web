@@ -37,6 +37,9 @@ import genieCivilReservoirBeton from "@/public/images/chantiers/genie-civil-rese
 import genieCivilDalotPrefa from "@/public/images/chantiers/genie-civil-dalot-prefa.jpg";
 import batimentCommercialDakar from "@/public/images/chantiers/batiment-commercial-dakar.jpg";
 import vrdAsphalteBoulevard from "@/public/images/chantiers/vrd-asphalte-boulevard.jpg";
+import clotureGrillage from "@/public/images/chantiers/cloture-grillage.jpg";
+import immeubleGrue from "@/public/images/chantiers/immeuble-grue.jpg";
+import irrigation from "@/public/images/chantiers/irrigation.jpg";
 
 // Nouvelles photos réelles du dossier client (ISDND Meckhé, SETEC, topographie niveau optique et voirie lotissement)
 import delegationSetecMeckhe from "@/public/images/chantiers/delegation-setec-isdnd-meckhe.jpg";
@@ -203,20 +206,20 @@ export const photos = {
     focale: "50% 50%",
   },
 
-  // Alias rétrocompatibles pointant désormais vers les photos HD authentiques
+  // Photos d'infrastructures et bâtiments réels au Sénégal
   irrigation: {
-    src: irrigationNiayes,
-    alt: "Réseau d'irrigation par aspersion en fonctionnement sur des parcelles maraîchères dans la zone des Niayes.",
-    focale: "50% 45%",
+    src: irrigation,
+    alt: "Système et canalisations d'irrigation sur parcelle agricole au Sénégal.",
+    focale: "50% 50%",
   },
   clotureGrillage: {
-    src: clotureMaconnee,
-    alt: "Mur de clôture maçonné et crépi avec arase en béton armé et portail métallique vert à deux battants.",
+    src: clotureGrillage,
+    alt: "Pose de clôture grillagée avec piquets métalliques scellés sur muret béton.",
     focale: "50% 50%",
   },
   immeubleGrue: {
-    src: immeubleDakar,
-    alt: "Immeuble R+3 en structure béton armé en cours de construction dans un quartier résidentiel de Dakar.",
+    src: immeubleGrue,
+    alt: "Chantier d'immeuble avec grue de levage et coulage de dalle béton à Dakar.",
     focale: "50% 45%",
   },
 

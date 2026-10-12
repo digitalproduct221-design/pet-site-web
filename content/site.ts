@@ -368,7 +368,7 @@ export const navigation: Rubrique[] = [
     carte: {
       photo: "dalotRegard",
       titre: "Réhabilitation de dalot et construction de regards",
-      lien: { libelle: "Voir la galerie", href: "/realisations/rehabilitation-dalot-regards" },
+      lien: { libelle: "Voir la galerie", href: "/realisations/reseaux-assainissement-dalots-evacuation" },
     },
   },
   {
