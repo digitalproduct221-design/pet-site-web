@@ -32,7 +32,7 @@ export default function PageVotreProjet() {
         titre="Votre projet"
         intro="Dites-nous ce que vous voulez réaliser. Pour chaque besoin : ce que nous faisons, ce qu'il faut préparer et comment nous avançons ensemble."
         ariane={[{ titre: "Votre projet" }]}
-        photo="niveleuseVoirie"
+        photo="niveleusePiste"
       >
         <BoutonLien href="#besoins">Choisir mon besoin</BoutonLien>
         <BoutonLien href="/contact#devis" variante="contour-clair">

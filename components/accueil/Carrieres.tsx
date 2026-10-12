@@ -33,7 +33,7 @@ export function Carrieres() {
             </div>
           </div>
           <PhotoCadre
-            photo="poseConduiteTopographie"
+            photo="equipeEnMarche"
             ratio="aspect-[16/10]"
             sizes="(min-width: 1024px) 36vw, 100vw"
             voile="leger"

@@ -20,7 +20,7 @@ export function Presentation() {
           </div>
           <div className="relative">
             <PhotoCadre
-              photo="trancheeLotissement"
+              photo="controleQualiteBeton"
               ratio="aspect-[16/10] md:aspect-[5/4]"
               sizes="(min-width: 1024px) 46vw, 100vw"
               voile="leger"

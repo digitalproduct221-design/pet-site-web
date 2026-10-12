@@ -46,10 +46,14 @@ export async function lireRealisations(): Promise<Projet[]> {
       resume: r.resume,
       travaux: r.travaux ?? [],
       reference: r.reference || undefined,
-      photos: ((r.realisation_photos ?? []) as LignePhoto[])
-        .toSorted((a, b) => a.ordre - b.ordre)
-        .map((p) => imageDepuisChemin(p.chemin, p.alt ?? r.titre, p.largeur, p.hauteur))
-        .filter((p): p is ImageSite => p !== null),
+      photos: Array.from(
+        new Map(
+          ((r.realisation_photos ?? []) as LignePhoto[])
+            .toSorted((a, b) => a.ordre - b.ordre)
+            .map((p) => [p.chemin, imageDepuisChemin(p.chemin, p.alt ?? r.titre, p.largeur, p.hauteur)])
+            .filter((entry): entry is [string, ImageSite] => entry[1] !== null)
+        ).values()
+      ),
     }))
     .filter((r) => r.photos.length > 0);
 }

@@ -21,7 +21,7 @@ export default async function PageActualites() {
         titre="Actualités"
         intro="La vie de nos chantiers : travaux en cours, équipes au travail, ouvrages livrés."
         ariane={[{ titre: "Actualités" }]}
-        photo="poseConduiteTopographie"
+        photo="grosOeuvreDakar"
       />
       <section aria-label="Nouvelles" className="bg-sable py-16 lg:py-24">
         <div className="conteneur">

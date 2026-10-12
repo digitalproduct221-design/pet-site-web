@@ -5,46 +5,46 @@ import { Diaporama, type Diapo } from "./Diaporama";
 
 const diapos: Diapo[] = [
   {
+    photo: "equipePet",
+    onglet: "Notre Équipe",
+    legende: "Ingénieurs, conducteurs de travaux et équipes de terrain mobilisés pour bâtir le Sénégal.",
+    href: "/entreprise",
+    origine: "50% 35%",
+  },
+  {
     photo: "immeubleDakar",
     onglet: "Bâtiment",
-    legende: "Élévation de structures en béton armé et gros œuvre à Dakar.",
+    legende: "Élévation de structures en béton armé et gros œuvre de qualité à Dakar.",
     href: "/savoir-faire/batiment",
     origine: "50% 45%",
   },
   {
-    photo: "terrassementEngins",
-    onglet: "Terrassement",
-    legende: "Plateforme terrassée à la pelle hydraulique et à la chargeuse.",
-    href: "/savoir-faire/travaux-publics-vrd",
-    origine: "62% 58%",
-  },
-  {
     photo: "voirieAsphalte",
     onglet: "Voirie & VRD",
-    legende: "Voirie urbaine bitumée avec bordures et caniveaux d'assainissement.",
+    legende: "Voirie urbaine bitumée avec bordures et caniveaux d'assainissement intégrés.",
     href: "/savoir-faire/travaux-publics-vrd",
     origine: "50% 50%",
   },
   {
-    photo: "conduiteOuvrage",
+    photo: "epreuveHydraulique",
     onglet: "Réseaux d'eau",
-    legende: "Conduite en fonte, vannes et ferraillage de l'ouvrage, en fond de fouille.",
+    legende: "Canalisations d'adduction d'eau, vannes de régulation et épreuves de pression.",
     href: "/savoir-faire/hydraulique",
-    origine: "55% 50%",
+    origine: "50% 50%",
   },
   {
-    photo: "dalotRegard",
-    onglet: "Assainissement",
-    legende: "Regard en béton raccordé au réseau, au cœur d'un quartier de Dakar.",
-    href: "/savoir-faire/assainissement",
-    origine: "48% 62%",
-  },
-  {
-    photo: "ferraillageOuvrage",
+    photo: "controleQualiteBeton",
     onglet: "Génie civil",
-    legende: "Armatures d'un ouvrage hydraulique en béton armé, avant coulage.",
+    legende: "Ouvrages d'art en béton armé et contrôle qualité rigoureux des matériaux.",
     href: "/savoir-faire/genie-civil",
-    origine: "45% 60%",
+    origine: "50% 50%",
+  },
+  {
+    photo: "stationPompageSolaire",
+    onglet: "Aménagements",
+    legende: "Stations de pompage solaire et réseaux d'irrigation agricole moderne.",
+    href: "/savoir-faire/prestations-generales",
+    origine: "50% 50%",
   },
 ];
 

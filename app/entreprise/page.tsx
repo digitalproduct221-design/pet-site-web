@@ -47,7 +47,7 @@ export default function PageEntreprise() {
         titre="L'entreprise"
         intro={`Fondée à Dakar en ${entreprise.fondation}, PET réalise des bâtiments, des réseaux d'eau et des infrastructures pour des clients publics, industriels et privés.`}
         ariane={[{ titre: "L'entreprise" }]}
-        photo="poseConduiteTopographie"
+        photo="pilotageChantier"
       />
 
       {/* Qui sommes-nous */}

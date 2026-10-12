@@ -81,10 +81,10 @@ export type Domaine = {
 
 const photosParDomaine: Record<string, PhotoId[]> = {
   batiment: ["immeubleDakar", "grosOeuvreDakar", "ecoleSenegal", "villaContemporaine", "clotureMaconnee"],
-  "travaux-publics-vrd": ["voirieAsphalte", "terrassementEngins", "niveleusePiste", "niveleuseVoirie", "trancheeLotissement"],
-  hydraulique: ["conduiteOuvrage", "epreuveHydraulique", "irrigationNiayes", "stationPompageSolaire", "poseConduiteTopographie"],
-  assainissement: ["dalotRegard", "trancheeLotissement", "conduiteOuvrage"],
-  "genie-civil": ["ferraillageOuvrage", "controleQualiteBeton", "pilotageChantier", "dalotRegard"],
+  "travaux-publics-vrd": ["voirieAsphalte", "niveleusePiste", "terrassementEngins", "niveleuseVoirie", "trancheeLotissement"],
+  hydraulique: ["epreuveHydraulique", "stationPompageSolaire", "irrigationNiayes", "conduiteOuvrage", "poseConduiteTopographie"],
+  assainissement: ["stationPompageSolaire", "dalotRegard", "trancheeLotissement", "conduiteOuvrage"],
+  "genie-civil": ["controleQualiteBeton", "pilotageChantier", "grosOeuvreDakar", "ferraillageOuvrage", "dalotRegard"],
 };
 
 const textesDomaines: Record<string, Pick<Domaine, "icone" | "accroche" | "presentation">> = {
@@ -232,8 +232,8 @@ export const navigation: Rubrique[] = [
       { titre: "Carrières", description: "Nos métiers, candidature spontanée", href: "/carrieres", icone: "emploi" },
     ],
     carte: {
-      photo: "poseConduiteTopographie",
-      titre: "Nos équipes sur une pose de conduite",
+      photo: "equipePet",
+      titre: "Une équipe d'experts mobilisée sur le terrain",
       lien: { libelle: "Découvrir PET", href: "/entreprise" },
     },
   },
@@ -252,8 +252,8 @@ export const navigation: Rubrique[] = [
       },
     ],
     carte: {
-      photo: "conduiteOuvrage",
-      titre: "Pose de conduite fonte et ouvrage hydraulique",
+      photo: "immeubleDakar",
+      titre: "Bâtiment, réseaux et génie civil à Dakar",
       lien: { libelle: "Voir le savoir-faire", href: "/savoir-faire" },
     },
   },
@@ -287,8 +287,8 @@ export const navigation: Rubrique[] = [
       { titre: "Qualité", description: "Des ouvrages conformes et durables", href: "/engagements#qualite", icone: "qualite" },
     ],
     carte: {
-      photo: "niveleuseVoirie",
-      titre: "Chef de chantier et niveleuse sur une voirie",
+      photo: "controleQualiteBeton",
+      titre: "Rigueur technique et sécurité sur nos chantiers",
       lien: { libelle: "Nos engagements", href: "/engagements" },
     },
   },
@@ -301,7 +301,7 @@ export const navigation: Rubrique[] = [
       ...besoins.map((b) => ({ titre: b.titre, description: b.question, href: `/votre-projet#${b.slug}`, icone: domaineParSlug(b.domaine)?.icone ?? "batiment" })),
     ],
     carte: {
-      photo: "niveleuseVoirie",
+      photo: "pilotageChantier",
       titre: "Un projet ? Décrivez-le, nous vous rappelons",
       lien: { libelle: "Demander un devis", href: "/contact#devis" },
     },
