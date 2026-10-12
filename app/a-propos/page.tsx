@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     description:
       "Histoire depuis 2016, mot de la direction générale, partenaires institutionnels et expertise terrain de PET SUARL au Sénégal.",
     url: "/a-propos",
-    images: [{ url: "/images/chantiers/directeur-chantier-meckhe.jpg", width: 800, height: 1067, alt: `Direction Générale ${SIGLE}` }],
+    images: [{ url: "/images/directeur/directeur-bureau.jpg", width: 720, height: 814, alt: `Direction Générale ${SIGLE}` }],
   },
 };
 
@@ -54,7 +54,7 @@ const etapesHistoire = [
 ];
 
 export default function PageAPropos() {
-  const photoDirecteur = photos.directeurChantier;
+  const photoDirecteur = photos.directeurBureau;
   const photoTopographie = photos.topographieGps;
   const photoGeometres = photos.geometresImplantation;
 
@@ -159,30 +159,56 @@ export default function PageAPropos() {
       <section id="mot-directeur" aria-labelledby="titre-mot-dir" className="bg-blanc py-16 sm:py-24 lg:py-28">
         <div className="conteneur">
           <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
-            {/* Photo officielle de la direction sur chantier */}
-            <div className="lg:col-span-5">
-              <div className="relative overflow-hidden rounded-3xl bg-nuit shadow-2xl border border-nuit/10">
+            {/* Photo du Directeur avec cadre esthétique irrégulier et taille affinée */}
+            <div className="relative mx-auto w-full max-w-[290px] sm:max-w-[320px] lg:col-span-5 lg:max-w-[350px]">
+              {/* 1. Cadre décoratif asymétrique d'arrière-plan avec dégradé royal & or */}
+              <div
+                aria-hidden
+                className="absolute -inset-3 sm:-inset-4 rounded-[2.75rem_1rem_3.25rem_1.25rem] -rotate-2 bg-gradient-to-br from-royal via-ciel/40 to-jaune/40 opacity-70 transition-transform duration-500 group-hover:rotate-0"
+              />
+
+              {/* 2. Filet géométrique d'architecte décalé */}
+              <div
+                aria-hidden
+                className="absolute -inset-1.5 sm:-inset-2 rounded-[1.25rem_3rem_1rem_2.75rem] rotate-1 border-2 border-royal/35 pointer-events-none"
+              />
+
+              {/* 3. Cadre principal à découpe organique asymétrique et ombre profonde */}
+              <div className="group relative overflow-hidden rounded-[2.5rem_1rem_3.25rem_1rem] bg-nuit shadow-[0_20px_50px_rgba(10,34,64,0.22)] ring-4 ring-white">
                 <Image
                   src={photoDirecteur.src}
-                  alt="Directeur Général de PET sur chantier Meckhé"
-                  width={800}
-                  height={1067}
+                  alt="Directeur Général de PARTENAIRE ENTREPRISE TRAVAUX SUARL dans son bureau de direction à Dakar"
+                  width={720}
+                  height={814}
                   priority
                   placeholder="blur"
-                  className="h-[30rem] sm:h-[34rem] w-full object-cover object-top"
-                  sizes="(max-width: 1024px) 100vw, 42vw"
+                  className="h-[21rem] sm:h-[24rem] lg:h-[26rem] w-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                  sizes="(max-width: 640px) 290px, (max-width: 1024px) 320px, 350px"
                 />
-                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-nuit via-nuit/80 to-transparent p-6 text-blanc">
+
+                {/* Voile dégradé subtil avec cartouche de direction */}
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-nuit via-nuit/75 to-transparent p-4 sm:p-5 text-blanc">
                   <div className="flex items-center gap-2 text-jaune">
-                    <Icone nom="casque" size={18} weight="bold" />
-                    <span className="cote text-[0.8125rem] uppercase tracking-[0.12em]">Terrain & Responsabilité</span>
+                    <Icone nom="qualite" size={16} weight="bold" />
+                    <span className="cote text-[0.75rem] uppercase tracking-[0.14em] font-bold">Direction Générale</span>
                   </div>
-                  <p className="mt-1 font-display font-extrabold text-[1.25rem] text-blanc leading-snug">
-                    La Direction Générale
+                  <p className="mt-1 font-display font-extrabold text-[1rem] sm:text-[1.0625rem] text-blanc leading-snug">
+                    PARTENAIRE ENTREPRISE TRAVAUX SUARL
                   </p>
-                  <p className="mt-0.5 text-[0.875rem] text-brume">
-                    Sur le chantier d&apos;aménagement ISDND Meckhé (Financement AFD / SETEC)
+                  <p className="mt-0.5 text-[0.8125rem] text-brume">
+                    Siège social · Dakar, Sénégal
                   </p>
+                </div>
+              </div>
+
+              {/* 4. Pastille flottante prestigieuse */}
+              <div className="absolute -bottom-3 -right-2 sm:-bottom-4 sm:-right-3 rounded-2xl bg-blanc/95 backdrop-blur-md px-3.5 py-2.5 shadow-xl border border-nuit/10 flex items-center gap-2.5 max-w-[15rem]">
+                <div className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-royal text-blanc shadow-sm">
+                  <Icone nom="environnement" size={20} weight="bold" />
+                </div>
+                <div>
+                  <p className="cote text-[0.6875rem] uppercase tracking-[0.08em] text-encre-douce">Fondateur & Direction</p>
+                  <p className="text-[0.8125rem] font-bold text-nuit leading-tight">Excellence & Vision BTP</p>
                 </div>
               </div>
             </div>

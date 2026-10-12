@@ -9,7 +9,7 @@ import { Icone } from "@/components/ui/Icone";
  * la vision d'excellence et l'engagement environnemental et sécuritaire de PET.
  */
 export function MotDirecteur() {
-  const photo = photos.directeurChantier;
+  const photo = photos.directeurBureau;
 
   return (
     <section
@@ -29,48 +29,55 @@ export function MotDirecteur() {
 
       <div className="conteneur relative">
         <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
-          {/* Photo du Directeur avec cadre de chantier et badge de terrain */}
-          <div className="relative mx-auto w-full max-w-md lg:col-span-5 lg:max-w-none">
-            {/* Arrière-plan architectural décalé */}
+          {/* Photo du Directeur avec cadre esthétique irrégulier et taille affinée */}
+          <div className="relative mx-auto w-full max-w-[290px] sm:max-w-[320px] lg:col-span-5 lg:max-w-[350px]">
+            {/* 1. Cadre décoratif asymétrique d'arrière-plan avec dégradé royal & or */}
             <div
               aria-hidden
-              className="absolute -inset-2.5 rounded-2xl bg-gradient-to-tr from-nuit via-royal to-ciel opacity-15 sm:-inset-4 sm:rounded-3xl"
+              className="absolute -inset-3 sm:-inset-4 rounded-[2.75rem_1rem_3.25rem_1.25rem] -rotate-2 bg-gradient-to-br from-royal via-ciel/40 to-jaune/40 opacity-70 transition-transform duration-500 group-hover:rotate-0"
             />
 
-            <div className="relative overflow-hidden rounded-2xl bg-nuit shadow-2xl sm:rounded-3xl border border-white/20">
+            {/* 2. Filet géométrique d'architecte décalé */}
+            <div
+              aria-hidden
+              className="absolute -inset-1.5 sm:-inset-2 rounded-[1.25rem_3rem_1rem_2.75rem] rotate-1 border-2 border-royal/35 pointer-events-none"
+            />
+
+            {/* 3. Cadre principal à découpe organique asymétrique et ombre profonde */}
+            <div className="group relative overflow-hidden rounded-[2.5rem_1rem_3.25rem_1rem] bg-nuit shadow-[0_20px_50px_rgba(10,34,64,0.22)] ring-4 ring-white">
               <Image
                 src={photo.src}
-                alt="Directeur Général de PET SUARL sur chantier d'infrastructure au Sénégal"
-                width={800}
-                height={1067}
+                alt="Directeur Général de PARTENAIRE ENTREPRISE TRAVAUX SUARL dans son bureau de direction à Dakar"
+                width={720}
+                height={814}
                 placeholder="blur"
-                className="h-[28rem] sm:h-[32rem] lg:h-[36rem] w-full object-cover object-top transition-transform duration-700 hover:scale-105"
-                sizes="(max-width: 1024px) 100vw, 42vw"
+                className="h-[21rem] sm:h-[24rem] lg:h-[26rem] w-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                sizes="(max-width: 640px) 290px, (max-width: 1024px) 320px, 350px"
               />
 
-              {/* Voile dégradé avec métadonnées de terrain */}
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-nuit via-nuit/85 to-transparent p-5 sm:p-6 text-blanc">
+              {/* Voile dégradé subtil avec cartouche de direction */}
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-nuit via-nuit/75 to-transparent p-4 sm:p-5 text-blanc">
                 <div className="flex items-center gap-2 text-jaune">
-                  <Icone nom="casque" size={18} weight="bold" />
-                  <span className="cote text-[0.8125rem] uppercase tracking-[0.14em]">Présence active sur le terrain</span>
+                  <Icone nom="qualite" size={16} weight="bold" />
+                  <span className="cote text-[0.75rem] uppercase tracking-[0.14em] font-bold">Direction Générale</span>
                 </div>
-                <p className="mt-1 font-display font-extrabold text-[1.125rem] text-blanc leading-snug">
-                  Direction Générale · PET SUARL
+                <p className="mt-1 font-display font-extrabold text-[1rem] sm:text-[1.0625rem] text-blanc leading-snug">
+                  PARTENAIRE ENTREPRISE TRAVAUX SUARL
                 </p>
-                <p className="mt-0.5 text-[0.875rem] text-brume">
-                  Chantier d&apos;infrastructure environnementale au Sénégal (Financement AFD / Contrôle SETEC)
+                <p className="mt-0.5 text-[0.8125rem] text-brume">
+                  Siège social · Dakar, Sénégal
                 </p>
               </div>
             </div>
 
-            {/* Pastille flottante de garantie environnementale */}
-            <div className="absolute -bottom-4 -right-2 sm:-bottom-6 sm:-right-4 rounded-xl bg-blanc/95 backdrop-blur-md p-3.5 sm:p-4 shadow-xl border border-nuit/10 flex items-center gap-3 max-w-[17rem]">
-              <div className="flex size-11 shrink-0 items-center justify-center rounded-lg bg-royal text-blanc">
-                <Icone nom="environnement" size={24} weight="bold" />
+            {/* 4. Pastille flottante prestigieuse */}
+            <div className="absolute -bottom-3 -right-2 sm:-bottom-4 sm:-right-3 rounded-2xl bg-blanc/95 backdrop-blur-md px-3.5 py-2.5 shadow-xl border border-nuit/10 flex items-center gap-2.5 max-w-[15rem]">
+              <div className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-royal text-blanc shadow-sm">
+                <Icone nom="environnement" size={20} weight="bold" />
               </div>
               <div>
-                <p className="cote text-[0.75rem] uppercase tracking-[0.1em] text-encre-douce">Engagement QHSE</p>
-                <p className="text-[0.875rem] font-bold text-nuit leading-tight">Normes environnementales et de sécurité</p>
+                <p className="cote text-[0.6875rem] uppercase tracking-[0.08em] text-encre-douce">Fondateur & Direction</p>
+                <p className="text-[0.8125rem] font-bold text-nuit leading-tight">Excellence & Vision BTP</p>
               </div>
             </div>
           </div>

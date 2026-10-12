@@ -29,6 +29,7 @@ import controleQualiteBeton from "@/public/images/chantiers/controle-qualite-bet
 import partenariatChantier from "@/public/images/chantiers/partenariat-chantier.jpg";
 import pilotageChantier from "@/public/images/chantiers/pilotage-chantier.jpg";
 import directeurChantier from "@/public/images/chantiers/directeur-chantier-meckhe.jpg";
+import directeurBureau from "@/public/images/directeur/directeur-bureau.jpg";
 import topographieGps from "@/public/images/chantiers/topographie-gps-chantier.jpg";
 import geometresImplantation from "@/public/images/chantiers/geometres-implantation-chantier.jpg";
 
@@ -184,6 +185,11 @@ export const photos = {
   },
 
   // Photos réelles de terrain PET – Chantier ISDND Meckhé et Direction
+  directeurBureau: {
+    src: directeurBureau,
+    alt: "Directeur Général de PARTENAIRE ENTREPRISE TRAVAUX SUARL dans son bureau de direction à Dakar.",
+    focale: "50% 30%",
+  },
   directeurChantier: {
     src: directeurChantier,
     alt: "Le Directeur de PET SUARL en tenue de chantier devant le panneau officiel du projet ISDND Meckhé financé par l'AFD.",
