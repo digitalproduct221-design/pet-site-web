@@ -73,6 +73,34 @@ async function main() {
       .toFile(`${PHOTOS_OUT}/${p.out}.jpg`);
   }
 
+  // Nouvelles photos HD authentiques du terrain sénégalais
+  const { existsSync } = await import("node:fs");
+  const nouvellesPhotos = [
+    { src: "assets/photos-nouvelles/Construction_crew_listening_to_e…_20261012005925.jpg", out: "equipe-pet" },
+    { src: "assets/photos-nouvelles/Workers_walking_on_construction_…_20261012005925.jpg", out: "equipe-en-marche" },
+    { src: "assets/photos-nouvelles/Building_under_construction_in_D…_20261012005925.jpg", out: "immeuble-dakar" },
+    { src: "assets/photos-nouvelles/Workers_constructing_building_in…_20261012005925.jpg", out: "gros-oeuvre-dakar" },
+    { src: "assets/photos-nouvelles/School_building_in_Senegal_20261012005925.jpg", out: "ecole-senegal" },
+    { src: "assets/photos-nouvelles/Contemporary_villa_exterior_with…_20261012005925.jpg", out: "villa-contemporaine" },
+    { src: "assets/photos-nouvelles/Perimeter_wall_and_steel_gate_20261012005925.jpg", out: "cloture-maconnee" },
+    { src: "assets/photos-nouvelles/Newly_paved_neighborhood_road_20261012005925.jpg", out: "voirie-asphalte" },
+    { src: "assets/photos-nouvelles/Operator_leveling_road_with_grader_20261012005925.jpg", out: "niveleuse-piste" },
+    { src: "assets/photos-nouvelles/Technicians_inspecting_pipeline_…_20261012005925.jpg", out: "epreuve-hydraulique" },
+    { src: "assets/photos-nouvelles/Farmer_irrigating_crops_in_field_20261012005925.jpg", out: "irrigation-niayes" },
+    { src: "assets/photos-nouvelles/Irrigation_pump_in_agricultural_…_20261012005925.jpg", out: "station-pompage-solaire" },
+    { src: "assets/photos-nouvelles/Technician_performing_concrete_s…_20261012005925.jpg", out: "controle-qualite-beton" },
+    { src: "assets/photos-nouvelles/Manager_and_client_shaking_hands_20261012005925.jpg", out: "partenariat-chantier" },
+    { src: "assets/photos-nouvelles/Engineer_reviewing_construction_…_20261012005925.jpg", out: "pilotage-chantier" },
+  ];
+
+  for (const p of nouvellesPhotos) {
+    if (existsSync(p.src)) {
+      await sharp(p.src)
+        .jpeg({ quality: 88, mozjpeg: true })
+        .toFile(`${PHOTOS_OUT}/${p.out}.jpg`);
+    }
+  }
+
   const logo = await whiteToAlpha("assets/logo/logo-PET.png");
   const full = { left: 50, top: 100, width: 1510, height: 910 };
   const emblem = { left: 318, top: 100, width: 926, height: 672 };

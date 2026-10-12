@@ -51,6 +51,7 @@ const sources: ProjetSource[] = [
     resume: "Élévation d'immeuble en béton armé, coffrage des dalles et maçonnerie soignée à Dakar.",
     travaux: ["Fondations et semelles béton armé", "Élévation des poteaux et poutres", "Coffrage et coulage de dalles", "Maçonnerie en parpaings"],
     photos: ["immeubleDakar", "grosOeuvreDakar", "clotureMaconnee"],
+    reference: true,
   },
   {
     slug: "terrassement-plateforme",
@@ -67,6 +68,7 @@ const sources: ProjetSource[] = [
     resume: "Voirie bitumée avec bordures de trottoirs et caniveaux d'assainissement pluvial intégrés.",
     travaux: ["Terrassement et réglage de forme", "Pose de bordures et caniveaux", "Revêtement bitumineux", "Raccordement VRD"],
     photos: ["voirieAsphalte", "niveleusePiste", "niveleuseVoirie"],
+    reference: true,
   },
   {
     slug: "amenagement-hydro-agricole-niayes",
