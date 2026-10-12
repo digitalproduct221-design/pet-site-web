@@ -71,7 +71,91 @@ export default function PageAPropos() {
         photo="directeurChantier"
       />
 
-      {/* 1. Mot du Directeur Général */}
+      {/* 1. À propos de nous : Présentation et domaines clés */}
+      <section id="a-propos-de-nous" aria-labelledby="titre-a-propos" className="bg-blanc py-16 sm:py-24 lg:py-28 border-b border-nuit/5">
+        <div className="conteneur">
+          <div className="grid gap-12 lg:grid-cols-12 lg:gap-16 items-start">
+            <div className="lg:col-span-7">
+              <div className="inline-flex items-center gap-2 rounded-full bg-royal/10 px-4 py-1.5 text-royal mb-4">
+                <Icone nom="batiment" size={16} weight="bold" />
+                <span className="cote text-[0.8125rem] uppercase tracking-[0.16em] font-bold">À propos de nous</span>
+              </div>
+
+              <h2 id="titre-a-propos" className="titre text-[clamp(2.2rem,1.6rem+2.5vw,3.5rem)] leading-[1.04] text-nuit">
+                Des solutions complètes pour la gestion et l&apos;aménagement des infrastructures au Sénégal
+              </h2>
+
+              <div className="mt-8 space-y-5 text-[1.0625rem] leading-relaxed text-encre-600 sm:text-[1.125rem]">
+                <p className="text-encre font-medium text-[1.125rem] sm:text-[1.1875rem] leading-relaxed">
+                  Fondée en 2016, <strong>PARTENAIRE ENTREPRISE TRAVAUX SUARL (PET)</strong>, nous sommes experts dans le domaine de la construction de bâtiment, de l&apos;hydraulique, de l&apos;assainissement, de la Voirie et Réseaux Divers (VRD), et nous offrons des solutions complètes pour la gestion et l&apos;aménagement des infrastructures.
+                </p>
+                <p>
+                  Experts dans le domaine du génie civil de l&apos;eau et des travaux de réseaux et canalisation, nous offrons des solutions complètes pour la gestion et l&apos;aménagement des infrastructures hydrauliques, des ouvrages en béton, des stations d&apos;épuration, des réservoirs d&apos;eau potable, des bassins de stockage d&apos;eaux usées…
+                </p>
+                <p>
+                  PET a des compétences avérées dans la construction de bâtiments industriels, tertiaires et commerciaux, l&apos;aménagement de la voirie et la rénovation d&apos;ouvrages d&apos;art courants grâce à son expertise, sa technicité et sa forte capacité d&apos;innovation.
+                </p>
+                <p className="rounded-2xl bg-sable/60 p-5 sm:p-6 border border-nuit/5 text-nuit font-medium">
+                  Nous sommes capables de gérer l&apos;intégralité du processus, de la conception à la réalisation, en passant par la coordination des différents corps de métier. Nos équipes qualifiées s&apos;assurent que chaque projet est réalisé selon les plus hauts standards de qualité, en respectant rigoureusement les délais et les budgets.
+                </p>
+              </div>
+            </div>
+
+            {/* Piliers d'intervention */}
+            <div className="lg:col-span-5 grid gap-4 pt-2">
+              <div className="rounded-2xl bg-sable p-6 border border-nuit/5 transition-transform duration-300 hover:-translate-y-1">
+                <div className="flex items-center gap-3 text-royal font-bold">
+                  <div className="flex size-10 items-center justify-center rounded-xl bg-white shadow-sm">
+                    <Icone nom="eau" size={20} weight="bold" />
+                  </div>
+                  <h3 className="titre text-[1.25rem] text-nuit">Génie civil de l&apos;eau & Réseaux</h3>
+                </div>
+                <p className="mt-3 text-[0.9375rem] text-encre-600 leading-relaxed">
+                  Infrastructures hydrauliques, ouvrages en béton, stations d&apos;épuration, réservoirs d&apos;eau potable et bassins de stockage d&apos;eaux usées.
+                </p>
+              </div>
+
+              <div className="rounded-2xl bg-sable p-6 border border-nuit/5 transition-transform duration-300 hover:-translate-y-1">
+                <div className="flex items-center gap-3 text-royal font-bold">
+                  <div className="flex size-10 items-center justify-center rounded-xl bg-white shadow-sm">
+                    <Icone nom="batiment" size={20} weight="bold" />
+                  </div>
+                  <h3 className="titre text-[1.25rem] text-nuit">Bâtiments tertiaires & industriels</h3>
+                </div>
+                <p className="mt-3 text-[0.9375rem] text-encre-600 leading-relaxed">
+                  Compétences avérées dans la construction d&apos;immeubles, d&apos;usines, de locaux commerciaux et coordination complète des corps d&apos;état.
+                </p>
+              </div>
+
+              <div className="rounded-2xl bg-sable p-6 border border-nuit/5 transition-transform duration-300 hover:-translate-y-1">
+                <div className="flex items-center gap-3 text-royal font-bold">
+                  <div className="flex size-10 items-center justify-center rounded-xl bg-white shadow-sm">
+                    <Icone nom="route" size={20} weight="bold" />
+                  </div>
+                  <h3 className="titre text-[1.25rem] text-nuit">VRD & Ouvrages d&apos;art</h3>
+                </div>
+                <p className="mt-3 text-[0.9375rem] text-encre-600 leading-relaxed">
+                  Aménagement de voiries, réseaux divers, canalisations et rénovation soignée d&apos;ouvrages d&apos;art courants.
+                </p>
+              </div>
+
+              <div className="rounded-2xl bg-nuit text-blanc p-6 shadow-md border border-white/10">
+                <div className="flex items-center gap-3 text-jaune font-bold">
+                  <div className="flex size-10 items-center justify-center rounded-xl bg-white/10">
+                    <Icone nom="qualite" size={20} weight="bold" />
+                  </div>
+                  <h3 className="titre text-[1.25rem] text-blanc">Gestion intégrale de A à Z</h3>
+                </div>
+                <p className="mt-3 text-[0.9375rem] text-brume leading-relaxed">
+                  De la conception à la livraison finale, avec respect scrupuleux des plus hauts standards de qualité, des délais et des budgets.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 2. Mot du Directeur Général */}
       <section id="mot-directeur" aria-labelledby="titre-mot-dir" className="bg-blanc py-16 sm:py-24 lg:py-28">
         <div className="conteneur">
           <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">

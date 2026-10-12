@@ -40,8 +40,7 @@ export function Presentation() {
         <div className="revele lg:col-span-5 lg:col-start-8">
           <TitreSection id="titre-presentation" titre="La qualité et la sécurité au centre de nos chantiers" />
           <p className="mt-8 max-w-[34rem] text-[1.125rem] leading-relaxed text-texte">
-            Entreprise de bâtiment et de travaux publics, de génie civil, d&apos;hydraulique et d&apos;assainissement, tous corps
-            d&apos;état, PET s&apos;appuie sur une équipe qui cumule plus de 40 ans d&apos;expérience.
+            Fondée en 2016, <strong>PARTENAIRE ENTREPRISE TRAVAUX SUARL</strong> offre des solutions complètes pour l&apos;aménagement des infrastructures : bâtiment, VRD, hydraulique, assainissement et génie civil de l&apos;eau. De la conception à la réalisation, nous coordonnons tous les corps d&apos;état selon les plus hauts standards de qualité, dans le respect des délais et des budgets.
           </p>
           <ul aria-label="Nos valeurs" className="mt-8 grid max-w-[34rem] gap-x-6 gap-y-3 sm:grid-cols-2">
             {valeurs.map((v) => (

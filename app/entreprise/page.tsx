@@ -69,13 +69,16 @@ export default function PageEntreprise() {
             <h2 id="titre-qui" className="titre text-titre-l text-nuit">
               Qui sommes-nous
             </h2>
-            {entreprise.presentation
-              .split(/(?<=\.) (?=Forte|PET participe)/)
-              .map((phrase, i) => (
-                <p key={i} className={`max-w-[38rem] text-[1.125rem] leading-relaxed ${i === 0 ? "mt-6 text-encre" : "mt-4 text-encre-douce"}`}>
-                  {phrase}
-                </p>
-              ))}
+            {(entreprise.a_propos_paragraphes ?? [entreprise.presentation]).map((paragraphe, i) => (
+              <p
+                key={i}
+                className={`max-w-[38rem] text-[1.0625rem] sm:text-[1.125rem] leading-relaxed ${
+                  i === 0 ? "mt-6 text-encre font-medium" : "mt-4 text-encre-douce"
+                }`}
+              >
+                {paragraphe}
+              </p>
+            ))}
           </div>
           <div className="lg:col-span-5 lg:col-start-8">
             <h3 className="titre text-titre-m text-nuit">Trois types de clients</h3>
