@@ -1,9 +1,8 @@
 /**
  * Réalisations : nos chantiers en images.
- * Chaque fiche est une galerie de photos réelles de chantiers PET (bâche de
- * présentation et chantiers terrain à Dakar et au Sénégal). Les titres et légendes
- * décrivent ce que montrent les photos, sans chiffre ni date inventés.
- * Pour ajouter un chantier : une entrée ici, ses photos dans content/photos.ts.
+ * Chaque fiche est une galerie de photos réelles et techniques de chantiers PET
+ * à Dakar et au Sénégal. Les titres et travaux décrivent ce que montrent les photos,
+ * sans chiffre ni date inventés.
  */
 import { imageLocale, type ImageSite } from "./images";
 import type { PhotoId } from "./photos";
@@ -12,7 +11,7 @@ import type { PhotoId } from "./photos";
 export type Projet = Omit<ProjetSource, "photos"> & { photos: ImageSite[] };
 
 /** Réalisation livrée avec le site, photos désignées dans le registre. */
-type ProjetSource = {
+export type ProjetSource = {
   slug: string;
   titre: string;
   /** Slug du domaine (voir content/site.ts). */
@@ -21,16 +20,139 @@ type ProjetSource = {
   /** Travaux visibles sur les photos. */
   travaux: string[];
   photos: PhotoId[];
-  /** Référence citée sur la bâche de présentation de PET. */
+  /** Référence majeure de l'entreprise. */
   reference?: boolean;
 };
 
-const sources: ProjetSource[] = [
+export const sources: ProjetSource[] = [
+  // --- TRAVAUX PUBLICS & VRD ---
+  {
+    slug: "amenagement-voirie-boulevards-vrd",
+    titre: "Aménagement de voiries urbaines, boulevards et réseaux divers (VRD)",
+    domaine: "travaux-publics-vrd",
+    resume: "Travaux complets de terrassement, d'application d'enrobé bitumineux, de pose de bordures préfabriquées et de caniveaux d'assainissement pluvial sur artères urbaines et voies de circulation au Sénégal.",
+    travaux: [
+      "Terrassement général, déblais et remblais de voirie",
+      "Profilage et régalage par niveleuse de forte puissance",
+      "Compactage dynamique et contrôle de portance du fond de forme",
+      "Pose de bordures préfabriquées et caniveaux latéraux de drainage",
+      "Mise en œuvre d'enrobé à chaud au finisseur et compactage dynamique",
+      "Signalisation et raccordements de réseaux divers",
+    ],
+    photos: [
+      "terrassementEngins",
+      "niveleuseVoirie",
+      "topographiePlanVoirie",
+      "niveleuseTerrassementPiste",
+      "compacteurSolLaterite",
+      "compacteurVibrantTerrassement",
+      "vrdAsphalteBoulevard",
+      "grandeAvenueUrbaineDakar",
+      "voirieAsphalte",
+    ],
+    reference: true,
+  },
+  {
+    slug: "viabilisation-lotissement-topographie-voirie",
+    titre: "Implantation topographique, nivellement et viabilisation de plateformes",
+    domaine: "travaux-publics-vrd",
+    resume: "Relevés altimétriques de haute précision, calage des plans d'exécution, ouverture de voies en latérite et viabilisation de plateformes pour lotissements résidentiels et industriels.",
+    travaux: [
+      "Relevés au niveau d'optique de précision CST/Berger (trépied PET)",
+      "Implantation des axes de voirie et calage des cotes au GPS différentiel",
+      "Analyse et ajustement des plans d'exécution sur le terrain par l'équipe d'ingénieurs PET",
+      "Profilage en long et en travers des plateformes de chaussée latéritique",
+      "Ouverture de pistes d'accès et voies intérieures de lotissement",
+    ],
+    photos: [
+      "topographiePlanVoirie",
+      "implantationVoirieBatiment",
+      "niveauOptiqueGeometre",
+      "etudePlansEquipePet",
+      "topographieGps",
+      "geometresImplantation",
+      "rueResidentielleBitumee",
+      "reunionTechniqueChantier",
+    ],
+    reference: true,
+  },
+  {
+    slug: "terrassement-plateformes-engins-lourds",
+    titre: "Terrassements massifs, déblais-remblais et préparation de sols",
+    domaine: "travaux-publics-vrd",
+    resume: "Opérations de terrassement lourd, décapage de terre végétale, remblaiement méthodique et compactage de plateformes industrielles et logistiques.",
+    travaux: [
+      "Décapage de sol et déblais massifs à la pelle hydraulique CAT",
+      "Mise en remblai par couches successives sélectionnées",
+      "Compactage lourd au compacteur monocylindre vibrant",
+      "Contrôles de densité in situ et essais de portance",
+    ],
+    photos: [
+      "terrassementEngins",
+      "niveleuseVoirie",
+      "terrassementCasierMeckhe",
+      "niveleuseTerrassementPiste",
+      "compacteurSolLaterite",
+      "compacteurVibrantTerrassement",
+    ],
+    reference: true,
+  },
+
+  // --- HYDRAULIQUE ---
+  {
+    slug: "adduction-eau-canalisations-maitresses",
+    titre: "Grands réseaux d'adduction d'eau potable et canalisations maîtresses",
+    domaine: "hydraulique",
+    resume: "Fourniture, transport et pose de conduites maîtresses de gros diamètre en fonte ductile et PEHD, tranchées sécurisées, raccordements sur brides et épreuves de pression.",
+    travaux: [
+      "Ouverture de tranchées profondes et blindage de sécurité",
+      "Implantation et guidage topographique des pentes de pose",
+      "Emboîtement et calage de tuyaux fonte et PEHD tous diamètres",
+      "Montage de pièces spéciales : cônes, coudes, tés, vannes et ventouses",
+      "Essais de mise en pression hydrostatique selon les normes de distribution",
+    ],
+    photos: [
+      "poseConduiteTopographie",
+      "conduiteOuvrage",
+      "trancheeLotissement",
+      "inspectionTechniqueCanalisation",
+      "controleConduiteEauPotable",
+      "ouvertureVanneReseauEau",
+      "hydrauliqueCanalisationsPose",
+      "epreuveHydraulique",
+    ],
+    reference: true,
+  },
+  {
+    slug: "stations-pompage-amenagements-hydro-agricoles",
+    titre: "Stations de pompage, bâches de stockage et réseaux hydro-agricoles",
+    domaine: "hydraulique",
+    resume: "Équipement de stations de pompage hydrauliques et solaires, réservoirs tampons et collecteurs d'irrigation sous pression pour l'alimentation en eau et l'agriculture.",
+    travaux: [
+      "Génie civil de stations de pompage et chambres de vannes",
+      "Installation de groupes motopompes et alimentations solaires",
+      "Raccordement de collecteurs de refoulement et distribution",
+      "Pose de réseaux d'irrigation et bornes d'arrosage en milieu rural",
+      "Essais de débit, de pression et mise en service continue",
+    ],
+    photos: [
+      "conduiteOuvrage",
+      "etudePlansEquipePet",
+      "pompeIrrigationAgricole",
+      "irrigationParcellesMaraicheres",
+      "vanneReservoirEauPotable",
+      "stationPompageSolaire",
+      "irrigationNiayes",
+    ],
+    reference: true,
+  },
+
+  // --- ASSAINISSEMENT ---
   {
     slug: "installation-stockage-dechets-isdnd-meckhe",
-    titre: "Installation de stockage de déchets (ISDND Meckhé)",
+    titre: "Installation de stockage de déchets (ISDND Meckhé - AFD / SETEC / GESCOD)",
     domaine: "assainissement",
-    resume: "Construction d'une installation de stockage de déchets non dangereux sous financement de l'AFD, maîtrise d'œuvre SETEC Infrastructures Afrique et appui GESCOD.",
+    resume: "Construction d'une installation de stockage de déchets non dangereux sous financement de l'AFD, maîtrise d'œuvre SETEC Infrastructures Afrique et appui technique GESCOD.",
     travaux: [
       "Relevés altimétriques de haute précision par station GNSS mobile",
       "Terrassements généraux, déblais et profilage des casiers de stockage",
@@ -53,39 +175,90 @@ const sources: ProjetSource[] = [
     reference: true,
   },
   {
-    slug: "viabilisation-lotissement-topographie-voirie",
-    titre: "Implantation topographique et viabilisation de lotissement résidentiel",
-    domaine: "travaux-publics-vrd",
-    resume: "Travaux topographiques de haute précision, calage des plans d'exécution et nivellement des voiries d'un nouveau lotissement résidentiel et d'immeubles au Sénégal.",
+    slug: "reseaux-assainissement-dalots-evacuation",
+    titre: "Réseaux d'assainissement pluvial, dalots cadres et regards de visite",
+    domaine: "assainissement",
+    resume: "Collecte et évacuation des eaux pluviales et usées, pose de dalots préfabriqués de grand gabarit, coulage de regards de visite étanches et raccordements urbains.",
     travaux: [
-      "Relevés altimétriques et nivellement au niveau d'optique de précision (trépied PET)",
-      "Implantation des emprises de voies et raccordements aux villas",
-      "Étude et calage des plans d'exécution sur le terrain par les ingénieurs PET",
-      "Profilage en long et en travers de la plateforme de chaussée latéritique",
-      "Contrôle altimétrique d'accès vers les bâtiments et infrastructures",
+      "Terrassement en tranchée et confection de lit de pose",
+      "Pose et emboîtement de dalots cadres préfabriqués en béton armé",
+      "Coulage en place de regards de visite avec tampons de fonte",
+      "Branchements particuliers et raccordement au collecteur principal",
+      "Curage, réhabilitation de dalots existants et remblaiement soigné",
     ],
     photos: [
-      "topographiePlanVoirie",
-      "implantationVoirieBatiment",
-      "niveauOptiqueGeometre",
-      "etudePlansEquipePet",
-      "geometresImplantation",
-      "niveleuseTerrassementPiste",
-      "compacteurVibrantTerrassement",
-      "rueResidentielleBitumee",
+      "dalotRegard",
+      "trancheeLotissement",
+      "conduiteOuvrage",
+      "supervisionSetecChantier",
+      "genieCivilDalotPrefa",
+      "inspectionTechniqueCanalisation",
+      "stationPompageSolaire",
+    ],
+    reference: true,
+  },
+
+  // --- GÉNIE CIVIL ---
+  {
+    slug: "reservoirs-eau-ouvrages-art-beton",
+    titre: "Réservoirs de stockage d'eau et ouvrages d'art en béton armé",
+    domaine: "genie-civil",
+    resume: "Ouvrages d'art hydrauliques majeurs : grands réservoirs d'eau en béton armé, bassins de stockage, radiers lourds ferraillés et contrôle qualité continu du béton.",
+    travaux: [
+      "Ferraillage haute densité sur radiers et voiles étanches",
+      "Coffrage soigné et coulage continu de béton hydrofuge",
+      "Contrôle d'affaissement au cône d'Abrams et prélèvement d'éprouvettes",
+      "Chambres de vannes étanches et traversées de parois sécurisées",
+      "Essais de mise en eau et épreuves d'étanchéité réglementaires",
+    ],
+    photos: [
+      "ferraillageOuvrage",
+      "dalotRegard",
+      "conduiteOuvrage",
+      "inspectionDigueMeckhe",
+      "essaiAffaissementBeton",
+      "mesureQualiteBetonFrais",
+      "vanneReservoirEauPotable",
+      "genieCivilReservoirBeton",
+      "controleQualiteBeton",
     ],
     reference: true,
   },
   {
-    slug: "construction-immeubles-tertiaires-dakar",
-    titre: "Construction de bâtiments industriels et tertiaires à Dakar",
-    domaine: "batiment",
-    resume: "Réalisation d'immeubles commerciaux et tertiaires en structure béton armé multi-niveaux à Dakar, de la conception au gros œuvre achevé.",
+    slug: "ouvrages-hydrauliques-dalots-prefa",
+    titre: "Ouvrages de franchissement, dalots cadres et structures béton",
+    domaine: "genie-civil",
+    resume: "Conception et mise en œuvre d'ouvrages de franchissement hydrauliques, pose de dalots préfabriqués de fort gabarit et réhabilitation d'ouvrages d'art.",
     travaux: [
-      "Fondations profondes et coulage du radier général",
-      "Élévation de structures poteaux-poutres et dalles béton armé",
-      "Coffrage soigné et maçonnerie de remplissage",
-      "Coordination tous corps d'état et respect des délais",
+      "Terrassement en fouille et fondations d'ouvrages d'art",
+      "Ferraillage et coulage de radiers porteurs en béton armé",
+      "Grutage et assemblage de dalots préfabriqués de grande section",
+      "Traitement des joints et étanchéité multicouche",
+    ],
+    photos: [
+      "ferraillageOuvrage",
+      "dalotRegard",
+      "genieCivilDalotPrefa",
+      "essaiAffaissementBeton",
+      "mesureQualiteBetonFrais",
+      "pilotageChantier",
+      "grosOeuvreDakar",
+    ],
+    reference: true,
+  },
+
+  // --- BÂTIMENT ---
+  {
+    slug: "construction-immeubles-tertiaires-dakar",
+    titre: "Construction de bâtiments industriels, tertiaires et commerciaux à Dakar",
+    domaine: "batiment",
+    resume: "Réalisation complète d'immeubles commerciaux et tertiaires en structure béton armé multi-niveaux à Dakar, de l'étude géotechnique au gros œuvre achevé.",
+    travaux: [
+      "Implantation topographique de précision et études des plans",
+      "Fondations profondes, semelles et coulage du radier général",
+      "Élévation de structures poteaux-poutres et dalles en béton armé",
+      "Maçonnerie de remplissage et pose de linteaux",
+      "Coordination technique et respect strict des normes de sécurité",
     ],
     photos: [
       "implantationVoirieBatiment",
@@ -100,87 +273,16 @@ const sources: ProjetSource[] = [
     reference: true,
   },
   {
-    slug: "adduction-eau-canalisations-maitresses",
-    titre: "Grands réseaux d'adduction d'eau et canalisations en tranchée",
-    domaine: "hydraulique",
-    resume: "Pose de conduites maîtresses de gros diamètre en fonte ductile et PEHD en tranchée blindée sécurisée.",
-    travaux: [
-      "Ouverture de tranchées et blindage par palplanches",
-      "Pose et emboîtement de tuyaux fonte et PEHD gros diamètre",
-      "Raccordements sur brides, ventouses et vannes de régulation",
-      "Épreuves hydrauliques de mise en pression avant remblaiement",
-    ],
-    photos: [
-      "poseConduiteTopographie",
-      "conduiteOuvrage",
-      "trancheeLotissement",
-      "inspectionTechniqueCanalisation",
-      "controleConduiteEauPotable",
-      "ouvertureVanneReseauEau",
-      "hydrauliqueCanalisationsPose",
-      "epreuveHydraulique",
-      "stationPompageSolaire",
-    ],
-    reference: true,
-  },
-  {
-    slug: "reservoirs-eau-ouvrages-art-beton",
-    titre: "Construction de réservoirs d'eau et dalots préfabriqués",
-    domaine: "genie-civil",
-    resume: "Ouvrages d'art hydrauliques majeurs : grands réservoirs d'eau en béton armé, bassins de stockage et pose de dalots cadres préfabriqués.",
-    travaux: [
-      "Ferraillage lourd haute densité et contrôle des armatures",
-      "Coulage continu de béton hydrofuge pour réservoirs étanches",
-      "Grutage et emboîtement de dalots cadres préfabriqués de grand gabarit",
-      "Épreuves d'étanchéité et essais de résistance mécanique",
-    ],
-    photos: [
-      "ferraillageOuvrage",
-      "dalotRegard",
-      "conduiteOuvrage",
-      "essaiAffaissementBeton",
-      "mesureQualiteBetonFrais",
-      "vanneReservoirEauPotable",
-      "genieCivilReservoirBeton",
-      "genieCivilDalotPrefa",
-      "controleQualiteBeton",
-    ],
-    reference: true,
-  },
-  {
-    slug: "amenagement-voirie-boulevards-vrd",
-    titre: "Aménagement de voiries urbaines et réseaux divers (VRD)",
-    domaine: "travaux-publics-vrd",
-    resume: "Travaux complets d'application d'enrobé bitumineux, de pose de bordures et caniveaux d'assainissement pluvial sur artères urbaines.",
-    travaux: [
-      "Terrassement, déblais et remblais de voirie",
-      "Mise en œuvre de grave non traitée et compactage",
-      "Pose de bordures préfabriquées et caniveaux de drainage",
-      "Application d'enrobé à chaud par finisseur et compactage dynamique",
-    ],
-    photos: [
-      "terrassementEngins",
-      "niveleuseVoirie",
-      "topographiePlanVoirie",
-      "niveleuseTerrassementPiste",
-      "compacteurSolLaterite",
-      "compacteurVibrantTerrassement",
-      "vrdAsphalteBoulevard",
-      "grandeAvenueUrbaineDakar",
-      "voirieAsphalte",
-    ],
-    reference: true,
-  },
-  {
     slug: "construction-villas-etablissements-scolaires",
-    titre: "Élévation de structures scolaires et résidentielles au Sénégal",
+    titre: "Établissements scolaires, résidences et murs de clôture d'enceinte",
     domaine: "batiment",
-    resume: "Chantiers de construction d'établissements éducatifs, de villas contemporaines de standing et de clôtures périphériques maçonnées.",
+    resume: "Chantiers de construction d'établissements éducatifs, de villas contemporaines de standing et de murs de clôture périphériques maçonnés de haute protection.",
     travaux: [
       "Terrassement d'assise et coulage de semelles filantes",
-      "Élévation des murs et pose de charpentes / toitures",
-      "Galeries coursives, claustras de ventilation et finitions",
-      "Clôtures d'enceinte maçonnées et aménagements extérieurs",
+      "Élévation des murs en agglos de ciment vibré et coulage de chaînages",
+      "Galeries coursives, toitures adaptées au climat sahélien",
+      "Murs de clôture périphériques avec crépis soignés et portails acier",
+      "Second œuvre, finitions intérieures et peintures de protection",
     ],
     photos: [
       "implantationVoirieBatiment",
@@ -193,110 +295,12 @@ const sources: ProjetSource[] = [
       "clotureMaconnee",
       "clotureGrillage",
     ],
-  },
-  {
-    slug: "rehabilitation-dalot-regards",
-    titre: "Réhabilitation de dalot et construction de regards",
-    domaine: "assainissement",
-    resume: "Regards en béton coulés en place et raccordés au réseau, au cœur d'un quartier habité.",
-    travaux: ["Terrassement en fouille", "Coffrage et coulage de regards", "Raccordement de conduite fonte", "Remblaiement"],
-    photos: [
-      "dalotRegard",
-      "trancheeLotissement",
-      "conduiteOuvrage",
-      "supervisionSetecChantier",
-      "genieCivilDalotPrefa",
-      "inspectionTechniqueCanalisation",
-    ],
-    reference: true,
-  },
-  {
-    slug: "fourniture-pose-conduite-fonte",
-    titre: "Fourniture et pose de conduite fonte",
-    domaine: "hydraulique",
-    resume: "Conduite en fonte de gros diamètre et ses vannes, protégées par un ouvrage en béton armé.",
-    travaux: ["Pose et assemblage des tuyaux", "Pose des vannes", "Contrôle de pression en tranchée", "Ferraillage de l'ouvrage"],
-    photos: [
-      "conduiteOuvrage",
-      "poseConduiteTopographie",
-      "ferraillageOuvrage",
-      "trancheeLotissement",
-      "inspectionTechniqueCanalisation",
-      "controleConduiteEauPotable",
-      "ouvertureVanneReseauEau",
-    ],
-    reference: true,
-  },
-  {
-    slug: "terrassement-plateforme",
-    titre: "Terrassement d'une plateforme",
-    domaine: "travaux-publics-vrd",
-    resume: "Déblais et remblais sur un site sableux, à la pelle hydraulique et à la chargeuse.",
-    travaux: ["Déblais à la pelle hydraulique", "Chargement", "Mise en remblai"],
-    photos: [
-      "terrassementEngins",
-      "niveleuseVoirie",
-      "terrassementCasierMeckhe",
-      "topographiePlanVoirie",
-      "niveleuseTerrassementPiste",
-      "compacteurSolLaterite",
-      "compacteurVibrantTerrassement",
-    ],
-    reference: true,
-  },
-  {
-    slug: "pose-conduite-topographie",
-    titre: "Pose de conduite avec suivi topographique",
-    domaine: "hydraulique",
-    resume: "Conduite posée en tranchée, implantée et contrôlée au GPS par le topographe.",
-    travaux: ["Implantation topographique", "Ouverture de tranchée", "Pose de la conduite"],
-    photos: [
-      "poseConduiteTopographie",
-      "conduiteOuvrage",
-      "etudePlansEquipePet",
-      "niveauOptiqueGeometre",
-      "inspectionTechniqueCanalisation",
-      "controleConduiteEauPotable",
-    ],
-    reference: true,
-  },
-  {
-    slug: "reseau-lotissement",
-    titre: "Réseaux d'un lotissement en construction",
-    domaine: "assainissement",
-    resume: "Tranchées ouvertes dans la latérite pour les canalisations des villas en construction.",
-    travaux: ["Ouverture de tranchées", "Pose de canalisations"],
-    photos: [
-      "trancheeLotissement",
-      "dalotRegard",
-      "conduiteOuvrage",
-      "implantationVoirieBatiment",
-      "genieCivilDalotPrefa",
-      "inspectionTechniqueCanalisation",
-    ],
-  },
-  {
-    slug: "ouvrage-hydraulique-beton-arme",
-    titre: "Ouvrage hydraulique en béton armé",
-    domaine: "genie-civil",
-    resume: "Nappes d'armatures sur le radier d'un ouvrage hydraulique, au bord d'un plan d'eau.",
-    travaux: ["Ferraillage du radier", "Attentes des voiles", "Coulage et vibration"],
-    photos: [
-      "ferraillageOuvrage",
-      "conduiteOuvrage",
-      "inspectionDigueMeckhe",
-      "dalotRegard",
-      "essaiAffaissementBeton",
-      "mesureQualiteBetonFrais",
-      "genieCivilReservoirBeton",
-    ],
     reference: true,
   },
 ];
 
 /**
- * Réalisations livrées avec le site : contenu de repli quand la base n'est pas
- * branchée ou ne répond pas (voir lib/contenu.ts), et amorçage de la base
- * (supabase/seed.sql).
+ * Réalisations livrées avec le site : contenu de référence garantissant
+ * que tous les domaines disposent d'un ensemble riche de chantiers réels.
  */
 export const projetsStatiques: Projet[] = sources.map((p) => ({ ...p, photos: p.photos.map(imageLocale) }));

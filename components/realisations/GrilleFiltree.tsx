@@ -4,75 +4,188 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import type { Projet } from "@/content/realisations";
 import { domaines } from "@/content/site";
+import { imageLocale } from "@/content/images";
 import { CarteProjet } from "@/components/ui/CarteProjet";
 import { Icone } from "@/components/ui/Icone";
+import { Galerie } from "./Galerie";
 
-// Seuls les domaines qui ont au moins une réalisation publiée deviennent des filtres.
+// Liste des filtres disponibles avec comptage dynamique
 const optionsPour = (projets: Projet[]) => [
   { slug: "tous", titre: "Tous les chantiers" },
-  ...domaines.filter((d) => projets.some((p) => p.domaine === d.slug)).map((d) => ({ slug: d.slug, titre: d.titre })),
+  ...domaines
+    .filter((d) => projets.some((p) => p.domaine === d.slug))
+    .map((d) => ({
+      slug: d.slug,
+      titre: d.titre,
+      photosCount: d.photos.length,
+    })),
 ];
 
 /**
- * Grille des réalisations filtrée par domaine. Les filtres sont de vrais liens
- * (?domaine=…) : ils fonctionnent sans JavaScript et se partagent.
+ * Grille et galeries des réalisations refondues par discipline.
+ * Chaque rubrique présente :
+ * 1. Les chantiers emblématiques du domaine (avec fiches complètes et descriptifs des travaux)
+ * 2. La galerie complète de terrain (photos réelles en priorité + compléments HD)
+ * 3. Des explications claires et compréhensibles sur le savoir-faire de PET.
  */
 export function Grille({ filtre, projets }: { filtre: string; projets: Projet[] }) {
   const options = optionsPour(projets);
-  const visibles = filtre === "tous" ? projets : projets.filter((p) => p.domaine === filtre);
   const domaineActif = domaines.find((d) => d.slug === filtre);
+  const visibles = filtre === "tous" ? projets : projets.filter((p) => p.domaine === filtre);
 
   return (
-    <div>
-      <nav aria-label="Filtrer par domaine">
-        <ul className="-mx-4 flex gap-2 overflow-x-auto px-4 pb-2 [scrollbar-width:none] sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0 sm:pb-0">
-          {options.map((o) => {
-            const choisi = o.slug === filtre;
-            const nombre = o.slug === "tous" ? projets.length : projets.filter((p) => p.domaine === o.slug).length;
-            return (
-              <li key={o.slug}>
+    <div className="space-y-12 lg:space-y-16">
+      {/* Barre de navigation / filtres */}
+      <div>
+        <nav aria-label="Filtrer par domaine">
+          <ul className="-mx-4 flex gap-2 overflow-x-auto px-4 pb-2 [scrollbar-width:none] sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0 sm:pb-0">
+            {options.map((o) => {
+              const choisi = o.slug === filtre;
+              const nombre = o.slug === "tous" ? projets.length : projets.filter((p) => p.domaine === o.slug).length;
+              return (
+                <li key={o.slug}>
+                  <Link
+                    href={o.slug === "tous" ? "/realisations" : `/realisations?domaine=${o.slug}`}
+                    scroll={false}
+                    replace
+                    aria-current={choisi ? "page" : undefined}
+                    className={`inline-flex min-h-11 shrink-0 items-center gap-2 whitespace-nowrap rounded-chantier px-5 cote text-[1rem] transition-colors ${
+                      choisi ? "bg-nuit text-blanc" : "bg-blanc text-nuit ombre-carte hover:text-royal"
+                    }`}
+                  >
+                    {o.titre}
+                    <span className={`chiffres-tabulaires text-[0.875rem] ${choisi ? "text-jaune" : "text-encre-douce"}`}>{nombre}</span>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
+      </div>
+
+      {/* CAS 1 : VUE FILTRÉE SUR UN DOMAINE PARTICULIER */}
+      {domaineActif ? (
+        <div className="space-y-14 lg:space-y-20">
+          {/* Cartouche d'introduction explicatif du domaine */}
+          <div className="rounded-panneau bg-blanc p-6 sm:p-8 lg:p-10 shadow-sm">
+            <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+              <div className="max-w-[48rem]">
+                <div className="flex items-center gap-3 text-royal">
+                  <Icone nom={domaineActif.icone} size={28} />
+                  <span className="cote text-[0.9375rem] uppercase tracking-[0.08em]">{domaineActif.titre}</span>
+                </div>
+                <h2 className="mt-3 titre text-titre-m text-nuit">{domaineActif.accroche}</h2>
+                <p className="mt-4 text-[1.0625rem] leading-relaxed text-encre-douce">
+                  {domaineActif.presentation[0]}
+                </p>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-4 lg:flex-col lg:items-end">
+                <div className="flex items-center gap-3 rounded-chantier bg-sable px-4 py-2 text-nuit">
+                  <span className="cote text-[1.125rem] text-royal">{visibles.length}</span>
+                  <span className="text-[0.9375rem] text-encre-douce">chantiers majeurs</span>
+                </div>
+                <div className="flex items-center gap-3 rounded-chantier bg-sable px-4 py-2 text-nuit">
+                  <span className="cote text-[1.125rem] text-royal">{domaineActif.photos.length}</span>
+                  <span className="text-[0.9375rem] text-encre-douce">photos terrain</span>
+                </div>
                 <Link
-                  href={o.slug === "tous" ? "/realisations" : `/realisations?domaine=${o.slug}`}
-                  scroll={false}
-                  replace
-                  aria-current={choisi ? "page" : undefined}
-                  className={`inline-flex min-h-11 shrink-0 items-center gap-2 whitespace-nowrap rounded-chantier px-5 cote text-[1rem] transition-colors ${
-                    choisi ? "bg-nuit text-blanc" : "bg-blanc text-nuit ombre-carte hover:text-royal"
-                  }`}
+                  href={`/savoir-faire/${domaineActif.slug}`}
+                  className="inline-flex items-center gap-2 cote text-[1rem] uppercase tracking-[0.04em] text-royal underline decoration-jaune decoration-[3px] underline-offset-[6px] hover:text-nuit"
                 >
-                  {o.titre}
-                  <span className={`chiffres-tabulaires text-[0.875rem] ${choisi ? "text-jaune" : "text-encre-douce"}`}>{nombre}</span>
+                  Fiche savoir-faire
+                  <Icone nom="fleche" size={16} weight="bold" />
                 </Link>
-              </li>
-            );
-          })}
-        </ul>
-      </nav>
+              </div>
+            </div>
+          </div>
 
-      <p aria-live="polite" className="mt-6 text-[1rem] text-encre-douce">
-        {visibles.length} réalisation{visibles.length > 1 ? "s" : ""}
-        {domaineActif ? ` en ${domaineActif.titre}` : ""}.
-      </p>
+          {/* Section 1 : Chantiers de référence du domaine */}
+          <div>
+            <div className="mb-6 flex flex-col gap-2">
+              <span className="cote text-[0.875rem] uppercase tracking-[0.08em] text-royal">Opérations emblématiques</span>
+              <h3 className="titre text-titre-m text-nuit">Chantiers majeurs en {domaineActif.titre}</h3>
+            </div>
+            <ul className="grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+              {visibles.map((p, i) => (
+                <li
+                  key={p.slug}
+                  className="animate-[apparition_600ms_var(--ease-chantier)_both]"
+                  style={{ animationDelay: `${Math.min(i, 6) * 60}ms` }}
+                >
+                  <CarteProjet projet={p} />
+                </li>
+              ))}
+            </ul>
+          </div>
 
-      {visibles.length === 0 ? (
-        <div className="mt-10 rounded-panneau bg-blanc p-8">
-          <p className="titre text-titre-s text-nuit">Aucune réalisation publiée dans ce domaine pour l&apos;instant</p>
-          <p className="mt-3 max-w-[36rem] text-encre-douce">
-            Nos chantiers sont présentés au fur et à mesure. En attendant, découvrez ce que nous faisons dans ce domaine.
-          </p>
-          <Link href={`/savoir-faire/${filtre}`} className="mt-5 inline-flex items-center gap-2 cote text-[1.0625rem] text-royal underline underline-offset-4">
-            Voir le savoir-faire
-            <Icone nom="fleche" size={18} weight="bold" />
-          </Link>
+          {/* Section 2 : Galerie complète de chantiers du domaine */}
+          {domaineActif.photos.length > 0 && (
+            <div className="rounded-panneau bg-blanc/60 p-6 sm:p-8 lg:p-10">
+              <div className="mb-8 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+                <div>
+                  <span className="cote text-[0.875rem] uppercase tracking-[0.08em] text-royal">Nos équipes au travail</span>
+                  <h3 className="titre text-titre-m text-nuit">Galerie complète : {domaineActif.titre}</h3>
+                  <p className="mt-2 max-w-[42rem] text-[1.0625rem] text-encre-douce">
+                    Retrouvez l&apos;ensemble de nos prises de vue de terrain et savoir-faire techniques pour ce domaine ({domaineActif.photos.length} photos).
+                  </p>
+                </div>
+              </div>
+              <Galerie
+                photos={domaineActif.photos.map(imageLocale)}
+                titre={`Chantiers PET : ${domaineActif.titre}`}
+              />
+            </div>
+          )}
         </div>
       ) : (
-        <ul key={filtre} className="mt-10 grid gap-x-6 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
-          {visibles.map((p, i) => (
-            <li key={p.slug} className="animate-[apparition_600ms_var(--ease-chantier)_both]" style={{ animationDelay: `${Math.min(i, 6) * 60}ms` }}>
-              <CarteProjet projet={p} />
-            </li>
-          ))}
-        </ul>
+        /* CAS 2 : VUE D'ENSEMBLE (« TOUS LES CHANTIERS ») ORGANISÉE PAR DOMAINE */
+        <div className="space-y-16 lg:space-y-24">
+          <div className="flex flex-col gap-2">
+            <p className="text-[1.125rem] text-encre-douce max-w-[46rem]">
+              Tous nos chantiers de référence classés par grand domaine technique. Cliquez sur un projet pour découvrir le détail des travaux et sa galerie photos, ou sélectionnez un filtre pour explorer une discipline en détail.
+            </p>
+          </div>
+
+          {/* Présentation par sections disciplinaires distinctes */}
+          {domaines
+            .filter((d) => projets.some((p) => p.domaine === d.slug))
+            .map((dom) => {
+              const chantiersDomaine = projets.filter((p) => p.domaine === dom.slug);
+              return (
+                <section key={dom.slug} aria-labelledby={`titre-section-${dom.slug}`} className="space-y-8">
+                  {/* En-tête de section de domaine */}
+                  <div className="flex flex-col gap-4 border-b border-nuit/10 pb-5 sm:flex-row sm:items-end sm:justify-between">
+                    <div>
+                      <div className="flex items-center gap-2.5 text-royal">
+                        <Icone nom={dom.icone} size={24} />
+                        <span className="cote text-[0.875rem] uppercase tracking-[0.08em]">{dom.titre}</span>
+                      </div>
+                      <h2 id={`titre-section-${dom.slug}`} className="mt-2 titre text-titre-m text-nuit">
+                        {dom.accroche}
+                      </h2>
+                    </div>
+                    <Link
+                      href={`/realisations?domaine=${dom.slug}`}
+                      className="inline-flex shrink-0 items-center gap-2 cote text-[1rem] uppercase tracking-[0.04em] text-royal hover:text-nuit"
+                    >
+                      Voir les {chantiersDomaine.length} chantiers & la galerie ({dom.photos.length} photos)
+                      <Icone nom="fleche" size={16} weight="bold" />
+                    </Link>
+                  </div>
+
+                  {/* Grille des chantiers du domaine */}
+                  <ul className="grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+                    {chantiersDomaine.map((p) => (
+                      <li key={p.slug}>
+                        <CarteProjet projet={p} />
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+              );
+            })}
+        </div>
       )}
     </div>
   );

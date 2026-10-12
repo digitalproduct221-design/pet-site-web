@@ -31,31 +31,52 @@ export async function lireRealisations(): Promise<Projet[]> {
   cacheTag("realisations");
   cacheLife("hours");
   if (!baseBranchee) return projetsStatiques;
-  const { data, error } = await client()
-    .from("realisations")
-    .select("slug, titre, domaine, resume, travaux, reference, ordre, realisation_photos (chemin, alt, largeur, hauteur, ordre)")
-    .eq("publie", true)
-    .order("ordre")
-    .order("cree_le", { ascending: false });
-  if (error || !data) return projetsStatiques;
-  return data
-    .map((r) => ({
-      slug: r.slug,
-      titre: r.titre,
-      domaine: r.domaine,
-      resume: r.resume,
-      travaux: r.travaux ?? [],
-      reference: r.reference || undefined,
-      photos: Array.from(
-        new Map(
-          ((r.realisation_photos ?? []) as LignePhoto[])
-            .toSorted((a, b) => a.ordre - b.ordre)
-            .map((p) => [p.chemin, imageDepuisChemin(p.chemin, p.alt ?? r.titre, p.largeur, p.hauteur)])
-            .filter((entry): entry is [string, ImageSite] => entry[1] !== null)
-        ).values()
-      ),
-    }))
-    .filter((r) => r.photos.length > 0);
+  try {
+    const { data, error } = await client()
+      .from("realisations")
+      .select("slug, titre, domaine, resume, travaux, reference, ordre, realisation_photos (chemin, alt, largeur, hauteur, ordre)")
+      .eq("publie", true)
+      .order("ordre")
+      .order("cree_le", { ascending: false });
+
+    if (error || !data || data.length === 0) return projetsStatiques;
+
+    // Réalisations statiques de référence (source de vérité vérifiée avec galeries complètes).
+    const slugsStatiques = new Set(projetsStatiques.map((p) => p.slug));
+    const legacySlugs = new Set([
+      "rehabilitation-dalot-regards",
+      "fourniture-pose-conduite-fonte",
+      "terrassement-plateforme",
+      "pose-conduite-topographie",
+      "reseau-lotissement",
+      "ouvrage-hydraulique-beton-arme",
+    ]);
+
+    // Intègre les réalisations créées dynamiquement depuis l'espace admin si elles diffèrent.
+    const customDb = data
+      .filter((r) => !slugsStatiques.has(r.slug) && !legacySlugs.has(r.slug))
+      .map((r) => ({
+        slug: r.slug,
+        titre: r.titre,
+        domaine: r.domaine,
+        resume: r.resume,
+        travaux: r.travaux ?? [],
+        reference: r.reference || undefined,
+        photos: Array.from(
+          new Map(
+            ((r.realisation_photos ?? []) as LignePhoto[])
+              .toSorted((a, b) => a.ordre - b.ordre)
+              .map((p) => [p.chemin, imageDepuisChemin(p.chemin, p.alt ?? r.titre, p.largeur, p.hauteur)])
+              .filter((entry): entry is [string, ImageSite] => entry[1] !== null)
+          ).values()
+        ),
+      }))
+      .filter((r) => r.photos.length > 0);
+
+    return [...projetsStatiques, ...customDb];
+  } catch {
+    return projetsStatiques;
+  }
 }
 
 export async function lireRealisation(slug: string) {
