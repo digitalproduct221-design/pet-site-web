@@ -32,6 +32,11 @@ import directeurChantier from "@/public/images/chantiers/directeur-chantier-meck
 import directeurBureau from "@/public/images/directeur/directeur-bureau.jpg";
 import topographieGps from "@/public/images/chantiers/topographie-gps-chantier.jpg";
 import geometresImplantation from "@/public/images/chantiers/geometres-implantation-chantier.jpg";
+import hydrauliqueCanalisationsPose from "@/public/images/chantiers/hydraulique-canalisations-pose.jpg";
+import genieCivilReservoirBeton from "@/public/images/chantiers/genie-civil-reservoir-beton.jpg";
+import genieCivilDalotPrefa from "@/public/images/chantiers/genie-civil-dalot-prefa.jpg";
+import batimentCommercialDakar from "@/public/images/chantiers/batiment-commercial-dakar.jpg";
+import vrdAsphalteBoulevard from "@/public/images/chantiers/vrd-asphalte-boulevard.jpg";
 
 import type { StaticImageData } from "next/image";
 
@@ -204,6 +209,31 @@ export const photos = {
     src: geometresImplantation,
     alt: "Équipe de géomètres PET en gilets de sécurité orange effectuant l'implantation technique et les cotes altimétriques sur le terrain.",
     focale: "50% 45%",
+  },
+  hydrauliqueCanalisationsPose: {
+    src: hydrauliqueCanalisationsPose,
+    alt: "Pose de canalisations d'adduction d'eau et réseau hydraulique en tranchée blindée à Dakar.",
+    focale: "50% 50%",
+  },
+  genieCivilReservoirBeton: {
+    src: genieCivilReservoirBeton,
+    alt: "Construction d'un grand réservoir d'eau et bassin de stockage en béton armé au Sénégal.",
+    focale: "50% 45%",
+  },
+  genieCivilDalotPrefa: {
+    src: genieCivilDalotPrefa,
+    alt: "Pose et grutage de dalot cadre préfabriqué en béton armé pour canal d'évacuation et ouvrage d'art.",
+    focale: "50% 50%",
+  },
+  batimentCommercialDakar: {
+    src: batimentCommercialDakar,
+    alt: "Chantier de construction d'un bâtiment commercial et tertiaire multi-niveaux à Dakar.",
+    focale: "50% 40%",
+  },
+  vrdAsphalteBoulevard: {
+    src: vrdAsphalteBoulevard,
+    alt: "Travaux d'enrobé bitumineux, bordures d'assainissement et aménagement de voirie urbaine.",
+    focale: "50% 50%",
   },
 } satisfies Record<string, Photo>;
 

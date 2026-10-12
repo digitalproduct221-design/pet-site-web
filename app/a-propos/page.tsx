@@ -221,35 +221,21 @@ export default function PageAPropos() {
               </div>
 
               <h2 id="titre-mot-dir" className="titre text-[clamp(2.2rem,1.6rem+2.5vw,3.5rem)] leading-[1.02] text-nuit">
-                « Bâtir le Sénégal avec rigueur, intégrité et respect scrupuleux de l&apos;environnement. »
+                « Votre allié de confiance pour des solutions sûres et respectueuses des normes environnementales. »
               </h2>
 
               <div className="mt-6 space-y-4 text-[1.0625rem] leading-relaxed text-encre-600 sm:text-[1.125rem]">
                 <p>
-                  Chers partenaires, maîtres d&apos;ouvrage et clients,
+                  Fondée en 2016, <strong className="text-nuit font-semibold">PARTENAIRE ENTREPRISE TRAVAUX SUARL</strong>, nous sommes experts dans le domaine de la construction de bâtiment, de l&apos;hydraulique, de l&apos;assainissement, de la Voirie et Réseaux Divers (VRD). Nous offrons des solutions complètes pour la gestion et l&apos;aménagement des infrastructures.
                 </p>
                 <p>
-                  Depuis notre création en 2016, <strong>PARTENAIRE ENTREPRISE TRAVAUX SUARL (PET)</strong> est animée par une conviction fondamentale : la réussite d&apos;un projet de BTP ne se mesure pas seulement au béton coulé ou aux canalisations posées, mais à la confiance durable tissée avec ceux qui nous mandatent.
+                  Experts dans le domaine du génie civil de l&apos;eau et des travaux de réseaux et canalisation, nous offrons des solutions complètes pour la gestion et l&apos;aménagement des infrastructures hydrauliques, des ouvrages en béton, des stations d&apos;épuration, des réservoirs d&apos;eau potable, des bassins de stockage d&apos;eaux usées…
                 </p>
                 <p>
-                  Qu&apos;il s&apos;agisse de la construction d&apos;infrastructures environnementales financées par des bailleurs internationaux exigeants comme l&apos;<strong>Agence Française de Développement (AFD)</strong> sous le contrôle rigoureux du bureau d&apos;ingénierie <strong>SETEC</strong>, de réseaux d&apos;adduction d&apos;eau ou de bâtiments complexes, notre méthode demeure inflexible :
+                  PET a des compétences avérées dans la construction de bâtiments industriels, tertiaires et commerciaux, l&apos;aménagement de la voirie et la rénovation d&apos;ouvrages d&apos;art courants grâce à son expertise, sa technicité et sa forte capacité d&apos;innovation.
                 </p>
-                <ul className="grid gap-2.5 pt-2 text-[1.0625rem] text-encre-900 font-medium">
-                  <li className="flex items-center gap-3">
-                    <span className="size-2 rounded-full bg-royal" />
-                    <span>Une sécurité absolue pour nos équipes et les riverains sur chaque chantier.</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <span className="size-2 rounded-full bg-royal" />
-                    <span>L&apos;usage de technologies de pointe, dont notre topographie GNSS de précision centimétrique.</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <span className="size-2 rounded-full bg-royal" />
-                    <span>Le respect strict des normes environnementales et des calendriers de livraison.</span>
-                  </li>
-                </ul>
-                <p className="pt-2">
-                  Nous sommes fiers de mettre quotidiennement l&apos;expérience cumulée de plus de 40 ans de notre équipe au service des collectivités territoriales, des industriels et des investisseurs du Sénégal.
+                <p>
+                  Nous sommes capables de gérer l&apos;intégralité du processus, de la conception à la réalisation, en passant par la coordination des différents corps de métier. Nos équipes qualifiées s&apos;assurent que chaque projet est réalisé selon les plus hauts standards de qualité, en respectant les délais et les budgets.
                 </p>
               </div>
 

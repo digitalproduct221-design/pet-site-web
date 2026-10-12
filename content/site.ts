@@ -80,12 +80,57 @@ export type Domaine = {
 };
 
 const photosParDomaine: Record<string, PhotoId[]> = {
-  batiment: ["immeubleDakar", "grosOeuvreDakar", "ecoleSenegal", "villaContemporaine", "clotureMaconnee"],
-  "travaux-publics-vrd": ["voirieAsphalte", "niveleusePiste", "terrassementEngins", "niveleuseVoirie", "trancheeLotissement"],
-  hydraulique: ["epreuveHydraulique", "stationPompageSolaire", "irrigationNiayes", "conduiteOuvrage", "poseConduiteTopographie"],
-  assainissement: ["stationPompageSolaire", "dalotRegard", "trancheeLotissement", "conduiteOuvrage"],
-  "genie-civil": ["controleQualiteBeton", "pilotageChantier", "grosOeuvreDakar", "ferraillageOuvrage", "dalotRegard"],
-  "electricite-peinture": ["immeubleDakar", "villaContemporaine", "ecoleSenegal"],
+  batiment: [
+    "batimentCommercialDakar",
+    "immeubleDakar",
+    "grosOeuvreDakar",
+    "ecoleSenegal",
+    "villaContemporaine",
+    "clotureMaconnee",
+    "clotureGrillage",
+    "immeubleGrue",
+    "partenariatChantier",
+  ],
+  "travaux-publics-vrd": [
+    "vrdAsphalteBoulevard",
+    "voirieAsphalte",
+    "niveleusePiste",
+    "terrassementEngins",
+    "niveleuseVoirie",
+    "trancheeLotissement",
+    "topographieGps",
+    "geometresImplantation",
+  ],
+  hydraulique: [
+    "hydrauliqueCanalisationsPose",
+    "epreuveHydraulique",
+    "stationPompageSolaire",
+    "irrigationNiayes",
+    "conduiteOuvrage",
+    "poseConduiteTopographie",
+    "irrigation",
+    "trancheeLotissement",
+  ],
+  assainissement: [
+    "genieCivilDalotPrefa",
+    "dalotRegard",
+    "trancheeLotissement",
+    "conduiteOuvrage",
+    "stationPompageSolaire",
+    "poseConduiteTopographie",
+    "epreuveHydraulique",
+  ],
+  "genie-civil": [
+    "genieCivilReservoirBeton",
+    "genieCivilDalotPrefa",
+    "ferraillageOuvrage",
+    "controleQualiteBeton",
+    "dalotRegard",
+    "grosOeuvreDakar",
+    "pilotageChantier",
+    "conduiteOuvrage",
+  ],
+  "electricite-peinture": ["immeubleDakar", "villaContemporaine", "ecoleSenegal", "batimentCommercialDakar"],
 };
 
 const textesDomaines: Record<string, Pick<Domaine, "icone" | "accroche" | "presentation">> = {

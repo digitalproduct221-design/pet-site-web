@@ -5,46 +5,46 @@ import { Diaporama, type Diapo } from "./Diaporama";
 
 const diapos: Diapo[] = [
   {
-    photo: "directeurChantier",
-    onglet: "Chantiers",
-    legende: "Conduite de chantiers d'envergure au Sénégal respectant les normes environnementales.",
-    href: "/a-propos",
-    origine: "50% 25%",
-  },
-  {
     photo: "topographieGps",
     onglet: "Topographie",
-    legende: "Implantation et relevés GNSS de haute précision sur nos chantiers d'aménagement.",
-    href: "/entreprise",
+    legende: "Implantation et relevés GNSS de haute précision sur nos chantiers d'aménagement au Sénégal.",
+    href: "/a-propos",
     origine: "50% 30%",
   },
   {
     photo: "immeubleDakar",
     onglet: "Bâtiment",
-    legende: "Élévation de structures en béton armé et gros œuvre de qualité au Sénégal.",
+    legende: "Construction de bâtiments industriels, tertiaires et commerciaux selon les plus hauts standards de qualité.",
     href: "/savoir-faire/batiment",
     origine: "50% 45%",
   },
   {
     photo: "voirieAsphalte",
-    onglet: "Voirie & VRD",
-    legende: "Voirie urbaine bitumée avec bordures et caniveaux d'assainissement intégrés.",
+    onglet: "Voirie et Réseaux Divers",
+    legende: "Aménagement de voiries urbaines, pistes et réseaux divers (VRD) avec bordures et assainissement intégrés.",
     href: "/savoir-faire/travaux-publics-vrd",
     origine: "50% 50%",
   },
   {
     photo: "epreuveHydraulique",
-    onglet: "Réseaux d'eau",
-    legende: "Canalisations d'adduction d'eau, vannes de régulation et épreuves de pression.",
+    onglet: "Hydraulique et Assainissement",
+    legende: "Gestion et aménagement des infrastructures hydrauliques, réseaux d'eau potable et canalisations.",
     href: "/savoir-faire/hydraulique",
     origine: "50% 50%",
   },
   {
-    photo: "controleQualiteBeton",
+    photo: "dalotRegard",
     onglet: "Génie civil",
-    legende: "Ouvrages d'art en béton armé et contrôle qualité rigoureux des matériaux.",
+    legende: "Ouvrages en béton armé, réservoirs d'eau potable, dalots et stations d'épuration durables.",
     href: "/savoir-faire/genie-civil",
     origine: "50% 50%",
+  },
+  {
+    photo: "directeurChantier",
+    onglet: "Construction décharge",
+    legende: "Réalisation du casier et des infrastructures de la décharge contrôlée ISDND Meckhé (Projet AFD / SETEC).",
+    href: "/realisations/installation-stockage-dechets-isdnd-meckhe",
+    origine: "50% 25%",
   },
 ];
 
@@ -64,7 +64,7 @@ export function Hero() {
           aria-label="Nos domaines"
           className="liquid-glass-sombre mr-4 hidden self-end rounded-2xl px-5 py-3.5 cote text-[0.875rem] uppercase leading-[1.8] tracking-[0.16em] md:block lg:mr-8"
         >
-          {["Bâtiment", "Travaux publics et VRD", "Hydraulique", "Assainissement", "Génie civil"].map((d) => (
+          {["Bâtiment", "Hydraulique et Assainissement", "Génie civil", "Voirie et Réseaux Divers"].map((d) => (
             <li key={d} className="flex items-center gap-2.5">
               <span aria-hidden className="size-1.5 rotate-45 bg-jaune" />
               {d}

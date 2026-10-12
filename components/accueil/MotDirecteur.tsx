@@ -98,13 +98,16 @@ export function MotDirecteur() {
 
             <div className="mt-6 space-y-4 text-[1.0625rem] leading-relaxed text-encre-600 sm:text-[1.125rem]">
               <p>
-                Depuis la fondation de <strong className="text-nuit font-semibold">PARTENAIRE ENTREPRISE TRAVAUX SUARL</strong> en 2016, notre priorité absolue est d&apos;offrir à nos maîtres d&apos;ouvrage bien plus qu&apos;une simple prestation de travaux : un véritable partenariat technique fondé sur la rigueur, l&apos;intégrité et la fiabilité opérationnelle.
+                Fondée en 2016, <strong className="text-nuit font-semibold">PARTENAIRE ENTREPRISE TRAVAUX SUARL</strong>, nous sommes experts dans le domaine de la construction de bâtiment, de l&apos;hydraulique, de l&apos;assainissement, de la Voirie et Réseaux Divers (VRD). Nous offrons des solutions complètes pour la gestion et l&apos;aménagement des infrastructures.
               </p>
               <p>
-                Sur l&apos;ensemble du territoire sénégalais, nous répondons aux défis les plus exigeants — qu&apos;il s&apos;agisse de réseaux d&apos;adduction d&apos;eau et d&apos;assainissement, d&apos;ouvrages de génie civil et de bâtiment, ou de projets environnementaux structurants financés par des bailleurs internationaux tels que l&apos;<strong>Agence Française de Développement (AFD)</strong> sous la supervision de bureaux d&apos;ingénierie comme <strong>SETEC</strong>.
+                Experts dans le domaine du génie civil de l&apos;eau et des travaux de réseaux et canalisation, nous offrons des solutions complètes pour la gestion et l&apos;aménagement des infrastructures hydrauliques, des ouvrages en béton, des stations d&apos;épuration, des réservoirs d&apos;eau potable, des bassins de stockage d&apos;eaux usées…
               </p>
               <p>
-                Grâce à des équipes cumulant plus de 40 ans d&apos;expérience, des équipements régulièrement modernisés et une technologie topographique GNSS de haute précision, nous bâtissons durablement tout en préservant notre environnement.
+                PET a des compétences avérées dans la construction de bâtiments industriels, tertiaires et commerciaux, l&apos;aménagement de la voirie et la rénovation d&apos;ouvrages d&apos;art courants grâce à son expertise, sa technicité et sa forte capacité d&apos;innovation.
+              </p>
+              <p>
+                Nous sommes capables de gérer l&apos;intégralité du processus, de la conception à la réalisation, en passant par la coordination des différents corps de métier. Nos équipes qualifiées s&apos;assurent que chaque projet est réalisé selon les plus hauts standards de qualité, en respectant les délais et les budgets.
               </p>
             </div>
 
