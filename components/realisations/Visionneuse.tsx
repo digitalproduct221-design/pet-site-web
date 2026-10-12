@@ -78,6 +78,8 @@ export default function Visionneuse({
                 src={p.src}
                 alt={p.alt}
                 sizes={`min(100vw, ${p.largeur}px)`}
+                quality={80}
+                placeholder={typeof p.src === "object" && "blurDataURL" in p.src && p.src.blurDataURL ? "blur" : undefined}
                 className="mx-auto h-auto max-h-[calc(100svh-12rem)] w-auto rounded-chantier object-contain"
                 draggable={false}
               />

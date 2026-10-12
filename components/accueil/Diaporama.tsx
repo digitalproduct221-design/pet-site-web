@@ -30,7 +30,7 @@ export function Diaporama({ diapos }: { diapos: Diapo[] }) {
   const [reduit, setReduit] = useState(false);
   const [suspendu, setSuspendu] = useState(false);
   const [horsEcran, setHorsEcran] = useState(false);
-  const [chargees, setChargees] = useState<Set<number>>(() => new Set([0]));
+  const [chargees, setChargees] = useState<Set<number>>(() => new Set([0, 1]));
   const cadre = useRef<HTMLDivElement>(null);
 
   const enLecture = lecture ?? !reduit;
@@ -58,17 +58,18 @@ export function Diaporama({ diapos }: { diapos: Diapo[] }) {
     return () => window.clearTimeout(minuteur);
   }, [index, enPause, aller]);
 
-  // La suivante (et sa vignette) se charge une fois la page au repos.
+  // Précharge toutes les photos du hero dès que la page est prête pour un passage fluide sans attente
   useEffect(() => {
-    const prechargerSuivante = () =>
-      setChargees((c) => (c.has(index) && c.has((index + 1) % total) ? c : new Set([...c, index, (index + 1) % total])));
+    const prechargerToutes = () => {
+      setChargees(new Set(diapos.map((_, i) => i)));
+    };
     if (typeof window.requestIdleCallback === "function") {
-      const id = window.requestIdleCallback(prechargerSuivante, { timeout: 2500 });
+      const id = window.requestIdleCallback(prechargerToutes, { timeout: 1500 });
       return () => window.cancelIdleCallback(id);
     }
-    const t = setTimeout(prechargerSuivante, 1500);
+    const t = setTimeout(prechargerToutes, 800);
     return () => clearTimeout(t);
-  }, [index, total]);
+  }, [diapos]);
 
   useEffect(() => {
     // display: contents n'a pas de boîte : on observe la section du hero
@@ -111,6 +112,7 @@ export function Diaporama({ diapos }: { diapos: Diapo[] }) {
                   fetchPriority={i === 0 ? "high" : "low"}
                   sizes="100vw"
                   quality={75}
+                  placeholder="blur"
                   className="object-cover"
                   style={{ objectPosition: p.focale }}
                 />
@@ -146,6 +148,7 @@ export function Diaporama({ diapos }: { diapos: Diapo[] }) {
                 alt=""
                 fill
                 sizes="96px"
+                placeholder="blur"
                 className="object-cover transition-transform duration-500 group-hover/suivante:scale-110"
                 style={{ objectPosition: photoSuivante.focale }}
               />

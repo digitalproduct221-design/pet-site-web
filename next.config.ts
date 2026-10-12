@@ -53,9 +53,9 @@ const nextConfig: NextConfig = {
   cacheComponents: true,
   partialPrefetching: true,
   images: {
-    formats: ["image/avif", "image/webp"],
-    // 50 à 60 : photos d'arrière-plan et première photo du hero sur mobile.
-    qualities: [50, 60, 75],
+    formats: ["image/webp"],
+    // 50 à 75 : photos d'arrière-plan, contenu et hero
+    qualities: [50, 60, 75, 80],
     // Pas de variante 3840 : les photos sources font au plus 2500 px.
     deviceSizes: [640, 750, 828, 1080, 1200, 1600, 1920, 2560],
     // Photos ajoutées depuis l'espace admin (stockage Supabase « medias »)

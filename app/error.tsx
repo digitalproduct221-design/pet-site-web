@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { Bouton } from "@/components/ui/Bouton";
+import { Bouton, BoutonLien } from "@/components/ui/Bouton";
 import { Equerres } from "@/components/ui/Equerres";
 import { Motif } from "@/components/ui/Motif";
 
@@ -32,9 +32,9 @@ export default function ErrorGlobal({
           <Bouton type="button" onClick={() => reset()}>
             Réessayer
           </Bouton>
-          <Bouton type="button" variante="contour" onClick={() => (window.location.href = "/")}>
+          <BoutonLien href="/" variante="contour">
             Retour à l&apos;accueil
-          </Bouton>
+          </BoutonLien>
         </div>
       </div>
     </section>

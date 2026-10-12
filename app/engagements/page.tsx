@@ -124,7 +124,7 @@ export default function PageEngagements() {
                   aria-labelledby={`titre-${e.id}`}
                   className="sur-sombre relative isolate flex min-h-[34rem] scroll-mt-28 items-end overflow-hidden rounded-panneau bg-nuit p-5 text-blanc sm:p-8 lg:p-10"
                 >
-                  <Image src={photos[e.photo].src} alt="" fill sizes="(min-width: 1024px) 70vw, 100vw" className="-z-10 object-cover" style={{ objectPosition: photos[e.photo].focale }} />
+                  <Image src={photos[e.photo].src} alt="" fill sizes="(min-width: 1024px) 70vw, 100vw" quality={75} placeholder="blur" className="-z-10 object-cover" style={{ objectPosition: photos[e.photo].focale }} />
                   <span aria-hidden className="absolute inset-0 -z-10 voile-carte" />
                   <div className="revele verre-liquide w-full max-w-[36rem] rounded-panneau p-6 lg:p-8">
                     <span className="flex items-center gap-3">

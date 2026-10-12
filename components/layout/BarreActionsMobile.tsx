@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Icone } from "@/components/ui/Icone";
 import { telephones, whatsapp } from "@/content/site";
 
@@ -19,7 +19,7 @@ const items: ItemMenu[] = [
   { id: "savoir-faire", titre: "Métiers", href: "/savoir-faire", icone: "engins" },
   { id: "contact", titre: "Contact", href: "/contact", icone: "telephone", estCentral: true },
   { id: "realisations", titre: "Chantiers", href: "/realisations", icone: "photos" },
-  { id: "devis", titre: "Devis", href: "/contact#devis", icone: "devis" },
+  { id: "entreprise", titre: "Entreprise", href: "/entreprise", icone: "equipe" },
 ];
 
 const domainesRapides = [
@@ -38,22 +38,24 @@ const domainesRapides = [
  */
 export function BarreActionsMobile() {
   const chemin = usePathname();
+  const [cheminPrecedent, setCheminPrecedent] = useState(chemin);
   const [tiroir, setTiroir] = useState<"domaines" | "contact" | null>(null);
+
+  if (chemin !== cheminPrecedent) {
+    setCheminPrecedent(chemin);
+    setTiroir(null);
+  }
 
   const getActif = () => {
     if (chemin === "/") return "accueil";
     if (chemin.startsWith("/savoir-faire")) return "savoir-faire";
     if (chemin.startsWith("/realisations")) return "realisations";
-    if (chemin.startsWith("/contact#devis") || chemin.includes("devis")) return "devis";
+    if (chemin.startsWith("/entreprise")) return "entreprise";
     if (chemin.startsWith("/contact")) return "contact";
     return "";
   };
 
   const actif = getActif();
-
-  useEffect(() => {
-    setTiroir(null);
-  }, [chemin]);
 
   const handleItemClick = (id: string) => {
     if (id === "savoir-faire") {
@@ -70,17 +72,17 @@ export function BarreActionsMobile() {
   };
 
   return (
-    <div className="fixed inset-x-0 bottom-0 z-50 w-full lg:hidden select-none border-t border-white/12 bg-nuit/98 pb-[env(safe-area-inset-bottom)] shadow-[0_-4px_24px_rgba(7,18,43,0.7)] backdrop-blur-2xl">
+    <div className="fixed inset-x-0 bottom-0 z-50 w-full lg:hidden select-none border-t border-slate-200/90 bg-white/95 pb-[env(safe-area-inset-bottom)] shadow-[0_-8px_30px_rgba(7,18,43,0.12),0_-1px_3px_rgba(0,0,0,0.04)] backdrop-blur-2xl">
       {/* Tiroir rapide des 5 domaines */}
       {tiroir === "domaines" && (
         <div className="mx-auto max-w-md px-3 pt-2">
-          <div className="animate-in fade-in slide-in-from-bottom-2 duration-300 rounded-2xl liquid-glass-sombre p-2.5 shadow-2xl">
-            <div className="mb-2 flex items-center justify-between px-2 text-[0.75rem] font-bold uppercase tracking-wider text-brume">
+          <div className="animate-in fade-in slide-in-from-bottom-2 duration-300 rounded-2xl bg-white/98 border border-slate-200 p-2.5 shadow-2xl backdrop-blur-xl">
+            <div className="mb-2 flex items-center justify-between px-2 text-[0.75rem] font-bold uppercase tracking-wider text-texte-doux">
               <span>Métiers du BTP</span>
               <button
                 type="button"
                 onClick={() => setTiroir(null)}
-                className="grid size-8 place-items-center rounded-lg text-jaune hover:bg-white/10 hover:text-white"
+                className="grid size-8 place-items-center rounded-lg text-nuit hover:bg-slate-100"
                 aria-label="Fermer le menu des métiers"
               >
                 ✕
@@ -92,16 +94,16 @@ export function BarreActionsMobile() {
                   key={d.href}
                   href={d.href}
                   onClick={() => setTiroir(null)}
-                  className="flex items-center gap-2 rounded-xl bg-white/10 px-2.5 py-2 text-[0.8125rem] font-medium text-blanc transition-colors hover:bg-jaune hover:text-nuit active:scale-95"
+                  className="flex items-center gap-2 rounded-xl bg-slate-100/90 px-2.5 py-2 text-[0.8125rem] font-medium text-nuit transition-colors hover:bg-jaune active:scale-95"
                 >
-                  <Icone nom={d.icone} size={16} className="text-jaune" />
+                  <Icone nom={d.icone} size={16} className="text-royal" />
                   <span className="truncate">{d.titre}</span>
                 </Link>
               ))}
               <Link
                 href="/savoir-faire"
                 onClick={() => setTiroir(null)}
-                className="flex items-center justify-center gap-1.5 rounded-xl bg-jaune/25 px-2.5 py-2 text-[0.8125rem] font-bold text-jaune hover:bg-jaune hover:text-nuit active:scale-95"
+                className="flex items-center justify-center gap-1.5 rounded-xl bg-royal/10 px-2.5 py-2 text-[0.8125rem] font-bold text-royal hover:bg-royal hover:text-white transition-colors active:scale-95"
               >
                 Tous les métiers →
               </Link>
@@ -113,10 +115,10 @@ export function BarreActionsMobile() {
       {/* Tiroir contact direct */}
       {tiroir === "contact" && (
         <div className="mx-auto max-w-md px-3 pt-2">
-          <div className="animate-in fade-in slide-in-from-bottom-2 duration-300 flex items-center justify-center gap-2 rounded-2xl liquid-glass-sombre p-2.5 shadow-2xl">
+          <div className="animate-in fade-in slide-in-from-bottom-2 duration-300 flex items-center justify-center gap-2 rounded-2xl bg-white/98 border border-slate-200 p-2.5 shadow-2xl backdrop-blur-xl">
             <a
               href={telephones[0].lien}
-              className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-white/12 px-3 py-2.5 text-[0.8125rem] font-bold text-blanc transition-colors hover:bg-white/20 active:scale-95"
+              className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-royal px-3 py-2.5 text-[0.8125rem] font-bold text-white shadow-md transition-all hover:bg-royal/90 active:scale-95"
             >
               <Icone nom="telephone" size={17} className="text-jaune" />
               Appeler
@@ -125,7 +127,7 @@ export function BarreActionsMobile() {
               href={whatsapp.lien}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-[#25D366] px-3 py-2.5 text-[0.8125rem] font-bold text-white shadow-md transition-transform active:scale-95"
+              className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-[#25D366] px-3 py-2.5 text-[0.8125rem] font-bold text-white shadow-md transition-all hover:bg-[#20bd5a] active:scale-95"
             >
               <Icone nom="whatsapp" size={18} weight="bold" />
               WhatsApp
@@ -133,7 +135,7 @@ export function BarreActionsMobile() {
             <button
               type="button"
               onClick={() => setTiroir(null)}
-              className="grid size-11 place-items-center rounded-xl bg-white/10 text-brume hover:text-white"
+              className="grid size-11 place-items-center rounded-xl bg-slate-100 text-texte-doux hover:bg-slate-200 hover:text-nuit"
               aria-label="Fermer les options de contact"
             >
               ✕
@@ -160,10 +162,10 @@ export function BarreActionsMobile() {
                 aria-label="Prendre contact avec PET"
                 className="group/central flex flex-1 flex-col items-center justify-center py-1 transition-transform active:scale-95"
               >
-                <span className="flex size-9 items-center justify-center rounded-full bg-jaune text-nuit shadow-[0_2px_10px_rgba(247,198,28,0.45)] transition-transform duration-200 group-hover/central:scale-105">
+                <span className="flex size-9 items-center justify-center rounded-full bg-jaune text-nuit shadow-[0_3px_12px_rgba(247,198,28,0.55)] transition-transform duration-200 group-hover/central:scale-105">
                   <Icone nom={item.icone} size={19} weight="bold" />
                 </span>
-                <span className="mt-1 text-[0.625rem] font-black uppercase tracking-wider text-jaune">
+                <span className="mt-1 text-[0.625rem] font-black uppercase tracking-wider text-nuit">
                   {item.titre}
                 </span>
               </Link>
@@ -183,8 +185,8 @@ export function BarreActionsMobile() {
               <span
                 className={`flex size-8 items-center justify-center rounded-full transition-all duration-300 ${
                   isActif
-                    ? "bg-white/20 text-jaune border border-white/40 shadow-[0_2px_8px_rgba(255,255,255,0.15)]"
-                    : "bg-white/5 text-white/70 group-hover/nav:bg-white/10 group-hover/nav:text-white border border-white/10"
+                    ? "bg-royal/10 text-royal border border-royal/20 shadow-[0_2px_8px_rgba(33,64,154,0.15)]"
+                    : "bg-slate-100/90 text-texte/70 group-hover/nav:bg-slate-200/90 group-hover/nav:text-nuit border border-slate-200/60"
                 }`}
               >
                 <Icone nom={item.icone} size={18} weight={isActif ? "bold" : "regular"} />
@@ -194,8 +196,8 @@ export function BarreActionsMobile() {
               <span
                 className={`mt-1 text-[0.625rem] tracking-tight uppercase transition-colors ${
                   isActif
-                    ? "font-bold text-jaune"
-                    : "font-medium text-white/70 group-hover/nav:text-white"
+                    ? "font-bold text-royal"
+                    : "font-medium text-texte/75 group-hover/nav:text-nuit"
                 }`}
               >
                 {item.titre}

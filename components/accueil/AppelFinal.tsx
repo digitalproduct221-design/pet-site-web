@@ -21,7 +21,7 @@ export function AppelFinal() {
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
             <BoutonLien href="/contact#devis" variante="sombre">
-              Demander un devis
+              Estimer un projet
             </BoutonLien>
             <BoutonExterne href={whatsapp.lien} target="_blank" rel="noopener noreferrer" variante="contour" icone="whatsapp" className="text-nuit shadow-[inset_0_0_0_2px_var(--color-nuit)] hover:bg-nuit hover:text-jaune">
               WhatsApp<span className="sr-only"> (nouvel onglet)</span>

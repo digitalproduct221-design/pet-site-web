@@ -99,7 +99,7 @@ export default function PageEntreprise() {
       {/* Notre histoire */}
       <section id="histoire" aria-labelledby="titre-histoire" className="sur-sombre relative isolate overflow-hidden bg-royal py-20 text-blanc lg:py-28">
         <div aria-hidden className="absolute inset-0 -z-10">
-          <Image src={photos.terrassementEngins.src} alt="" fill sizes="(max-width: 768px) 70vw, 100vw" quality={50} className="object-cover" />
+          <Image src={photos.terrassementEngins.src} alt="" fill sizes="(max-width: 768px) 70vw, 100vw" quality={50} placeholder="blur" className="object-cover" />
           <div className="absolute inset-0 voile-royal-lateral" />
         </div>
         <div className="conteneur grid gap-12 lg:grid-cols-12 lg:items-center lg:gap-8">
@@ -138,7 +138,7 @@ export default function PageEntreprise() {
             {valeurs.map((v, i) =>
               i === 0 ? (
                 <li key={v.titre} className={`sur-sombre relative isolate flex min-h-[22rem] flex-col justify-end overflow-hidden rounded-panneau p-8 text-blanc sm:col-span-2 lg:p-10 ${cellules[i]}`}>
-                  <Image src={photos.partenariatChantier.src} alt="" fill sizes="(min-width: 1024px) 50vw, 100vw" className="-z-10 object-cover" />
+                  <Image src={photos.partenariatChantier.src} alt="" fill sizes="(min-width: 1024px) 50vw, 100vw" quality={75} placeholder="blur" className="-z-10 object-cover" />
                   <span aria-hidden className="absolute inset-0 -z-10 voile-carte" />
                   <h3 className="titre text-titre-l text-blanc">{v.titre}</h3>
                   <p className="mt-4 max-w-[30rem] text-[1.125rem] leading-relaxed text-blanc/90">{v.texte}</p>

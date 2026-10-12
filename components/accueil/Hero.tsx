@@ -84,7 +84,7 @@ export function Hero() {
             <p className="mt-5 max-w-[32rem] text-[1.1875rem] leading-relaxed text-blanc ombre-texte max-sm:hidden">{SLOGAN}.</p>
             <div className="mt-7 flex flex-wrap gap-4">
               <span className="hidden sm:contents">
-                <BoutonLien href="/contact#devis">Demander un devis</BoutonLien>
+                <BoutonLien href="/contact#devis">Estimer un projet</BoutonLien>
               </span>
               <BoutonLien href="/realisations" variante="contour-clair">
                 Nos réalisations

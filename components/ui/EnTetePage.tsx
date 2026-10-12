@@ -70,7 +70,8 @@ export function EnTetePage({
               priority
               fetchPriority="high"
               sizes="100vw"
-              quality={82}
+              quality={75}
+              placeholder={typeof p.src === "object" && "blurDataURL" in p.src && p.src.blurDataURL ? "blur" : undefined}
               className="object-cover"
               style={{ objectPosition: p.focale }}
             />

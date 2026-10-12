@@ -55,7 +55,8 @@ export default function PageSavoirFaire() {
                     alt=""
                     fill
                     sizes={vedette ? "100vw" : "(min-width: 768px) 50vw, 100vw"}
-                   
+                    quality={75}
+                    placeholder="blur"
                     className="-z-10 object-cover transition-transform duration-[1100ms] ease-chantier group-hover/domaine:scale-[1.04]"
                     style={{ objectPosition: p.focale }}
                   />

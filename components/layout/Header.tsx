@@ -31,6 +31,11 @@ export function Header() {
   const [grandEcran, setGrandEcran] = useState(false);
   const dernierY = useRef(0);
   const chemin = usePathname();
+  const [cheminPrecedent, setCheminPrecedent] = useState(chemin);
+  if (chemin !== cheminPrecedent) {
+    setCheminPrecedent(chemin);
+    setVisible(true);
+  }
 
   useEffect(() => {
     const requete = window.matchMedia("(width >= 72rem)");
@@ -74,11 +79,6 @@ export function Header() {
     return () => window.removeEventListener("scroll", gererScroll);
   }, []);
 
-  // Réafficher l'en-tête lors d'un changement de page
-  useEffect(() => {
-    setVisible(true);
-  }, [chemin]);
-
   return (
     <header
       aria-label="En-tête principale"
@@ -111,7 +111,7 @@ export function Header() {
             href="/contact#devis"
             className="group/devis relative hidden min-h-11 items-center gap-2 whitespace-nowrap rounded-full bg-jaune px-5.5 cote text-[0.9375rem] uppercase tracking-[0.04em] text-nuit ombre-bouton transition-all duration-300 hover:bg-jaune-profond hover:shadow-lg sm:inline-flex"
           >
-            Demander un devis
+            Estimer un projet
             <Icone nom="fleche" size={16} weight="bold" className="transition-transform duration-300 group-hover/devis:translate-x-0.5" />
           </Link>
           <MenuMobile />

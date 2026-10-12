@@ -90,7 +90,7 @@ export default function MenuMobileFenetre({
               onClick={fermer}
               className="flex min-h-14 items-center justify-center gap-3 rounded-chantier bg-jaune px-6 cote text-[1.125rem] uppercase tracking-[0.04em] text-nuit"
             >
-              Demander un devis
+              Estimer un projet
               <Icone nom="fleche" size={20} weight="bold" />
             </Link>
             <a
