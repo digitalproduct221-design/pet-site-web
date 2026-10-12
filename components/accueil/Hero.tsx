@@ -5,18 +5,18 @@ import { Diaporama, type Diapo } from "./Diaporama";
 
 const diapos: Diapo[] = [
   {
-    photo: "equipePet",
-    onglet: "Notre Équipe",
-    legende: "Ingénieurs, conducteurs de travaux et équipes de terrain mobilisés pour bâtir le Sénégal.",
-    href: "/entreprise",
-    origine: "50% 35%",
-  },
-  {
     photo: "immeubleDakar",
     onglet: "Bâtiment",
     legende: "Élévation de structures en béton armé et gros œuvre de qualité à Dakar.",
     href: "/savoir-faire/batiment",
     origine: "50% 45%",
+  },
+  {
+    photo: "equipePet",
+    onglet: "Notre Équipe",
+    legende: "Ingénieurs, conducteurs de travaux et équipes de terrain mobilisés pour bâtir le Sénégal.",
+    href: "/entreprise",
+    origine: "50% 35%",
   },
   {
     photo: "voirieAsphalte",
