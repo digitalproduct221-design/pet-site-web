@@ -56,7 +56,6 @@ const etapesHistoire = [
 export default function PageAPropos() {
   const photoDirecteur = photos.directeurBureau;
   const photoTopographie = photos.topographieGps;
-  const photoGeometres = photos.geometresImplantation;
 
   return (
     <>
@@ -368,6 +367,38 @@ export default function PageAPropos() {
               Voir nos réalisations en images
             </BoutonLien>
           </div>
+
+          {/* Mission conjointe terrain avec les partenaires */}
+          <div className="mt-12 overflow-hidden rounded-3xl bg-nuit text-blanc shadow-xl border border-nuit/10">
+            <div className="grid lg:grid-cols-12 items-stretch">
+              <div className="lg:col-span-7 relative h-72 sm:h-96 lg:h-auto min-h-[300px]">
+                <Image
+                  src={photos.delegationSetecMeckhe.src}
+                  alt={photos.delegationSetecMeckhe.alt}
+                  fill
+                  className="object-cover object-center"
+                  sizes="(max-width: 1024px) 100vw, 58vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-nuit/90 via-transparent to-transparent lg:hidden" />
+              </div>
+              <div className="lg:col-span-5 p-6 sm:p-8 lg:p-10 flex flex-col justify-center">
+                <span className="inline-flex items-center gap-2 rounded-full bg-jaune/10 px-3.5 py-1 text-jaune cote text-[0.75rem] font-bold uppercase tracking-wider w-fit">
+                  Mission de terrain officielle
+                </span>
+                <h3 className="titre mt-3 text-[1.5rem] sm:text-[1.75rem] text-blanc leading-snug">
+                  Supervision conjointe sur le site de l&apos;ISDND Meckhé
+                </h3>
+                <p className="mt-3 text-[0.9375rem] text-brume leading-relaxed">
+                  Sur le terrain, nos ingénieurs et conducteurs de travaux collaborent étroitement avec les équipes techniques de <strong>SETEC Infrastructures Afrique</strong> et les partenaires de coopération (<strong>GESCOD</strong> / Ville de Saint-Dié-des-Vosges) pour assurer une conformité totale aux exigences environnementales et de génie civil de l&apos;AFD.
+                </p>
+                <div className="mt-6 flex flex-wrap gap-2 text-[0.8125rem]">
+                  <span className="rounded-lg bg-white/10 px-3 py-1.5 text-blanc">Contrôle d&apos;exécution</span>
+                  <span className="rounded-lg bg-white/10 px-3 py-1.5 text-blanc">Implantation rigoureuse</span>
+                  <span className="rounded-lg bg-white/10 px-3 py-1.5 text-blanc">Génie de l&apos;environnement</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -375,47 +406,68 @@ export default function PageAPropos() {
       <section id="equipe" aria-labelledby="titre-equipe" className="bg-gradient-to-b from-sable-100/40 to-blanc py-16 sm:py-24 lg:py-28 border-t border-nuit/5">
         <div className="conteneur">
           <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
-            <div className="lg:col-span-6">
+            <div className="lg:col-span-5">
               <p className="cote text-[0.875rem] uppercase tracking-[0.16em] text-royal font-bold">Haute Précision & Compétences</p>
               <h2 id="titre-equipe" className="titre mt-2 text-[clamp(2rem,1.5rem+2vw,3rem)] leading-none text-nuit">
                 Des équipes formées et équipées des technologies de pointe
               </h2>
               <p className="mt-5 text-[1.125rem] leading-relaxed text-encre-600">
-                Sur nos chantiers, la précision millimétrique n&apos;est pas une option. Nos géomètres et topographes opèrent avec des récepteurs GNSS reliés en temps réel à des tablettes de terrain robustes.
+                Sur nos chantiers, la précision millimétrique n&apos;est pas une option. Nos géomètres et topographes opèrent avec des stations GNSS de pointe, des niveaux d&apos;optique de haute fidélité et des tablettes de calcul pour caler chaque cote en temps réel.
               </p>
               <ul className="mt-6 space-y-3.5 text-[1.0625rem] text-encre-900">
                 <li className="flex items-start gap-3">
                   <span className="flex size-6 shrink-0 items-center justify-center rounded-full bg-royal/10 text-royal mt-0.5">
                     <Icone nom="local" size={16} weight="bold" />
                   </span>
-                  <span><strong>Implantation centimétrique</strong> des conduites d&apos;eau, radiers, caniveaux et pentes de terrassement.</span>
+                  <span><strong>Implantation de précision</strong> des réseaux, voiries, digues et plateformes de fondation.</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="flex size-6 shrink-0 items-center justify-center rounded-full bg-royal/10 text-royal mt-0.5">
                     <Icone nom="casque" size={16} weight="bold" />
                   </span>
-                  <span><strong>Sécurité active</strong> : port obligatoire des EPI (gilets haute visibilité siglés PET, casques de protection, chaussures de sécurité).</span>
+                  <span><strong>Sécurité active</strong> : port obligatoire des EPI (gilets et casquettes siglés PET, casques de protection, chaussures de sécurité).</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="flex size-6 shrink-0 items-center justify-center rounded-full bg-royal/10 text-royal mt-0.5">
                     <Icone nom="engins" size={16} weight="bold" />
                   </span>
-                  <span><strong>Conducteurs d&apos;engins expérimentés</strong> sur pelles hydrauliques, niveleuses et chargeurs Caterpillar.</span>
+                  <span><strong>Matériel propriétaire entretenu</strong> : stations GNSS rover, niveaux optiques CST/Berger sur trépieds PET, flotte d&apos;engins Caterpillar.</span>
                 </li>
               </ul>
             </div>
 
-            {/* Galerie des photos authentiques de topographie */}
-            <div className="grid grid-cols-2 gap-4 lg:col-span-6">
-              <div className="overflow-hidden rounded-2xl bg-nuit shadow-lg border border-nuit/10">
+            {/* Galerie des photos authentiques de topographie et de voirie */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:col-span-7">
+              {/* Photo panoramique voirie & plans */}
+              <div className="sm:col-span-2 overflow-hidden rounded-2xl bg-nuit shadow-md border border-nuit/10">
+                <Image
+                  src={photos.topographiePlanVoirie.src}
+                  alt={photos.topographiePlanVoirie.alt}
+                  width={1280}
+                  height={838}
+                  placeholder="blur"
+                  className="h-56 sm:h-64 w-full object-cover transition-transform duration-500 hover:scale-105"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+                <div className="p-3 bg-nuit text-blanc text-[0.8125rem] flex items-center justify-between">
+                  <div>
+                    <p className="font-bold text-jaune">Viabilisation & Contrôle de voirie</p>
+                    <p className="text-brume text-[0.75rem]">Analyse des plans d&apos;exécution sur le terrain par les ingénieurs PET</p>
+                  </div>
+                  <span className="hidden sm:inline-block rounded bg-white/10 px-2 py-0.5 text-[0.6875rem] text-brume">Équipe PET</span>
+                </div>
+              </div>
+
+              {/* Station GNSS */}
+              <div className="overflow-hidden rounded-2xl bg-nuit shadow-md border border-nuit/10">
                 <Image
                   src={photoTopographie.src}
-                  alt="Topographe PET avec récepteur GNSS et tablette sur chantier"
+                  alt={photoTopographie.alt}
                   width={800}
                   height={1067}
                   placeholder="blur"
-                  className="h-72 sm:h-80 w-full object-cover transition-transform duration-500 hover:scale-105"
-                  sizes="(max-width: 640px) 50vw, 25vw"
+                  className="h-64 sm:h-72 w-full object-cover transition-transform duration-500 hover:scale-105"
+                  sizes="(max-width: 640px) 100vw, 25vw"
                 />
                 <div className="p-3 bg-nuit text-blanc text-[0.8125rem]">
                   <p className="font-bold text-jaune">Station GNSS mobile</p>
@@ -423,19 +475,20 @@ export default function PageAPropos() {
                 </div>
               </div>
 
-              <div className="overflow-hidden rounded-2xl bg-nuit shadow-lg border border-nuit/10">
+              {/* Niveau optique sur trépied PET */}
+              <div className="overflow-hidden rounded-2xl bg-nuit shadow-md border border-nuit/10">
                 <Image
-                  src={photoGeometres.src}
-                  alt="Géomètres PET procédant à l'implantation précise sur chantier"
-                  width={800}
-                  height={1067}
+                  src={photos.niveauOptiqueGeometre.src}
+                  alt={photos.niveauOptiqueGeometre.alt}
+                  width={960}
+                  height={1280}
                   placeholder="blur"
-                  className="h-72 sm:h-80 w-full object-cover transition-transform duration-500 hover:scale-105"
-                  sizes="(max-width: 640px) 50vw, 25vw"
+                  className="h-64 sm:h-72 w-full object-cover transition-transform duration-500 hover:scale-105"
+                  sizes="(max-width: 640px) 100vw, 25vw"
                 />
                 <div className="p-3 bg-nuit text-blanc text-[0.8125rem]">
-                  <p className="font-bold text-jaune">Équipe de géomètres</p>
-                  <p className="text-brume text-[0.75rem]">Contrôle qualité d&apos;exécution des terrassements</p>
+                  <p className="font-bold text-jaune">Niveau d&apos;optique PET</p>
+                  <p className="text-brume text-[0.75rem]">Implantation géométrique de haute fidélité</p>
                 </div>
               </div>
             </div>

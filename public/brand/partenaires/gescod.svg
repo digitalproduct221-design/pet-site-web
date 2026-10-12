@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" width="200" height="60" fill="none">
+  <!-- GESCOD Symbol -->
+  <g transform="translate(14, 12)">
+    <circle cx="16" cy="18" r="14" fill="#0083C9" opacity="0.15" />
+    <path d="M 12 12 Q 20 8 24 16 Q 28 24 20 28 Q 12 28 10 20 Z" fill="#F39200" />
+    <circle cx="14" cy="18" r="4" fill="#0083C9" />
+  </g>
+  <!-- GESCOD Text -->
+  <text x="56" y="34" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="22" fill="#0083C9" letter-spacing="-0.5">GESCOD</text>
+  <text x="56" y="46" font-family="system-ui, -apple-system, sans-serif" font-weight="600" font-size="6.5" fill="#555555" letter-spacing="0.3">GRAND EST SOLIDARITÉ &amp; COOPÉRATION</text>
+</svg>

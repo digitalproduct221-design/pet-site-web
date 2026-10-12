@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" width="200" height="60" fill="none">
+  <!-- Blason stylisé Sénégal / Meckhé -->
+  <g transform="translate(16, 10)">
+    <path d="M 14 4 L 26 4 C 26 20 22 30 14 36 C 6 30 2 20 2 4 Z" fill="#00853F" />
+    <circle cx="14" cy="18" r="4.5" fill="#FDEF42" />
+    <path d="M 14 12 L 15.5 16.5 L 20 16.5 L 16.5 19.5 L 18 24 L 14 21 L 10 24 L 11.5 19.5 L 8 16.5 L 12.5 16.5 Z" fill="#E31B23" transform="scale(0.5) translate(14, 18)" />
+  </g>
+  <!-- Texte -->
+  <text x="54" y="32" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="16" fill="#1A1A1A" letter-spacing="0.5">COMMUNE DE</text>
+  <text x="54" y="47" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="18" fill="#00853F" letter-spacing="1">MECKHÉ</text>
+</svg>

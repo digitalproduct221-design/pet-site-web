@@ -38,6 +38,16 @@ import genieCivilDalotPrefa from "@/public/images/chantiers/genie-civil-dalot-pr
 import batimentCommercialDakar from "@/public/images/chantiers/batiment-commercial-dakar.jpg";
 import vrdAsphalteBoulevard from "@/public/images/chantiers/vrd-asphalte-boulevard.jpg";
 
+// Nouvelles photos réelles du dossier client (ISDND Meckhé, SETEC, topographie niveau optique et voirie lotissement)
+import delegationSetecMeckhe from "@/public/images/chantiers/delegation-setec-isdnd-meckhe.jpg";
+import inspectionDigueMeckhe from "@/public/images/chantiers/inspection-digue-isdnd-meckhe.jpg";
+import supervisionSetecChantier from "@/public/images/chantiers/supervision-setec-chantier.jpg";
+import terrassementCasierMeckhe from "@/public/images/chantiers/terrassement-casier-isdnd-meckhe.jpg";
+import topographiePlanVoirie from "@/public/images/chantiers/topographie-plan-voirie-lotissement.jpg";
+import implantationVoirieBatiment from "@/public/images/chantiers/implantation-voirie-batiment-r3.jpg";
+import niveauOptiqueGeometre from "@/public/images/chantiers/niveau-optique-geometre-pet.jpg";
+import etudePlansEquipePet from "@/public/images/chantiers/etude-plans-equipe-pet.jpg";
+
 import type { StaticImageData } from "next/image";
 
 export type Photo = {
@@ -234,6 +244,48 @@ export const photos = {
     src: vrdAsphalteBoulevard,
     alt: "Travaux d'enrobé bitumineux, bordures d'assainissement et aménagement de voirie urbaine.",
     focale: "50% 50%",
+  },
+
+  // Photos réelles issues du dossier client (ISDND Meckhé, supervision SETEC & voirie lotissement)
+  delegationSetecMeckhe: {
+    src: delegationSetecMeckhe,
+    alt: "Délégation officielle conjointe sur le chantier de l'ISDND de Meckhé : équipes PET SUARL, ingénieurs de SETEC et experts de coopération technique (GESCOD).",
+    focale: "50% 45%",
+  },
+  inspectionDigueMeckhe: {
+    src: inspectionDigueMeckhe,
+    alt: "Visite d'inspection technique sur la digue du casier de l'ISDND de Meckhé, ingénieurs PET présentant l'avancement des terrassements à la mission technique.",
+    focale: "50% 35%",
+  },
+  supervisionSetecChantier: {
+    src: supervisionSetecChantier,
+    alt: "Contrôle technique et réunion sur le terrain avec le maître d'œuvre SETEC Infrastructures Afrique et l'encadrement PET.",
+    focale: "50% 40%",
+  },
+  terrassementCasierMeckhe: {
+    src: terrassementCasierMeckhe,
+    alt: "Vue panoramique des terrassements et du casier de stockage de déchets de Meckhé avec le comité de pilotage sur la crête du merlon.",
+    focale: "50% 50%",
+  },
+  topographiePlanVoirie: {
+    src: topographiePlanVoirie,
+    alt: "Équipe de topographie PET au niveau optique et concertation sur les plans d'exécution d'une voirie de lotissement en cours de viabilisation.",
+    focale: "50% 45%",
+  },
+  implantationVoirieBatiment: {
+    src: implantationVoirieBatiment,
+    alt: "Implantation et nivellement de la voie d'accès vers un bâtiment R+3 en construction au Sénégal par l'équipe géomètre et travaux PET.",
+    focale: "50% 50%",
+  },
+  niveauOptiqueGeometre: {
+    src: niveauOptiqueGeometre,
+    alt: "Technicien topographe PET en gilet de sécurité effectuant la visée au niveau optique sur trépied CST/Berger siglé PET Suarl.",
+    focale: "50% 30%",
+  },
+  etudePlansEquipePet: {
+    src: etudePlansEquipePet,
+    alt: "Trois ingénieurs et techniciens de PET SUARL avec casquettes et gilets de sécurité analysant les plans d'exécution et la mire de nivellement sur le tracé de la voie.",
+    focale: "50% 45%",
   },
 } satisfies Record<string, Photo>;
 

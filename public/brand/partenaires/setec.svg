@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" width="200" height="60" fill="none">
+  <!-- SETEC Symbol: stylised S in bright green -->
+  <path d="M 42 16 C 30 14 20 20 20 28 C 20 38 38 34 38 42 C 38 47 30 48 24 45" stroke="#009A44" stroke-width="6" stroke-linecap="round" fill="none" />
+  <circle cx="34" cy="20" r="3" fill="#009A44" />
+  <!-- SETEC Text -->
+  <text x="56" y="38" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="28" fill="#009A44" letter-spacing="-1">setec</text>
+  <text x="58" y="49" font-family="system-ui, -apple-system, sans-serif" font-weight="600" font-size="7.5" fill="#333333" letter-spacing="0.5">INFRASTRUCTURES</text>
+</svg>

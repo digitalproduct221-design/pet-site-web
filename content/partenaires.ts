@@ -4,7 +4,12 @@
  */
 export type Partenaire = { nom: string; logo: string; url?: string };
 
-export const partenaires: Partenaire[] = [];
+export const partenaires: Partenaire[] = [
+  { nom: "Agence Française de Développement (AFD)", logo: "/brand/partenaires/afd.svg" },
+  { nom: "SETEC Infrastructures Afrique", logo: "/brand/partenaires/setec.svg" },
+  { nom: "GESCOD Coopération Décentralisée", logo: "/brand/partenaires/gescod.svg" },
+  { nom: "Commune de Meckhé (Maître d'Ouvrage)", logo: "/brand/partenaires/commune-meckhe.svg" },
+];
 
 export type PartenaireInstitutionnel = {
   nom: string;
