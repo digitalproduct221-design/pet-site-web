@@ -28,9 +28,9 @@ export default function PageCarrieres() {
     <>
       <EnTetePage suite="text-blanc"
         titre="Carrières"
-        intro="Conducteurs d'engins, canalisateurs, ferrailleurs, topographes : rejoignez une entreprise de terrain où le travail bien fait compte."
+        intro="Conducteurs d'engins, canalisateurs, ferrailleurs, topographes : rejoignez une entreprise de terrain où le travail bien fait compte."
         ariane={[{ titre: "Carrières" }]}
-        photo="trancheeLotissement"
+        photo="equipeEnMarche"
       >
         <BoutonLien href="#candidature">Candidature spontanée</BoutonLien>
         <BoutonLien href="#metiers" variante="contour-clair">
@@ -46,11 +46,11 @@ export default function PageCarrieres() {
                 Pourquoi nous rejoindre
               </h2>
               <p className="mt-5 max-w-[34rem] text-lg leading-relaxed text-encre-douce">
-                Chez PET, chacun compte sur le chantier. Nos valeurs guident la façon dont nous travaillons ensemble&nbsp;:{" "}
+                Chez PET, chacun compte sur le chantier. Nos valeurs guident la façon dont nous travaillons ensemble :{" "}
                 {listeFrancaise(valeurs.map((v) => v.titre)).toLowerCase()}.
               </p>
             </div>
-            <PhotoCadre photo="conduiteOuvrage" ratio="aspect-[4/3]" sizes="(min-width: 1024px) 36vw, 100vw" equerres decalage={12} className="mt-10" />
+            <PhotoCadre photo="equipePet" ratio="aspect-[4/3]" sizes="(min-width: 1024px) 36vw, 100vw" equerres decalage={12} className="mt-10" />
           </div>
           <ul className="revele-groupe grid content-center gap-12 lg:col-span-6 lg:col-start-7 lg:gap-16">
             {atouts.map((a) => (

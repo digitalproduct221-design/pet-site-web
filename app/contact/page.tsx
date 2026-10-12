@@ -22,7 +22,7 @@ export default function PageContact() {
         titre="Contact et devis"
         intro="Un chantier en vue ? Décrivez-le en quelques lignes, joignez vos plans si vous en avez : nous revenons vers vous pour en parler."
         ariane={[{ titre: "Contact et devis" }]}
-        photo="dalotRegard"
+        photo="partenariatChantier"
       >
         <a
           href={telephones[0].lien}

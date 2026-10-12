@@ -3,8 +3,14 @@ import { BoutonLien } from "@/components/ui/Bouton";
 import { Profil } from "@/components/ui/Profil";
 import { Diaporama, type Diapo } from "./Diaporama";
 
-// Photos réelles de chantier, les plus lumineuses d'abord (droits à vérifier : écartées).
 const diapos: Diapo[] = [
+  {
+    photo: "immeubleDakar",
+    onglet: "Bâtiment",
+    legende: "Élévation de structures en béton armé et gros œuvre à Dakar.",
+    href: "/savoir-faire/batiment",
+    origine: "50% 45%",
+  },
   {
     photo: "terrassementEngins",
     onglet: "Terrassement",
@@ -13,11 +19,11 @@ const diapos: Diapo[] = [
     origine: "62% 58%",
   },
   {
-    photo: "niveleuseVoirie",
-    onglet: "Voirie",
-    legende: "Réglage d'une voirie en terre à la niveleuse, guidée par le chef de chantier.",
+    photo: "voirieAsphalte",
+    onglet: "Voirie & VRD",
+    legende: "Voirie urbaine bitumée avec bordures et caniveaux d'assainissement.",
     href: "/savoir-faire/travaux-publics-vrd",
-    origine: "40% 45%",
+    origine: "50% 50%",
   },
   {
     photo: "conduiteOuvrage",

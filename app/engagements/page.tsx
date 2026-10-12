@@ -22,31 +22,31 @@ const engagements: Engagement[] = [
     id: "securite",
     titre: "Sécurité (QHSE)",
     icone: "securite",
-    photo: "niveleuseVoirie",
-    intro: "La sécurité est au centre de nos préoccupations : celle de nos équipes, de nos clients et des riverains de nos chantiers.",
-    points: ["Port des équipements de protection : casques, gilets, chaussures de sécurité", "Balisage des fouilles et des zones de manœuvre des engins", "Consignes partagées avec chaque équipe avant le démarrage"],
+    photo: "equipePet",
+    intro: "La sécurité est au centre de nos préoccupations : celle de nos équipes, de nos clients et des riverains de nos chantiers.",
+    points: ["Port des équipements de protection : casques, gilets, chaussures de sécurité", "Balisage des fouilles et des zones de manœuvre des engins", "Consignes partagées avec chaque équipe avant le démarrage"],
   },
   {
     id: "environnement",
     titre: "Environnement",
     icone: "environnement",
-    photo: "ferraillageOuvrage",
-    intro: "Le respect des lieux fait partie de nos valeurs : un chantier doit laisser derrière lui un site propre et en ordre.",
+    photo: "irrigationNiayes",
+    intro: "Le respect des lieux fait partie de nos valeurs : un chantier doit laisser derrière lui un site propre et en ordre.",
     points: ["Remise en état des voiries et des abords après travaux", "Matériaux choisis pour durer, et donc moins remplacés", "Réseaux d'eau et d'assainissement qui préservent la ressource"],
   },
   {
     id: "local-emploi",
     titre: "Local et emploi",
     icone: "local",
-    photo: "trancheeLotissement",
+    photo: "equipeEnMarche",
     intro: "PET est une entreprise sénégalaise, installée à Dakar, qui construit pour les territoires où elle travaille.",
-    points: ["Des équipes de terrain qui transmettent leur savoir-faire", "Des candidatures spontanées ouvertes à tous les métiers de chantier", "Des ouvrages utiles au quotidien : eau, assainissement, voiries"],
+    points: ["Des équipes de terrain qui transmettent leur savoir-faire", "Des candidatures spontanées ouvertes à tous les métiers de chantier", "Des ouvrages utiles au quotidien : eau, assainissement, voiries"],
   },
   {
     id: "qualite",
     titre: "Qualité",
     icone: "qualite",
-    photo: "conduiteOuvrage",
+    photo: "controleQualiteBeton",
     intro: "Un personnel qualifié et des équipements régulièrement mis à niveau, pour des ouvrages conformes et durables.",
     points: ["Contrôles à chaque étape, du ferraillage à la réception", "Tenue des délais suivie avec le client", "Conseil dès l'étude pour choisir les bonnes solutions"],
   },
@@ -59,7 +59,7 @@ export default function PageEngagements() {
         titre="Engagements"
         intro="Ce que nous promettons à nos clients, à nos équipes et aux territoires où nous travaillons."
         ariane={[{ titre: "Engagements" }]}
-        photo="niveleuseVoirie"
+        photo="partenariatChantier"
       />
 
       <div className="bg-blanc py-20 lg:py-28">

@@ -126,7 +126,7 @@ export default function PageEntreprise() {
             {valeurs.map((v, i) =>
               i === 0 ? (
                 <li key={v.titre} className={`sur-sombre relative isolate flex min-h-[22rem] flex-col justify-end overflow-hidden rounded-panneau p-8 text-blanc sm:col-span-2 lg:p-10 ${cellules[i]}`}>
-                  <Image src={photos.conduiteOuvrage.src} alt="" fill sizes="(min-width: 1024px) 50vw, 100vw" className="-z-10 object-cover" />
+                  <Image src={photos.partenariatChantier.src} alt="" fill sizes="(min-width: 1024px) 50vw, 100vw" className="-z-10 object-cover" />
                   <span aria-hidden className="absolute inset-0 -z-10 voile-carte" />
                   <h3 className="titre text-titre-l text-blanc">{v.titre}</h3>
                   <p className="mt-4 max-w-[30rem] text-[1.125rem] leading-relaxed text-blanc/90">{v.texte}</p>
@@ -149,7 +149,7 @@ export default function PageEntreprise() {
       <section id="qualite-securite" aria-labelledby="titre-qualite" className="bg-blanc py-20 lg:py-28">
         <div className="conteneur grid gap-14 lg:grid-cols-12 lg:items-center lg:gap-8">
           <div className="lg:col-span-6">
-            <PhotoCadre photo="niveleuseVoirie" ratio="aspect-[4/3]" sizes="(min-width: 1024px) 45vw, 100vw" voile="leger" equerres decalage={14} />
+            <PhotoCadre photo="controleQualiteBeton" ratio="aspect-[4/3]" sizes="(min-width: 1024px) 45vw, 100vw" voile="leger" equerres decalage={14} />
           </div>
           <div className="revele lg:col-span-5 lg:col-start-8">
             <h2 id="titre-qualite" className="titre text-titre-l text-nuit">
@@ -196,7 +196,7 @@ export default function PageEntreprise() {
               ))}
             </ul>
             <div className="lg:col-span-5">
-              <PhotoCadre photo="terrassementEngins" ratio="aspect-[4/3] lg:aspect-auto lg:h-full" sizes="(min-width: 1024px) 38vw, 100vw" voile="leger" className="h-full [&>div]:h-full" />
+              <PhotoCadre photo="equipePet" ratio="aspect-[4/3] lg:aspect-auto lg:h-full" sizes="(min-width: 1024px) 38vw, 100vw" voile="leger" className="h-full [&>div]:h-full" />
             </div>
           </div>
         </div>

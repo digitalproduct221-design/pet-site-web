@@ -80,11 +80,11 @@ export type Domaine = {
 };
 
 const photosParDomaine: Record<string, PhotoId[]> = {
-  batiment: ["trancheeLotissement", "immeubleGrue", "clotureGrillage"],
-  "travaux-publics-vrd": ["terrassementEngins", "niveleuseVoirie", "trancheeLotissement"],
-  hydraulique: ["conduiteOuvrage", "poseConduiteTopographie", "ferraillageOuvrage"],
+  batiment: ["immeubleDakar", "grosOeuvreDakar", "ecoleSenegal", "villaContemporaine", "clotureMaconnee"],
+  "travaux-publics-vrd": ["voirieAsphalte", "terrassementEngins", "niveleusePiste", "niveleuseVoirie", "trancheeLotissement"],
+  hydraulique: ["conduiteOuvrage", "epreuveHydraulique", "irrigationNiayes", "stationPompageSolaire", "poseConduiteTopographie"],
   assainissement: ["dalotRegard", "trancheeLotissement", "conduiteOuvrage"],
-  "genie-civil": ["ferraillageOuvrage", "conduiteOuvrage", "dalotRegard"],
+  "genie-civil": ["ferraillageOuvrage", "controleQualiteBeton", "pilotageChantier", "dalotRegard"],
 };
 
 const textesDomaines: Record<string, Pick<Domaine, "icone" | "accroche" | "presentation">> = {
