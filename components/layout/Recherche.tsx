@@ -26,9 +26,10 @@ export function Recherche({ classeDeclencheur = "" }: { classeDeclencheur?: stri
         aria-haspopup="dialog"
         aria-expanded={ouvert}
         aria-label="Rechercher sur le site"
-        className={`grid size-11 place-items-center rounded-full text-nuit transition-colors hover:bg-white/40 hover:text-royal ${classeDeclencheur}`}
+        className={`grid size-10 sm:size-11 place-items-center rounded-full text-nuit transition-colors hover:bg-white/40 hover:text-royal ${classeDeclencheur}`}
       >
-        <Icone nom="recherche" size={24} weight="bold" />
+        <Icone nom="recherche" size={20} weight="bold" className="sm:hidden" />
+        <Icone nom="recherche" size={24} weight="bold" className="hidden sm:block" />
       </button>
       {demande ? <RechercheFenetre ouvert={ouvert} setOuvert={setOuvert} declencheur={bouton} /> : null}
     </>

@@ -34,9 +34,10 @@ export function MenuMobile() {
         aria-haspopup="dialog"
         aria-expanded={ouvert}
         aria-label="Ouvrir le menu"
-        className="grid size-11 place-items-center rounded-full text-nuit transition-colors hover:bg-white/40 nav:hidden"
+        className="grid size-10 sm:size-11 place-items-center rounded-full text-nuit transition-colors hover:bg-white/40 nav:hidden"
       >
-        <Icone nom="menu" size={28} weight="bold" />
+        <Icone nom="menu" size={24} weight="bold" className="sm:hidden" />
+        <Icone nom="menu" size={28} weight="bold" className="hidden sm:block" />
       </button>
       {demande ? <MenuMobileFenetre ouvert={ouvert} setOuvert={setOuvert} declencheur={bouton} /> : null}
     </>
