@@ -4,16 +4,111 @@ import dynamic from "next/dynamic";
 import Image from "next/image";
 import { useCallback, useRef, useState } from "react";
 import type { ImageSite } from "@/content/images";
-import { imageLocale } from "@/content/images";
 import { Icone } from "@/components/ui/Icone";
 
 // La visionneuse (Radix Dialog) ne se charge qu'au premier clic sur une photo.
 const Visionneuse = dynamic(() => import("./Visionneuse"), { ssr: false });
 
 /**
+ * Calcul de la disposition en grille (12 colonnes) :
+ * Garantit mathématiquement que chaque rangée est 100% pleine,
+ * sans aucun espace vide ni trou orphelin en bas de galerie.
+ */
+function getDisposition(i: number, total: number) {
+  if (total === 1) {
+    return {
+      cellule: "sm:col-span-2 lg:col-span-12",
+      aspect: "aspect-[16/9] lg:aspect-[21/9]",
+      grande: false,
+    };
+  }
+  if (total === 2) {
+    return {
+      cellule: "sm:col-span-1 lg:col-span-6",
+      aspect: "aspect-[4/3] lg:aspect-[16/10]",
+      grande: false,
+    };
+  }
+  if (total === 3) {
+    return {
+      cellule: "sm:col-span-1 lg:col-span-4",
+      aspect: "aspect-[4/3]",
+      grande: false,
+    };
+  }
+  if (total === 4) {
+    return {
+      cellule: "sm:col-span-1 lg:col-span-6",
+      aspect: "aspect-[4/3] lg:aspect-[16/10]",
+      grande: false,
+    };
+  }
+  if (total === 5) {
+    // 2 photos en haut (col-6) + 3 photos en bas (col-4) : équilibre parfait
+    if (i < 2) {
+      return {
+        cellule: "sm:col-span-1 lg:col-span-6",
+        aspect: "aspect-[4/3] lg:aspect-[16/10]",
+        grande: false,
+      };
+    }
+    const isDerniere = i === 4;
+    return {
+      cellule: `${isDerniere ? "sm:col-span-2" : "sm:col-span-1"} lg:col-span-4`,
+      aspect: isDerniere ? "aspect-[4/3] sm:max-lg:aspect-[21/9] lg:aspect-[4/3]" : "aspect-[4/3]",
+      grande: false,
+    };
+  }
+  if (total === 6) {
+    return {
+      cellule: "sm:col-span-1 lg:col-span-4",
+      aspect: "aspect-[4/3]",
+      grande: false,
+    };
+  }
+  // total >= 7 : Photo 0 en grande vedette (col-8 row-span-2) + 2 vignettes à droite (col-4)
+  if (i === 0) {
+    return {
+      cellule: "sm:col-span-2 lg:col-span-8 lg:row-span-2",
+      aspect: "aspect-[4/3] lg:aspect-auto lg:h-full lg:min-h-[34rem]",
+      grande: true,
+    };
+  }
+  if (i === 1 || i === 2) {
+    return {
+      cellule: "sm:col-span-1 lg:col-span-4",
+      aspect: "aspect-[4/3]",
+      grande: false,
+    };
+  }
+  // Reste des photos (total - 3)
+  const remaining = total - 3;
+  if (remaining % 3 === 1 && i === total - 1) {
+    return {
+      cellule: "sm:col-span-2 lg:col-span-12",
+      aspect: "aspect-[16/9] lg:aspect-[21/9]",
+      grande: false,
+    };
+  }
+  if (remaining % 3 === 2 && i >= total - 2) {
+    return {
+      cellule: "sm:col-span-1 lg:col-span-6",
+      aspect: "aspect-[4/3] lg:aspect-[16/10]",
+      grande: false,
+    };
+  }
+  const isDerniere = i === total - 1;
+  return {
+    cellule: `${isDerniere && total % 2 === 0 ? "sm:col-span-2" : "sm:col-span-1"} lg:col-span-4`,
+    aspect: "aspect-[4/3]",
+    grande: false,
+  };
+}
+
+/**
  * Galerie d'une réalisation ou d'un domaine : mosaïque de photos réelles,
  * chacune ouvre la visionneuse plein écran au clic.
- * Aucun ajout artificiel de photos extérieures pour garantir zéro doublon.
+ * Aucun trou en bas ni décalage de grille.
  */
 export function Galerie({ photos: photosEntree, titre }: { photos: ImageSite[]; titre: string }) {
   // Déduplication absolue par URL d'image pour garantir qu'aucune photo n'apparaît en double
@@ -49,25 +144,7 @@ export function Galerie({ photos: photosEntree, titre }: { photos: ImageSite[]; 
     <>
       <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-12 lg:gap-5">
         {photosAffichees.map((photo, i) => {
-          // Disposition harmonieuse :
-          // À 2 photos : deux moitiés égales (col-6).
-          // À 4 photos : 2 rangées de 2 (col-6) pour un équilibre parfait sans trou.
-          // À 3 photos ou plus : photo 0 en grand (col-8 sur 2 rangées) avec 2 vignettes à droite (col-4).
-          // Si la dernière photo est isolée sur la rangée finale, elle s'étend sur toute la largeur (col-12).
-          const is4 = total === 4;
-          const grande = !is4 && i === 0 && total > 2;
-          const isDerniere = i === total - 1;
-          const isoléeFinale = !is4 && total > 3 && (total - 3) % 3 === 1 && isDerniere;
-
-          const cellule = is4
-            ? "sm:col-span-1 lg:col-span-6"
-            : grande
-            ? "sm:col-span-2 lg:col-span-8 lg:row-span-2"
-            : isoléeFinale
-            ? "sm:col-span-2 lg:col-span-12"
-            : total > 2
-            ? `${isDerniere && total % 2 === 0 ? "sm:col-span-2" : "sm:col-span-1"} lg:col-span-4`
-            : "sm:col-span-1 lg:col-span-6";
+          const { cellule, aspect, grande } = getDisposition(i, total);
 
           return (
             <li key={i} className={cellule}>
@@ -78,17 +155,7 @@ export function Galerie({ photos: photosEntree, titre }: { photos: ImageSite[]; 
                 className="group/photo relative block w-full overflow-hidden rounded-chantier bg-nuit text-left"
                 aria-label={`Agrandir la photo ${i + 1} sur ${total} : ${photo.alt}`}
               >
-                <span
-                  className={`relative block ${
-                    grande
-                      ? "aspect-[4/3] lg:aspect-auto lg:h-full lg:min-h-[34rem]"
-                      : isoléeFinale
-                      ? "aspect-[16/9] lg:aspect-[21/9]"
-                      : isDerniere && total % 2 === 0
-                      ? "aspect-[4/3] sm:max-lg:aspect-[21/9] lg:aspect-[4/3]"
-                      : "aspect-[4/3]"
-                  }`}
-                >
+                <span className={`relative block ${aspect}`}>
                   <Image
                     src={photo.src}
                     alt=""

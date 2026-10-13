@@ -310,72 +310,51 @@ export default function PageAPropos() {
             </p>
           </div>
 
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {partenairesOfficiels.map((p) => (
-              <div
-                key={p.sigle}
-                className="rounded-2xl border border-nuit/10 bg-white p-6 sm:p-7 shadow-sm transition-all duration-300 hover:border-royal/40 hover:shadow-md flex flex-col justify-between"
-              >
-                <div>
-                  <div className="flex items-center justify-between">
-                    <span className="inline-flex items-center rounded-md bg-royal/10 px-3 py-1 font-display font-black text-[1.125rem] text-royal tracking-wide">
-                      {p.sigle}
-                    </span>
-                    <span className="cote text-[0.75rem] uppercase tracking-[0.1em] text-encre-douce">
-                      {p.type === "bailleur"
-                        ? "Bailleur"
-                        : p.type === "maitrise-oeuvre"
-                        ? "Maîtrise d'œuvre"
-                        : p.type === "cooperation"
-                        ? "Coopération"
-                        : "Maître d'ouvrage"}
-                    </span>
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-12">
+            {partenairesOfficiels.map((p, i) => {
+              const colSpan = i < 3 ? "lg:col-span-4" : "lg:col-span-3";
+              const isDernierSm = i === partenairesOfficiels.length - 1;
+              return (
+                <div
+                  key={p.sigle}
+                  className={`rounded-2xl border border-nuit/10 bg-white p-6 sm:p-7 shadow-sm transition-all duration-300 hover:border-royal/40 hover:shadow-md flex flex-col justify-between ${colSpan} ${
+                    isDernierSm ? "sm:max-lg:col-span-2" : ""
+                  }`}
+                >
+                  <div>
+                    <div className="flex items-center justify-between">
+                      <span className="inline-flex items-center rounded-md bg-royal/10 px-3 py-1 font-display font-black text-[1.125rem] text-royal tracking-wide">
+                        {p.sigle}
+                      </span>
+                      <span className="cote text-[0.75rem] uppercase tracking-[0.1em] text-encre-douce">
+                        {p.type === "bailleur"
+                          ? "Bailleur"
+                          : p.type === "maitrise-oeuvre"
+                          ? "Maîtrise d'œuvre"
+                          : p.type === "cooperation"
+                          ? "Coopération"
+                          : "Maître d'ouvrage"}
+                      </span>
+                    </div>
+
+                    <h3 className="titre mt-4 text-[1.375rem] leading-snug text-nuit">
+                      {p.nom}
+                    </h3>
+                    <p className="mt-1 cote text-[0.875rem] text-royal font-semibold">
+                      {p.role}
+                    </p>
+                    <p className="mt-3 text-[0.9375rem] leading-relaxed text-encre-600">
+                      {p.description}
+                    </p>
                   </div>
 
-                  <h3 className="titre mt-4 text-[1.375rem] leading-snug text-nuit">
-                    {p.nom}
-                  </h3>
-                  <p className="mt-1 cote text-[0.875rem] text-royal font-semibold">
-                    {p.role}
-                  </p>
-                  <p className="mt-3 text-[0.9375rem] leading-relaxed text-encre-600">
-                    {p.description}
-                  </p>
+                  <div className="mt-6 pt-4 border-t border-nuit/5">
+                    <p className="cote text-[0.75rem] uppercase tracking-[0.08em] text-encre-douce">Projet documenté :</p>
+                    <p className="mt-0.5 text-[0.875rem] font-semibold text-nuit">{p.projet}</p>
+                  </div>
                 </div>
-
-                <div className="mt-6 pt-4 border-t border-nuit/5">
-                  <p className="cote text-[0.75rem] uppercase tracking-[0.08em] text-encre-douce">Projet documenté :</p>
-                  <p className="mt-0.5 text-[0.875rem] font-semibold text-nuit">{p.projet}</p>
-                </div>
-              </div>
-            ))}
-
-            {/* Carte photo globale des partenariats et chantiers pour combler parfaitement l'espace vide */}
-            <div className="relative overflow-hidden rounded-2xl bg-nuit text-blanc shadow-sm border border-nuit/10 sm:col-span-1 lg:col-span-2 min-h-[18rem] flex flex-col justify-end p-6 sm:p-8">
-              <Image
-                src={photos.delegationSetecMeckhe.src}
-                alt={photos.delegationSetecMeckhe.alt}
-                fill
-                sizes="(min-width: 1024px) 66vw, (min-width: 640px) 50vw, 100vw"
-                className="-z-10 object-cover brightness-[0.72] transition-transform duration-700 hover:scale-105"
-                style={{ objectPosition: photos.delegationSetecMeckhe.focale }}
-              />
-              <div className="absolute inset-0 -z-10 bg-gradient-to-t from-nuit via-nuit/60 to-transparent" />
-              <div className="relative z-10 max-w-xl">
-                <div className="flex items-center gap-2 text-jaune">
-                  <Icone nom="valeurs" size={20} weight="bold" />
-                  <span className="cote text-[0.8125rem] uppercase tracking-[0.14em] font-bold">
-                    Partenariats de terrain & Références vérifiées
-                  </span>
-                </div>
-                <h3 className="titre mt-2 text-[1.5rem] sm:text-[1.75rem] text-blanc leading-tight">
-                  Une présence rigoureuse aux côtés des bailleurs et maîtres d&apos;ouvrage
-                </h3>
-                <p className="mt-2 text-[0.9375rem] text-brume leading-relaxed">
-                  Visite d&apos;inspection officielle, réunions techniques et suivi des travaux avec les délégations des bailleurs, ministères et bureaux de contrôle partenaires au Sénégal.
-                </p>
-              </div>
-            </div>
+              );
+            })}
           </div>
 
           {/* Témoignage terrain / encart vérifié */}
@@ -546,16 +525,25 @@ export default function PageAPropos() {
             </h2>
           </div>
 
-          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {valeurs.map((v) => (
-              <div key={v.titre} className="rounded-xl border border-nuit/10 bg-white p-5 shadow-sm">
-                <div className="flex items-center gap-2.5 text-royal font-bold">
-                  <Icone nom="valeurs" size={18} />
-                  <h3 className="titre text-[1.25rem] text-nuit">{v.titre}</h3>
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-12">
+            {valeurs.map((v, i) => {
+              const colSpan = i < 3 ? "lg:col-span-4" : "lg:col-span-3";
+              const isDernierSm = i === valeurs.length - 1;
+              return (
+                <div
+                  key={v.titre}
+                  className={`rounded-xl border border-nuit/10 bg-white p-5 shadow-sm ${colSpan} ${
+                    isDernierSm ? "sm:max-lg:col-span-2" : ""
+                  }`}
+                >
+                  <div className="flex items-center gap-2.5 text-royal font-bold">
+                    <Icone nom="valeurs" size={18} />
+                    <h3 className="titre text-[1.25rem] text-nuit">{v.titre}</h3>
+                  </div>
+                  <p className="mt-2 text-[0.9375rem] text-encre-600 leading-relaxed">{v.texte}</p>
                 </div>
-                <p className="mt-2 text-[0.9375rem] text-encre-600 leading-relaxed">{v.texte}</p>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>

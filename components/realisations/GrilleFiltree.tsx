@@ -4,92 +4,8 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import type { Projet } from "@/content/realisations";
 import { domaines } from "@/content/site";
-import { imageLocale } from "@/content/images";
-import type { PhotoId } from "@/content/photos";
 import { CarteProjet } from "@/components/ui/CarteProjet";
-import { PhotoCadre } from "@/components/ui/PhotoCadre";
 import { Icone } from "@/components/ui/Icone";
-import { Galerie } from "./Galerie";
-
-type CarteComplementaire = {
-  titre: string;
-  photoId: PhotoId;
-  resume: string;
-  lien: string;
-  labelLien: string;
-};
-
-const CARTES_COMPLEMENTAIRES: Record<string, CarteComplementaire> = {
-  hydraulique: {
-    titre: "Équipements hydrauliques, vannes et réservoirs d'eau potable",
-    photoId: "vanneReservoirEauPotable",
-    resume:
-      "Fourniture, montage et mise en service de pièces spéciales, vannes de régulation et réservoirs de stockage aux normes internationales.",
-    lien: "/savoir-faire/hydraulique",
-    labelLien: "Savoir-faire hydraulique",
-  },
-  assainissement: {
-    titre: "Ouvrages de rétention, stations d'épuration et dalots de drainage",
-    photoId: "supervisionSetecChantier",
-    resume:
-      "Supervision technique, dalots préfabriqués et bassins de stockage d'eaux usées garantissant la pérennité environnementale des sites.",
-    lien: "/savoir-faire/assainissement",
-    labelLien: "Savoir-faire assainissement",
-  },
-  "genie-civil": {
-    titre: "Contrôle qualité béton, ferraillage lourd et génie civil de l'eau",
-    photoId: "controleQualiteBeton",
-    resume:
-      "Essais au cône d'Abrams, formulation et coulage de radiers armés et voiles en béton étanche pour ouvrages durables.",
-    lien: "/savoir-faire/genie-civil",
-    labelLien: "Savoir-faire génie civil",
-  },
-  batiment: {
-    titre: "Coordination tous corps d'état, équipements et finitions durables",
-    photoId: "etudePlansEquipePet",
-    resume:
-      "Études d'exécution, pilotage des équipes multidisciplinaires et livraison clé en main de programmes résidentiels et tertiaires.",
-    lien: "/savoir-faire/batiment",
-    labelLien: "Savoir-faire bâtiment",
-  },
-};
-
-function CarteComplementaireDomaine({
-  item,
-  domaineTitre,
-}: {
-  item: CarteComplementaire;
-  domaineTitre: string;
-}) {
-  return (
-    <Link href={item.lien} className="group/projet block">
-      <PhotoCadre
-        photo={item.photoId}
-        ratio="aspect-[4/3]"
-        sizes="(min-width: 1024px) 30vw, (min-width: 640px) 50vw, 100vw"
-        voile="leger"
-        imageClassName="transition-transform duration-[900ms] ease-chantier group-hover/projet:scale-[1.04]"
-      />
-      <span className="mt-5 block titre text-[1.625rem] leading-[1] text-nuit transition-colors group-hover/projet:text-royal">
-        {item.titre}
-      </span>
-      <span className="mt-2 flex flex-wrap items-center gap-3">
-        <span className="cote text-[0.9375rem] text-royal">{domaineTitre}</span>
-        <span className="inline-flex items-center gap-1.5 cote text-[0.9375rem] text-encre-douce">
-          <Icone nom="casque" size={16} />
-          Expertise terrain
-        </span>
-      </span>
-      <span className="mt-2 block text-[1rem] leading-relaxed text-encre-douce">
-        {item.resume}
-      </span>
-      <span className="mt-3 inline-flex items-center gap-2 cote text-[0.9375rem] uppercase tracking-[0.04em] text-royal underline decoration-jaune decoration-[2px] underline-offset-[4px] group-hover/projet:text-nuit">
-        {item.labelLien}
-        <Icone nom="fleche" size={14} weight="bold" />
-      </span>
-    </Link>
-  );
-}
 
 // Liste des filtres disponibles avec comptage dynamique
 const optionsPour = (projets: Projet[]) => [
@@ -99,16 +15,15 @@ const optionsPour = (projets: Projet[]) => [
     .map((d) => ({
       slug: d.slug,
       titre: d.titre,
-      photosCount: d.photos.length,
     })),
 ];
 
 /**
- * Grille et galeries des réalisations refondues par discipline.
- * Chaque rubrique présente :
- * 1. Les chantiers emblématiques du domaine (avec fiches complètes et descriptifs des travaux)
- * 2. La galerie complète de terrain (photos réelles en priorité + compléments HD)
- * 3. Des explications claires et compréhensibles sur le savoir-faire de PET.
+ * Grille des réalisations de chantiers PET par discipline.
+ * Présentation claire et sans redondance :
+ * - Cartouche de présentation du domaine avec ses indicateurs réels
+ * - Fiches chantiers structurées sans carte synthétique ni photos dupliquées
+ * - Grille parfaitement équilibrée (2 colonnes pour 2 chantiers, 3 colonnes pour 3+)
  */
 export function Grille({ filtre, projets }: { filtre: string; projets: Projet[] }) {
   const options = optionsPour(projets);
@@ -147,9 +62,9 @@ export function Grille({ filtre, projets }: { filtre: string; projets: Projet[] 
 
       {/* CAS 1 : VUE FILTRÉE SUR UN DOMAINE PARTICULIER */}
       {domaineActif ? (
-        <div className="space-y-14 lg:space-y-20">
+        <div className="space-y-12 lg:space-y-16">
           {/* Cartouche d'introduction explicatif du domaine */}
-          <div className="rounded-panneau bg-blanc p-6 sm:p-8 lg:p-10 shadow-sm">
+          <div className="rounded-panneau bg-blanc p-6 sm:p-8 lg:p-10 shadow-sm border border-nuit/5">
             <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
               <div className="max-w-[48rem]">
                 <div className="flex items-center gap-3 text-royal">
@@ -167,10 +82,6 @@ export function Grille({ filtre, projets }: { filtre: string; projets: Projet[] 
                   <span className="cote text-[1.125rem] text-royal">{visibles.length}</span>
                   <span className="text-[0.9375rem] text-encre-douce">chantiers majeurs</span>
                 </div>
-                <div className="flex items-center gap-3 rounded-chantier bg-sable px-4 py-2 text-nuit">
-                  <span className="cote text-[1.125rem] text-royal">{domaineActif.photos.length}</span>
-                  <span className="text-[0.9375rem] text-encre-douce">photos terrain</span>
-                </div>
                 <Link
                   href={`/savoir-faire/${domaineActif.slug}`}
                   className="inline-flex items-center gap-2 cote text-[1rem] uppercase tracking-[0.04em] text-royal underline decoration-jaune decoration-[3px] underline-offset-[6px] hover:text-nuit"
@@ -182,13 +93,13 @@ export function Grille({ filtre, projets }: { filtre: string; projets: Projet[] 
             </div>
           </div>
 
-          {/* Section 1 : Chantiers de référence du domaine */}
+          {/* Section : Chantiers de référence du domaine */}
           <div>
             <div className="mb-6 flex flex-col gap-2">
               <span className="cote text-[0.875rem] uppercase tracking-[0.08em] text-royal">Opérations emblématiques</span>
               <h3 className="titre text-titre-m text-nuit">Chantiers majeurs en {domaineActif.titre}</h3>
             </div>
-            <ul className="grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+            <ul className={`grid gap-x-6 gap-y-12 sm:grid-cols-2 ${visibles.length === 2 ? "lg:grid-cols-2 max-w-5xl" : "lg:grid-cols-3"}`}>
               {visibles.map((p, i) => (
                 <li
                   key={p.slug}
@@ -198,56 +109,8 @@ export function Grille({ filtre, projets }: { filtre: string; projets: Projet[] 
                   <CarteProjet projet={p} />
                 </li>
               ))}
-              {visibles.length === 2 && CARTES_COMPLEMENTAIRES[domaineActif.slug] && (
-                <li
-                  className="animate-[apparition_600ms_var(--ease-chantier)_both]"
-                  style={{ animationDelay: "180ms" }}
-                >
-                  <CarteComplementaireDomaine
-                    item={CARTES_COMPLEMENTAIRES[domaineActif.slug]}
-                    domaineTitre={domaineActif.titre}
-                  />
-                </li>
-              )}
             </ul>
           </div>
-
-          {/* Section 2 : Galerie de terrain du domaine (sans doublon avec les cartes ci-dessus) */}
-          {(() => {
-            const cardCovers = new Set(
-              visibles
-                .map((p) => {
-                  const src = p.photos[0]?.src;
-                  return typeof src === "string" ? src : src?.src;
-                })
-                .filter(Boolean),
-            );
-            const photosSansDoublon = domaineActif.photos
-              .map(imageLocale)
-              .filter((img) => {
-                const s = typeof img.src === "string" ? img.src : img.src?.src;
-                return !cardCovers.has(s);
-              });
-            const photosAffichees = photosSansDoublon.length > 0 ? photosSansDoublon : domaineActif.photos.map(imageLocale);
-
-            return domaineActif.photos.length > 0 && (
-              <div className="rounded-panneau bg-blanc/60 p-6 sm:p-8 lg:p-10">
-                <div className="mb-8 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
-                  <div>
-                    <span className="cote text-[0.875rem] uppercase tracking-[0.08em] text-royal">Nos équipes au travail</span>
-                    <h3 className="titre text-titre-m text-nuit">Galerie de terrain : {domaineActif.titre}</h3>
-                    <p className="mt-2 max-w-[42rem] text-[1.0625rem] text-encre-douce">
-                      Retrouvez nos prises de vue complémentaires de terrain et savoir-faire techniques pour ce domaine ({photosAffichees.length} photos).
-                    </p>
-                  </div>
-                </div>
-                <Galerie
-                  photos={photosAffichees}
-                  titre={`Chantiers PET : ${domaineActif.titre}`}
-                />
-              </div>
-            );
-          })()}
         </div>
       ) : (
         /* CAS 2 : VUE D'ENSEMBLE (« TOUS LES CHANTIERS ») ORGANISÉE PAR DOMAINE */
@@ -280,26 +143,18 @@ export function Grille({ filtre, projets }: { filtre: string; projets: Projet[] 
                       href={`/realisations?domaine=${dom.slug}`}
                       className="inline-flex shrink-0 items-center gap-2 cote text-[1rem] uppercase tracking-[0.04em] text-royal hover:text-nuit"
                     >
-                      Voir les {chantiersDomaine.length} chantiers & la galerie ({dom.photos.length} photos)
+                      Voir les {chantiersDomaine.length} chantiers de ce domaine
                       <Icone nom="fleche" size={16} weight="bold" />
                     </Link>
                   </div>
 
                   {/* Grille des chantiers du domaine */}
-                  <ul className="grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+                  <ul className={`grid gap-x-6 gap-y-12 sm:grid-cols-2 ${chantiersDomaine.length === 2 ? "lg:grid-cols-2 max-w-5xl" : "lg:grid-cols-3"}`}>
                     {chantiersDomaine.map((p) => (
                       <li key={p.slug}>
                         <CarteProjet projet={p} />
                       </li>
                     ))}
-                    {chantiersDomaine.length === 2 && CARTES_COMPLEMENTAIRES[dom.slug] && (
-                      <li>
-                        <CarteComplementaireDomaine
-                          item={CARTES_COMPLEMENTAIRES[dom.slug]}
-                          domaineTitre={dom.titre}
-                        />
-                      </li>
-                    )}
                   </ul>
                 </section>
               );
