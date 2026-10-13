@@ -97,13 +97,13 @@ export function Header() {
         {grandEcran ? <MegaMenu /> : <NavStatique chemin={chemin} />}
         <div className="flex items-center gap-1.5 sm:gap-2.5 lg:gap-3 shrink-0">
           <Recherche />
-          {/* Action discrète WhatsApp rapide sur mobile en bulle de verre liquide */}
+          {/* Action discrète WhatsApp rapide sur mobile (dès 380px, déjà présente dans le dock inférieur) */}
           <a
             href="https://wa.me/221775970198"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Contacter PET sur WhatsApp"
-            className="flex size-9 sm:size-10 items-center justify-center rounded-full bg-white/40 backdrop-blur-xl border border-white/70 shadow-[inset_0_1px_1.5px_rgba(255,255,255,0.9),0_4px_12px_rgba(7,18,43,0.1)] text-[#128C7E] transition-all hover:scale-105 hover:bg-[#25D366] hover:text-white active:scale-95 sm:hidden"
+            className="hidden min-[380px]:flex size-9 sm:size-10 items-center justify-center rounded-full bg-white/40 backdrop-blur-xl border border-white/70 shadow-[inset_0_1px_1.5px_rgba(255,255,255,0.9),0_4px_12px_rgba(7,18,43,0.1)] text-[#128C7E] transition-all hover:scale-105 hover:bg-[#25D366] hover:text-white active:scale-95 sm:hidden"
           >
             <Icone nom="whatsapp" size={19} weight="bold" />
           </a>
