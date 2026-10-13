@@ -5,9 +5,91 @@ import { useSearchParams } from "next/navigation";
 import type { Projet } from "@/content/realisations";
 import { domaines } from "@/content/site";
 import { imageLocale } from "@/content/images";
+import type { PhotoId } from "@/content/photos";
 import { CarteProjet } from "@/components/ui/CarteProjet";
+import { PhotoCadre } from "@/components/ui/PhotoCadre";
 import { Icone } from "@/components/ui/Icone";
 import { Galerie } from "./Galerie";
+
+type CarteComplementaire = {
+  titre: string;
+  photoId: PhotoId;
+  resume: string;
+  lien: string;
+  labelLien: string;
+};
+
+const CARTES_COMPLEMENTAIRES: Record<string, CarteComplementaire> = {
+  hydraulique: {
+    titre: "Équipements hydrauliques, vannes et réservoirs d'eau potable",
+    photoId: "vanneReservoirEauPotable",
+    resume:
+      "Fourniture, montage et mise en service de pièces spéciales, vannes de régulation et réservoirs de stockage aux normes internationales.",
+    lien: "/savoir-faire/hydraulique",
+    labelLien: "Savoir-faire hydraulique",
+  },
+  assainissement: {
+    titre: "Ouvrages de rétention, stations d'épuration et dalots de drainage",
+    photoId: "supervisionSetecChantier",
+    resume:
+      "Supervision technique, dalots préfabriqués et bassins de stockage d'eaux usées garantissant la pérennité environnementale des sites.",
+    lien: "/savoir-faire/assainissement",
+    labelLien: "Savoir-faire assainissement",
+  },
+  "genie-civil": {
+    titre: "Contrôle qualité béton, ferraillage lourd et génie civil de l'eau",
+    photoId: "controleQualiteBeton",
+    resume:
+      "Essais au cône d'Abrams, formulation et coulage de radiers armés et voiles en béton étanche pour ouvrages durables.",
+    lien: "/savoir-faire/genie-civil",
+    labelLien: "Savoir-faire génie civil",
+  },
+  batiment: {
+    titre: "Coordination tous corps d'état, équipements et finitions durables",
+    photoId: "etudePlansEquipePet",
+    resume:
+      "Études d'exécution, pilotage des équipes multidisciplinaires et livraison clé en main de programmes résidentiels et tertiaires.",
+    lien: "/savoir-faire/batiment",
+    labelLien: "Savoir-faire bâtiment",
+  },
+};
+
+function CarteComplementaireDomaine({
+  item,
+  domaineTitre,
+}: {
+  item: CarteComplementaire;
+  domaineTitre: string;
+}) {
+  return (
+    <Link href={item.lien} className="group/projet block">
+      <PhotoCadre
+        photo={item.photoId}
+        ratio="aspect-[4/3]"
+        sizes="(min-width: 1024px) 30vw, (min-width: 640px) 50vw, 100vw"
+        voile="leger"
+        imageClassName="transition-transform duration-[900ms] ease-chantier group-hover/projet:scale-[1.04]"
+      />
+      <span className="mt-5 block titre text-[1.625rem] leading-[1] text-nuit transition-colors group-hover/projet:text-royal">
+        {item.titre}
+      </span>
+      <span className="mt-2 flex flex-wrap items-center gap-3">
+        <span className="cote text-[0.9375rem] text-royal">{domaineTitre}</span>
+        <span className="inline-flex items-center gap-1.5 cote text-[0.9375rem] text-encre-douce">
+          <Icone nom="casque" size={16} />
+          Expertise terrain
+        </span>
+      </span>
+      <span className="mt-2 block text-[1rem] leading-relaxed text-encre-douce">
+        {item.resume}
+      </span>
+      <span className="mt-3 inline-flex items-center gap-2 cote text-[0.9375rem] uppercase tracking-[0.04em] text-royal underline decoration-jaune decoration-[2px] underline-offset-[4px] group-hover/projet:text-nuit">
+        {item.labelLien}
+        <Icone nom="fleche" size={14} weight="bold" />
+      </span>
+    </Link>
+  );
+}
 
 // Liste des filtres disponibles avec comptage dynamique
 const optionsPour = (projets: Projet[]) => [
@@ -116,6 +198,17 @@ export function Grille({ filtre, projets }: { filtre: string; projets: Projet[] 
                   <CarteProjet projet={p} />
                 </li>
               ))}
+              {visibles.length === 2 && CARTES_COMPLEMENTAIRES[domaineActif.slug] && (
+                <li
+                  className="animate-[apparition_600ms_var(--ease-chantier)_both]"
+                  style={{ animationDelay: "180ms" }}
+                >
+                  <CarteComplementaireDomaine
+                    item={CARTES_COMPLEMENTAIRES[domaineActif.slug]}
+                    domaineTitre={domaineActif.titre}
+                  />
+                </li>
+              )}
             </ul>
           </div>
 
@@ -199,6 +292,14 @@ export function Grille({ filtre, projets }: { filtre: string; projets: Projet[] 
                         <CarteProjet projet={p} />
                       </li>
                     ))}
+                    {chantiersDomaine.length === 2 && CARTES_COMPLEMENTAIRES[dom.slug] && (
+                      <li>
+                        <CarteComplementaireDomaine
+                          item={CARTES_COMPLEMENTAIRES[dom.slug]}
+                          domaineTitre={dom.titre}
+                        />
+                      </li>
+                    )}
                   </ul>
                 </section>
               );

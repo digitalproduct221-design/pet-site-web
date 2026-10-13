@@ -194,7 +194,7 @@ export default async function PageDomaine({ params }: PageProps<"/savoir-faire/[
           <h2 id="titre-autres" className="titre text-titre-m text-blanc">
             Nos autres savoir-faire
           </h2>
-          <ul className="revele-groupe mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          <ul className="revele-groupe mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {autres.map((x) => (
               <li key={x.slug}>
                 <Link href={`/savoir-faire/${x.slug}`} className="group/autre flex h-full items-center justify-between gap-4 rounded-panneau bg-blanc/[0.06] p-5 transition-colors hover:bg-blanc/[0.12]">
@@ -206,6 +206,15 @@ export default async function PageDomaine({ params }: PageProps<"/savoir-faire/[
                 </Link>
               </li>
             ))}
+            <li>
+              <Link href="/savoir-faire" className="group/autre flex h-full items-center justify-between gap-4 rounded-panneau bg-jaune/10 border border-jaune/30 p-5 transition-colors hover:bg-jaune/20">
+                <span className="flex items-center gap-3">
+                  <Icone nom="casque" size={26} className="text-jaune" />
+                  <span className="cote text-[1.125rem] text-blanc">Tous nos savoir-faire</span>
+                </span>
+                <Icone nom="fleche" size={18} weight="bold" className="shrink-0 text-jaune transition-transform group-hover/autre:translate-x-1" />
+              </Link>
+            </li>
           </ul>
         </div>
       </nav>

@@ -6,9 +6,11 @@ export type Partenaire = { nom: string; logo: string; url?: string };
 
 export const partenaires: Partenaire[] = [
   { nom: "Agence Française de Développement (AFD)", logo: "/brand/partenaires/afd.svg" },
+  { nom: "Office des Forages Ruraux (OFOR)", logo: "/brand/partenaires/ofor.svg" },
+  { nom: "Programme Agricole Italie-Sénégal (PAIS)", logo: "/brand/partenaires/pais.svg" },
   { nom: "SETEC Infrastructures Afrique", logo: "/brand/partenaires/setec.svg" },
-  { nom: "GESCOD Coopération Décentralisée", logo: "/brand/partenaires/gescod.svg" },
   { nom: "Commune de Meckhé (Maître d'Ouvrage)", logo: "/brand/partenaires/commune-meckhe.svg" },
+  { nom: "GESCOD Coopération Décentralisée", logo: "/brand/partenaires/gescod.svg" },
 ];
 
 export type PartenaireInstitutionnel = {
@@ -21,6 +23,22 @@ export type PartenaireInstitutionnel = {
 };
 
 export const partenairesOfficiels: PartenaireInstitutionnel[] = [
+  {
+    nom: "Office des Forages Ruraux",
+    sigle: "OFOR",
+    role: "Maître d'Ouvrage Public & Hydraulique Rurale",
+    projet: "Infrastructures d'adduction et réseaux d'eau potable",
+    description: "Établissement public assurant la gestion, le développement et la pérennité du patrimoine de l'hydraulique rurale au Sénégal.",
+    type: "maitrise-ouvrage",
+  },
+  {
+    nom: "Programme Agricole Italie-Sénégal",
+    sigle: "PAIS",
+    role: "Coopération & Développement Agricole",
+    projet: "Aménagements hydro-agricoles et ouvrages de maîtrise de l'eau",
+    description: "Programme de coopération bilatérale dédié à la valorisation agricole, aux forages et aux réseaux d'irrigation structurants.",
+    type: "cooperation",
+  },
   {
     nom: "Agence Française de Développement",
     sigle: "AFD",
@@ -52,13 +70,5 @@ export const partenairesOfficiels: PartenaireInstitutionnel[] = [
     projet: "Coopération décentralisée (Saint-Dié-des-Vosges)",
     description: "Grand Est Solidarité et Coopération pour le Développement, appui technique territorial.",
     type: "cooperation",
-  },
-  {
-    nom: "Ministère des Collectivités Territoriales",
-    sigle: "MCTDAT",
-    role: "Ministère de tutelle",
-    projet: "Programmes nationaux d'aménagement des territoires",
-    description: "Cadre gouvernemental pour le développement durable et l'équipement des collectivités du Sénégal.",
-    type: "maitrise-ouvrage",
   },
 ];

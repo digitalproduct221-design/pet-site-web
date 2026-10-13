@@ -189,25 +189,24 @@ export default function PageAPropos() {
                 <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-nuit via-nuit/75 to-transparent p-4 sm:p-5 text-blanc">
                   <div className="flex items-center gap-2 text-jaune">
                     <Icone nom="qualite" size={16} weight="bold" />
-                    <span className="cote text-[0.75rem] uppercase tracking-[0.14em] font-bold">Direction Générale</span>
+                    <span className="cote text-[0.75rem] uppercase tracking-[0.14em] font-bold">Directeur Général</span>
                   </div>
                   <p className="mt-1 font-display font-extrabold text-[1rem] sm:text-[1.0625rem] text-blanc leading-snug">
                     PARTENAIRE ENTREPRISE TRAVAUX SUARL
                   </p>
                   <p className="mt-0.5 text-[0.8125rem] text-brume">
-                    Siège social · Dakar, Sénégal
+                    Siège social · Rond-point Liberté 6, Dakar, Sénégal
                   </p>
                 </div>
               </div>
 
               {/* 4. Pastille flottante prestigieuse */}
-              <div className="absolute -bottom-3 -right-2 sm:-bottom-4 sm:-right-3 rounded-2xl bg-blanc/95 backdrop-blur-md px-3.5 py-2.5 shadow-xl border border-nuit/10 flex items-center gap-2.5 max-w-[15rem]">
+              <div className="absolute -bottom-3 -right-2 sm:-bottom-4 sm:-right-3 rounded-2xl bg-blanc/95 backdrop-blur-md px-4 py-2.5 shadow-xl border border-nuit/10 flex items-center gap-2.5 max-w-[15rem]">
                 <div className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-royal text-blanc shadow-sm">
                   <Icone nom="environnement" size={20} weight="bold" />
                 </div>
                 <div>
-                  <p className="cote text-[0.6875rem] uppercase tracking-[0.08em] text-encre-douce">Fondateur & Direction</p>
-                  <p className="text-[0.8125rem] font-bold text-nuit leading-tight">Excellence & Vision BTP</p>
+                  <p className="text-[0.8125rem] sm:text-[0.875rem] font-extrabold text-nuit leading-tight">Excellence et vision BTP</p>
                 </div>
               </div>
             </div>
@@ -241,7 +240,7 @@ export default function PageAPropos() {
               <div className="mt-8 pt-6 border-t border-nuit/10 flex items-center justify-between">
                 <div>
                   <p className="font-display font-extrabold text-[1.25rem] text-nuit">
-                    La Direction Générale
+                    Le Directeur Général
                   </p>
                   <p className="cote text-[0.875rem] text-encre-douce">
                     PARTENAIRE ENTREPRISE TRAVAUX SUARL
@@ -436,59 +435,73 @@ export default function PageAPropos() {
               </ul>
             </div>
 
-            {/* Galerie des photos authentiques de topographie et de voirie */}
+            {/* Galerie des photos authentiques et diversifiées des technologies de pointe */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:col-span-7">
-              {/* Photo panoramique voirie & plans */}
-              <div className="sm:col-span-2 overflow-hidden rounded-2xl bg-nuit shadow-md border border-nuit/10">
+              {/* 1. Plans d'exécution & ingénierie de voirie */}
+              <div className="overflow-hidden rounded-2xl bg-nuit shadow-md border border-nuit/10">
                 <Image
                   src={photos.topographiePlanVoirie.src}
                   alt={photos.topographiePlanVoirie.alt}
-                  width={1280}
-                  height={838}
+                  width={800}
+                  height={600}
                   placeholder="blur"
-                  className="h-56 sm:h-64 w-full object-cover transition-transform duration-500 hover:scale-105"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="h-52 sm:h-56 w-full object-cover transition-transform duration-500 hover:scale-105"
+                  sizes="(max-width: 640px) 100vw, 25vw"
                 />
-                <div className="p-3 bg-nuit text-blanc text-[0.8125rem] flex items-center justify-between">
-                  <div>
-                    <p className="font-bold text-jaune">Viabilisation & Contrôle de voirie</p>
-                    <p className="text-brume text-[0.75rem]">Analyse des plans d&apos;exécution sur le terrain par les ingénieurs PET</p>
-                  </div>
-                  <span className="hidden sm:inline-block rounded bg-white/10 px-2 py-0.5 text-[0.6875rem] text-brume">Équipe PET</span>
+                <div className="p-3 bg-nuit text-blanc text-[0.8125rem]">
+                  <p className="font-bold text-jaune">Plans d&apos;exécution & Voirie</p>
+                  <p className="text-brume text-[0.75rem]">Calage des profils et cotes de terrassement</p>
                 </div>
               </div>
 
-              {/* Station GNSS */}
+              {/* 2. Station GNSS mobile de haute précision */}
               <div className="overflow-hidden rounded-2xl bg-nuit shadow-md border border-nuit/10">
                 <Image
                   src={photoTopographie.src}
                   alt={photoTopographie.alt}
                   width={800}
-                  height={1067}
+                  height={600}
                   placeholder="blur"
-                  className="h-64 sm:h-72 w-full object-cover transition-transform duration-500 hover:scale-105"
+                  className="h-52 sm:h-56 w-full object-cover transition-transform duration-500 hover:scale-105"
                   sizes="(max-width: 640px) 100vw, 25vw"
                 />
                 <div className="p-3 bg-nuit text-blanc text-[0.8125rem]">
                   <p className="font-bold text-jaune">Station GNSS mobile</p>
-                  <p className="text-brume text-[0.75rem]">Relevé altimétrique et cotes de projet</p>
+                  <p className="text-brume text-[0.75rem]">Relevé altimétrique et calage par satellite</p>
                 </div>
               </div>
 
-              {/* Niveau optique sur trépied PET */}
+              {/* 3. Contrôle d'étanchéité & inspection des canalisations */}
               <div className="overflow-hidden rounded-2xl bg-nuit shadow-md border border-nuit/10">
                 <Image
-                  src={photos.niveauOptiqueGeometre.src}
-                  alt={photos.niveauOptiqueGeometre.alt}
-                  width={960}
-                  height={1280}
+                  src={photos.inspectionTechniqueCanalisation.src}
+                  alt={photos.inspectionTechniqueCanalisation.alt}
+                  width={800}
+                  height={600}
                   placeholder="blur"
-                  className="h-64 sm:h-72 w-full object-cover transition-transform duration-500 hover:scale-105"
+                  className="h-52 sm:h-56 w-full object-cover transition-transform duration-500 hover:scale-105"
                   sizes="(max-width: 640px) 100vw, 25vw"
                 />
                 <div className="p-3 bg-nuit text-blanc text-[0.8125rem]">
-                  <p className="font-bold text-jaune">Niveau d&apos;optique PET</p>
-                  <p className="text-brume text-[0.75rem]">Implantation géométrique de haute fidélité</p>
+                  <p className="font-bold text-jaune">Contrôle technique réseaux</p>
+                  <p className="text-brume text-[0.75rem]">Inspection d&apos;emboîtement et tests d&apos;étanchéité</p>
+                </div>
+              </div>
+
+              {/* 4. Laboratoire de chantier & contrôle qualité béton */}
+              <div className="overflow-hidden rounded-2xl bg-nuit shadow-md border border-nuit/10">
+                <Image
+                  src={photos.essaiAffaissementBeton.src}
+                  alt={photos.essaiAffaissementBeton.alt}
+                  width={800}
+                  height={600}
+                  placeholder="blur"
+                  className="h-52 sm:h-56 w-full object-cover transition-transform duration-500 hover:scale-105"
+                  sizes="(max-width: 640px) 100vw, 25vw"
+                />
+                <div className="p-3 bg-nuit text-blanc text-[0.8125rem]">
+                  <p className="font-bold text-jaune">Contrôle qualité béton</p>
+                  <p className="text-brume text-[0.75rem]">Essai au cône d&apos;Abrams avant chaque coulage</p>
                 </div>
               </div>
             </div>

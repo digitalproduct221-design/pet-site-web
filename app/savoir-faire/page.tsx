@@ -27,6 +27,8 @@ export const metadata: Metadata = {
   },
 };
 
+import { CollageSavoirFaire } from "@/components/savoir-faire/CollageSavoirFaire";
+
 export default function PageSavoirFaire() {
   return (
     <>
@@ -35,6 +37,7 @@ export default function PageSavoirFaire() {
         intro="Nos domaines d'expertise, tous corps d'état, pour des clients publics, industriels et privés. Du gros œuvre aux réseaux et finitions, nous menons vos travaux de l'étude à la livraison au Sénégal."
         ariane={[{ titre: "Savoir-faire" }]}
         photo="batimentCommercialDakar"
+        panneauLateral={<CollageSavoirFaire />}
       />
 
       <section aria-label="Nos domaines d'activité" className="bg-blanc py-20 lg:py-28">
@@ -47,7 +50,7 @@ export default function PageSavoirFaire() {
                 <Link
                   href={`/savoir-faire/${d.slug}`}
                   className={`group/domaine relative isolate flex overflow-hidden rounded-panneau bg-nuit text-blanc ${
-                    vedette ? "min-h-[30rem] items-end p-5 sm:p-8 lg:min-h-[36rem] lg:p-10" : "min-h-[26rem] items-end p-5 sm:p-7"
+                    vedette ? "min-h-[30rem] items-end p-5 sm:p-8 lg:min-h-[36rem] lg:p-10" : "min-h-[26rem] items-end p-5 sm:p-7"
                   }`}
                 >
                   <Image
@@ -77,6 +80,42 @@ export default function PageSavoirFaire() {
               </li>
             );
           })}
+
+          {/* Carte complémentaire équipe et coordination pour remplir parfaitement la grille 2 colonnes sans aucun vide */}
+          <li className="h-full">
+            <Link
+              href="/a-propos#equipe"
+              className="group/domaine relative isolate flex h-full min-h-[26rem] items-end overflow-hidden rounded-panneau bg-nuit p-5 sm:p-7 text-blanc border border-jaune/30 shadow-lg transition-all hover:border-jaune"
+            >
+              <Image
+                src={photos.briefingSecuriteEquipe.src}
+                alt={photos.briefingSecuriteEquipe.alt}
+                fill
+                sizes="(min-width: 768px) 50vw, 100vw"
+                quality={75}
+                placeholder="blur"
+                className="-z-10 object-cover transition-transform duration-[1100ms] ease-chantier group-hover/domaine:scale-[1.04]"
+                style={{ objectPosition: photos.briefingSecuriteEquipe.focale }}
+              />
+              <span aria-hidden className="absolute inset-0 -z-10 voile-carte" />
+              <span className="verre-liquide block w-full rounded-panneau p-6 border border-jaune/20">
+                <span className="flex items-center gap-3">
+                  <Icone nom="casque" size={28} className="text-jaune" />
+                  <span className="titre leading-[0.95] text-[2rem] text-blanc">Équipes & Maîtrise d&apos;Œuvre</span>
+                </span>
+                <span className="mt-4 block text-[1.0625rem] leading-relaxed text-blanc/90">
+                  Coordination tous corps d&apos;état, sécurité active et encadrement rigoureux pour chaque chantier.
+                </span>
+                <span className="mt-4 block cote text-[0.9375rem] leading-relaxed text-brume">
+                  Ingénieurs BTP, géomètres experts, conducteurs de travaux et compagnons qualifiés au Sénégal.
+                </span>
+                <span className="mt-5 inline-flex items-center gap-2 cote text-[1.0625rem] text-jaune">
+                  Découvrir nos équipes de terrain
+                  <Icone nom="fleche" size={18} weight="bold" className="transition-transform group-hover/domaine:translate-x-1" />
+                </span>
+              </span>
+            </Link>
+          </li>
         </ul>
       </section>
 

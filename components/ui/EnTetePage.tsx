@@ -16,6 +16,8 @@ type Props = {
   children?: ReactNode;
   /** Bloc affiché sous l'intro (ex. fiche synthétique). */
   aside?: ReactNode;
+  /** Panneau latéral optionnel (ex. collage photo héroïque). */
+  panneauLateral?: ReactNode;
   /** Couleur du bloc qui suit (classe text-*), pour le profil de terrain. */
   suite?: string;
 };
@@ -53,6 +55,7 @@ export function EnTetePage({
   photo,
   children,
   aside,
+  panneauLateral,
   suite = "text-sable",
 }: Props) {
   const p = photo ? resoudreImage(photo) : null;
@@ -102,57 +105,65 @@ export function EnTetePage({
 
       {/* 3. CONTENU : Fil d'Ariane, titre monumental, intro et réassurance BTP */}
       <div className="conteneur relative z-10 pt-32 pb-24 sm:pt-36 sm:pb-28 lg:pt-40 lg:pb-32">
-        <div className="max-w-[44rem] xl:max-w-[48rem]">
-          {/* Fil d'Ariane contrasté sur fond sombre */}
-          <FilAriane etapes={ariane} ton="sombre" />
+        <div className={panneauLateral ? "grid gap-12 lg:grid-cols-12 lg:items-center lg:gap-14" : "max-w-[44rem] xl:max-w-[48rem]"}>
+          <div className={panneauLateral ? "lg:col-span-7 xl:col-span-7" : ""}>
+            {/* Fil d'Ariane contrasté sur fond sombre */}
+            <FilAriane etapes={ariane} ton="sombre" />
 
-          <div className="entree mt-5">
-            <Equerres as="div" seule decalage={18} className="inline-block pl-1 pt-1">
-              <h1 className="titre text-[clamp(2.75rem,1.8rem+4vw,5rem)] leading-[0.92] text-blanc ombre-texte">
-                {titre}
-              </h1>
-            </Equerres>
-            {intro ? (
-              <p className="mt-5 max-w-[38rem] text-lg sm:text-xl leading-relaxed text-brume ombre-texte">
-                {intro}
-              </p>
-            ) : null}
-            {children ? <div className="mt-7 flex flex-wrap gap-4">{children}</div> : null}
+            <div className="entree mt-5">
+              <Equerres as="div" seule decalage={18} className="inline-block pl-1 pt-1">
+                <h1 className="titre text-[clamp(2.75rem,1.8rem+4vw,5rem)] leading-[0.92] text-blanc ombre-texte">
+                  {titre}
+                </h1>
+              </Equerres>
+              {intro ? (
+                <p className="mt-5 max-w-[38rem] text-lg sm:text-xl leading-relaxed text-brume ombre-texte">
+                  {intro}
+                </p>
+              ) : null}
+              {children ? <div className="mt-7 flex flex-wrap gap-4">{children}</div> : null}
+            </div>
+
+            {/* Espace sous le texte : Cartes d'engagements en verre dépoli sombre */}
+            {aside ? (
+              <div className="mt-8">{aside}</div>
+            ) : (
+              <div className="mt-10 border-t border-blanc/15 pt-8 max-w-[42rem]">
+                <div className="mb-3.5 flex items-center gap-2">
+                  <span className="inline-block size-1.5 rotate-45 bg-jaune" />
+                  <span className="cote text-[0.75rem] font-bold uppercase tracking-[0.14em] text-ciel">
+                    Garanties d&apos;exécution & engagements PET
+                  </span>
+                </div>
+                <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
+                  {atoutsDefaut.map((a) => (
+                    <div
+                      key={a.titre}
+                      className="liquid-glass-sombre flex items-center gap-3.5 rounded-2xl p-3.5 shadow-lg transition-transform hover:scale-[1.02]"
+                    >
+                      <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-jaune/20 text-jaune border border-jaune/40 shadow-inner">
+                        <Icone nom={a.icone} size={22} weight="bold" />
+                      </span>
+                      <div className="min-w-0">
+                        <p className="font-display text-[0.9375rem] font-black uppercase leading-tight text-blanc truncate">
+                          {a.titre}
+                        </p>
+                        <p className="text-[0.75rem] leading-snug text-brume line-clamp-1">
+                          {a.desc}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
 
-          {/* Espace sous le texte : Cartes d'engagements en verre dépoli sombre */}
-          {aside ? (
-            <div className="mt-8">{aside}</div>
-          ) : (
-            <div className="mt-10 border-t border-blanc/15 pt-8 max-w-[42rem]">
-              <div className="mb-3.5 flex items-center gap-2">
-                <span className="inline-block size-1.5 rotate-45 bg-jaune" />
-                <span className="cote text-[0.75rem] font-bold uppercase tracking-[0.14em] text-ciel">
-                  Garanties d&apos;exécution & engagements PET
-                </span>
-              </div>
-              <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
-                {atoutsDefaut.map((a) => (
-                  <div
-                    key={a.titre}
-                    className="liquid-glass-sombre flex items-center gap-3.5 rounded-2xl p-3.5 shadow-lg transition-transform hover:scale-[1.02]"
-                  >
-                    <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-jaune/20 text-jaune border border-jaune/40 shadow-inner">
-                      <Icone nom={a.icone} size={22} weight="bold" />
-                    </span>
-                    <div className="min-w-0">
-                      <p className="font-display text-[0.9375rem] font-black uppercase leading-tight text-blanc truncate">
-                        {a.titre}
-                      </p>
-                      <p className="text-[0.75rem] leading-snug text-brume line-clamp-1">
-                        {a.desc}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
+          {panneauLateral ? (
+            <div className="lg:col-span-5 xl:col-span-5 flex justify-center lg:justify-end">
+              {panneauLateral}
             </div>
-          )}
+          ) : null}
         </div>
       </div>
 

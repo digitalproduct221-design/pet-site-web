@@ -59,25 +59,24 @@ export function MotDirecteur() {
               <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-nuit via-nuit/75 to-transparent p-4 sm:p-5 text-blanc">
                 <div className="flex items-center gap-2 text-jaune">
                   <Icone nom="qualite" size={16} weight="bold" />
-                  <span className="cote text-[0.75rem] uppercase tracking-[0.14em] font-bold">Direction Générale</span>
+                  <span className="cote text-[0.75rem] uppercase tracking-[0.14em] font-bold">Directeur Général</span>
                 </div>
                 <p className="mt-1 font-display font-extrabold text-[1rem] sm:text-[1.0625rem] text-blanc leading-snug">
                   PARTENAIRE ENTREPRISE TRAVAUX SUARL
                 </p>
                 <p className="mt-0.5 text-[0.8125rem] text-brume">
-                  Siège social · Dakar, Sénégal
+                  Siège social · Rond-point Liberté 6, Dakar, Sénégal
                 </p>
               </div>
             </div>
 
             {/* 4. Pastille flottante prestigieuse */}
-            <div className="absolute -bottom-3 -right-2 sm:-bottom-4 sm:-right-3 rounded-2xl bg-blanc/95 backdrop-blur-md px-3.5 py-2.5 shadow-xl border border-nuit/10 flex items-center gap-2.5 max-w-[15rem]">
+            <div className="absolute -bottom-3 -right-2 sm:-bottom-4 sm:-right-3 rounded-2xl bg-blanc/95 backdrop-blur-md px-4 py-2.5 shadow-xl border border-nuit/10 flex items-center gap-2.5 max-w-[15rem]">
               <div className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-royal text-blanc shadow-sm">
                 <Icone nom="environnement" size={20} weight="bold" />
               </div>
               <div>
-                <p className="cote text-[0.6875rem] uppercase tracking-[0.08em] text-encre-douce">Fondateur & Direction</p>
-                <p className="text-[0.8125rem] font-bold text-nuit leading-tight">Excellence & Vision BTP</p>
+                <p className="text-[0.8125rem] sm:text-[0.875rem] font-extrabold text-nuit leading-tight">Excellence et vision BTP</p>
               </div>
             </div>
           </div>
@@ -131,7 +130,7 @@ export function MotDirecteur() {
             <div className="mt-8 flex flex-col sm:flex-row sm:items-center justify-between gap-6 pt-4">
               <div>
                 <p className="font-display font-black text-[1.25rem] text-nuit tracking-tight">
-                  La Direction Générale
+                  Le Directeur Général
                 </p>
                 <p className="cote text-[0.875rem] text-encre-douce">
                   PARTENAIRE ENTREPRISE TRAVAUX SUARL

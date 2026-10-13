@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" width="200" height="60" fill="none">
+  <!-- PAIS Symbol (Épi / Coopération Agricole) -->
+  <rect x="10" y="14" width="36" height="32" rx="8" fill="#1B4D3E" />
+  <circle cx="28" cy="24" r="5" fill="#E5A93C" />
+  <path d="M22 38 C22 30 28 26 28 26 C28 26 34 30 34 38 Z" fill="#FFFFFF" opacity="0.9" />
+  <!-- PAIS Text -->
+  <text x="56" y="32" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="22" fill="#1B4D3E" letter-spacing="0.5">PAIS</text>
+  <text x="56" y="44" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="6.5" fill="#2E6B9E" letter-spacing="0.3">PROGRAMME AGRICOLE</text>
+  <text x="56" y="52" font-family="system-ui, -apple-system, sans-serif" font-weight="600" font-size="6" fill="#666666" letter-spacing="0.2">ITALIE - SÉNÉGAL</text>
+</svg>
