@@ -55,7 +55,7 @@ const etapesHistoire = [
 
 export default function PageAPropos() {
   const photoDirecteur = photos.directeurBureau;
-  const photoTopographie = photos.topographieGps;
+  const photoTopographie = photos.collaboratriceGeometreGps;
 
   return (
     <>
@@ -493,8 +493,8 @@ export default function PageAPropos() {
                   sizes="(max-width: 640px) 100vw, 25vw"
                 />
                 <div className="p-3 bg-nuit text-blanc text-[0.8125rem]">
-                  <p className="font-bold text-jaune">Station GNSS mobile</p>
-                  <p className="text-brume text-[0.75rem]">Relevé altimétrique et calage par satellite</p>
+                  <p className="font-bold text-jaune">Topographie & Station GNSS</p>
+                  <p className="text-brume text-[0.75rem]">Ingénierie de précision et relevés altimétriques par satellite</p>
                 </div>
               </div>
 

@@ -42,27 +42,28 @@ export function Logo({
         />
       </div>
 
-      {/* 1. TYPOGRAPHIE MOBILE (< sm) : « PARTENAIRE ENTREPRISE TRAVAUX » complet + « BTP AU SÉNÉGAL », 0 débordement */}
-      <div className="flex flex-col justify-center sm:hidden leading-none select-none min-w-0">
-        <span
-          className={`font-display font-black tracking-tight uppercase whitespace-nowrap transition-colors duration-300 ${
-            estSombre ? "text-blanc group-hover/logo:text-jaune" : "text-royal group-hover/logo:text-royal-sombre"
-          } ${
-            compact
-              ? "text-[0.625rem] min-[360px]:text-[0.6875rem] min-[390px]:text-[0.75rem]"
-              : "text-[0.65625rem] min-[360px]:text-[0.71875rem] min-[390px]:text-[0.8125rem]"
-          }`}
-        >
-          PARTENAIRE ENTREPRISE TRAVAUX
-        </span>
+      {/* 1. TYPOGRAPHIE MOBILE (< sm) : Percutante, premium, 100% lisible, 0 débordement */}
+      <div className="flex flex-col justify-center sm:hidden leading-none select-none">
+        <div className="flex items-baseline gap-1.5 whitespace-nowrap leading-none">
+          <span
+            className={`font-display font-black tracking-tight transition-colors duration-300 ${
+              estSombre ? "text-blanc group-hover/logo:text-jaune" : "text-royal group-hover/logo:text-royal-sombre"
+            } ${compact ? "text-[1.125rem]" : "text-[1.25rem]"}`}
+          >
+            PET
+          </span>
+          <span
+            className={`font-sans font-black tracking-[0.14em] uppercase transition-colors duration-300 ${
+              estSombre ? "text-jaune" : "text-jaune-profond"
+            } ${compact ? "text-[0.6875rem]" : "text-[0.75rem]"}`}
+          >
+            SUARL
+          </span>
+        </div>
         <span
           className={`mt-1 font-sans font-extrabold tracking-[0.14em] uppercase whitespace-nowrap transition-colors duration-300 ${
-            estSombre ? "text-jaune" : "text-jaune-profond"
-          } ${
-            compact
-              ? "text-[0.5rem] min-[360px]:text-[0.53125rem] min-[390px]:text-[0.5625rem]"
-              : "text-[0.53125rem] min-[360px]:text-[0.5625rem] min-[390px]:text-[0.625rem]"
-          }`}
+            estSombre ? "text-brume" : "text-encre-douce"
+          } ${compact ? "text-[0.5625rem]" : "text-[0.625rem]"}`}
         >
           BTP AU SÉNÉGAL
         </span>

@@ -45,3 +45,5 @@ next-env.d.ts
 .impeccable/review/
 .impeccable/mocks/
 supabase/.temp/
+docs/originaux/news-tof/
+docs/originaux/*.JPG

@@ -6,6 +6,7 @@ import type { PhotoId } from "@/content/photos";
 import { EnTetePage } from "@/components/ui/EnTetePage";
 import { Icone } from "@/components/ui/Icone";
 import { PhotoCadre } from "@/components/ui/PhotoCadre";
+import { AvantApres } from "@/components/ui/AvantApres";
 import { AppelFinal } from "@/components/accueil/AppelFinal";
 
 export const metadata: Metadata = {
@@ -131,7 +132,7 @@ export default function PageEngagements() {
                 </ul>
               );
               // Deux mises en page alternées : texte et photo côte à côte, puis panneau de verre sur photo.
-              return i % 2 === 0 ? (
+              const sectionEl = i % 2 === 0 ? (
                 <section key={e.id} id={e.id} aria-labelledby={`titre-${e.id}`} className="grid scroll-mt-28 gap-10 md:grid-cols-2 md:items-center md:gap-12">
                   <div className="revele">
                     <span className="grid size-14 place-items-center rounded-panneau bg-royal text-jaune ombre-tuile">
@@ -165,6 +166,21 @@ export default function PageEngagements() {
                     {liste}
                   </div>
                 </section>
+              );
+
+              return (
+                <div key={e.id} className="grid gap-12">
+                  {sectionEl}
+                  {e.id === "environnement" && (
+                    <div className="mt-2">
+                      <AvantApres
+                        titre="Preuve par l'action : Réhabilitation de site"
+                        sousTitre="Transformation environnementale à l'ISDND de Meckhé"
+                        description="Un exemple concret de notre exigence environnementale : la transformation d'un terrain encombré de déchets bruts en un casier de stockage étanché et profilé aux normes internationales."
+                      />
+                    </div>
+                  )}
+                </div>
               );
             })}
           </div>

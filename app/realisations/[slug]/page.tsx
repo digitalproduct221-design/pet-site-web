@@ -10,6 +10,7 @@ import { CarteProjet } from "@/components/ui/CarteProjet";
 import { Icone } from "@/components/ui/Icone";
 import { Motif } from "@/components/ui/Motif";
 import { Galerie } from "@/components/realisations/Galerie";
+import { AvantApres } from "@/components/ui/AvantApres";
 import { AppelFinal } from "@/components/accueil/AppelFinal";
 
 export async function generateStaticParams() {
@@ -94,6 +95,14 @@ export default async function PageProjet({ params }: PageProps<"/realisations/[s
           <Galerie photos={photosGalerie} titre={projet.titre} />
         </div>
       </section>
+
+      {projet.slug === "installation-stockage-dechets-isdnd-meckhe" && (
+        <section aria-label="Transformation environnementale Avant / Après" className="bg-nuit py-14 lg:py-20">
+          <div className="conteneur">
+            <AvantApres />
+          </div>
+        </section>
+      )}
 
       <section aria-labelledby="titre-travaux" className="bg-blanc py-16 lg:py-24">
         <div className="conteneur grid gap-10 lg:grid-cols-12 lg:gap-8">

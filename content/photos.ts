@@ -72,6 +72,20 @@ import briefingSecuriteEquipe from "@/public/images/chantiers/briefing-securite-
 import reunionTechniqueChantier from "@/public/images/chantiers/reunion-technique-chantier.jpg";
 import partenariatConfianceClient from "@/public/images/chantiers/partenariat-confiance-client.jpg";
 
+// Nouvelles photos authentiques du dossier chantier (news tof) : Avant/Après ISDND, bâtiment moderne, hydraulique en tranchée, camions et encadrement féminin
+import avantDechetsMeckhe from "@/public/images/chantiers/avant-dechets-isdnd-meckhe.jpg";
+import apresCasierNiveleMeckhe from "@/public/images/chantiers/apres-casier-nivele-meckhe.jpg";
+import immeubleSerigneDakar from "@/public/images/chantiers/immeuble-serigne-dakar.jpg";
+import chantierVillaFinitions from "@/public/images/chantiers/chantier-villa-finitions.jpg";
+import hydrauliquePoseVanneTranchee from "@/public/images/chantiers/hydraulique-pose-vanne-tranchee.jpg";
+import camionChargementChargeuse from "@/public/images/chantiers/camion-chargement-chargeuse.jpg";
+import camionDechargementSable from "@/public/images/chantiers/camion-dechargement-sable.jpg";
+import camionSableChantierPet from "@/public/images/chantiers/camion-sable-chantier-pet.jpg";
+import collaboratriceGeometreGps from "@/public/images/chantiers/collaboratrice-geometre-gps.jpg";
+import concertationChantierCasier from "@/public/images/chantiers/concertation-chantier-casier.jpg";
+import ouvrierGiletPetNiveleuse from "@/public/images/chantiers/ouvrier-gilet-pet-niveleuse.jpg";
+import batimentTechniqueChantier from "@/public/images/chantiers/batiment-technique-chantier.jpg";
+
 import type { StaticImageData } from "next/image";
 
 export type Photo = {
@@ -407,6 +421,66 @@ export const photos = {
     src: partenariatConfianceClient,
     alt: "Poignée de main de confiance scellant un partenariat de qualité entre l'entreprise PET et le maître d'ouvrage.",
     focale: "50% 45%",
+  },
+  avantDechetsMeckhe: {
+    src: avantDechetsMeckhe,
+    alt: "État initial du site de l'ISDND de Meckhé avant réhabilitation : amoncellement de déchets et début des terrassements à la pelle hydraulique CAT.",
+    focale: "50% 50%",
+  },
+  apresCasierNiveleMeckhe: {
+    src: apresCasierNiveleMeckhe,
+    alt: "Résultat après travaux par PET : casier technique entièrement déblayé, étanché, terrassé et compacté en latérite nivelée de haute précision.",
+    focale: "50% 60%",
+  },
+  immeubleSerigneDakar: {
+    src: immeubleSerigneDakar,
+    alt: "Immeuble d'habitation contemporain R+4 Serigne à Dakar, réalisé par PET avec garde-corps ferronnerie, peinture soignée et accès pavé.",
+    focale: "50% 40%",
+  },
+  chantierVillaFinitions: {
+    src: chantierVillaFinitions,
+    alt: "Villa résidentielle contemporaine en cours d'achèvement : maçonnerie enduite, baies aluminium coulissantes et toiture étanchée.",
+    focale: "50% 50%",
+  },
+  hydrauliquePoseVanneTranchee: {
+    src: hydrauliquePoseVanneTranchee,
+    alt: "Équipe d'ouvriers et techniciens PET en tranchée procédant au calage et au serrage sur brides d'un té et d'une vanne de régulation bleue.",
+    focale: "50% 50%",
+  },
+  camionChargementChargeuse: {
+    src: camionChargementChargeuse,
+    alt: "Chargeuse sur pneus PET chargeant du sable et de la latérite dans la benne d'un camion de terrassement lourd.",
+    focale: "50% 50%",
+  },
+  camionDechargementSable: {
+    src: camionDechargementSable,
+    alt: "Camion benne de terrassement déchargeant des matériaux de remblai sous le guidage de l'équipe de chantier PET.",
+    focale: "50% 50%",
+  },
+  camionSableChantierPet: {
+    src: camionSableChantierPet,
+    alt: "Flotte logistique PET : camion benne lourd chargé de sable et conducteurs en équipement de sécurité.",
+    focale: "50% 50%",
+  },
+  collaboratriceGeometreGps: {
+    src: collaboratriceGeometreGps,
+    alt: "Collaboratrice et géomètre-topographe PET en gilet de sécurité et foulard blanc, effectuant des mesures de précision à l'antenne GPS rover.",
+    focale: "50% 40%",
+  },
+  concertationChantierCasier: {
+    src: concertationChantierCasier,
+    alt: "Équipe technique PET réunissant ingénieure et conducteurs de travaux en échange opérationnel sur la plateforme compactée du casier.",
+    focale: "60% 40%",
+  },
+  ouvrierGiletPetNiveleuse: {
+    src: ouvrierGiletPetNiveleuse,
+    alt: "Opérateur PET de dos portant le gilet officiel au nom de l'entreprise devant la niveleuse Caterpillar 140H.",
+    focale: "50% 45%",
+  },
+  batimentTechniqueChantier: {
+    src: batimentTechniqueChantier,
+    alt: "Poste technique maçonné en béton coulé et ingénieur PET assurant la réception du gros-œuvre sur le site.",
+    focale: "50% 50%",
   },
 } satisfies Record<string, Photo>;
 

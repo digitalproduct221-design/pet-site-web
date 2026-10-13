@@ -210,8 +210,68 @@ export default function PageEntreprise() {
                 </li>
               ))}
             </ul>
-            <div className="lg:col-span-5">
-              <PhotoCadre photo="equipePet" ratio="aspect-[4/3] lg:aspect-auto lg:h-full" sizes="(min-width: 1024px) 38vw, 100vw" voile="leger" className="h-full [&>div]:h-full" />
+            <div className="flex flex-col justify-between rounded-panneau bg-blanc/[0.05] p-6 lg:col-span-5">
+              <div className="overflow-hidden rounded-chantier">
+                <PhotoCadre
+                  photo="collaboratriceGeometreGps"
+                  ratio="aspect-[4/3] sm:aspect-[16/10]"
+                  sizes="(min-width: 1024px) 38vw, 100vw"
+                  voile="leger"
+                />
+              </div>
+              <div className="mt-4 pt-4 border-t border-blanc/10">
+                <p className="cote text-xs uppercase tracking-widest text-jaune font-bold">
+                  Ingénierie & Relevés de précision
+                </p>
+                <p className="mt-1 text-sm text-blanc/85 leading-snug">
+                  Encadrement technique de terrain : relevés par récepteur GNSS mobile, calage des cotes et rigueur d&apos;exécution sur chaque chantier.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Bannière d'équipe panoramique agrandie avec dégradé et typographie */}
+          <div className="revele relative isolate mt-16 overflow-hidden rounded-panneau bg-nuit shadow-2xl border border-blanc/10">
+            <div className="relative h-[24rem] sm:h-[28rem] lg:h-[34rem] w-full">
+              <Image
+                src={photos.delegationSetecMeckhe.src}
+                alt={photos.delegationSetecMeckhe.alt}
+                fill
+                priority={false}
+                sizes="(min-width: 1200px) 1152px, 100vw"
+                className="object-cover object-center"
+              />
+              {/* Voile et dégradé subtil pour la lisibilité du texte */}
+              <div className="absolute inset-0 bg-gradient-to-t from-nuit via-nuit/60 to-nuit/20" />
+              <div className="absolute inset-0 bg-gradient-to-r from-nuit/90 via-nuit/40 to-transparent" />
+
+              {/* Contenu textuel intégré sur l'image */}
+              <div className="absolute inset-0 flex flex-col justify-end p-6 sm:p-10 lg:p-14 max-w-3xl">
+                <div className="inline-flex items-center gap-2 rounded-full bg-jaune/20 backdrop-blur-md px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-jaune mb-4 border border-jaune/30 w-fit">
+                  <Icone nom="casque" size={15} weight="bold" />
+                  <span>Nos équipes sur le terrain</span>
+                </div>
+                <h3 className="titre text-[clamp(1.75rem,1.25rem+2vw,2.75rem)] leading-[1.05] text-blanc mb-4">
+                  L&apos;alliance de l&apos;expérience, de la rigueur technique et de l&apos;ancrage local
+                </h3>
+                <p className="text-[1.0625rem] sm:text-[1.125rem] leading-relaxed text-blanc/85 mb-6 max-w-2xl">
+                  Du terrassement lourd aux finitions d&apos;ouvrages d&apos;art, nos équipes partagent une culture d&apos;exigence, de sécurité collective et de respect scrupuleux des engagements contractuels.
+                </p>
+                <div className="flex flex-wrap gap-4 pt-4 border-t border-blanc/15 text-xs uppercase tracking-wider text-blanc/75">
+                  <span className="flex items-center gap-2">
+                    <span className="size-2 rounded-full bg-jaune" />
+                    +40 ans d&apos;expérience cumulée
+                  </span>
+                  <span className="flex items-center gap-2">
+                    <span className="size-2 rounded-full bg-jaune" />
+                    Encadrement sénégalais qualifié
+                  </span>
+                  <span className="flex items-center gap-2">
+                    <span className="size-2 rounded-full bg-jaune" />
+                    Matériel et engins contrôlés
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
