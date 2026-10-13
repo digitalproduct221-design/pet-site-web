@@ -81,12 +81,12 @@ export type Domaine = {
 
 const photosParDomaine: Record<string, PhotoId[]> = {
   batiment: [
-    "immeubleSerigneDakar",
-    "chantierVillaFinitions",
     "batimentCommercialDakar",
     "maconnerieImmeubleSenegal",
     "grosOeuvreDakar",
+    "immeubleGrue",
     "batimentTechniqueChantier",
+    "chantierVillaFinitions",
     "ecoleSenegal",
     "villaContemporaine",
     "murClotureIndustriel",
@@ -94,7 +94,7 @@ const photosParDomaine: Record<string, PhotoId[]> = {
     "clotureMaconnee",
     "clotureGrillage",
     "immeubleDakar",
-    "immeubleGrue",
+    "immeubleSerigneDakar",
   ],
   "travaux-publics-vrd": [
     "camionChargementChargeuse",
@@ -114,9 +114,9 @@ const photosParDomaine: Record<string, PhotoId[]> = {
     "niveauOptiqueGeometre",
   ],
   hydraulique: [
-    "hydrauliquePoseVanneTranchee",
     "poseConduiteTopographie",
     "hydrauliqueCanalisationsPose",
+    "hydrauliquePoseVanneTranchee",
     "conduiteOuvrage",
     "inspectionTechniqueCanalisation",
     "controleConduiteEauPotable",
