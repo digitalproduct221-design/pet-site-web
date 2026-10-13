@@ -30,7 +30,7 @@ export function Diaporama({ diapos }: { diapos: Diapo[] }) {
   const [reduit, setReduit] = useState(false);
   const [suspendu, setSuspendu] = useState(false);
   const [horsEcran, setHorsEcran] = useState(false);
-  const [chargees, setChargees] = useState<Set<number>>(() => new Set([0, 1]));
+  const [chargees, setChargees] = useState<Set<number>>(() => new Set([0]));
   const cadre = useRef<HTMLDivElement>(null);
 
   const enLecture = lecture ?? !reduit;
@@ -58,18 +58,17 @@ export function Diaporama({ diapos }: { diapos: Diapo[] }) {
     return () => window.clearTimeout(minuteur);
   }, [index, enPause, aller]);
 
-  // Précharge toutes les photos du hero dès que la page est prête pour un passage fluide sans attente
+  // Précharge uniquement la photo courante et la photo suivante (préserve la bande passante mobile)
   useEffect(() => {
-    const prechargerToutes = () => {
-      setChargees(new Set(diapos.map((_, i) => i)));
-    };
-    if (typeof window.requestIdleCallback === "function") {
-      const id = window.requestIdleCallback(prechargerToutes, { timeout: 1500 });
-      return () => window.cancelIdleCallback(id);
-    }
-    const t = setTimeout(prechargerToutes, 800);
-    return () => clearTimeout(t);
-  }, [diapos]);
+    setChargees((prev) => {
+      const suivante = (index + 1) % total;
+      if (prev.has(index) && prev.has(suivante)) return prev;
+      const maj = new Set(prev);
+      maj.add(index);
+      maj.add(suivante);
+      return maj;
+    });
+  }, [index, total]);
 
   useEffect(() => {
     // display: contents n'a pas de boîte : on observe la section du hero
@@ -110,8 +109,8 @@ export function Diaporama({ diapos }: { diapos: Diapo[] }) {
                   fill
                   priority={i === 0}
                   fetchPriority={i === 0 ? "high" : "low"}
-                  sizes="100vw"
-                  quality={75}
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 1920px"
+                  quality={70}
                   placeholder="blur"
                   className="object-cover"
                   style={{ objectPosition: p.focale }}

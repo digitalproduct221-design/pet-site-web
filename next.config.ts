@@ -32,7 +32,7 @@ const securite = [
 // Fichiers statiques non versionnés (logo, motifs, photos) : 30 jours, puis
 // revalidation en arrière-plan. Pas « immutable » : le logo vectoriel et les
 // photos HD remplaceront ces fichiers sous le même nom.
-const cacheStatique = [{ key: "Cache-Control", value: "public, max-age=2592000, stale-while-revalidate=31536000" }];
+const cacheStatique = [{ key: "Cache-Control", value: "public, max-age=3600, stale-while-revalidate=86400" }];
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
@@ -53,14 +53,13 @@ const nextConfig: NextConfig = {
   cacheComponents: true,
   partialPrefetching: true,
   images: {
-    formats: ["image/webp"],
-    // 50 à 75 : photos d'arrière-plan, contenu et hero
-    qualities: [50, 60, 75, 80],
-    // Pas de variante 3840 : les photos sources font au plus 2500 px.
-    deviceSizes: [640, 750, 828, 1080, 1200, 1600, 1920, 2560],
+    formats: ["image/avif", "image/webp"],
+    // Qualités optimisées pour un compromis parfait netteté/vitesse de chargement
+    qualities: [50, 60, 70, 75, 80],
+    deviceSizes: [360, 480, 640, 750, 828, 1080, 1200, 1600, 1920],
     // Photos ajoutées depuis l'espace admin (stockage Supabase « medias »)
     remotePatterns: [{ protocol: "https", hostname: "*.supabase.co", pathname: "/storage/v1/object/public/medias/**" }],
-    minimumCacheTTL: 2592000,
+    minimumCacheTTL: 86400,
   },
   experimental: {
     optimizePackageImports: ["@phosphor-icons/react"],
