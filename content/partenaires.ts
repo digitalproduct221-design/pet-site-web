@@ -8,6 +8,7 @@ export const partenaires: Partenaire[] = [
   { nom: "Agence Française de Développement (AFD)", logo: "/brand/partenaires/afd.svg" },
   { nom: "Office des Forages Ruraux (OFOR)", logo: "/brand/partenaires/ofor.svg" },
   { nom: "Programme Agricole Italie-Sénégal (PAIS)", logo: "/brand/partenaires/pais.svg" },
+  { nom: "Programme d'Appui au PNIA du Sénégal (PAPSEN)", logo: "/brand/partenaires/papsen.svg" },
   { nom: "SETEC Infrastructures Afrique", logo: "/brand/partenaires/setec.svg" },
   { nom: "Commune de Meckhé (Maître d'Ouvrage)", logo: "/brand/partenaires/commune-meckhe.svg" },
   { nom: "GESCOD Coopération Décentralisée", logo: "/brand/partenaires/gescod.svg" },
@@ -37,6 +38,14 @@ export const partenairesOfficiels: PartenaireInstitutionnel[] = [
     role: "Coopération & Développement Agricole",
     projet: "Aménagements hydro-agricoles et ouvrages de maîtrise de l'eau",
     description: "Programme de coopération bilatérale dédié à la valorisation agricole, aux forages et aux réseaux d'irrigation structurants.",
+    type: "cooperation",
+  },
+  {
+    nom: "Programme d'Appui au PNIA du Sénégal",
+    sigle: "PAPSEN",
+    role: "Programme Agricole & Aménagements Ruraux",
+    projet: "Ouvrages hydro-agricoles, maîtrise de l'eau et investissement rural",
+    description: "Programme d'Appui au Programme National d'Investissement Agricole du Sénégal, axé sur les infrastructures hydrauliques et la sécurité alimentaire.",
     type: "cooperation",
   },
   {

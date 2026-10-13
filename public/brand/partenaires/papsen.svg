@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" width="200" height="60" fill="none">
+  <!-- PAPSEN Symbol (Croissance Agricole & Investissement) -->
+  <rect x="10" y="14" width="36" height="32" rx="8" fill="#0C4A60" />
+  <circle cx="28" cy="22" r="4.5" fill="#EF9A9A" />
+  <path d="M20 38 C20 28 28 25 28 25 C28 25 36 28 36 38 Z" fill="#4CAF50" />
+  <path d="M28 25 L28 38" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" />
+  <!-- PAPSEN Text -->
+  <text x="56" y="32" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="21" fill="#0C4A60" letter-spacing="0.5">PAPSEN</text>
+  <text x="56" y="44" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="6.5" fill="#2E7D32" letter-spacing="0.3">APPUI AU PNIA DU SÉNÉGAL</text>
+  <text x="56" y="52" font-family="system-ui, -apple-system, sans-serif" font-weight="600" font-size="5.5" fill="#555555" letter-spacing="0.2">INVESTISSEMENT AGRICOLE</text>
+</svg>

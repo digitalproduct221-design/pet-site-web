@@ -31,20 +31,52 @@ type Engagement = { id: string; titre: string; icone: string; photo: PhotoId; in
 // Formulés à partir des valeurs de l'entreprise ; aucune certification n'est revendiquée.
 const engagements: Engagement[] = [
   {
+    id: "environnement",
+    titre: "Environnement et Développement durable",
+    icone: "environnement",
+    photo: "irrigationNiayes",
+    intro: "Le respect des écosystèmes et le développement durable guident chacune de nos interventions au Sénégal : un chantier éco-responsable, propre et pérenne.",
+    points: [
+      "Gestion rigoureuse, tri et valorisation des déblais et déchets de chantier",
+      "Protection des ressources en eau, des sols et de la biodiversité locale",
+      "Ouvrages hydrauliques, VRD et assainissement conçus pour durer et préserver l'environnement",
+    ],
+  },
+  {
+    id: "delais",
+    titre: "Respect des délais",
+    icone: "delais",
+    photo: "pilotageChantier",
+    intro: "La tenue des délais est un engagement contractuel et d'honneur : un planning réaliste, scrupuleusement suivi et respecté jusqu'à la livraison.",
+    points: [
+      "Planning d'exécution détaillé avec jalons critiques dès la phase d'étude",
+      "Points d'avancement hebdomadaires et transparence permanente avec le maître d'ouvrage",
+      "Mobilisation réactive des équipes et du parc matériel pour sécuriser le calendrier",
+    ],
+  },
+  {
     id: "securite",
     titre: "Sécurité (QHSE)",
     icone: "securite",
     photo: "equipePet",
     intro: "La sécurité est au centre de nos préoccupations : celle de nos équipes, de nos clients et des riverains de nos chantiers.",
-    points: ["Port des équipements de protection : casques, gilets, chaussures de sécurité", "Balisage des fouilles et des zones de manœuvre des engins", "Consignes partagées avec chaque équipe avant le démarrage"],
+    points: [
+      "Port obligatoire des équipements de protection individuelle (EPI) siglés PET",
+      "Balisage rigoureux des fouilles, tranchées et zones de manœuvre des engins",
+      "Briefings sécurité (quarts d'heure sécurité) partagés avant chaque phase de travaux",
+    ],
   },
   {
-    id: "environnement",
-    titre: "Environnement",
-    icone: "environnement",
-    photo: "irrigationNiayes",
-    intro: "Le respect des lieux fait partie de nos valeurs : un chantier doit laisser derrière lui un site propre et en ordre.",
-    points: ["Remise en état des voiries et des abords après travaux", "Matériaux choisis pour durer, et donc moins remplacés", "Réseaux d'eau et d'assainissement qui préservent la ressource"],
+    id: "qualite",
+    titre: "Qualité & Rigueur",
+    icone: "qualite",
+    photo: "controleQualiteBeton",
+    intro: "Un personnel qualifié et des équipements régulièrement mis à niveau, pour des ouvrages conformes et durables.",
+    points: [
+      "Contrôles techniques à chaque étape, des essais béton (cône d'Abrams) à la réception",
+      "Respect strict des normes sénégalaises et internationales du BTP",
+      "Conseil technique dès l'étude pour optimiser la longévité des infrastructures",
+    ],
   },
   {
     id: "local-emploi",
@@ -52,15 +84,11 @@ const engagements: Engagement[] = [
     icone: "local",
     photo: "equipeEnMarche",
     intro: "PET est une entreprise sénégalaise, installée à Dakar, qui construit pour les territoires où elle travaille.",
-    points: ["Des équipes de terrain qui transmettent leur savoir-faire", "Des candidatures spontanées ouvertes à tous les métiers de chantier", "Des ouvrages utiles au quotidien : eau, assainissement, voiries"],
-  },
-  {
-    id: "qualite",
-    titre: "Qualité",
-    icone: "qualite",
-    photo: "controleQualiteBeton",
-    intro: "Un personnel qualifié et des équipements régulièrement mis à niveau, pour des ouvrages conformes et durables.",
-    points: ["Contrôles à chaque étape, du ferraillage à la réception", "Tenue des délais suivie avec le client", "Conseil dès l'étude pour choisir les bonnes solutions"],
+    points: [
+      "Des équipes de terrain locales qui transmettent leur savoir-faire",
+      "Recrutement et formation continue aux métiers du bâtiment et des travaux publics",
+      "Des ouvrages utiles au quotidien des populations : eau, assainissement, voiries",
+    ],
   },
 ];
 

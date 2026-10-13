@@ -349,6 +349,33 @@ export default function PageAPropos() {
                 </div>
               </div>
             ))}
+
+            {/* Carte photo globale des partenariats et chantiers pour combler parfaitement l'espace vide */}
+            <div className="relative overflow-hidden rounded-2xl bg-nuit text-blanc shadow-sm border border-nuit/10 sm:col-span-1 lg:col-span-2 min-h-[18rem] flex flex-col justify-end p-6 sm:p-8">
+              <Image
+                src={photos.delegationSetecMeckhe.src}
+                alt={photos.delegationSetecMeckhe.alt}
+                fill
+                sizes="(min-width: 1024px) 66vw, (min-width: 640px) 50vw, 100vw"
+                className="-z-10 object-cover brightness-[0.72] transition-transform duration-700 hover:scale-105"
+                style={{ objectPosition: photos.delegationSetecMeckhe.focale }}
+              />
+              <div className="absolute inset-0 -z-10 bg-gradient-to-t from-nuit via-nuit/60 to-transparent" />
+              <div className="relative z-10 max-w-xl">
+                <div className="flex items-center gap-2 text-jaune">
+                  <Icone nom="valeurs" size={20} weight="bold" />
+                  <span className="cote text-[0.8125rem] uppercase tracking-[0.14em] font-bold">
+                    Partenariats de terrain & Références vérifiées
+                  </span>
+                </div>
+                <h3 className="titre mt-2 text-[1.5rem] sm:text-[1.75rem] text-blanc leading-tight">
+                  Une présence rigoureuse aux côtés des bailleurs et maîtres d&apos;ouvrage
+                </h3>
+                <p className="mt-2 text-[0.9375rem] text-brume leading-relaxed">
+                  Visite d&apos;inspection officielle, réunions techniques et suivi des travaux avec les délégations des bailleurs, ministères et bureaux de contrôle partenaires au Sénégal.
+                </p>
+              </div>
+            </div>
           </div>
 
           {/* Témoignage terrain / encart vérifié */}

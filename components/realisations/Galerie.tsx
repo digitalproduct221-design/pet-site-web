@@ -4,19 +4,55 @@ import dynamic from "next/dynamic";
 import Image from "next/image";
 import { useCallback, useRef, useState } from "react";
 import type { ImageSite } from "@/content/images";
+import { imageLocale } from "@/content/images";
 import { Icone } from "@/components/ui/Icone";
 
 // La visionneuse (Radix Dialog) ne se charge qu'au premier clic sur une photo.
 const Visionneuse = dynamic(() => import("./Visionneuse"), { ssr: false });
 
+// Pool de photos d'équipes et de vie de chantier authentiques pour combler esthétiquement tout espace vide
+const POOL_PHOTOS_COMPLEMENTAIRES: ImageSite[] = [
+  imageLocale("briefingSecuriteEquipe"),
+  imageLocale("reunionTechniqueChantier"),
+  imageLocale("partenariatConfianceClient"),
+  imageLocale("equipePet"),
+  imageLocale("equipeEnMarche"),
+  imageLocale("pilotageChantier"),
+  imageLocale("directeurChantier"),
+  imageLocale("supervisionSetecChantier"),
+  imageLocale("delegationSetecMeckhe"),
+  imageLocale("etudePlansEquipePet"),
+  imageLocale("partenariatChantier"),
+];
+
 /**
  * Galerie d'une réalisation : une mosaïque de photos, chacune ouvre la
  * visionneuse plein écran (Visionneuse.tsx, chargée au premier clic).
+ * Complète automatiquement les rangées incomplètes avec des photos d'équipe
+ * authentiques afin d'éliminer rigoureusement tout espace vide dans la grille.
  */
-export function Galerie({ photos, titre }: { photos: ImageSite[]; titre: string }) {
+export function Galerie({ photos: photosEntree, titre }: { photos: ImageSite[]; titre: string }) {
+  // Calcul et ajout des photos complémentaires si la rangée finale est incomplète (multiple de 3)
+  const photosAffichees = (() => {
+    if (photosEntree.length <= 2) return photosEntree;
+    const reste = photosEntree.length % 3;
+    if (reste === 0) return photosEntree;
+    const besoin = 3 - reste;
+
+    const urlsExistantes = new Set(
+      photosEntree.map((p) => (typeof p.src === "string" ? p.src : p.src?.src)),
+    );
+    const disponibles = POOL_PHOTOS_COMPLEMENTAIRES.filter(
+      (p) => !urlsExistantes.has(typeof p.src === "string" ? p.src : p.src?.src),
+    );
+
+    const ajouts = disponibles.slice(0, besoin);
+    return [...photosEntree, ...ajouts];
+  })();
+
   const [ouverte, setOuverte] = useState(false);
   const [index, setIndex] = useState(0);
-  const total = photos.length;
+  const total = photosAffichees.length;
   const aller = useCallback((i: number) => setIndex(((i % total) + total) % total), [total]);
   const [demandee, setDemandee] = useState(false);
   const declencheur = useRef<HTMLButtonElement | null>(null);
@@ -31,11 +67,16 @@ export function Galerie({ photos, titre }: { photos: ImageSite[]; titre: string 
   return (
     <>
       <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-12 lg:gap-5">
-        {photos.map((id, i) => {
-          const photo = id;
+        {photosAffichees.map((photo, i) => {
           // Une grande photo et deux petites ; à deux photos, deux moitiés égales.
           const grande = i === 0 && total > 2;
-          const cellule = grande ? "sm:col-span-2 lg:col-span-8 lg:row-span-2" : total > 2 ? "lg:col-span-4" : "lg:col-span-6";
+          const isDerniere = i === total - 1;
+          const cellule = grande
+            ? "sm:col-span-2 lg:col-span-8 lg:row-span-2"
+            : total > 2
+            ? `${isDerniere && total % 2 === 0 ? "sm:col-span-2" : "sm:col-span-1"} lg:col-span-4`
+            : "sm:col-span-1 lg:col-span-6";
+
           return (
             <li key={i} className={cellule}>
               <button
@@ -45,7 +86,15 @@ export function Galerie({ photos, titre }: { photos: ImageSite[]; titre: string 
                 className="group/photo relative block w-full overflow-hidden rounded-chantier bg-nuit text-left"
                 aria-label={`Agrandir la photo ${i + 1} sur ${total} : ${photo.alt}`}
               >
-                <span className={`relative block ${grande ? "aspect-[4/3] lg:aspect-auto lg:h-full lg:min-h-[34rem]" : "aspect-[4/3]"}`}>
+                <span
+                  className={`relative block ${
+                    grande
+                      ? "aspect-[4/3] lg:aspect-auto lg:h-full lg:min-h-[34rem]"
+                      : isDerniere && total % 2 === 0
+                      ? "aspect-[4/3] sm:max-lg:aspect-[21/9] lg:aspect-[4/3]"
+                      : "aspect-[4/3]"
+                  }`}
+                >
                   <Image
                     src={photo.src}
                     alt=""
@@ -72,7 +121,7 @@ export function Galerie({ photos, titre }: { photos: ImageSite[]; titre: string 
 
       {demandee ? (
         <Visionneuse
-          photos={photos}
+          photos={photosAffichees}
           titre={titre}
           index={index}
           aller={aller}

@@ -248,35 +248,35 @@ export const domaineParSlug = (slug: string) => domaines.find((d) => d.slug === 
 
 export const valeurs: { titre: string; texte: string }[] = [
   { titre: "Qualité", texte: "Des ouvrages conformes aux plans et aux règles de l'art, contrôlés à chaque étape." },
-  { titre: "Sécurité", texte: "Au centre de nos préoccupations : équipements de protection, chantiers balisés, consignes partagées." },
+  { titre: "Sécurité", texte: "Au centre de nos préoccupations : équipements de protection, chantiers balisés, consignes partagées." },
   { titre: "Service et conseil", texte: "Nous éclairons vos choix techniques dès l'étude, pour un projet juste et maîtrisé." },
-  { titre: "Respect des lieux", texte: "Riverains, voiries, environnement : nous laissons le site propre et en ordre." },
+  { titre: "Environnement et Développement durable", texte: "Préservation des écosystèmes, gestion éco-responsable des ressources et chantiers propres respectant les normes environnementales." },
   { titre: "Choix des matériaux", texte: "Des matériaux adaptés à l'usage et au climat, pour des ouvrages qui durent." },
-  { titre: "Tenue des délais", texte: "Un planning clair, suivi et tenu, avec des points d'avancement réguliers." },
+  { titre: "Respect des délais", texte: "Un planning rigoureux, suivi et scrupuleusement tenu avec des points d'avancement réguliers." },
   { titre: "Satisfaction du client", texte: "À votre écoute de la première visite jusqu'à la réception des travaux." },
 ];
 
-/** Les quatre engagements mis en avant sur l'accueil (« Pourquoi PET ? »). */
-export const engagementsCles: { titre: string; texte: string; icone: "qualite" | "securite" | "delais" | "client" }[] = [
+/** Les engagements mis en avant sur l'accueil (« Pourquoi PET ? »). */
+export const engagementsCles: { titre: string; texte: string; icone: "qualite" | "securite" | "delais" | "client" | "environnement" }[] = [
+  {
+    titre: "Environnement et Développement durable",
+    texte: "Préservation des écosystèmes, gestion éco-responsable des ressources et chantiers propres respectant les normes environnementales.",
+    icone: "environnement",
+  },
+  {
+    titre: "Respect des délais",
+    texte: "La tenue des délais est un engagement primordial : un planning réaliste dès l'étude, rigoureusement tenu jusqu'à la livraison.",
+    icone: "delais",
+  },
   {
     titre: "Qualité",
     texte: "Un personnel qualifié et des équipements régulièrement mis à niveau pour des ouvrages conformes et durables.",
     icone: "qualite",
   },
   {
-    titre: "Sécurité",
-    texte: "La sécurité est au centre de nos préoccupations, pour nos équipes, nos clients et les riverains.",
+    titre: "Sécurité (QHSE)",
+    texte: "La sécurité est au centre de nos préoccupations, pour nos équipes, nos clients et les riverains de nos chantiers.",
     icone: "securite",
-  },
-  {
-    titre: "Délais",
-    texte: "La tenue des délais fait partie de nos valeurs : un planning réaliste dès l'étude, suivi jusqu'à la livraison.",
-    icone: "delais",
-  },
-  {
-    titre: "Satisfaction client",
-    texte: "Du conseil à la réception des travaux, nous servons avec la même exigence des clients publics, industriels et privés.",
-    icone: "client",
   },
 ];
 
@@ -377,10 +377,11 @@ export const navigation: Rubrique[] = [
     href: "/engagements",
     intro: "Ce que nous promettons à nos clients, à nos équipes et aux territoires où nous travaillons.",
     liens: [
+      { titre: "Environnement & Dév. durable", description: "Préservation des ressources et des sols", href: "/engagements#environnement", icone: "environnement" },
+      { titre: "Respect des délais", description: "Planning maîtrisé et livraison ponctuelle", href: "/engagements#delais", icone: "delais" },
       { titre: "Sécurité (QHSE)", description: "Protéger les équipes et les riverains", href: "/engagements#securite", icone: "securite" },
-      { titre: "Environnement", description: "Respecter les lieux et les ressources", href: "/engagements#environnement", icone: "environnement" },
-      { titre: "Local et emploi", description: "Une entreprise sénégalaise", href: "/engagements#local-emploi", icone: "local" },
       { titre: "Qualité", description: "Des ouvrages conformes et durables", href: "/engagements#qualite", icone: "qualite" },
+      { titre: "Local et emploi", description: "Une entreprise sénégalaise", href: "/engagements#local-emploi", icone: "local" },
     ],
     carte: {
       photo: "controleQualiteBeton",
