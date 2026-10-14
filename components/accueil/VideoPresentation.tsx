@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { ArrowCounterClockwise, Pause, Play, SpeakerSlash } from "@phosphor-icons/react/ssr";
+import { Bouton } from "@/components/ui/Bouton";
 import { Equerres } from "@/components/ui/Equerres";
 import { Icone } from "@/components/ui/Icone";
 import { Motif } from "@/components/ui/Motif";
@@ -13,14 +15,16 @@ type Phase = "apercu" | "son" | "fin";
 
 /**
  * Le film de présentation (1 min 05). Il démarre seul, sans le son, quand il arrive
- * à l'écran (les sous-titres sont incrustés) ; un seul clic sur « Regarder le film »
- * le relance depuis le début avec le son et les commandes natives. Rien n'est
+ * à l'écran (les sous-titres sont incrustés) ; un seul clic (sur l'image ou sur
+ * « Regarder le film avec le son ») le relance depuis le début avec le son et les commandes natives. Rien n'est
  * chargé avant l'arrivée à l'écran ; sous mouvement réduit, seule l'affiche est
  * montrée jusqu'au clic. La lecture se met en pause hors de l'écran.
  */
 export function VideoPresentation() {
   const video = useRef<HTMLVideoElement>(null);
   const [phase, setPhase] = useState<Phase>("apercu");
+  const [enPause, setEnPause] = useState(true);
+  const pauseVoulue = useRef(false);
   const phaseRef = useRef<Phase>("apercu");
 
   useEffect(() => {
@@ -37,7 +41,7 @@ export function VideoPresentation() {
     const obs = new IntersectionObserver(
       ([e]) => {
         if (!e.isIntersecting) v.pause();
-        else if (phaseRef.current === "apercu" && !reduit) v.play().catch(() => {});
+        else if (phaseRef.current === "apercu" && !reduit && !pauseVoulue.current) v.play().catch(() => {});
       },
       { threshold: 0.45 },
     );
@@ -57,7 +61,6 @@ export function VideoPresentation() {
     v.focus({ preventScroll: true });
   };
 
-  const voile = phase !== "son";
 
   return (
     <section aria-labelledby="titre-video" className="relative isolate overflow-hidden bg-nuit py-20 text-blanc lg:py-28">
@@ -94,34 +97,74 @@ export function VideoPresentation() {
                 controls={phase === "son"}
                 tabIndex={phase === "son" ? 0 : -1}
                 onEnded={() => setPhase("fin")}
+                onPlay={() => setEnPause(false)}
+                onPause={() => setEnPause(true)}
                 aria-label="Film de présentation de PET, 1 minute 05, voix off et sous-titres incrustés"
               >
                 <source src={VIDEO} type="video/mp4" />
                 <track kind="captions" src={SOUS_TITRES} srcLang="fr" label="Français" />
               </video>
 
-              {/* Voile d'aperçu : un seul bouton, qui lance le film avec le son */}
-              <div
-                className={`absolute inset-0 grid place-items-center bg-gradient-to-t from-nuit/80 via-nuit/25 to-nuit/10 transition-opacity duration-500 ease-[var(--ease-chantier)] ${voile ? "opacity-100" : "pointer-events-none opacity-0"}`}
-              >
+              {/* Aperçu muet : toute l'image se clique, l'angle rappelle que le son est coupé */}
+              {phase === "apercu" ? (
                 <button
                   type="button"
                   onClick={regarder}
-                  tabIndex={voile ? 0 : -1}
-                  aria-hidden={!voile}
-                  className="group flex cursor-pointer flex-col items-center gap-4 rounded-panneau p-4 focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-jaune"
+                  aria-label="Regarder le film avec le son"
+                  className="group absolute inset-0 cursor-pointer focus-visible:outline-3 focus-visible:-outline-offset-4 focus-visible:outline-jaune"
                 >
-                  <span className="relative grid size-16 place-items-center rounded-full bg-jaune text-nuit shadow-[0_14px_44px_rgb(247_198_28/0.45)] transition-transform duration-300 ease-[var(--ease-chantier)] motion-safe:group-hover:scale-110 sm:size-24">
-                    <span aria-hidden className="absolute inset-0 rounded-full border-2 border-jaune/80 motion-safe:animate-ping motion-safe:[animation-duration:2.6s]" />
-                    <Icone nom="lecture" size={32} weight="fill" className="ml-1" aria-hidden />
-                  </span>
-                  <span className="verre-liquide rounded-full px-5 py-2 font-label text-base font-semibold tracking-wide text-blanc sm:text-lg">
-                    {phase === "fin" ? "Revoir le film" : "Regarder le film avec le son"}
+                  <span aria-hidden className="absolute right-3 top-3 sm:right-5 sm:top-5">
+                    <span className="verre-liquide flex items-center gap-2 rounded-full px-3 py-2 text-sm font-semibold text-blanc transition-colors group-hover:text-jaune sm:px-4">
+                      <SpeakerSlash size={18} weight="bold" />
+                      <span className="max-sm:hidden">Activer le son</span>
+                    </span>
                   </span>
                 </button>
-              </div>
+              ) : null}
+
+              {/* Arrêt de l'aperçu automatique (WCAG 2.2.2) */}
+              {phase === "apercu" ? (
+                <button
+                  type="button"
+                  onClick={() => {
+                    const v = video.current;
+                    if (!v) return;
+                    pauseVoulue.current = !v.paused;
+                    if (v.paused) v.play().catch(() => {});
+                    else v.pause();
+                  }}
+                  aria-label={enPause ? "Reprendre l'aperçu" : "Mettre l'aperçu en pause"}
+                  className="verre-liquide absolute! bottom-3 right-3 grid size-11 cursor-pointer place-items-center rounded-full text-blanc transition-colors hover:text-jaune focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-jaune sm:bottom-5 sm:right-5"
+                >
+                  {enPause ? <Play size={18} weight="fill" aria-hidden /> : <Pause size={18} weight="fill" aria-hidden />}
+                </button>
+              ) : null}
+
+              {/* Fin du film : on propose de le revoir */}
+              {phase === "fin" ? (
+                <div className="absolute inset-0 grid place-items-center bg-nuit/55">
+                  <button
+                    type="button"
+                    onClick={regarder}
+                    className="group flex cursor-pointer flex-col items-center gap-4 rounded-panneau p-4 focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-jaune"
+                  >
+                    <span className="grid size-16 place-items-center rounded-full bg-jaune text-nuit shadow-[0_14px_44px_rgb(247_198_28/0.45)] transition-transform duration-300 ease-chantier motion-safe:group-hover:scale-110 sm:size-20">
+                      <ArrowCounterClockwise size={30} weight="bold" aria-hidden />
+                    </span>
+                    <span className="cote text-lg uppercase tracking-[0.04em] text-blanc">Revoir le film</span>
+                  </button>
+                </div>
+              ) : null}
             </div>
           </Equerres>
+
+          {phase === "apercu" ? (
+            <div className="mt-10 flex justify-center">
+              <Bouton onClick={regarder} icone="lecture">
+                Regarder le film avec le son
+              </Bouton>
+            </div>
+          ) : null}
 
           <ul className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-brume">
             <li className="flex items-center gap-2">
