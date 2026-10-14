@@ -1,0 +1,110 @@
+{
+ "tempo": 1.07,
+ "total": 64.935,
+ "scenes": [
+  {
+   "i": 1,
+   "start": 0.0,
+   "vo": 1.2,
+   "vodur": 3.514,
+   "dur": 5.014,
+   "text": "PET, Partenaire Entreprise Travaux."
+  },
+  {
+   "i": 2,
+   "start": 5.014,
+   "vo": 5.414,
+   "vodur": 3.963,
+   "dur": 4.663,
+   "text": "Depuis 2016, nous construisons durablement au Sénégal."
+  },
+  {
+   "i": 3,
+   "start": 9.677,
+   "vo": 10.077,
+   "vodur": 2.766,
+   "dur": 3.466,
+   "text": "Cinq expertises, un seul partenaire."
+  },
+  {
+   "i": 4,
+   "start": 13.143,
+   "vo": 13.543,
+   "vodur": 4.187,
+   "dur": 4.887,
+   "text": "Le bâtiment : logements, écoles, ateliers et usines."
+  },
+  {
+   "i": 5,
+   "start": 18.03,
+   "vo": 18.43,
+   "vodur": 5.533,
+   "dur": 6.233,
+   "text": "Les travaux publics et la VRD : routes, voiries, terrassement et réseaux divers."
+  },
+  {
+   "i": 6,
+   "start": 24.263,
+   "vo": 24.663,
+   "vodur": 4.336,
+   "dur": 5.036,
+   "text": "L'hydraulique : pose de conduites, stations de pompage et irrigation."
+  },
+  {
+   "i": 7,
+   "start": 29.299,
+   "vo": 29.699,
+   "vodur": 3.664,
+   "dur": 4.364,
+   "text": "L'assainissement : réseaux d'eaux usées et stations de traitement."
+  },
+  {
+   "i": 8,
+   "start": 33.663,
+   "vo": 34.063,
+   "vodur": 4.785,
+   "dur": 5.485,
+   "text": "Le génie civil : des ouvrages en béton armé, conçus pour durer."
+  },
+  {
+   "i": 9,
+   "start": 39.148,
+   "vo": 39.548,
+   "vodur": 3.439,
+   "dur": 4.139,
+   "text": "Et jusqu'aux finitions : électricité et peinture."
+  },
+  {
+   "i": 10,
+   "start": 43.287,
+   "vo": 43.687,
+   "vodur": 4.486,
+   "dur": 5.186,
+   "text": "De la conception à la réalisation, nous coordonnons chaque corps de métier."
+  },
+  {
+   "i": 11,
+   "start": 48.473,
+   "vo": 48.873,
+   "vodur": 4.262,
+   "dur": 4.962,
+   "text": "Une équipe qualifiée, forte de plus de quarante ans d'expérience cumulée."
+  },
+  {
+   "i": 12,
+   "start": 53.435,
+   "vo": 53.835,
+   "vodur": 3.664,
+   "dur": 4.364,
+   "text": "Qualité, sécurité, respect des lieux et des délais."
+  },
+  {
+   "i": 13,
+   "start": 57.798,
+   "vo": 58.198,
+   "vodur": 4.336,
+   "dur": 7.136,
+   "text": "PET, votre allié de confiance. Parlons de votre projet."
+  }
+ ]
+}

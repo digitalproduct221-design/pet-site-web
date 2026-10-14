@@ -109,7 +109,7 @@ export function Diaporama({ diapos }: { diapos: Diapo[] }) {
                   fill
                   priority={i === 0}
                   fetchPriority={i === 0 ? "high" : "low"}
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 1920px"
+                  sizes="100vw"
                   quality={70}
                   placeholder="blur"
                   className="object-cover"

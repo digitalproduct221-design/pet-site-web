@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Hero } from "@/components/accueil/Hero";
 import { Chiffres } from "@/components/accueil/Chiffres";
+import { VideoPresentation } from "@/components/accueil/VideoPresentation";
 import { Presentation } from "@/components/accueil/Presentation";
 import { MotDirecteur } from "@/components/accueil/MotDirecteur";
 import { RubanValeurs } from "@/components/accueil/RubanValeurs";
@@ -23,6 +24,7 @@ export default function Accueil() {
     <>
       <Hero />
       <Chiffres />
+      <VideoPresentation />
       <Presentation />
       <MotDirecteur />
       <RubanValeurs />

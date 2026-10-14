@@ -53,6 +53,8 @@ export function Pourquoi() {
                 alt=""
                 fill
                 sizes="(min-width: 1024px) 40vw, 1px"
+                quality={70}
+                placeholder="blur"
                 className={`pourquoi-photo pourquoi-photo-${i + 1} object-cover`}
                 style={{ objectPosition: p.focale }}
               />

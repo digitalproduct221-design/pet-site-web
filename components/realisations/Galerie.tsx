@@ -161,7 +161,7 @@ export function Galerie({ photos: photosEntree, titre }: { photos: ImageSite[]; 
                     alt=""
                     fill
                     sizes={grande ? "(min-width: 1024px) 62vw, 100vw" : "(min-width: 1024px) 46vw, (min-width: 640px) 50vw, 100vw"}
-                    quality={75}
+                    quality={70}
                     placeholder={typeof photo.src === "object" && "blurDataURL" in photo.src && photo.src.blurDataURL ? "blur" : undefined}
                     className="object-cover transition-transform duration-[900ms] ease-chantier group-hover/photo:scale-[1.04]"
                     style={{ objectPosition: photo.focale }}

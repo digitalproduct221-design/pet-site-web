@@ -64,7 +64,7 @@ export function PhotoCadre({
         sizes={sizes}
         priority={priority}
         fetchPriority={priority ? "high" : undefined}
-        quality={75}
+        quality={70}
         placeholder={typeof p.src === "object" && "blurDataURL" in p.src && p.src.blurDataURL ? "blur" : undefined}
         className={`object-cover ${imageClassName}`}
         style={{ objectPosition: p.focale ?? "50% 50%" }}

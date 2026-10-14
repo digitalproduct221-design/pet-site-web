@@ -47,3 +47,12 @@ next-env.d.ts
 supabase/.temp/
 docs/originaux/news-tof/
 docs/originaux/*.JPG
+
+# Film de présentation : rendus intermédiaires (lourds, régénérables)
+/video/build/frames/
+/video/build/out/
+/video/build/probe/
+/video/build/vo/try/
+/video/build/vo/samples/
+/video/build/audio/*.html
+/video/build/mix.wav

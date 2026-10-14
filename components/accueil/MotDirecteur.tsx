@@ -51,6 +51,7 @@ export function MotDirecteur() {
                 width={720}
                 height={814}
                 placeholder="blur"
+                quality={70}
                 className="h-[21rem] sm:h-[24rem] lg:h-[26rem] w-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
                 sizes="(max-width: 640px) 290px, (max-width: 1024px) 320px, 350px"
               />

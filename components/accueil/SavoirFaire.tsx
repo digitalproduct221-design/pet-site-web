@@ -100,7 +100,7 @@ export function SavoirFaire() {
                     alt={photo.alt}
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                    quality={80}
+                    quality={70}
                     placeholder="blur"
                     className="object-cover transition-transform duration-700 group-hover:scale-108"
                     style={{ objectPosition: photo.focale }}
