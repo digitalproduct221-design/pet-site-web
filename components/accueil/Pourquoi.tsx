@@ -1,12 +1,13 @@
 import Image from "next/image";
 import { engagementsCles } from "@/content/site";
 import { photos, type PhotoId } from "@/content/photos";
+import { BoutonLien } from "@/components/ui/Bouton";
 import { Icone } from "@/components/ui/Icone";
 import { Profil } from "@/components/ui/Profil";
 import { TitreSection } from "@/components/ui/TitreSection";
 
 // Une photo HD par engagement : elle change dynamiquement quand on ouvre l'accordéon.
-const illustrations: PhotoId[] = ["controleQualiteBeton", "equipePet", "pilotageChantier", "partenariatChantier"];
+const illustrations: PhotoId[] = ["irrigationNiayes", "pilotageChantier", "controleQualiteBeton", "equipeTerrainSecurite"];
 
 /**
  * « Pourquoi PET ? » en accordéon : quatre engagements, un seul ouvert à la fois
@@ -39,6 +40,11 @@ export function Pourquoi() {
                 <p className="max-w-[34rem] pb-6 pl-[2.875rem] text-[1.0625rem] leading-relaxed text-brume">{e.texte}</p>
               </details>
             ))}
+          </div>
+          <div className="mt-8 flex flex-wrap items-center gap-4">
+            <BoutonLien href="/engagements" variante="contour">
+              Découvrir tous nos engagements
+            </BoutonLien>
           </div>
         </div>
 

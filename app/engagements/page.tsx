@@ -144,7 +144,63 @@ export default function PageEngagements() {
                     <p className="mt-5 text-[1.125rem] leading-relaxed text-encre">{e.intro}</p>
                     {liste}
                   </div>
-                  <PhotoCadre photo={e.photo} ratio="aspect-[4/5]" sizes="(min-width: 1024px) 34vw, (min-width: 768px) 45vw, 100vw" voile="leger" equerres={i === 0} decalage={12} />
+                  {e.id === "securite" ? (
+                    <div className="relative mx-auto w-full max-w-[34rem]">
+                      {/* 1. Cadre décoratif asymétrique d'arrière-plan */}
+                      <div
+                        aria-hidden
+                        className="absolute -inset-3 sm:-inset-4 rounded-[2.75rem_1.25rem_3.25rem_1.25rem] -rotate-1 bg-gradient-to-br from-royal via-ciel/40 to-jaune/40 opacity-70 transition-transform duration-500 group-hover:rotate-0"
+                      />
+
+                      {/* 2. Filet géométrique d'architecte décalé */}
+                      <div
+                        aria-hidden
+                        className="absolute -inset-1.5 sm:-inset-2 rounded-[1.25rem_3rem_1rem_2.75rem] rotate-1 border-2 border-royal/35 pointer-events-none"
+                      />
+
+                      {/* 3. Cadre principal organique avec ombre profonde */}
+                      <div className="group relative overflow-hidden rounded-[2.5rem_1.25rem_3rem_1.25rem] bg-nuit shadow-[0_20px_50px_rgba(7,18,43,0.22)] ring-4 ring-white">
+                        <div className="relative aspect-[4/3] sm:aspect-[16/11] lg:aspect-[4/3] w-full overflow-hidden bg-nuit">
+                          <Image
+                            src={photos.equipeTerrainSecurite.src}
+                            alt={photos.equipeTerrainSecurite.alt}
+                            fill
+                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 36vw"
+                            className="object-cover object-[center_20%] transition-transform duration-700 group-hover:scale-105"
+                          />
+
+                          {/* Voile dégradé avec cartouche QHSE couvrant la zone inférieure (masque l'angle inférieur flou) */}
+                          <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-nuit via-nuit/85 to-transparent p-5 sm:p-6 text-blanc">
+                            <div className="flex items-center gap-2 text-jaune">
+                              <Icone nom="securite" size={17} weight="bold" />
+                              <span className="cote text-[0.75rem] uppercase tracking-[0.14em] font-bold">
+                                Sécurité & Qualité QHSE
+                              </span>
+                            </div>
+                            <p className="mt-1 font-display font-black text-[1.125rem] sm:text-[1.25rem] text-blanc leading-snug">
+                              Supervision active & encadrement qualifié
+                            </p>
+                            <p className="mt-1 text-[0.8125rem] sm:text-[0.875rem] text-brume line-clamp-2">
+                              Équipes PET en gilets de haute visibilité et respect strict des normes de sécurité sur le terrain.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* 4. Pastille flottante de conformité sécurité */}
+                      <div className="absolute -bottom-4 -right-2 sm:-bottom-5 sm:-right-4 rounded-2xl bg-blanc/95 backdrop-blur-md px-4 py-2.5 sm:px-5 sm:py-3 shadow-xl border border-nuit/10 flex items-center gap-3">
+                        <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-jaune text-nuit shadow-sm">
+                          <Icone nom="casque" size={22} weight="bold" />
+                        </div>
+                        <div>
+                          <p className="text-[0.875rem] font-extrabold text-nuit leading-tight">100% Sécurité Active</p>
+                          <p className="text-[0.6875rem] uppercase tracking-wider text-encre-douce">Port des EPI obligatoire</p>
+                        </div>
+                      </div>
+                    </div>
+                  ) : (
+                    <PhotoCadre photo={e.photo} ratio="aspect-[4/5]" sizes="(min-width: 1024px) 34vw, (min-width: 768px) 45vw, 100vw" voile="leger" equerres={i === 0} decalage={12} />
+                  )}
                 </section>
               ) : (
                 <section

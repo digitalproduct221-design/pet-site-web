@@ -62,7 +62,7 @@ export default function PageCarrieres() {
                 {listeFrancaise(valeurs.map((v) => v.titre)).toLowerCase()}.
               </p>
             </div>
-            <PhotoCadre photo="equipeTerrainSecurite" ratio="aspect-[4/3]" sizes="(min-width: 1024px) 36vw, 100vw" equerres decalage={12} className="mt-10" />
+            <PhotoCadre photo="equipePet" ratio="aspect-[4/3]" sizes="(min-width: 1024px) 36vw, 100vw" equerres decalage={12} className="mt-10" />
           </div>
           <ul className="revele-groupe grid content-center gap-12 lg:col-span-6 lg:col-start-7 lg:gap-16">
             {atouts.map((a) => (
