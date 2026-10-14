@@ -14,7 +14,7 @@ const SOUS_TITRES = "/video/pet-presentation.vtt";
 type Phase = "apercu" | "son" | "fin";
 
 /**
- * Le film de présentation (1 min 05). Il démarre seul, sans le son, quand il arrive
+ * Le film de présentation (58 s). Il démarre seul, sans le son, quand il arrive
  * à l'écran (les sous-titres sont incrustés) ; un seul clic (sur l'image ou sur
  * « Regarder le film avec le son ») le relance depuis le début avec le son et les commandes natives. Rien n'est
  * chargé avant l'arrivée à l'écran ; sous mouvement réduit, seule l'affiche est
@@ -94,7 +94,7 @@ export function VideoPresentation() {
                 onEnded={() => setPhase("fin")}
                 onPlay={() => setEnPause(false)}
                 onPause={() => setEnPause(true)}
-                aria-label="Film de présentation de PET, 1 minute 05, voix off et sous-titres incrustés"
+                aria-label="Film de présentation de PET, 58 secondes, voix off et sous-titres incrustés"
               >
                 <source src={VIDEO} type="video/mp4" />
                 <track kind="captions" src={SOUS_TITRES} srcLang="fr" label="Français" />
@@ -164,7 +164,7 @@ export function VideoPresentation() {
           <ul className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-brume">
             <li className="flex items-center gap-2">
               <Icone nom="lecture" size={16} className="text-jaune" aria-hidden />
-              <span className="chiffres-tabulaires">1 min 05</span>
+              <span className="chiffres-tabulaires">58 s</span>
             </li>
             <li aria-hidden className="h-4 w-px bg-blanc/20" />
             <li>

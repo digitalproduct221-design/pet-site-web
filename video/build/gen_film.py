@@ -2,10 +2,10 @@
 # Chaque frame est une fonction pure du temps : window.seek(t).
 import json
 
-TEMPO = 1.07           # accélération légère de la voix (atempo, hauteur conservée)
+TEMPO = 1.0            # voix native : vitesse naturelle
 LEAD, TAIL = 0.4, 0.3
 lines = json.load(open("vo/lines.json"))
-DISPLAY = {1: "PET, Partenaire Entreprise Travaux.", 13: "PET, votre allié de confiance. Parlons de votre projet."}
+DISPLAY = {}  # sous-titres = texte exact de la voix off
 
 scenes, t = [], 0.0
 for l in lines:

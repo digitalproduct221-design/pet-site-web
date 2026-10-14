@@ -54,5 +54,7 @@ docs/originaux/*.JPG
 /video/build/probe/
 /video/build/vo/try/
 /video/build/vo/samples/
+/video/build/vo-*/
+/video/build/vo[0-9]*/
 /video/build/audio/*.html
 /video/build/mix.wav

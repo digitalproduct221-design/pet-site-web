@@ -1,52 +1,52 @@
 1
-00:00:01,200 --> 00:00:04,864
-PET, Partenaire Entreprise Travaux.
+00:00:01,200 --> 00:00:03,150
+Partenaire Entreprise Travaux.
 
 2
-00:00:05,414 --> 00:00:09,527
+00:00:03,700 --> 00:00:07,603
 Depuis 2016, nous construisons durablement au Sénégal.
 
 3
-00:00:10,077 --> 00:00:12,993
+00:00:08,153 --> 00:00:10,942
 Cinq expertises, un seul partenaire.
 
 4
-00:00:13,543 --> 00:00:17,880
+00:00:11,492 --> 00:00:15,740
 Le bâtiment : logements, écoles, ateliers et usines.
 
 5
-00:00:18,430 --> 00:00:24,113
+00:00:16,290 --> 00:00:21,157
 Les travaux publics et la VRD : routes, voiries, terrassement et réseaux divers.
 
 6
-00:00:24,663 --> 00:00:29,149
+00:00:21,707 --> 00:00:25,987
 L'hydraulique : pose de conduites, stations de pompage et irrigation.
 
 7
-00:00:29,699 --> 00:00:33,513
+00:00:26,537 --> 00:00:29,967
 L'assainissement : réseaux d'eaux usées et stations de traitement.
 
 8
-00:00:34,063 --> 00:00:38,998
+00:00:30,517 --> 00:00:35,240
 Le génie civil : des ouvrages en béton armé, conçus pour durer.
 
 9
-00:00:39,548 --> 00:00:43,137
+00:00:35,790 --> 00:00:38,693
 Et jusqu'aux finitions : électricité et peinture.
 
 10
-00:00:43,687 --> 00:00:48,323
+00:00:39,243 --> 00:00:43,467
 De la conception à la réalisation, nous coordonnons chaque corps de métier.
 
 11
-00:00:48,873 --> 00:00:53,285
+00:00:44,017 --> 00:00:48,240
 Une équipe qualifiée, forte de plus de quarante ans d'expérience cumulée.
 
 12
-00:00:53,835 --> 00:00:57,649
+00:00:48,790 --> 00:00:51,980
 Qualité, sécurité, respect des lieux et des délais.
 
 13
-00:00:58,198 --> 00:01:02,684
-PET, votre allié de confiance. Parlons de votre projet.
+00:00:52,530 --> 00:00:55,349
+Votre allié de confiance : parlons de votre projet.
 
