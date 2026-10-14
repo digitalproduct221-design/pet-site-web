@@ -6,10 +6,10 @@ import emblemePetInverse from "@/public/brand/embleme-pet-inverse.png";
 /**
  * Logo officiel PET :
  * - Emblème officiel haute définition (équerres architecte or & bleu, poignée de main et sigle PET)
- * - Typographie officielle unifiée :
- *   • Ligne supérieure : « PARTENAIRE ENTREPRISE TRAVAUX SUARL » sur la même ligne, en police Barlow Condensed architecturale.
- *   • Ligne inférieure : « BTP AU SÉNÉGAL » avec interlettrage généreux et équilibré, sans filet parasite.
- *   • Échelle responsive fluide : parfaitement proportionné du mobile (360px) aux écrans 4K sans aucun débordement.
+ * - Typographie :
+ *   • Ligne supérieure : « PARTENAIRE ENTREPRISE TRAVAUX » sur une seule ligne.
+ *   • Ligne inférieure : « BTP AU SÉNÉGAL » en jaune doré.
+ *   • Optimisé pour mobile et tous écrans.
  */
 export function Logo({
   ton = "clair",
@@ -25,7 +25,7 @@ export function Logo({
       href="/"
       className="group/logo flex items-center gap-1.5 sm:gap-2.5 lg:gap-3 rounded-chantier focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-royal transition-transform duration-300 hover:scale-[1.02] active:scale-[0.98] shrink-0 min-w-0"
       translate="no"
-      aria-label="PARTENAIRE ENTREPRISE TRAVAUX SUARL (PET) - BTP AU SÉNÉGAL, retour à l'accueil"
+      aria-label="PARTENAIRE ENTREPRISE TRAVAUX (PET) - BTP AU SÉNÉGAL, retour à l'accueil"
     >
       {/* Emblème PET */}
       <div
@@ -37,7 +37,7 @@ export function Logo({
       >
         <Image
           src={estSombre ? emblemePetInverse : emblemePet}
-          alt="Emblème officiel PARTENAIRE ENTREPRISE TRAVAUX SUARL"
+          alt="Emblème officiel PARTENAIRE ENTREPRISE TRAVAUX"
           fill
           priority
           sizes="(max-width: 640px) 36px, 52px"
@@ -45,37 +45,24 @@ export function Logo({
         />
       </div>
 
-      {/* TYPOGRAPHIE OFFICIELLE : Nom complet sur une seule ligne + BTP AU SÉNÉGAL en dessous */}
+      {/* TYPOGRAPHIE : PARTENAIRE ENTREPRISE TRAVAUX sur une seule ligne + BTP AU SÉNÉGAL en jaune */}
       <div className="flex flex-col justify-center leading-none select-none min-w-0">
-        <div className="flex items-baseline gap-1 sm:gap-1.5 whitespace-nowrap leading-none">
-          <span
-            className={`font-display font-black uppercase tracking-[-0.018em] transition-colors duration-300 ${
-              estSombre ? "text-blanc group-hover/logo:text-jaune" : "text-royal group-hover/logo:text-royal-sombre"
-            } ${
-              compact
-                ? "text-[0.5625rem] min-[360px]:text-[0.625rem] min-[390px]:text-[0.6875rem] min-[420px]:text-[0.75rem] sm:text-[0.9375rem] lg:text-[1.125rem]"
-                : "text-[0.59375rem] min-[360px]:text-[0.65625rem] min-[390px]:text-[0.71875rem] min-[420px]:text-[0.78125rem] sm:text-[1rem] lg:text-[1.1875rem]"
-            }`}
-          >
-            PARTENAIRE ENTREPRISE TRAVAUX
-          </span>
-          <span
-            className={`font-display font-bold uppercase tracking-wider transition-colors duration-300 ${
-              estSombre ? "text-blanc/85 group-hover/logo:text-jaune" : "text-royal/85 group-hover/logo:text-royal-sombre"
-            } ${
-              compact
-                ? "text-[0.46875rem] min-[360px]:text-[0.53125rem] min-[390px]:text-[0.59375rem] min-[420px]:text-[0.65625rem] sm:text-[0.75rem] lg:text-[0.875rem]"
-                : "text-[0.5rem] min-[360px]:text-[0.5625rem] min-[390px]:text-[0.625rem] min-[420px]:text-[0.6875rem] sm:text-[0.8125rem] lg:text-[0.9375rem]"
-            }`}
-          >
-            SUARL
-          </span>
-        </div>
+        <span
+          className={`font-display font-black uppercase tracking-[-0.015em] whitespace-nowrap leading-none transition-colors duration-300 ${
+            estSombre ? "text-blanc group-hover/logo:text-jaune" : "text-royal group-hover/logo:text-royal-sombre"
+          } ${
+            compact
+              ? "text-[0.625rem] min-[360px]:text-[0.6875rem] min-[390px]:text-[0.75rem] min-[420px]:text-[0.8125rem] sm:text-[0.9375rem] lg:text-[1.125rem]"
+              : "text-[0.6875rem] min-[360px]:text-[0.75rem] min-[390px]:text-[0.8125rem] min-[420px]:text-[0.875rem] sm:text-[1rem] lg:text-[1.1875rem]"
+          }`}
+        >
+          PARTENAIRE ENTREPRISE TRAVAUX
+        </span>
 
-        {/* Ligne du bas : STRICTEMENT « BTP AU SÉNÉGAL » sur tous les écrans */}
+        {/* Ligne du bas : STRICTEMENT « BTP AU SÉNÉGAL » en jaune */}
         <span
           className={`font-sans font-extrabold tracking-[0.16em] uppercase whitespace-nowrap transition-colors duration-300 ${
-            estSombre ? "text-brume" : "text-encre-douce"
+            estSombre ? "text-jaune" : "text-[#D97706]"
           } ${
             compact
               ? "mt-0.5 text-[0.40625rem] min-[360px]:text-[0.4375rem] min-[390px]:text-[0.46875rem] sm:text-[0.5625rem] lg:text-[0.65625rem]"
