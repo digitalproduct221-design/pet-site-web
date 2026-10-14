@@ -70,12 +70,7 @@ export function VideoPresentation() {
 
       <div className="conteneur">
         <div className="revele mx-auto max-w-[44rem] text-center">
-          <p className="inline-flex items-center gap-3 font-label text-sm font-semibold uppercase tracking-[0.18em] text-jaune">
-            <span aria-hidden className="size-1.5 rotate-45 bg-jaune" />
-            Film de présentation
-            <span aria-hidden className="size-1.5 rotate-45 bg-jaune" />
-          </p>
-          <h2 id="titre-video" className="titre mt-5 text-balance text-titre-l text-blanc">
+          <h2 id="titre-video" className="titre text-balance text-titre-l text-blanc">
             PET en une minute
           </h2>
           <p className="mx-auto mt-5 max-w-[34rem] text-lg leading-relaxed text-brume">
@@ -171,8 +166,6 @@ export function VideoPresentation() {
               <Icone nom="lecture" size={16} className="text-jaune" aria-hidden />
               <span className="chiffres-tabulaires">1 min 05</span>
             </li>
-            <li aria-hidden className="h-4 w-px bg-blanc/20" />
-            <li>Voix off et sous-titres</li>
             <li aria-hidden className="h-4 w-px bg-blanc/20" />
             <li>
               <a href={VIDEO} download className="font-semibold text-blanc underline decoration-jaune decoration-2 underline-offset-4 transition-colors hover:text-jaune">

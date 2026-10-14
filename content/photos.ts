@@ -49,6 +49,7 @@ import topographiePlanVoirie from "@/public/images/chantiers/topographie-plan-vo
 import implantationVoirieBatiment from "@/public/images/chantiers/implantation-voirie-batiment-r3.jpg";
 import niveauOptiqueGeometre from "@/public/images/chantiers/niveau-optique-geometre-pet.jpg";
 import etudePlansEquipePet from "@/public/images/chantiers/etude-plans-equipe-pet.jpg";
+import equipeTerrainSecurite from "@/public/images/chantiers/equipe-terrain-securite.jpg";
 
 // Photos supplémentaires haute définition (redistribuées sur les différentes rubriques)
 import niveleuseTerrassementPiste from "@/public/images/chantiers/niveleuse-terrassement-piste.jpg";
@@ -321,6 +322,11 @@ export const photos = {
     src: etudePlansEquipePet,
     alt: "Trois ingénieurs et techniciens de PET SUARL avec casquettes et gilets de sécurité analysant les plans d'exécution et la mire de nivellement sur le tracé de la voie.",
     focale: "50% 45%",
+  },
+  equipeTerrainSecurite: {
+    src: equipeTerrainSecurite,
+    alt: "Équipe d'ingénieurs et techniciens de PET en gilets haute visibilité sur chantier au Sénégal, assurant le contrôle qualité et la sécurité des travaux.",
+    focale: "50% 30%",
   },
 
   // Photos haute définition redistribuées par rubriques et savoir-faire
