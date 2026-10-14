@@ -5,6 +5,7 @@ import { lireRealisation, lireRealisations } from "@/lib/contenu";
 import { domaineParSlug, SITE_URL } from "@/content/site";
 import type { PhotoId } from "@/content/photos";
 import { photos } from "@/content/photos";
+import type { ImageSite } from "@/content/images";
 import { EnTetePage } from "@/components/ui/EnTetePage";
 import { CarteProjet } from "@/components/ui/CarteProjet";
 import { Icone } from "@/components/ui/Icone";
@@ -48,10 +49,6 @@ export default async function PageProjet({ params }: PageProps<"/realisations/[s
   const projet = projets.find((p) => p.slug === slug);
   if (!projet) notFound();
   const domaine = domaineParSlug(projet.domaine);
-  const autres = projets
-    .filter((p) => p.slug !== projet.slug && p.domaine === projet.domaine)
-    .concat(projets.filter((p) => p.domaine !== projet.domaine))
-    .slice(0, 3);
 
   const schemaFilAriane = {
     "@context": "https://schema.org",
@@ -66,7 +63,17 @@ export default async function PageProjet({ params }: PageProps<"/realisations/[s
   // La première photo (projet.photos[0]) est mise en majesté dans l'en-tête immersif du projet.
   // La galerie sous-jacente présente les autres clichés de terrain sans aucun doublon.
   const photoCouverture = projet.photos[0];
-  const photosGalerie = projet.photos.length > 1 ? projet.photos.slice(1) : projet.photos;
+  // Le curseur Avant / Après de la fiche montre déjà ces deux clichés : ils ne reviennent pas dans la galerie.
+  const dejaMontrees = projet.slug === "installation-stockage-dechets-isdnd-meckhe" ? [photos.avantDechetsMeckhe.src.src, photos.apresCasierNiveleMeckhe.src.src] : [];
+  const urlImage = (i: ImageSite | undefined) => (i ? (typeof i.src === "string" ? i.src : i.src.src) : "");
+  const photosGalerie = (projet.photos.length > 1 ? projet.photos.slice(1) : projet.photos).filter((i) => !dejaMontrees.includes(urlImage(i)));
+
+  // « D'autres réalisations » : jamais une couverture déjà visible dans l'en-tête ou la galerie.
+  const dejaVues = new Set([urlImage(photoCouverture), ...photosGalerie.map(urlImage)]);
+  const autres = projets
+    .filter((p) => p.slug !== projet.slug && !dejaVues.has(urlImage(p.photos[0])))
+    .sort((x, y) => Number(y.domaine === projet.domaine) - Number(x.domaine === projet.domaine))
+    .slice(0, 3);
 
   return (
     <>

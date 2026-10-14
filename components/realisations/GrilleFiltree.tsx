@@ -18,12 +18,23 @@ const optionsPour = (projets: Projet[]) => [
     })),
 ];
 
+
+/**
+ * Une rangée toujours pleine : autant de colonnes que de chantiers (3 au plus), et des
+ * photos plus larges quand il y en a moins, pour ne jamais laisser une colonne vide.
+ */
+function disposition(nombre: number) {
+  if (nombre <= 1) return { grille: "grid-cols-1", ratio: "aspect-[16/9] lg:aspect-[21/9]", sizes: "(min-width: 1024px) 90vw, 100vw" };
+  if (nombre === 2) return { grille: "sm:grid-cols-2", ratio: "aspect-[4/3] lg:aspect-[16/10]", sizes: "(min-width: 1024px) 46vw, (min-width: 640px) 50vw, 100vw" };
+  return { grille: "sm:grid-cols-2 lg:grid-cols-3", ratio: undefined, sizes: undefined };
+}
+
 /**
  * Grille des réalisations de chantiers PET par discipline.
  * Présentation claire et sans redondance :
  * - Cartouche de présentation du domaine avec ses indicateurs réels
  * - Fiches chantiers structurées sans carte synthétique ni photos dupliquées
- * - Grille parfaitement équilibrée (2 colonnes pour 2 chantiers, 3 colonnes pour 3+)
+ * - Grille parfaitement équilibrée : la rangée est toujours pleine (voir `disposition`)
  */
 export function Grille({ filtre, projets }: { filtre: string; projets: Projet[] }) {
   const options = optionsPour(projets);
@@ -99,14 +110,14 @@ export function Grille({ filtre, projets }: { filtre: string; projets: Projet[] 
               <span className="cote text-[0.875rem] uppercase tracking-[0.08em] text-royal">Opérations emblématiques</span>
               <h3 className="titre text-titre-m text-nuit">Chantiers majeurs en {domaineActif.titre}</h3>
             </div>
-            <ul className={`grid gap-x-6 gap-y-12 sm:grid-cols-2 ${visibles.length === 2 ? "lg:grid-cols-2 max-w-5xl" : "lg:grid-cols-3"}`}>
+            <ul className={`grid gap-x-6 gap-y-12 ${disposition(visibles.length).grille}`}>
               {visibles.map((p, i) => (
                 <li
                   key={p.slug}
                   className="animate-[apparition_600ms_var(--ease-chantier)_both]"
                   style={{ animationDelay: `${Math.min(i, 6) * 60}ms` }}
                 >
-                  <CarteProjet projet={p} />
+                  <CarteProjet projet={p} ratio={disposition(visibles.length).ratio} sizes={disposition(visibles.length).sizes} />
                 </li>
               ))}
             </ul>
@@ -149,10 +160,10 @@ export function Grille({ filtre, projets }: { filtre: string; projets: Projet[] 
                   </div>
 
                   {/* Grille des chantiers du domaine */}
-                  <ul className={`grid gap-x-6 gap-y-12 sm:grid-cols-2 ${chantiersDomaine.length === 2 ? "lg:grid-cols-2 max-w-5xl" : "lg:grid-cols-3"}`}>
+                  <ul className={`grid gap-x-6 gap-y-12 ${disposition(chantiersDomaine.length).grille}`}>
                     {chantiersDomaine.map((p) => (
                       <li key={p.slug}>
-                        <CarteProjet projet={p} />
+                        <CarteProjet projet={p} ratio={disposition(chantiersDomaine.length).ratio} sizes={disposition(chantiersDomaine.length).sizes} />
                       </li>
                     ))}
                   </ul>

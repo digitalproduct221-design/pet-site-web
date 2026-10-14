@@ -14,7 +14,8 @@ import { Galerie } from "@/components/realisations/Galerie";
 import { AppelFinal } from "@/components/accueil/AppelFinal";
 
 const heroParDomaine: Record<string, PhotoId> = {
-  batiment: "batimentCommercialDakar",
+  // Pas la couverture de la réalisation « immeubles tertiaires » : elle figure plus bas dans la page.
+  batiment: "immeubleGrue",
   "travaux-publics-vrd": "vrdAsphalteBoulevard",
   hydraulique: "hydrauliqueCanalisationsPose",
   assainissement: "genieCivilDalotPrefa",
@@ -177,10 +178,14 @@ export default async function PageDomaine({ params }: PageProps<"/savoir-faire/[
               </Link>
             </div>
             {/* Autant de colonnes que de réalisations (trois au plus) : jamais de colonne vide */}
-            <ul className={`revele-groupe mt-12 grid gap-x-6 gap-y-12 sm:grid-cols-2 ${lies.length >= 3 ? "lg:grid-cols-3" : ""}`}>
+            <ul className={`revele-groupe mt-12 grid gap-x-6 gap-y-12 ${lies.length === 1 ? "grid-cols-1" : "sm:grid-cols-2"} ${lies.length >= 3 ? "lg:grid-cols-3" : ""}`}>
               {lies.map((p) => (
                 <li key={p.slug}>
-                  <CarteProjet projet={p} ratio={lies.length < 3 ? "aspect-[16/10]" : undefined} />
+                  <CarteProjet
+                    projet={p}
+                    ratio={lies.length === 1 ? "aspect-[16/9] lg:aspect-[21/9]" : lies.length < 3 ? "aspect-[4/3] lg:aspect-[16/10]" : undefined}
+                    sizes={lies.length < 3 ? "(min-width: 1024px) 46vw, (min-width: 640px) 50vw, 100vw" : undefined}
+                  />
                 </li>
               ))}
             </ul>

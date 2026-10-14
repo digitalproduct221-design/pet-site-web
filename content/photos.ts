@@ -30,7 +30,6 @@ import partenariatChantier from "@/public/images/chantiers/partenariat-chantier.
 import pilotageChantier from "@/public/images/chantiers/pilotage-chantier.jpg";
 import directeurChantier from "@/public/images/chantiers/directeur-chantier-meckhe.jpg";
 import directeurBureau from "@/public/images/directeur/directeur-bureau.jpg";
-import topographieGps from "@/public/images/chantiers/topographie-gps-chantier.jpg";
 import geometresImplantation from "@/public/images/chantiers/geometres-implantation-chantier.jpg";
 import hydrauliqueCanalisationsPose from "@/public/images/chantiers/hydraulique-canalisations-pose.jpg";
 import genieCivilReservoirBeton from "@/public/images/chantiers/genie-civil-reservoir-beton.jpg";
@@ -55,22 +54,14 @@ import etudePlansEquipePet from "@/public/images/chantiers/etude-plans-equipe-pe
 import niveleuseTerrassementPiste from "@/public/images/chantiers/niveleuse-terrassement-piste.jpg";
 import compacteurSolLaterite from "@/public/images/chantiers/compacteur-sol-laterite.jpg";
 import compacteurVibrantTerrassement from "@/public/images/chantiers/compacteur-vibrant-terrassement.jpg";
-import rueResidentielleBitumee from "@/public/images/chantiers/rue-residentielle-bitumee.jpg";
 import grandeAvenueUrbaineDakar from "@/public/images/chantiers/grande-avenue-urbaine-dakar.jpg";
-import inspectionTechniqueCanalisation from "@/public/images/chantiers/inspection-technique-canalisation.jpg";
 import controleConduiteEauPotable from "@/public/images/chantiers/controle-conduite-eau-potable.jpg";
 import ouvertureVanneReseauEau from "@/public/images/chantiers/ouverture-vanne-reseau-eau.jpg";
 import vanneReservoirEauPotable from "@/public/images/chantiers/vanne-reservoir-eau-potable.jpg";
-import pompeIrrigationAgricole from "@/public/images/chantiers/pompe-irrigation-agricole.jpg";
-import irrigationParcellesMaraicheres from "@/public/images/chantiers/irrigation-parcelles-maraicheres.jpg";
 import essaiAffaissementBeton from "@/public/images/chantiers/essai-affaissement-beton.jpg";
-import mesureQualiteBetonFrais from "@/public/images/chantiers/mesure-qualite-beton-frais.jpg";
-import maconnerieImmeubleSenegal from "@/public/images/chantiers/maconnerie-immeuble-senegal.jpg";
 import murClotureIndustriel from "@/public/images/chantiers/mur-cloture-industriel.jpg";
-import cloturePortailAcier from "@/public/images/chantiers/cloture-portail-acier.jpg";
 import briefingSecuriteEquipe from "@/public/images/chantiers/briefing-securite-equipe.jpg";
 import reunionTechniqueChantier from "@/public/images/chantiers/reunion-technique-chantier.jpg";
-import partenariatConfianceClient from "@/public/images/chantiers/partenariat-confiance-client.jpg";
 
 // Nouvelles photos authentiques du dossier chantier (news tof) : Avant/Après ISDND, bâtiment moderne, hydraulique en tranchée, camions et encadrement féminin
 import avantDechetsMeckhe from "@/public/images/chantiers/avant-dechets-isdnd-meckhe.jpg";
@@ -97,6 +88,12 @@ export type Photo = {
   droitsAVerifier?: boolean;
 };
 
+/**
+ * Photos jumelles : certaines entrées ci-dessous (maçonnerie, pompe, irrigation, rue, béton,
+ * poignée de main, épreuve, clôture, géomètre GPS) pointent volontairement vers le même fichier
+ * qu'une autre entrée. L'image était livrée sous deux noms ; elle n'existe plus qu'une fois,
+ * et les galeries la dédoublonnent par son URL.
+ */
 export const photos = {
   // Photos d'origine de l'entreprise (bâche PET)
   terrassementEngins: {
@@ -249,7 +246,7 @@ export const photos = {
     focale: "50% 28%",
   },
   topographieGps: {
-    src: topographieGps,
+    src: collaboratriceGeometreGps,
     alt: "Technicien géomètre topographe de PET équipé d'un système de positionnement GNSS/GPS de précision sur le chantier.",
     focale: "50% 35%",
   },
@@ -343,7 +340,7 @@ export const photos = {
     focale: "50% 50%",
   },
   rueResidentielleBitumee: {
-    src: rueResidentielleBitumee,
+    src: voirieAsphalte,
     alt: "Rue résidentielle aménagée et bitumée avec bordures et assainissement pluvial achevé.",
     focale: "50% 50%",
   },
@@ -353,7 +350,7 @@ export const photos = {
     focale: "50% 50%",
   },
   inspectionTechniqueCanalisation: {
-    src: inspectionTechniqueCanalisation,
+    src: epreuveHydraulique,
     alt: "Techniciens en tranchée inspectant le calage et l'emboîtement d'une conduite maîtresse d'eau potable.",
     focale: "50% 50%",
   },
@@ -373,12 +370,12 @@ export const photos = {
     focale: "50% 50%",
   },
   pompeIrrigationAgricole: {
-    src: pompeIrrigationAgricole,
+    src: stationPompageSolaire,
     alt: "Station de pompage hydro-agricole et collecteur d'irrigation pour parcelles maraîchères.",
     focale: "50% 50%",
   },
   irrigationParcellesMaraicheres: {
-    src: irrigationParcellesMaraicheres,
+    src: irrigationNiayes,
     alt: "Aménagement hydro-agricole et arrosage de cultures maraîchères en plein champ au Sénégal.",
     focale: "50% 50%",
   },
@@ -388,12 +385,12 @@ export const photos = {
     focale: "50% 50%",
   },
   mesureQualiteBetonFrais: {
-    src: mesureQualiteBetonFrais,
+    src: controleQualiteBeton,
     alt: "Prélèvement d'échantillons d'éprouvettes de béton armé pour essais d'écrasement en laboratoire.",
     focale: "50% 50%",
   },
   maconnerieImmeubleSenegal: {
-    src: maconnerieImmeubleSenegal,
+    src: grosOeuvreDakar,
     alt: "Élévation de maçonnerie et coulage de linteaux béton armé sur un immeuble en chantier à Dakar.",
     focale: "50% 50%",
   },
@@ -403,7 +400,7 @@ export const photos = {
     focale: "50% 50%",
   },
   cloturePortailAcier: {
-    src: cloturePortailAcier,
+    src: clotureMaconnee,
     alt: "Mur d'enceinte maçonné crépi et portail battant en acier d'une résidence contemporaine.",
     focale: "50% 50%",
   },
@@ -418,7 +415,7 @@ export const photos = {
     focale: "50% 45%",
   },
   partenariatConfianceClient: {
-    src: partenariatConfianceClient,
+    src: partenariatChantier,
     alt: "Poignée de main de confiance scellant un partenariat de qualité entre l'entreprise PET et le maître d'ouvrage.",
     focale: "50% 45%",
   },

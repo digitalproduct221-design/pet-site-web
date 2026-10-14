@@ -5,7 +5,7 @@ import { Icone } from "./Icone";
 import { PhotoCadre } from "./PhotoCadre";
 
 /** Vignette de réalisation : photo, domaine, titre ; la photo s'approche au survol. */
-export function CarteProjet({ projet, ton = "clair", ratio = "aspect-[4/3]" }: { projet: Projet; ton?: "clair" | "sombre"; ratio?: string }) {
+export function CarteProjet({ projet, ton = "clair", ratio = "aspect-[4/3]", sizes = "(min-width: 1024px) 30vw, (min-width: 640px) 50vw, 100vw" }: { projet: Projet; ton?: "clair" | "sombre"; ratio?: string; sizes?: string }) {
   const domaine = domaineParSlug(projet.domaine);
   const sombre = ton === "sombre";
   return (
@@ -13,7 +13,7 @@ export function CarteProjet({ projet, ton = "clair", ratio = "aspect-[4/3]" }: {
       <PhotoCadre
         photo={projet.photos[0]}
         ratio={ratio}
-        sizes="(min-width: 1024px) 30vw, (min-width: 640px) 50vw, 100vw"
+        sizes={sizes}
         voile="leger"
         imageClassName="transition-transform duration-[900ms] ease-chantier group-hover/projet:scale-[1.04]"
       />
