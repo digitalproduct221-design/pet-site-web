@@ -6,6 +6,7 @@ import { Footer } from "@/components/layout/Footer";
 import { BarreActionsMobile } from "@/components/layout/BarreActionsMobile";
 import { Reveleur } from "@/components/ui/Reveleur";
 import { TransitionPage } from "@/components/layout/TransitionPage";
+import { NavigateurAncien } from "@/components/layout/NavigateurAncien";
 import { CLE_INTRO } from "@/components/layout/intro";
 import { email, entreprise, NOM, SIGLE, SITE_URL, SLOGAN, telephones } from "@/content/site";
 
@@ -113,6 +114,20 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="fr" data-scroll-behavior="smooth" suppressHydrationWarning className={`${barlowCondensed.variable} ${barlowSemi.variable} ${manrope.variable}`}>
       <head>
+        {/* Navigateurs sans « cascade layers » (Chrome < 99…) : tout le CSS serait ignoré. On le détecte avant
+            le premier rendu et on montre à la place la page de repli (components/layout/NavigateurAncien.tsx).
+            Script en ES3 volontairement : il doit tourner même sur un navigateur très ancien. */}
+        <style
+          dangerouslySetInnerHTML={{
+            __html:
+              "#navigateur-ancien{display:none}html.navigateur-ancien body>*{display:none!important}html.navigateur-ancien body>#navigateur-ancien{display:block!important}",
+          }}
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{if(typeof CSSLayerBlockRule==="undefined"){document.documentElement.className+=" navigateur-ancien"}}catch(e){document.documentElement.className+=" navigateur-ancien"}`,
+          }}
+        />
         {/* Avant le premier rendu : l'écran d'accueil au logo ne rejoue pas dans la même session */}
         <script
           dangerouslySetInnerHTML={{
@@ -121,6 +136,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         />
       </head>
       <body className="relative min-h-dvh">
+        <NavigateurAncien />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(donneesOrganisation).replace(/</g, "\\u003c") }}
