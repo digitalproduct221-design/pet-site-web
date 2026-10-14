@@ -7,10 +7,11 @@ import embleme from "@/public/brand/embleme-pet-inverse.png";
 import { CLE_INTRO } from "./intro";
 
 
-// Transition courte (≈ 0,6 s au total) : le volet jaune ne fait qu'un liseré devant le bleu nuit.
-const COUVRE = 300; // entrée des volets
-const DEVOILE = 340; // sortie des volets
-const DECALAGE = 40; // le volet nuit suit de près le jaune : seul un liseré jaune se voit
+// Transition très courte (≈ 0,35 s) : le volet jaune ne fait qu'un liseré devant le bleu nuit.
+// La navigation démarre en même temps que l'entrée des volets : l'animation ne retarde jamais la page.
+const COUVRE = 150; // entrée des volets
+const DEVOILE = 190; // sortie des volets
+const DECALAGE = 25; // le volet nuit suit de près le jaune : seul un liseré jaune se voit
 const MAINTIEN = 0; // pas de pause : le logo ne reste que si la page tarde
 const ATTENTE_MAX = 8000; // au-delà, on dévoile quoi qu'il arrive
 const COURBE = "cubic-bezier(0.76, 0, 0.24, 1)";
@@ -114,9 +115,10 @@ export function TransitionPage() {
       router.prefetch(cible);
 
       (async () => {
-        await couvrir();
+        // La navigation part tout de suite ; l'animation de couverture se joue pendant le chargement.
         const arrive = new Promise<void>((resoudre) => (arrivee.current = { chemin: cheminCible, resoudre }));
         router.push(cible);
+        await couvrir();
         // Si la page tarde, la barre de chargement apparaît sous le logo.
         const signal = setTimeout(() => (el.dataset.attente = "oui"), 250);
         await Promise.all([Promise.race([arrive, pause(ATTENTE_MAX)]), pause(MAINTIEN)]);

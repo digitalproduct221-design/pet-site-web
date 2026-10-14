@@ -7,8 +7,8 @@ import { Equerres } from "@/components/ui/Equerres";
 import { Icone } from "@/components/ui/Icone";
 import { Motif } from "@/components/ui/Motif";
 
-const VIDEO = "/video/pet-presentation.mp4";
-const AFFICHE = "/video/pet-film-affiche.jpg";
+const VIDEO = "/video/pet-presentation-720.mp4";
+const AFFICHE = "/video/pet-film-affiche.webp";
 const SOUS_TITRES = "/video/pet-presentation.vtt";
 
 type Phase = "apercu" | "son" | "fin";
@@ -24,6 +24,8 @@ export function VideoPresentation() {
   const video = useRef<HTMLVideoElement>(null);
   const [phase, setPhase] = useState<Phase>("apercu");
   const [enPause, setEnPause] = useState(true);
+  // L'affiche (et le film) ne sont demandés qu'à l'approche de la section : zéro octet à l'arrivée sur la page.
+  const [proche, setProche] = useState(false);
   const pauseVoulue = useRef(false);
   const phaseRef = useRef<Phase>("apercu");
 
@@ -38,6 +40,16 @@ export function VideoPresentation() {
     v.muted = true;
     v.defaultMuted = true;
     const reduit = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const approche = new IntersectionObserver(
+      ([e]) => {
+        if (e.isIntersecting) {
+          setProche(true);
+          approche.disconnect();
+        }
+      },
+      { rootMargin: "400px 0px" },
+    );
+    approche.observe(v);
     const obs = new IntersectionObserver(
       ([e]) => {
         if (!e.isIntersecting) v.pause();
@@ -46,7 +58,10 @@ export function VideoPresentation() {
       { threshold: 0.45 },
     );
     obs.observe(v);
-    return () => obs.disconnect();
+    return () => {
+      obs.disconnect();
+      approche.disconnect();
+    };
   }, []);
 
   // Appelé directement dans le clic : un seul geste suffit, même sur Safari.
@@ -88,7 +103,7 @@ export function VideoPresentation() {
                 loop
                 playsInline
                 preload="none"
-                poster={AFFICHE}
+                poster={proche ? AFFICHE : undefined}
                 controls={phase === "son"}
                 tabIndex={phase === "son" ? 0 : -1}
                 onEnded={() => setPhase("fin")}
@@ -96,7 +111,7 @@ export function VideoPresentation() {
                 onPause={() => setEnPause(true)}
                 aria-label="Film de présentation de PET, 58 secondes, voix off et sous-titres incrustés"
               >
-                <source src={VIDEO} type="video/mp4" />
+                {proche ? <source src={VIDEO} type="video/mp4" /> : null}
                 <track kind="captions" src={SOUS_TITRES} srcLang="fr" label="Français" />
               </video>
 

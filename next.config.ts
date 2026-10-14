@@ -29,10 +29,10 @@ const securite = [
   { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=(), payment=(), usb=()" },
 ];
 
-// Fichiers statiques non versionnés (logo, motifs, photos) : 30 jours, puis
+// Fichiers statiques non versionnés (logo, motifs, photos) : 1 jour, puis
 // revalidation en arrière-plan. Pas « immutable » : le logo vectoriel et les
 // photos HD remplaceront ces fichiers sous le même nom.
-const cacheStatique = [{ key: "Cache-Control", value: "public, max-age=3600, stale-while-revalidate=86400" }];
+const cacheStatique = [{ key: "Cache-Control", value: "public, max-age=86400, stale-while-revalidate=2592000" }];
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
@@ -42,6 +42,8 @@ const nextConfig: NextConfig = {
       { source: "/brand/:fichier*", headers: cacheStatique },
       { source: "/motifs/:fichier*", headers: cacheStatique },
       { source: "/images/:fichier*", headers: cacheStatique },
+      // Film de présentation : jamais retéléchargé à chaque visite (renommer le fichier pour le remplacer).
+      { source: "/video/:fichier*", headers: [{ key: "Cache-Control", value: "public, max-age=604800, stale-while-revalidate=2592000" }] },
     ];
   },
   async redirects() {

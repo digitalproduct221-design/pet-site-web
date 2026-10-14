@@ -16,7 +16,7 @@ export function NavigateurAncien() {
     <div id="navigateur-ancien" style={{ minHeight: "100%", background: "#f3ebdd", color: "#1a1f2e", fontFamily: "Arial, Helvetica, sans-serif", lineHeight: 1.5 }}>
       <div style={{ maxWidth: 640, margin: "0 auto", padding: "28px 20px 40px" }}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/brand/logo-pet.png" alt="PET, Partenaire Entreprise Travaux" width={300} height={150} style={{ display: "block", width: 300, maxWidth: "80%", height: "auto", margin: "0 auto 18px" }} />
+        <img loading="lazy" decoding="async" src="/brand/logo-pet.png" alt="PET, Partenaire Entreprise Travaux" width={300} height={150} style={{ display: "block", width: 300, maxWidth: "80%", height: "auto", margin: "0 auto 18px" }} />
         <h1 style={{ margin: "0 0 6px", fontSize: 22, textAlign: "center", color: "#21409a", textTransform: "uppercase" }}>{NOM}</h1>
         <p style={{ margin: "0 0 24px", textAlign: "center", color: "#44506a" }}>{SLOGAN}.</p>
 
@@ -27,7 +27,7 @@ export function NavigateurAncien() {
           </p>
         </div>
 
-        <a href="/video/pet-presentation.mp4" style={bouton("#21409a", "#ffffff")}>
+        <a href="/video/pet-presentation-720.mp4" style={bouton("#21409a", "#ffffff")}>
           Voir le film de présentation (58 s)
         </a>
         {telephones.map((t) => (

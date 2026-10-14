@@ -58,17 +58,33 @@ export function Diaporama({ diapos }: { diapos: Diapo[] }) {
     return () => window.clearTimeout(minuteur);
   }, [index, enPause, aller]);
 
-  // Précharge uniquement la photo courante et la photo suivante (préserve la bande passante mobile)
+  // La photo suivante n'est demandée qu'une fois la page chargée et le navigateur au repos :
+  // la première photo (celle qui compte pour la vitesse perçue) a toute la bande passante.
+  const [repos, setRepos] = useState(false);
+  useEffect(() => {
+    let minuteur = 0;
+    const apres = () => {
+      minuteur = window.setTimeout(() => setRepos(true), 900);
+    };
+    if (document.readyState === "complete") apres();
+    else window.addEventListener("load", apres, { once: true });
+    return () => {
+      window.removeEventListener("load", apres);
+      window.clearTimeout(minuteur);
+    };
+  }, []);
+
+  // Précharge uniquement la photo courante et, au repos, la photo suivante (préserve la bande passante mobile)
   useEffect(() => {
     setChargees((prev) => {
       const suivante = (index + 1) % total;
-      if (prev.has(index) && prev.has(suivante)) return prev;
+      if (prev.has(index) && (!repos || prev.has(suivante))) return prev;
       const maj = new Set(prev);
       maj.add(index);
-      maj.add(suivante);
+      if (repos) maj.add(suivante);
       return maj;
     });
-  }, [index, total]);
+  }, [index, total, repos]);
 
   useEffect(() => {
     // display: contents n'a pas de boîte : on observe la section du hero
