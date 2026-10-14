@@ -42,54 +42,27 @@ export function Logo({
         />
       </div>
 
-      {/* 1. TYPOGRAPHIE MOBILE (< sm) : Percutante, premium, 100% lisible, 0 débordement */}
-      <div className="flex flex-col justify-center sm:hidden leading-none select-none">
-        <div className="flex items-baseline gap-1.5 whitespace-nowrap leading-none">
-          <span
-            className={`font-display font-black tracking-tight transition-colors duration-300 ${
-              estSombre ? "text-blanc group-hover/logo:text-jaune" : "text-royal group-hover/logo:text-royal-sombre"
-            } ${compact ? "text-[1.125rem]" : "text-[1.25rem]"}`}
-          >
-            PET
-          </span>
-          <span
-            className={`font-sans font-black tracking-[0.14em] uppercase transition-colors duration-300 ${
-              estSombre ? "text-jaune" : "text-jaune-profond"
-            } ${compact ? "text-[0.6875rem]" : "text-[0.75rem]"}`}
-          >
-            SUARL
-          </span>
-        </div>
-        <span
-          className={`mt-1 font-sans font-extrabold tracking-[0.14em] uppercase whitespace-nowrap transition-colors duration-300 ${
-            estSombre ? "text-brume" : "text-encre-douce"
-          } ${compact ? "text-[0.5625rem]" : "text-[0.625rem]"}`}
-        >
-          BTP AU SÉNÉGAL
-        </span>
-      </div>
-
-      {/* 2. TYPOGRAPHIE TABLETTE & GRAND ÉCRAN (>= sm) : Nom complet avec SUARL sur la même ligne et « BTP AU SÉNÉGAL » en bas */}
-      <div className="hidden sm:flex flex-col justify-center leading-none select-none">
-        <div className="flex items-baseline gap-1.5 whitespace-nowrap leading-none">
+      {/* TYPOGRAPHIE OFFICIELLE : Nom complet en haut + BTP en bas (mobile & bureau) */}
+      <div className="flex flex-col justify-center leading-none select-none min-w-0">
+        <div className="flex items-baseline gap-1 sm:gap-1.5 whitespace-nowrap leading-none">
           <span
             className={`font-display font-black uppercase tracking-tight transition-colors duration-300 ${
               estSombre ? "text-blanc group-hover/logo:text-jaune" : "text-royal group-hover/logo:text-royal-sombre"
             } ${
               compact
-                ? "text-[0.875rem] sm:text-[1rem] lg:text-[1.125rem]"
-                : "text-[0.9375rem] sm:text-[1.125rem] lg:text-[1.25rem]"
+                ? "text-[0.625rem] min-[360px]:text-[0.6875rem] min-[390px]:text-[0.75rem] sm:text-[1rem] lg:text-[1.125rem]"
+                : "text-[0.65625rem] min-[360px]:text-[0.71875rem] min-[390px]:text-[0.8125rem] sm:text-[1.125rem] lg:text-[1.25rem]"
             }`}
           >
             PARTENAIRE ENTREPRISE TRAVAUX
           </span>
           <span
-            className={`font-sans font-black tracking-[0.12em] uppercase transition-colors duration-300 ${
+            className={`font-sans font-black tracking-[0.1em] uppercase transition-colors duration-300 ${
               estSombre ? "text-jaune" : "text-jaune-profond"
             } ${
               compact
-                ? "text-[0.625rem] sm:text-[0.6875rem] lg:text-[0.75rem]"
-                : "text-[0.6875rem] sm:text-[0.75rem] lg:text-[0.8125rem]"
+                ? "text-[0.5rem] min-[360px]:text-[0.53125rem] min-[390px]:text-[0.5625rem] sm:text-[0.6875rem] lg:text-[0.75rem]"
+                : "text-[0.53125rem] min-[360px]:text-[0.5625rem] min-[390px]:text-[0.625rem] sm:text-[0.75rem] lg:text-[0.8125rem]"
             }`}
           >
             SUARL
@@ -100,11 +73,11 @@ export function Logo({
             estSombre ? "text-brume" : "text-encre-douce"
           } ${
             compact
-              ? "mt-0.5 text-[0.5625rem] sm:text-[0.625rem] lg:text-[0.6875rem]"
-              : "mt-0.5 sm:mt-1 text-[0.625rem] sm:text-[0.6875rem] lg:text-[0.75rem]"
+              ? "mt-0.5 text-[0.5rem] min-[360px]:text-[0.53125rem] min-[390px]:text-[0.5625rem] sm:text-[0.625rem] lg:text-[0.6875rem]"
+              : "mt-0.5 sm:mt-1 text-[0.53125rem] min-[360px]:text-[0.5625rem] min-[390px]:text-[0.625rem] sm:text-[0.6875rem] lg:text-[0.75rem]"
           }`}
         >
-          BTP AU SÉNÉGAL
+          BTP <span className="hidden min-[380px]:inline">AU SÉNÉGAL</span>
         </span>
       </div>
     </Link>

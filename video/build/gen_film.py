@@ -19,7 +19,7 @@ TOTAL = round(t, 3)
 json.dump({"tempo": TEMPO, "total": TOTAL, "scenes": scenes}, open("timeline.json", "w"), ensure_ascii=False, indent=1)
 
 N, R, Y, K, S = "#0B1B3F", "#21409A", "#F7C61C", "#5B9BD5", "#F3EBDD"
-BG = {1: N, 2: N, 3: S, 4: N, 5: R, 6: S, 7: N, 8: R, 9: S, 10: N, 11: R, 12: S, 13: N}
+BG = {1: "#FFFFFF", 2: N, 3: S, 4: N, 5: R, 6: S, 7: N, 8: R, 9: S, 10: N, 11: R, 12: S, 13: "#FFFFFF"}
 
 ICON = {
     "bat": '<path d="M8 56V20l20-12 20 12v36M20 56V36h16v20M4 56h56"/>',
@@ -91,8 +91,8 @@ def split(i, idx, ic, ttl, items, img, V, right=False, pos="center"):
 
 
 def grid(W, H):
-    g = "".join(f'<div class="a abs" data-k="growV" data-d="{(x % 7) * 0.05}" data-u="1.2" style="left:{x}px;top:0;width:1px;height:{H}px;background:{K};opacity:.14"></div>' for x in range(0, W, 80))
-    g += "".join(f'<div class="a abs" data-k="growH" data-d="{(y % 5) * 0.06}" data-u="1.2" style="top:{y}px;left:0;height:1px;width:{W}px;background:{K};opacity:.14"></div>' for y in range(0, H, 80))
+    g = "".join(f'<div class="a abs" data-k="growV" data-d="{(x % 7) * 0.05}" data-u="1.2" style="left:{x}px;top:0;width:1px;height:{H}px;background:{R};opacity:.09"></div>' for x in range(0, W, 80))
+    g += "".join(f'<div class="a abs" data-k="growH" data-d="{(y % 5) * 0.06}" data-u="1.2" style="top:{y}px;left:0;height:1px;width:{W}px;background:{R};opacity:.09"></div>' for y in range(0, H, 80))
     return g
 
 
@@ -101,7 +101,7 @@ def build(V):
     sc = {}
     # 1 Logo
     lw = 860 if V else 800
-    sc[1] = grid(W, H) + a("logo", 0.35, f'<img src="assets/logo-pet-inverse.png" style="width:{lw}px;display:block">',
+    sc[1] = grid(W, H) + a("logo", 0.35, f'<img src="assets/logo-pet.png" style="width:{lw}px;display:block">',
                            f"left:{(W - lw) // 2}px;top:{(H - lw * 0.5) // 2 - 40}px", "abs", 1.4)
     # 2 Accroche sur photo
     if V:
@@ -183,9 +183,9 @@ def build(V):
     # 13 Fin
     lw = 620 if V else 500
     top = 420 if V else 130
-    sc[13] = (grid(W, H) + a("logo", 0.2, f'<img src="assets/logo-pet-inverse.png" style="width:{lw}px;display:block">', f"left:{(W - lw) // 2}px;top:{top}px", "abs", 1.2)
-              + f'<div class="abs" style="left:0;right:0;top:{top + lw * 0.5 + 110}px;text-align:center">' + title("Votre allié de confiance", 92 if V else 84, "#fff", 0.7)
-              + a("up", 1.1, f'33 827 61 85 · 77 597 01 98 · 78 305 04 44<br><span style="color:{K}">partenaire.direction@outlook.com</span>', f"color:#fff;font-size:{34 if V else 32}px;font-weight:600;margin-top:30px;line-height:1.5")
+    sc[13] = (grid(W, H) + a("logo", 0.2, f'<img src="assets/logo-pet.png" style="width:{lw}px;display:block">', f"left:{(W - lw) // 2}px;top:{top}px", "abs", 1.2)
+              + f'<div class="abs" style="left:0;right:0;top:{top + lw * 0.5 + 110}px;text-align:center">' + title("Votre allié de confiance", 92 if V else 84, N, 0.7)
+              + a("up", 1.1, f'33 827 61 85 · 77 597 01 98 · 78 305 04 44<br><span style="color:{R}">partenaire.direction@outlook.com</span>', f"color:{N};font-size:{34 if V else 32}px;font-weight:600;margin-top:30px;line-height:1.5")
               + a("scale", 1.5, "Demander un devis", f"display:inline-block;margin-top:44px;background:{Y};color:{N};font-size:40px;padding:18px 44px", "t") + "</div>")
 
     # Sous-titres
