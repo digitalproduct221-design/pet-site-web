@@ -59,7 +59,7 @@ const engagements: Engagement[] = [
     id: "securite",
     titre: "Sécurité (QHSE)",
     icone: "securite",
-    photo: "equipePet",
+    photo: "equipeTerrainSecurite",
     intro: "La sécurité est au centre de nos préoccupations : celle de nos équipes, de nos clients et des riverains de nos chantiers.",
     points: [
       "Port obligatoire des équipements de protection individuelle (EPI) siglés PET",
