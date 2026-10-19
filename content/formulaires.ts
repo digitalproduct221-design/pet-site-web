@@ -31,7 +31,7 @@ export function valider(type: TypeFormulaire, donnees: FormData): Erreurs {
   if (!email) e.email = "Indiquez votre adresse e-mail pour que nous puissions vous répondre.";
   else if (!emailValide(email)) e.email = "Cette adresse e-mail semble incomplète. Exemple : nom@entreprise.sn";
   if (!telephone) e.telephone = "Indiquez un numéro où vous joindre.";
-  else if (!telephoneValide(telephone)) e.telephone = "Ce numéro semble incomplet. Exemple : 77 597 01 98";
+  else if (!telephoneValide(telephone)) e.telephone = "Ce numéro semble incomplet. Exemple : 77 123 45 67";
 
   if (type === "devis") {
     const domaine = texte(donnees.get("domaine"));

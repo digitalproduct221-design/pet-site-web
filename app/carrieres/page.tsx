@@ -19,13 +19,13 @@ export const metadata: Metadata = {
     title: "Carrières | PET SUARL Dakar",
     description: "Rejoignez les équipes de PET à Dakar : les métiers de nos chantiers et la candidature spontanée.",
     url: "/carrieres",
-    images: [{ url: "/images/chantiers/equipe-en-marche.jpg", width: 1376, height: 768, alt: "Équipe de chantier PET SUARL" }],
+    images: [{ url: "/images/chantiers/equipe-pet-blousons-orange.jpg", width: 1376, height: 768, alt: "Équipe de chantier PET SUARL en tenues et blousons officiels" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Carrières | PET SUARL Dakar",
     description: "Rejoignez les équipes de PET à Dakar : les métiers de nos chantiers et la candidature spontanée.",
-    images: ["/images/chantiers/equipe-en-marche.jpg"],
+    images: ["/images/chantiers/equipe-pet-blousons-orange.jpg"],
   },
 };
 
@@ -42,7 +42,7 @@ export default function PageCarrieres() {
         titre="Carrières"
         intro="Conducteurs d'engins, canalisateurs, ferrailleurs, topographes : rejoignez une entreprise de terrain où le travail bien fait compte."
         ariane={[{ titre: "Carrières" }]}
-        photo="equipeEnMarche"
+        photo="equipePetBlousonsOrange"
       >
         <BoutonLien href="#candidature">Candidature spontanée</BoutonLien>
         <BoutonLien href="#metiers" variante="contour-clair">

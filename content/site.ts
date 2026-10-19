@@ -37,17 +37,13 @@ export const telephones: Telephone[] = entreprise.contact.telephones.map((numero
   mobile: !numero.startsWith("33"),
 }));
 
-/** Numéro WhatsApp par défaut : premier mobile (à confirmer, voir docs/decisions.md). */
-export const whatsapp = (() => {
-  const mobile = telephones.find((t) => t.mobile) ?? telephones[0];
-  const international = `221${mobile.affichage.replace(/\s/g, "")}`;
-  return {
-    affichage: mobile.affichage,
-    lien: `https://wa.me/${international}?text=${encodeURIComponent(
-      "Bonjour PET, je souhaite échanger au sujet d'un projet.",
-    )}`,
-  };
-})();
+/** Numéro WhatsApp officiel PET : direct mobile 77 597 01 98 (+221775970198). */
+export const whatsapp = {
+  affichage: "77 597 01 98",
+  lien: `https://wa.me/221775970198?text=${encodeURIComponent(
+    "Bonjour PET, je souhaite échanger au sujet d'un projet.",
+  )}`,
+};
 
 export const email = entreprise.contact.email;
 export const adresse = entreprise.contact.adresse;
@@ -85,7 +81,9 @@ const photosParDomaine: Record<string, PhotoId[]> = {
     "grosOeuvreDakar",
     "immeubleGrue",
     "batimentTechniqueChantier",
+    "hangarStructureMetallique",
     "chantierVillaFinitions",
+    "villaMenuiserieAluminium",
     "ecoleSenegal",
     "villaContemporaine",
     "murClotureIndustriel",
@@ -95,10 +93,13 @@ const photosParDomaine: Record<string, PhotoId[]> = {
     "immeubleSerigneDakar",
   ],
   "travaux-publics-vrd": [
+    "carriereSableExcavationCat",
+    "pelleteuseCatDunes",
     "camionChargementChargeuse",
     "camionSableChantierPet",
     "camionDechargementSable",
     "ouvrierGiletPetNiveleuse",
+    "niveleuseCatControlePente",
     "niveleuseVoirie",
     "terrassementEngins",
     "niveleuseTerrassementPiste",

@@ -44,6 +44,7 @@ export const sources: ProjetSource[] = [
     ],
     photos: [
       "niveleuseVoirie",
+      "niveleuseCatControlePente",
       "vrdAsphalteBoulevard",
       "grandeAvenueUrbaineDakar",
       "voirieAsphalte",
@@ -87,7 +88,9 @@ export const sources: ProjetSource[] = [
       "Contrôles de densité in situ et essais de portance",
     ],
     photos: [
+      "carriereSableExcavationCat",
       "camionChargementChargeuse",
+      "pelleteuseCatDunes",
       "camionSableChantierPet",
       "camionDechargementSable",
       "ouvrierGiletPetNiveleuse",
@@ -249,6 +252,7 @@ export const sources: ProjetSource[] = [
     photos: [
       "batimentCommercialDakar",
       "grosOeuvreDakar",
+      "hangarStructureMetallique",
       "immeubleGrue",
       "batimentTechniqueChantier",
       "immeubleSerigneDakar",
@@ -270,6 +274,7 @@ export const sources: ProjetSource[] = [
     ],
     photos: [
       "chantierVillaFinitions",
+      "villaMenuiserieAluminium",
       "ecoleSenegal",
       "villaContemporaine",
       "clotureGrillage",

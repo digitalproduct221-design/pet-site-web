@@ -34,7 +34,7 @@ export function Carrieres() {
           </div>
 
           <PhotoCadre
-            photo="equipeEnMarche"
+            photo="equipePetBlousonsOrange"
             ratio="aspect-[16/10]"
             sizes="(min-width: 1024px) 36vw, 100vw"
             voile="leger"

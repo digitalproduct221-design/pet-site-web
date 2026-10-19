@@ -78,6 +78,14 @@ import concertationChantierCasier from "@/public/images/chantiers/concertation-c
 import ouvrierGiletPetNiveleuse from "@/public/images/chantiers/ouvrier-gilet-pet-niveleuse.jpg";
 import batimentTechniqueChantier from "@/public/images/chantiers/batiment-technique-chantier.jpg";
 
+// Nouvelles photos authentiques chantiers PET et équipe terrain avec logos sur tenue
+import equipePetBlousonsOrange from "@/public/images/chantiers/equipe-pet-blousons-orange.jpg";
+import carriereSableExcavationCat from "@/public/images/chantiers/carriere-sable-excavation-cat.jpg";
+import pelleteuseCatDunes from "@/public/images/chantiers/pelleteuse-cat-dunes.jpg";
+import niveleuseCatControlePente from "@/public/images/chantiers/niveleuse-cat-controle-pente.jpg";
+import hangarStructureMetallique from "@/public/images/chantiers/hangar-structure-metallique.jpg";
+import villaMenuiserieAluminium from "@/public/images/chantiers/villa-menuiserie-aluminium.jpg";
+
 import type { StaticImageData } from "next/image";
 
 export type Photo = {
@@ -140,9 +148,9 @@ export const photos = {
     focale: "50% 45%",
   },
   equipeEnMarche: {
-    src: equipeEnMarche,
-    alt: "Équipe de techniciens et ouvriers de PET avançant ensemble sur un chantier de voirie et réseaux.",
-    focale: "50% 45%",
+    src: equipePetBlousonsOrange,
+    alt: "Équipe de terrain PET réunie sur chantier en blousons orange avec logos officiels PET sur les casques et les tenues.",
+    focale: "50% 35%",
   },
   partenariatChantier: {
     src: partenariatChantier,
@@ -483,6 +491,36 @@ export const photos = {
   batimentTechniqueChantier: {
     src: batimentTechniqueChantier,
     alt: "Poste technique maçonné en béton coulé et ingénieur PET assurant la réception du gros-œuvre sur le site.",
+    focale: "50% 50%",
+  },
+  equipePetBlousonsOrange: {
+    src: equipePetBlousonsOrange,
+    alt: "Équipe de terrain PET réunie sur chantier en blousons orange haute visibilité avec logos officiels PET sur les casques et les tenues.",
+    focale: "50% 35%",
+  },
+  carriereSableExcavationCat: {
+    src: carriereSableExcavationCat,
+    alt: "Fouille et extraction massive de sable en carrière : pelle mécanique Caterpillar, géomètres au jalon et encadrement de chantier PET.",
+    focale: "50% 40%",
+  },
+  pelleteuseCatDunes: {
+    src: pelleteuseCatDunes,
+    alt: "Pelle hydraulique Caterpillar en manœuvre de terrassement et modelage de relief dunaire au Sénégal.",
+    focale: "65% 35%",
+  },
+  niveleuseCatControlePente: {
+    src: niveleuseCatControlePente,
+    alt: "Niveleuse Caterpillar 140H et opérateur de chantier PET en gilet haute visibilité assurant le guidage et le calage altimétrique.",
+    focale: "50% 50%",
+  },
+  hangarStructureMetallique: {
+    src: hangarStructureMetallique,
+    alt: "Bâtiment à structure poteaux béton et couverture métallique industrielle en cours de finition par PET.",
+    focale: "50% 50%",
+  },
+  villaMenuiserieAluminium: {
+    src: villaMenuiserieAluminium,
+    alt: "Pavillon maçonné avec menuiseries aluminium vitrées et toiture étanchée réalisé par PET.",
     focale: "50% 50%",
   },
 } satisfies Record<string, Photo>;
