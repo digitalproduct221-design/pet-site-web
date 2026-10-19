@@ -31,7 +31,7 @@ export const metadata: Metadata = {
 
 const atouts = [
   { icone: "casque", titre: "La sécurité d'abord", texte: "Équipements de protection et consignes partagées sur chaque chantier." },
-  { icone: "equipe", titre: "Des équipes expérimentées", texte: "Une équipe qui cumule plus de 40 ans d'expérience et transmet son savoir-faire." },
+  { icone: "equipe", titre: "Des équipes expérimentées", texte: "Une équipe forte de plus de 10 ans d'expérience qui transmet son savoir-faire." },
   { icone: "engins", titre: "Des moyens entretenus", texte: "Des équipements régulièrement mis à niveau pour travailler dans de bonnes conditions." },
 ] as const;
 

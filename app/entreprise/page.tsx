@@ -12,11 +12,11 @@ import { AppelFinal } from "@/components/accueil/AppelFinal";
 export const metadata: Metadata = {
   title: "L'entreprise",
   description:
-    "PARTENAIRE ENTREPRISE TRAVAUX SUARL : entreprise de BTP au Sénégal fondée en 2016, portée par une équipe de plus de 40 ans d'expérience cumulée.",
+    "PARTENAIRE ENTREPRISE TRAVAUX SUARL : entreprise de BTP au Sénégal fondée en 2016, forte de plus de 10 ans d'expérience.",
   alternates: { canonical: "/entreprise" },
   openGraph: {
     title: "L'entreprise | PET SUARL Sénégal",
-    description: "Entreprise de BTP tous corps d'état fondée en 2016, portée par une équipe de plus de 40 ans d'expérience cumulée au Sénégal.",
+    description: "Entreprise de BTP tous corps d'état fondée en 2016, forte de plus de 10 ans d'expérience au Sénégal.",
     url: "/entreprise",
     images: [{ url: "/images/chantiers/pilotage-chantier.jpg", width: 1376, height: 768, alt: "L'entreprise PET SUARL" }],
   },
@@ -49,7 +49,7 @@ const moyens = [
   { icone: "engins", titre: "Engins de terrassement", texte: "Pelles hydrauliques, chargeuses et niveleuses, visibles sur nos chantiers." },
   { icone: "local", titre: "Topographie", texte: "Implantation et contrôle des cotes au GPS, pour poser juste du premier coup." },
   { icone: "casque", titre: "Équipements de protection", texte: "Casques, gilets et chaussures de sécurité portés par nos équipes." },
-  { icone: "equipe", titre: "Personnel qualifié", texte: "Une équipe qui cumule plus de 40 ans d'expérience dans les travaux." },
+  { icone: "equipe", titre: "Personnel qualifié", texte: "Une équipe forte de plus de 10 ans d'expérience dans les travaux." },
 ] as const;
 
 export default function PageEntreprise() {
@@ -116,7 +116,7 @@ export default function PageEntreprise() {
             </p>
             <p className="mt-6 max-w-[34rem] cote text-[1.125rem] leading-relaxed text-blanc">
               Aujourd&apos;hui&nbsp;: {entreprise.domaines.length} domaines d&apos;expertise, {entreprise.clients.length} types de clients et
-              plus de 40 ans d&apos;expérience cumulée dans l&apos;équipe.
+              plus de 10 ans d&apos;expérience au service du BTP sénégalais.
             </p>
           </div>
           <div className="revele lg:col-span-5 lg:col-start-8">
@@ -260,7 +260,7 @@ export default function PageEntreprise() {
                 <div className="flex flex-wrap gap-4 pt-4 border-t border-blanc/15 text-xs uppercase tracking-wider text-blanc/75">
                   <span className="flex items-center gap-2">
                     <span className="size-2 rounded-full bg-jaune" />
-                    +40 ans d&apos;expérience cumulée
+                    +10 ans d&apos;expérience au Sénégal
                   </span>
                   <span className="flex items-center gap-2">
                     <span className="size-2 rounded-full bg-jaune" />

@@ -118,8 +118,8 @@ export function MotDirecteur() {
                 <p className="mt-1 cote text-[0.75rem] uppercase tracking-[0.08em] text-encre-douce">Année de fondation</p>
               </div>
               <div className="rounded-xl bg-white p-3.5 border border-nuit/5 shadow-sm">
-                <p className="titre text-[1.625rem] text-royal leading-none">40+ ans</p>
-                <p className="mt-1 cote text-[0.75rem] uppercase tracking-[0.08em] text-encre-douce">Expérience cumulée</p>
+                <p className="titre text-[1.625rem] text-royal leading-none">10+ ans</p>
+                <p className="mt-1 cote text-[0.75rem] uppercase tracking-[0.08em] text-encre-douce">D&apos;expérience au Sénégal</p>
               </div>
               <div className="rounded-xl bg-white p-3.5 border border-nuit/5 shadow-sm col-span-2 sm:col-span-1">
                 <p className="titre text-[1.625rem] text-jaune-profond leading-none">100 %</p>

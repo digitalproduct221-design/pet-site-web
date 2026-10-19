@@ -27,7 +27,7 @@ const etapesHistoire = [
     annee: "2016",
     titre: "Fondation de l'entreprise",
     description:
-      "Création de PARTENAIRE ENTREPRISE TRAVAUX SUARL par des ingénieurs et techniciens chevronnés cumulant plus de 40 ans d'expérience dans les métiers du BTP, de l'hydraulique et du génie civil au Sénégal.",
+      "Création de PARTENAIRE ENTREPRISE TRAVAUX SUARL par des ingénieurs et techniciens chevronnés cumulant plus de 10 ans d'expérience dans les métiers du BTP, de l'hydraulique et du génie civil au Sénégal.",
     icone: "histoire",
   },
   {

@@ -25,8 +25,8 @@ type Props = {
 const atoutsDefaut = [
   {
     icone: "casque",
-    titre: "+40 ans",
-    desc: "d'expérience cumulée",
+    titre: "+10 ans",
+    desc: "d'expérience au Sénégal",
   },
   {
     icone: "engins",

@@ -23,7 +23,7 @@ export function Carrieres() {
               id="titre-carrieres"
               ton="sombre"
               titre="Construisez avec nous"
-              intro="Des femmes et des hommes de terrain, fiers de leur métier, dans une équipe qui cumule plus de 40 ans d'expérience."
+              intro="Des femmes et des hommes de terrain, fiers de leur métier, dans une équipe forte de plus de 10 ans d'expérience au Sénégal."
             />
             <div className="mt-9 flex flex-wrap gap-4">
               <BoutonLien href="/carrieres#candidature">Candidature spontanée</BoutonLien>

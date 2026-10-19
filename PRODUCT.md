@@ -25,7 +25,7 @@ Site vitrine de PARTENAIRE ENTREPRISE TRAVAUX SUARL (PET), entreprise de BTP de 
 
 ## Positioning
 
-Une entreprise « tous corps d'état » qui couvre à la fois le bâtiment, les travaux publics et VRD, l'hydraulique, l'assainissement et le génie civil, portée par une équipe cumulant plus de 40 ans d'expérience. Le concept de marque est « La poignée de main qui bâtit » : partenariat, confiance, solidité.
+Une entreprise « tous corps d'état » qui couvre à la fois le bâtiment, les travaux publics et VRD, l'hydraulique, l'assainissement et le génie civil, forte de 10 ans d'expérience (créée en 2016). Le concept de marque est « La poignée de main qui bâtit » : partenariat, confiance, solidité.
 
 ## Operating Context
 
@@ -34,7 +34,7 @@ Le visiteur compare plusieurs entreprises, souvent avant un appel d'offres ou un
 ## Capabilities and Constraints
 
 - Langue : français, structure prête pour l'anglais.
-- Chiffres autorisés seulement : 2016, 40+ ans d'expérience cumulée, 5 domaines, 3 types de clients.
+- Chiffres autorisés seulement : 2016, 10+ ans d'expérience, 5 domaines, 3 types de clients.
 - Aucun client, projet, certification ou chiffre inventé. Plus aucune donnée d'exemple : les réalisations sont des galeries de photos réelles, les actualités sont remplacées par « Votre projet » et les offres d'emploi par les métiers de chantier.
 - Photos de chantier en basse résolution, extraites d'une bâche : toujours cadrées et voilées, jamais en plein écran net.
 - Accessibilité AA, `prefers-reduced-motion`, navigation clavier du méga-menu, rendu vérifié à 360, 768, 1024 et 1440 px.

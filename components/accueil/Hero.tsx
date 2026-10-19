@@ -14,9 +14,9 @@ const diapos: Diapo[] = [
   {
     photo: "vrdAsphalteBoulevard",
     onglet: "Voirie et Réseaux Divers",
-    legende: "Aménagement d'artères urbaines, voiries bitumées et réseaux divers (VRD) aux normes internationales.",
+    legende: "Terrassement lourd de plateformes, aménagement de voiries et réseaux divers (VRD) aux normes internationales.",
     href: "/savoir-faire/travaux-publics-vrd",
-    origine: "50% 50%",
+    origine: "50% 45%",
   },
   {
     photo: "immeubleDakar",

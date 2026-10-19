@@ -99,8 +99,8 @@ export const photos = {
   // Photos d'origine de l'entreprise (bâche PET)
   terrassementEngins: {
     src: terrassementEngins,
-    alt: "Une chargeuse et une pelle hydraulique CAT terrassent un remblai de sable sur un chantier.",
-    focale: "58% 55%",
+    alt: "Pelle hydraulique Caterpillar et chargeuse en plein terrassement sur remblai de sable au Sénégal.",
+    focale: "50% 45%",
   },
   conduiteOuvrage: {
     src: conduiteOuvrage,
@@ -278,8 +278,8 @@ export const photos = {
   },
   vrdAsphalteBoulevard: {
     src: vrdAsphalteBoulevard,
-    alt: "Travaux d'enrobé bitumineux, bordures d'assainissement et aménagement de voirie urbaine.",
-    focale: "50% 50%",
+    alt: "Pelle hydraulique Caterpillar et chargeuse en plein terrassement sur remblai de sable pour voirie et réseaux divers (VRD) au Sénégal.",
+    focale: "50% 45%",
   },
 
   // Photos réelles issues du dossier client (ISDND Meckhé, supervision SETEC & voirie lotissement)

@@ -304,7 +304,7 @@ export const navigation: Rubrique[] = [
     id: "entreprise",
     titre: "L'entreprise",
     href: "/a-propos",
-    intro: "Une entreprise de BTP tous corps d'état, fondée en 2016 et portée par une équipe de plus de 40 ans d'expérience cumulée au Sénégal.",
+    intro: "Une entreprise de BTP tous corps d'état, fondée en 2016 et portée par une équipe forte de plus de 10 ans d'expérience au Sénégal.",
     liens: [
       { titre: "À propos de PET", description: "Histoire, mot de la direction et partenaires", href: "/a-propos", icone: "valeurs" },
       { titre: "Mot du Directeur", description: "Vision et engagements environnementaux", href: "/a-propos#mot-directeur", icone: "valeurs" },

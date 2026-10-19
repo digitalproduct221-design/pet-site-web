@@ -7,10 +7,10 @@ import { Motif } from "@/components/ui/Motif";
 
 type Chiffre = { valeur: number; depart: number; suffixe?: string; libelle: string; picto: NomPicto };
 
-// Seuls chiffres autorisés : 2016, 40+, 5 domaines, 3 types de clients.
+// Seuls chiffres autorisés : 2016, 10+, 5 domaines, 3 types de clients.
 const chiffres: Chiffre[] = [
   { valeur: entreprise.fondation, depart: 1990, libelle: "Année de création, au Sénégal", picto: "creation" },
-  { valeur: 40, depart: 0, suffixe: "+", libelle: "Années d'expérience cumulée dans l'équipe", picto: "experience" },
+  { valeur: 10, depart: 0, suffixe: "+", libelle: "Ans d'expérience au service du BTP au Sénégal", picto: "experience" },
   { valeur: entreprise.domaines.length, depart: 0, libelle: "Domaines d'expertise, du bâtiment aux réseaux", picto: "domaines" },
   { valeur: entreprise.clients.length, depart: 0, libelle: "Types de clients : publics, industriels et privés", picto: "clients" },
 ];
