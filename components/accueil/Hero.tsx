@@ -5,18 +5,18 @@ import { Diaporama, type Diapo } from "./Diaporama";
 
 const diapos: Diapo[] = [
   {
-    photo: "hydrauliqueCanalisationsPose",
-    onglet: "Hydraulique & Adduction",
-    legende: "Gestion et aménagement des infrastructures hydrauliques, adduction d'eau potable et pose de canalisations maîtresses au Sénégal.",
-    href: "/savoir-faire/hydraulique",
-    origine: "50% 50%",
-  },
-  {
     photo: "vrdAsphalteBoulevard",
     onglet: "Voirie et Réseaux Divers",
     legende: "Terrassement lourd de plateformes, aménagement de voiries et réseaux divers (VRD) aux normes internationales.",
     href: "/savoir-faire/travaux-publics-vrd",
     origine: "50% 45%",
+  },
+  {
+    photo: "hydrauliqueCanalisationsPose",
+    onglet: "Hydraulique & Adduction",
+    legende: "Gestion et aménagement des infrastructures hydrauliques, adduction d'eau potable et pose de canalisations maîtresses au Sénégal.",
+    href: "/savoir-faire/hydraulique",
+    origine: "50% 50%",
   },
   {
     photo: "immeubleDakar",
