@@ -67,7 +67,6 @@ import reunionTechniqueChantier from "@/public/images/chantiers/reunion-techniqu
 // Nouvelles photos authentiques du dossier chantier (news tof) : Avant/Après ISDND, bâtiment moderne, hydraulique en tranchée, camions et encadrement féminin
 import avantDechetsMeckhe from "@/public/images/chantiers/avant-dechets-isdnd-meckhe.jpg";
 import apresCasierNiveleMeckhe from "@/public/images/chantiers/apres-casier-nivele-meckhe.jpg";
-import immeubleSerigneDakar from "@/public/images/chantiers/immeuble-serigne-dakar.jpg";
 import chantierVillaFinitions from "@/public/images/chantiers/chantier-villa-finitions.jpg";
 import hydrauliquePoseVanneTranchee from "@/public/images/chantiers/hydraulique-pose-vanne-tranchee.jpg";
 import camionChargementChargeuse from "@/public/images/chantiers/camion-chargement-chargeuse.jpg";
@@ -85,6 +84,14 @@ import pelleteuseCatDunes from "@/public/images/chantiers/pelleteuse-cat-dunes.j
 import niveleuseCatControlePente from "@/public/images/chantiers/niveleuse-cat-controle-pente.jpg";
 import hangarStructureMetallique from "@/public/images/chantiers/hangar-structure-metallique.jpg";
 import villaMenuiserieAluminium from "@/public/images/chantiers/villa-menuiserie-aluminium.jpg";
+import peintureFinitionsVilla from "@/public/images/chantiers/peinture-finitions-villa.jpg";
+import equipePlateformeLaterite from "@/public/images/chantiers/equipe-plateforme-laterite.jpg";
+import pelleCat320LogoPet from "@/public/images/chantiers/pelle-cat-320-logo-pet.jpg";
+import compacteurVibrantPetLaterite from "@/public/images/chantiers/compacteur-vibrant-pet-laterite.jpg";
+import niveleuseCatLateritePet from "@/public/images/chantiers/niveleuse-cat-laterite-pet.jpg";
+import pisteLateritePlateforme from "@/public/images/chantiers/piste-laterite-plateforme.jpg";
+import guidageNiveleuseTechnicienPet from "@/public/images/chantiers/guidage-niveleuse-technicien-pet.jpg";
+import terrassementDunesCatPet from "@/public/images/chantiers/terrassement-dunes-cat-pet.jpg";
 
 import type { StaticImageData } from "next/image";
 
@@ -443,11 +450,6 @@ export const photos = {
     alt: "Résultat après travaux par PET : casier technique entièrement déblayé, étanché, terrassé et compacté en latérite nivelée de haute précision.",
     focale: "50% 60%",
   },
-  immeubleSerigneDakar: {
-    src: immeubleSerigneDakar,
-    alt: "Immeuble d'habitation contemporain R+4 Serigne à Dakar, réalisé par PET avec garde-corps ferronnerie, peinture soignée et accès pavé.",
-    focale: "50% 40%",
-  },
   chantierVillaFinitions: {
     src: chantierVillaFinitions,
     alt: "Villa résidentielle contemporaine en cours d'achèvement : maçonnerie enduite, baies aluminium coulissantes et toiture étanchée.",
@@ -522,6 +524,46 @@ export const photos = {
     src: villaMenuiserieAluminium,
     alt: "Pavillon maçonné avec menuiseries aluminium vitrées et toiture étanchée réalisé par PET.",
     focale: "50% 50%",
+  },
+  peintureFinitionsVilla: {
+    src: peintureFinitionsVilla,
+    alt: "Finition peinture et menuiseries sur pavillon neuf : façades traitées, ouvrier peintre sur site et aménagement des abords par PET.",
+    focale: "50% 50%",
+  },
+  equipePlateformeLaterite: {
+    src: equipePlateformeLaterite,
+    alt: "Équipe d'ingénieurs et conducteurs de travaux PET en concertation technique sur une vaste plateforme de terrassement latéritique.",
+    focale: "50% 40%",
+  },
+  pelleCat320LogoPet: {
+    src: pelleCat320LogoPet,
+    alt: "Pelle hydraulique Caterpillar 320GX arborant le logo officiel PET sur la cabine, en manœuvre avec camion semi-remorque benne.",
+    focale: "50% 40%",
+  },
+  compacteurVibrantPetLaterite: {
+    src: compacteurVibrantPetLaterite,
+    alt: "Compacteur vibrant monocylindre de forte puissance avec logo officiel PET, assurant le compactage et la portance du sol latéritique.",
+    focale: "50% 45%",
+  },
+  niveleuseCatLateritePet: {
+    src: niveleuseCatLateritePet,
+    alt: "Niveleuse lourde Caterpillar 140H avec sigle PET sur le châssis, effectuant le régalage et le profilage d'une chaussée en latérite.",
+    focale: "50% 45%",
+  },
+  pisteLateritePlateforme: {
+    src: pisteLateritePlateforme,
+    alt: "Plateforme et piste d'accès latéritique profilée et compactée, serpentant sur le chantier de viabilisation PET.",
+    focale: "50% 40%",
+  },
+  guidageNiveleuseTechnicienPet: {
+    src: guidageNiveleuseTechnicienPet,
+    alt: "Technicien de terrain PET en gilet haute visibilité assurant le guidage au sol de la niveleuse CAT en phase de finition.",
+    focale: "50% 45%",
+  },
+  terrassementDunesCatPet: {
+    src: terrassementDunesCatPet,
+    alt: "Équipements lourds PET en action : pelle Caterpillar avec logo PET et chargeuse sur pneus opérant le terrassement de dunes.",
+    focale: "50% 45%",
   },
 } satisfies Record<string, Photo>;
 
